@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard']);
+
+Route::get('/client/dashboard', [App\Http\Controllers\ClientController::class, 'dashboard']);
+
+
+Route::get('/admin/categories', [App\Http\Controllers\CategoryController::class, 'index']);
+
