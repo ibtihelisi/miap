@@ -107,7 +107,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlInput1">Nom categorie</label>
                             <input name="name" class="form-control" id="exampleFormControlInput1"
-                                type="text" placeholder=" tapper nom categorie">
+                                type="text" placeholder=" tapper nom categorie" required>
 
                             @error('name')
                                 <div class="alert alert-danger">
@@ -118,7 +118,7 @@
 
                         <div class="mb-0">
                             <label class="form-label" for="exampleTextarea">Description Categorie</label>
-                            <textarea name="description" class="form-control" rows="3"> </textarea>
+                            <textarea name="description" class="form-control" rows="3"   required> </textarea>
 
 
                             @error('description')

@@ -8,22 +8,15 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
+
+     //affichage de a liste
     public function index(){
         $categories=Category::all();
         return view('admin.categories.index')->with('categories',$categories);
     }
 
 
-    //affichage de a liste
-
-    public function liste() {
-        $categories=Category::all();
-
-        //dd($categories);
-
-
-    return view('admin.index')->with('categories',$categories); 
-    }
+   
 
 
     // ajouter une catégorie a la liste 
@@ -55,7 +48,7 @@ class CategoryController extends Controller
         if($categorie->delete()){
             return redirect()->back();
         }else{echo"erreur"
-        ;}
+        ;}    
         
         
     }

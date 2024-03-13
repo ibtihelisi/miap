@@ -12,7 +12,7 @@
               </div>
             </a>
             <ul class="nav collapse parent" id="e-commerce">
-              <li class="nav-item"><a class="nav-link" href="admin/products" data-bs-toggle="" aria-expanded="false">
+              <li class="nav-item"><a class="nav-link" href="/admin/products" data-bs-toggle="" aria-expanded="false">
                   <div class="d-flex align-items-center"><span class="nav-link-text">Products</span></div>
                 </a></li>
               <li class="nav-item"><a class="nav-link" href="/admin/categories" data-bs-toggle="" aria-expanded="false">

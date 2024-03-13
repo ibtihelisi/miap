@@ -30,6 +30,6 @@ class HomeController extends Controller
        }else{
         return redirect('/client/dashboard');
        }
-       // return view('home');
+        //return view('home');
     }
 }
