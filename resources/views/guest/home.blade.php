@@ -45,7 +45,7 @@
                         <div class="text-container">
                             <h1 class="h1-large">The #1 QR Menu app for <span class="replace-me">Restaurants, Bars, Hotels, Coffee shops ,tea Room</span></h1>
                             <p class="p-large">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dignissim, neque ut vanic barem ultrices sollicitudin</p>
-                            <a class="btn-solid-lg" href="sign-up.html">Sign up for free</a>
+                            <a class="btn-solid-lg" href="{{ route('register') }}">Sign up for free</a>
                         </div> <!-- end of text-container -->
                     </div> <!-- end of col -->
                     <div class="col-lg-6">
@@ -76,8 +76,8 @@
                                 <span class="fas fa-headphones-alt"></span>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Customer Lists</h4>
-                                <p>Et blandit nisl libero at arcu. Donec ac lectus sed tellus mollis viverra. Nullam pharetra ante at nunc elementum</p>
+                                <h4 class="card-title">Full access to QR tool</h4>
+                                <p>Streamline the ordering process for your customers by allowing them to order directly from the QR code menu. Enhance the efficiency of your service and provide a seamless experience.</p>
                             </div>
                         </div>
                         <!-- end of card -->
@@ -88,7 +88,7 @@
                                 <span class="far fa-clipboard"></span>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Sales Tracking</h4>
+                                <h4 class="card-title">Access to the menu creation tool</h4>
                                 <p>Vulputate nibh feugiat. Morbi pellent diam nec libero lacinia, sed ultrices velit scelerisque. Nunc placerat justo sem</p>
                             </div>
                         </div>
@@ -100,11 +100,51 @@
                                 <span class="far fa-comments"></span>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Reporting Tool</h4>
+                                <h4 class="card-title">Unlimited items in the menu</h4>
                                 <p>Ety suscipit metus sollicitudin euqu isq imperdiet nibh nec magna tincidunt, nec pala vehicula neque sodales verum</p>
                             </div>
                         </div>
                         <!-- end of card -->
+
+                          <!-- Card -->
+                          <div class="card">
+                            <div class="card-icon">
+                                <span class="fas fa-headphones-alt"></span>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Accept Orders</h4>
+                                <p>Streamline the ordering process for your customers by allowing them to order directly from the QR code menu. Enhance the efficiency of your service and provide a seamless experience.</p>
+                            </div>
+                        </div>
+                        <!-- end of card -->
+                        <!-- Card -->
+                        <div class="card">
+                            <div class="card-icon">
+                                <span class="fas fa-headphones-alt"></span>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Manage order</h4>
+                                <p>Streamline the ordering process for your customers by allowing them to order directly from the QR code menu. Enhance the efficiency of your service and provide a seamless experience.</p>
+                            </div>
+                        </div>
+                        <!-- end of card -->
+
+
+                        <!-- Card -->
+                          <div class="card">
+                            <div class="card-icon">
+                                <span class="fas fa-headphones-alt"></span>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Dedicated Support</h4>
+                                <p>Streamline the ordering process for your customers by allowing them to order directly from the QR code menu. Enhance the efficiency of your service and provide a seamless experience.</p>
+                            </div>
+                        </div>
+                        <!-- end of card -->
+
+
+                        
+
 
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
@@ -119,11 +159,15 @@
                 <div class="row">
                     <div class="col-lg-6 col-xl-5">
                         <div class="text-container">
-                            <h2>Manage your customer’s expectations and get them to trust you</h2>
-                            <p>Vestibulum ullamcorper augue ex, imperdiet tincidunt tellus bibendum inconsectetur rutrum mauris orbi scelerisque cursus augue, ac suscipit sem mattis at ut suscipit</p>
-                            <a class="btn-solid-reg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Modal</a>
-                        </div> <!-- end of text-container -->
+                            <h2>Suivez les nouvelles recommandations sanitaires, c’est la fin des menus papiers.</h2>
+                            <p>Sans contact : moins de risque.</p>
+                            <p> Moins de papier : plus écolo .</p>
+                            <p>Moins d’encre : moins de produits chimiques néfastes pour la nature.</p>
+                            </div> <!-- end of text-container -->
                     </div> <!-- end of col -->
+
+
+                    
                     <div class="col-lg-6 col-xl-7">
                         <div class="image-container">
                             <img class="img-fluid" src="{{asset('mainassets/images/details-1.svg')}}" alt="alternative">
@@ -133,6 +177,10 @@
             </div> <!-- end of container -->
         </div> <!-- end of basic-1 -->
         <!-- end of details 1 -->
+
+
+
+        
 
 
         <!-- Details Modal -->
@@ -195,22 +243,11 @@
                     </div> <!-- end of col -->
                     <div class="col-lg-6">
                         <div class="text-container">
-                            <h2>Anyone can start using the app with minimum skills</h2>
-                            <p>Velit dictum non proin egestas convallis nunc, eu auctor massa. Nam hendrerit, eros ut viverra lobortis, mauris nisi porta risus, placerat dignissim tellus auctor masse</p>
-                            <ul class="list-unstyled li-space-lg">
-                                <li class="d-flex">
-                                    <i class="fas fa-square"></i>
-                                    <div class="flex-grow-1">Fusce ipsum augue, ultrices rutrum est accel, pulvin</div>
-                                </li>
-                                <li class="d-flex">
-                                    <i class="fas fa-square"></i>
-                                    <div class="flex-grow-1">Fermentum elit. Vestibulum cursuso bibendum viverra</div>
-                                </li>
-                                <li class="d-flex">
-                                    <i class="fas fa-square"></i>
-                                    <div class="flex-grow-1">Quisque blandit pulvinar metus, eu sta malesuada</div>
-                                </li>
-                            </ul>
+                            <h2>Faites gagner du temps à vos équipes.</h2>
+                            <p>Vos équipes ne perdent plus de temps pour distribuer les menus ou les désinfecter.</p>
+                            <p> Vos clients feront leur choix/commandes avant mêmes l’arrivée du serveur.</p>
+                            <p>Vos équipes ne perdent plus de temps pour distribuer les menus ou les désinfecter.</p>
+                           
                         </div> <!-- end of text-container -->
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
@@ -218,112 +255,9 @@
         </div> <!-- end of basic-2 -->
         <!-- end of details 2 -->
 
-
-        <!-- Testimonials -->
-        <div class="slider-1 bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h2 class="h2-heading">Few words from our clients</h2>
-                    </div> <!-- end of col -->
-                </div> <!-- end of row -->
-                <div class="row">
-                    <div class="col-lg-12">
-
-                        <!-- Card Slider -->
-                        <div class="slider-container">
-                            <div class="swiper-container card-slider">
-                                <div class="swiper-wrapper">
-                                    
-                                    <!-- Slide -->
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img class="card-image" src="{{asset('mainassets/images/testimonial-1.jpg')}}" alt="alternative">
-                                            <div class="card-body">
-                                                <p class="testimonial-text">Tortor sodales eget. Vivamus imperdiet leo eu risus tincidunt uris. Proin placerat, urna hendrerit placerat erase convallis</p>
-                                                <p class="testimonial-author">Jude Thorn - Designer</p>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end of swiper-slide -->
-                                    <!-- end of slide -->
-            
-                                    <!-- Slide -->
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img class="card-image" src="{{asset('mainassets/images/testimonial-2.jpg')}}" alt="alternative">
-                                            <div class="card-body">
-                                                <p class="testimonial-text">Eros volutpat ante mauris euismod sem, ut varius nisi lectus in urna. Integer luctus, nunc eget maximus intem, orci risus</p>
-                                                <p class="testimonial-author">Roy Smith - Developer</p>
-                                            </div>
-                                        </div>        
-                                    </div> <!-- end of swiper-slide -->
-                                    <!-- end of slide -->
-            
-                                    <!-- Slide -->
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img class="card-image" src="{{asset('mainassets/images/testimonial-3.jpg')}}" alt="alternative">
-                                            <div class="card-body">
-                                                <p class="testimonial-text">Sed congue ex quam, sit amet venenatis dolor lacinia vulputate. Nunc pulvinar ex ex, sit amet scelerisque tellus pretium semper</p>
-                                                <p class="testimonial-author">Marsha Singer - Marketer</p>
-                                            </div>
-                                        </div>        
-                                    </div> <!-- end of swiper-slide -->
-                                    <!-- end of slide -->
-            
-                                    <!-- Slide -->
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img class="card-image" src="{{asset('mainassets/images/testimonial-4.jpg')}}" alt="alternative">
-                                            <div class="card-body">
-                                                <p class="testimonial-text">Etiam est lorem, interdum non semper ut, bibendum vitae ante. Pellente sollicitun sagittis lectus. Aenean in comod</p>
-                                                <p class="testimonial-author">Tim Shaw - Designer</p>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end of swiper-slide -->
-                                    <!-- end of slide -->
-            
-                                    <!-- Slide -->
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img class="card-image" src="images/testimonial-5.jpg" alt="alternative">
-                                            <div class="card-body">
-                                                <p class="testimonial-text">Quisque nec turpis placerat, accumsan lorem lobortis, vestibulum elit. Fusce finibus nisl varius semper elementum vivamus</p>
-                                                <p class="testimonial-author">Lindsay Spice - Marketer</p>
-                                            </div>
-                                        </div>        
-                                    </div> <!-- end of swiper-slide -->
-                                    <!-- end of slide -->
-            
-                                    <!-- Slide -->
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img class="card-image" src="{{asset('mainassets/mages/testimonial-6.jpg')}}i" alt="alternative">
-                                            <div class="card-body">
-                                                <p class="testimonial-text">Vulputate sed tellus nec, imperdiet luctus purus. Morbi lobortis massa a mi interdum condimentum. Integer non gravida nisi</p>
-                                                <p class="testimonial-author">Ann Blake - Developer</p>
-                                            </div>
-                                        </div>        
-                                    </div> <!-- end of swiper-slide -->
-                                    <!-- end of slide -->
-                                
-                                </div> <!-- end of swiper-wrapper -->
-            
-                                <!-- Add Arrows -->
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
-                                <!-- end of add arrows -->
-            
-                            </div> <!-- end of swiper-container -->
-                        </div> <!-- end of slider-container -->
-                        <!-- end of card slider -->
-
-                    </div> <!-- end of col -->
-                </div> <!-- end of row -->
-            </div> <!-- end of container -->
-        </div> <!-- end of slider-1 -->
-        <!-- end of testimonials -->
-
+             
+        
+        
 
         <!-- Invitation -->
         <div class="basic-3">
@@ -331,7 +265,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h4>Ioniq will change the way you think about CRM solutions due to it’s advanced tools and integrated functionalities</h4>
-                        <a class="btn-outline-lg page-scroll" href="sign-up.html">Sign up for free</a>
+                        <a class="btn-outline-lg page-scroll" href="{{ route('register') }}">Sign up for free</a>
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
             </div> <!-- end of container -->
@@ -370,7 +304,7 @@
                                  
                                 </ul>
                                 <div class="price">{{ $subscription->price }} Dt<span>/mois</span></div>
-                                <a href="sign-up.html" class="btn-solid-reg">Sign up</a>
+                                <a href="{{ route('register') }}" class="btn-solid-reg">Sign up</a>
                             </div>
                         </div>
                         <!-- end of card -->
@@ -383,10 +317,41 @@
             </div> <!-- end of container -->
         </div> <!-- end of cards-2 -->
         <!-- end of pricing -->
+        <br>
+        <br>
+        <br>
+        
+
+       
+
+        <!--DEMO -->
+        <div id="demo" class="section section-lg pb-5 bg-soft">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                    <i class="fas fa-edit mr-2 text-primary ckedit_btn" type="button" style="display: none"></i><h2 class="h2-heading" key="demo_title" id="demo_title">See a demo online menu</h2>
+                    <i class="fas fa-edit mr-2 text-primary ckedit_btn" type="button" style="display: none"></i><p class="accordion-body" key="demo_subtitle" id="demo_subtitle">Just open the camera on your phone and scan the <span class="font-weight-bolder">QR code</span> below!</p>
+                        <a href="#" class="icon icon-lg text-gray mr-3">
+                            <img style="width:300px" src="https://zebra-qr.com/impactfront/img/qrdemo.jpg" />
+        
+                        </a>
+        
+                    </div>
+                    <div class="col-12 text-center">
+                        <!-- Button Modal -->
+
+                        <a href="{{ route('register') }}" class="btn-solid-reg"><span class="mr-2"><i class="fas fa-hand-pointer"></i></span>Create a menu for you, now!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- end of DEMO -->
 
 
-        <!-- Questions -->
-        <div class="accordion-1">
+
+         <!-- Questions -->
+         <div class="accordion-1">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -436,6 +401,10 @@
             </div> <!-- end of container -->
         </div> <!-- end of accordion-1 -->
         <!-- end of questions -->
+
+        
+
+        
 
           <!-- bottom bar start-->
 

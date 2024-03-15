@@ -16,8 +16,17 @@ class AdminSeeder extends Seeder
     {
         //ajouter un admin avec des donnes spécifique
         DB::Table('users')->insert(
-            ['name'=>'admin',
+            [/*'name'=>'admin',
             'email'=>'admin@admin.com',
+            'password'=>Hash::make('123456789'),
+            'role'=>'admin'*/
+
+
+
+            'restaurant_name'=>'XXXX',
+            'owner_name'=>'admin',
+            'email'=>'admin@admin.com',
+            'owner_phone'=>'00000000',
             'password'=>Hash::make('123456789'),
             'role'=>'admin'
 

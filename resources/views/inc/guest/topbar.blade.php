@@ -3,10 +3,10 @@
     <div class="container">
 
         <!-- Image Logo -->
-        <a class="navbar-brand logo-image" href="index.html"><img src="{{asset('mainassets/images/logo.svg')}}" alt="alternative"></a> 
+        <a class="navbar-brand logo-image" href="/"><img src="{{asset('mainassets/images/logo.svg')}}" alt="alternative"></a> 
 
         <!-- Text Logo - Use this if you don't have a graphic logo -->
-        <!-- <a class="navbar-brand logo-text" href="index.html">Ioniq</a> -->
+        <!-- <a class="navbar-brand logo-text" href="index.html">MenuQR</a> -->
 
         <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,6 +25,10 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#pricing">Pricing</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#demo">Demo</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#">
