@@ -1,22 +1,119 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+
+
+
+
+    
+
+
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Your description">
+    <meta name="author" content="Your name">
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
+    <meta property="og:site_name" content="" /> <!-- website name -->
+    <meta property="og:site" content="" /> <!-- website link -->
+    <meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+    <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+    <meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
+
+    <!-- Webpage Title -->
+    <title>Ioniq Webpage Title</title>
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="{{asset('mainassets/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('mainassets/css/fontawesome-all.min.css')}}" rel="stylesheet">
+    <link href="{{asset('mainassets/css/swiper.css')}}" rel="stylesheet">
+    <link href="{{asset('mainassets/css/styles.css')}}" rel="stylesheet">
+    
+    <!-- Favicon  -->
+    <link rel="icon" href="images/favicon.png">
+
+<!-- Header -->
+<header class="ex-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10 offset-xl-1">
+                <h1 class="text-center">Register your restaurant</h1>
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</header> <!-- end of ex-header -->
+<!-- end of header -->
+
+
+
+
+
+    <!-- <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
+    CSRF Token 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
+     Fonts 
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Scripts -->
+     Scripts 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+      -->
+
+
+
+
+
+
 </head>
 <body>
+
+
+    <div id="app">
+         <!-- top bar start-->
+
+       @include('inc.guest.topbar')
+       <!-- top bar end-->
+       
+
+        <main class="py-4">
+            @yield('content')
+        </main>
+    </div>
+
+
+
+     <!-- bottom bar start-->
+
+     @include('inc.guest.bottombar')
+     <!-- bottom bar end-->
+   
+       
+   <!-- Scripts -->
+   <script src="{{asset('mainassets/js/bootstrap.min.js')}}"></script> <!-- Bootstrap framework -->
+   <script src="{{asset('mainassets/js/swiper.min.js')}}"></script> <!-- Swiper for image and text sliders -->
+   <script src="{{asset('mainassets/js/purecounter.min.js')}}"></script> <!-- Purecounter counter for statistics numbers -->
+   <script src="{{asset('mainassets/js/replaceme.min.js')}}"></script> <!-- ReplaceMe for rotating text -->
+   <script src="{{asset('mainassets/js/scripts.js')}}"></script> <!-- Custom scripts -->
+
+</body>
+
+
+
+
+
+
+<!--<body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -28,14 +125,14 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                    Left Side Of Navbar 
                     <ul class="navbar-nav me-auto">
 
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
+                     Right Side Of Navbar 
                     <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
+                        Authentication Links 
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -72,9 +169,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+       
     </div>
-</body>
+</body>-->
 </html>
