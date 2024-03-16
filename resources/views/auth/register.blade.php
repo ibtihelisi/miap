@@ -23,7 +23,7 @@
                 <!-- Sign Up Form -->
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-
+                    <h6 class="heading-small text-muted mb-4">Restaurant information</h6>
                     <div class="row mb-3">
                         <label for="restaurant_name" class="col-md-4 col-form-label text-md-end">{{ __('Restaurant Name') }}</label>
 
@@ -37,7 +37,8 @@
                             @enderror
                         </div>
                     </div>
-
+                    <hr class="my-4">
+                    <h6 class="heading-small text-muted mb-4">Owner information</h6>
 
                     <div class="row mb-3">
                         <label for="owner_name" class="col-md-4 col-form-label text-md-end">{{ __('Owner Name') }}</label>

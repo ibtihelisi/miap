@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-xl-6 offset-xl-3">
             <div class="text-box mt-5 mb-5">
-                <p class="mb-4">You don't have a password? Then please <a class="blue" href="sign-up.html">Sign Up</a></p>
+                <p class="mb-4">You don't have a password? Then please <a class="blue" href="/register">Sign Up</a></p>
 
                 <!-- Log In Form -->
                 <form method="POST" action="{{ route('login') }}">
@@ -70,7 +70,7 @@
 
                     <div class="row mb-0">
                         <div class="col-md-8 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="form-control-submit-button">
                                 {{ __('Login') }}
                             </button>
 
