@@ -95,13 +95,13 @@
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="btn-outline-sm" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="btn-outline-sm" href="{{ route('login') }}">{{__('topnav.login')}}</a>
                         </li>
                     @endif
 
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="btn-outline-sm" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="btn-outline-sm" href="{{ route('register') }}">{{__('topnav.register')}}</a>
                         </li>
                     @endif
                 @else

@@ -15,34 +15,34 @@
         <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav ms-auto navbar-nav-scroll">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#header">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#header">{{__('topnav.home')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#features">Features</a>
+                    <a class="nav-link" href="#features">{{__('topnav.features')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#details">Details</a>
+                    <a class="nav-link" href="#details">{{__('topnav.details')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#pricing">Pricing</a>
+                    <a class="nav-link" href="#pricing">{{__('topnav.pricing')}}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#demo">Demo</a>
+                    <a class="nav-link" href="#demo">{{__('topnav.demo')}}</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#">
-                                                     <span>English</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <i class="fas fa-angle-down nav-link-arrow ml-2"></i>
+                                                     <span>{{__('topnav.langue')}}</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <i class="fas fa-angle-down nav-link-arrow ml-2"></i>
                     </a>
                     <ul class="dropdown-menu">
                                                     <li>
-                                <a class="dropdown-item" href="/en">English</a>
+                                <a class="dropdown-item" href="{{route('languageConverter','en')}}">{{__('topnav.english')}}</a>
                             </li>
                                                     <li>
                                 <a class="dropdown-item" href="/it">Italian</a>
                             </li>
                                                     <li>
-                                <a class="dropdown-item" href="/fr">French</a>
+                                <a class="dropdown-item" href="{{route('languageConverter','fr')}}">{{__('topnav.french')}}</a>
                             </li>
                                                     <li>
                                 <a class="dropdown-item" href="/de">German</a>
@@ -60,7 +60,7 @@
                                 <a class="dropdown-item" href="/tr">Turkish</a>
                             </li>
                                                     <li>
-                                <a class="dropdown-item" href="/ar">Arabic</a>
+                                <a class="dropdown-item" href="{{route('languageConverter','ar')}}">{{__('topnav.arabic')}}</a>
                             </li>
                                             </ul>
                 </li>
@@ -74,13 +74,13 @@
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="btn-outline-sm" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="btn-outline-sm" href="{{ route('login') }}">{{__('topnav.login')}}</a>
                         </li>
                     @endif
 
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="btn-outline-sm" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="btn-outline-sm" href="{{ route('register') }}">{{__('topnav.register')}}</a>
                         </li>
                     @endif
                 @else

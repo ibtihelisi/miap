@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\LocalizationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,8 @@ use App\Http\Controllers\SubscriptionController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
 
 Route::get('/', [App\Http\Controllers\GuestController::class, 'home']);
 
@@ -66,3 +69,15 @@ Route::get('/subscription/delete/{id}',[SubscriptionController::class,'destroy']
 
 Route::post('/subscription/update/{id}',[SubscriptionController::class,'update']);
 
+
+
+
+/**Localization Route */
+Route::get('languageConverter/{locale}',function($locale){
+    if(in_array($locale,['ar','fr','en'])){
+        session()->put('locale',$locale);
+    }
+
+    return redirect()->back();
+
+})->name('languageConverter');
