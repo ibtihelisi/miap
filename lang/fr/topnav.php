@@ -3,7 +3,7 @@ return[
 
     'home'=>'Accueil',
     'features'=>'Caractéristiques',
-    'details'=>'Détails',
+    'about'=>'Pourquoi QR Menu ?',
     'pricing'=>'Prix',
     'demo'=>'Démo',
     'langue'=>'Français',
@@ -11,5 +11,5 @@ return[
     'french'=>'Français',
     'arabic'=>'Arabe',
     'login'=>'Se connecter',
-    'register'=>'s\'inscrire'
+    'register'=>'s\'inscrire',
 ];

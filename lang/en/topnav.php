@@ -3,7 +3,7 @@ return[
 
     'home'=>'Home',
     'features'=>'Features',
-    'details'=>'Details',
+    'about'=>'Why QR Menu ?',
     'pricing'=>'Pricing',
     'demo'=>'Demo',
     'langue'=>'English',

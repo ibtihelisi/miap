@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-xl-6 offset-xl-3">
             <div class="text-box mt-5 mb-5">
-                <p class="mb-4">Fill out the form below to sign up for the service. Already signed up? Then just <a class="blue" href="/login">Log In</a></p>
+                <p class="mb-4">Fill out the form below to sign up for the service. Already signed up? Then just <a class="blue" href="/login">{{__('topnav.login')}}</a></p>
 
                 <!-- Sign Up Form -->
                 <form method="POST" action="{{ route('register') }}">
@@ -111,7 +111,7 @@
                     <div class="row mb-0">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="form-control-submit-button">
-                                {{ __('Register') }}
+                                {{__('topnav.register')}}
                             </button>
                         </div>
                     </div>

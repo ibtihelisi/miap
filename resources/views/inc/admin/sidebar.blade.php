@@ -5,6 +5,65 @@
           <li class="nav-item"><a class="nav-link active" href="/admin/dashboard">
               <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">Dashboard</span></div>
             </a></li>
+
+
+
+
+
+            <li class="nav-item">
+              <a class="nav-link active" href="/admin/restaurants">
+                  <div class="d-flex align-items-center">
+                      <span class="nav-link-icon">
+                          <!-- Utiliser la balise Font Awesome pour l'icône de magasin -->
+                          <i class="fas fa-store-alt"></i>
+                      </span>
+                      <span class="nav-link-text">Restaurants</span>
+                  </div>
+              </a>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link active" href="https://zebra-qr.com/finances">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon">
+                  <!-- Remplacer le chemin vers l'icône par l'icône de finances de Font Awesome -->
+                  <i class="fas fa-coins"></i>
+                </span>
+                <span class="nav-link-text">Finances</span>
+              </div>
+              </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="https://zebra-qr.com/finances">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon">
+                  <!-- Remplacer le chemin vers l'icône par l'icône de finances de Font Awesome -->
+                  <i class="fas fa-wrench"></i>
+                </span>
+                <span class="nav-link-text">Site settings</span>
+              </div>
+              </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link active" href="https://example.com">
+                <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                        <!-- Using Font Awesome credit card icon -->
+                        <i class="fas fa-credit-card"></i>
+                    </span>
+                    <span class="nav-link-text">Pricing Plans</span>
+                </div>
+            </a>
+        </li>
+        
+
+
+
           <li class="nav-item">
             <p class="navbar-vertical-label">items</p><a class="nav-link dropdown-indicator" href="#e-commerce" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="e-commerce">
               <div class="d-flex align-items-center">

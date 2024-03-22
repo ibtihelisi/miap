@@ -54,7 +54,7 @@
                     <table class="table table-bordered table-striped fs--1 mb-0">
                       <thead class="bg-200 text-900">
                         <tr>
-                          <th class="sort" data-sort="#">#</th>
+                          
                           <th class="sort" data-sort="Nom Categorie">Nom Categorie</th>
                           <th class="sort" data-sort="Decription Categorie">Decription Categorie </th>
                           <th class="sort" data-sort="Action">Action</th>
@@ -64,7 +64,7 @@
                       <tbody class="list">
                         @foreach ($categories as $index => $c)
                         <tr>
-                          <th scope="row">{{ $index }}</th>
+                          
                           <td class="Nomn Categorie">{{ $c->name }}</td>
                           <td class="Description Categorie">{{ $c->description }}</td>
                           <td class="Action">

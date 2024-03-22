@@ -3,7 +3,7 @@
         <div class="d-flex align-items-center">
           <div class="d-flex align-items-center"><img src="{{asset('dashassets/img/icons/logo.png')}}" alt="phoenix" width="32">
               <a href="/admin/dashboard"> 
-                  <p class="logo-text ms-2 d-none d-sm-block">MEAP</p>
+                  <p class="logo-text ms-2 d-none d-sm-block">QR Menu</p>
               </a>
             </div>
         </div>

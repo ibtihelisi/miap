@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\LocalizationController;
 
 /*
@@ -33,6 +34,11 @@ Route::get('/client/dashboard', [App\Http\Controllers\ClientController::class, '
 
 Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->middleware('auth','admin');
 
+
+
+/** Route Restaurants */
+Route::get('/admin/restaurants', [App\Http\Controllers\RestaurantController::class, 'index']);
+Route::get('/restaurant/delete/{id}',[RestaurantController::class,'destroy']);
 
 /**Route categories */
 Route::get('/admin/categories', [App\Http\Controllers\CategoryController::class, 'index'])->middleware('auth','admin');

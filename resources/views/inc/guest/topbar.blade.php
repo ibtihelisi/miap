@@ -21,7 +21,7 @@
                     <a class="nav-link" href="#features">{{__('topnav.features')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#details">{{__('topnav.details')}}</a>
+                    <a class="nav-link" href="#about">{{__('topnav.about')}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#pricing">{{__('topnav.pricing')}}</a>
@@ -38,27 +38,11 @@
                                                     <li>
                                 <a class="dropdown-item" href="{{route('languageConverter','en')}}">{{__('topnav.english')}}</a>
                             </li>
-                                                    <li>
-                                <a class="dropdown-item" href="/it">Italian</a>
-                            </li>
+                                         
                                                     <li>
                                 <a class="dropdown-item" href="{{route('languageConverter','fr')}}">{{__('topnav.french')}}</a>
                             </li>
-                                                    <li>
-                                <a class="dropdown-item" href="/de">German</a>
-                            </li>
-                                                    <li>
-                                <a class="dropdown-item" href="/es">Spanish</a>
-                            </li>
-                                                    <li>
-                                <a class="dropdown-item" href="/ru">Russian</a>
-                            </li>
-                                                    <li>
-                                <a class="dropdown-item" href="/pt">Portuguese</a>
-                            </li>
-                                                    <li>
-                                <a class="dropdown-item" href="/tr">Turkish</a>
-                            </li>
+                              
                                                     <li>
                                 <a class="dropdown-item" href="{{route('languageConverter','ar')}}">{{__('topnav.arabic')}}</a>
                             </li>

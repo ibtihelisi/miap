@@ -43,9 +43,9 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="text-container">
-                            <h1 class="h1-large">The #1 QR Menu app for <span class="replace-me">Restaurants, Bars, Hotels, Coffee shops ,tea Room</span></h1>
-                            <p class="p-large">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dignissim, neque ut vanic barem ultrices sollicitudin</p>
-                            <a class="btn-solid-lg" href="{{ route('register') }}">Sign up for free</a>
+                            <h1 class="h1-large"> {{__('home.The first QR Menu app for ')}} <span class="replace-me"> {{__('home.Restaurants, Bars, Hotels, Coffee shops ,tea Room')}}</span></h1>
+                            <p class="p-large">{{__('home.Their mobile is your menu now!')}}</p>
+                            <a class="btn-solid-lg" href="{{ route('register') }}">{{__('home.Sign up for free')}}</a>
                         </div> <!-- end of text-container -->
                     </div> <!-- end of col -->
                     <div class="col-lg-6">
@@ -64,7 +64,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2 class="h2-heading">Ioniq CRM application is packed with <span>awesome features</span></h2>
+                        <h2 class="h2-heading">{{__('home.QR Menu application is packed with')}}<span>{{__('home.awesome features')}}</span></h2>
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
                 <div class="row">
@@ -100,9 +100,8 @@
                                 <span class="far fa-comments"></span>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Unlimited items in the menu</h4>
-                                <p>Ety suscipit metus sollicitudin euqu isq imperdiet nibh nec magna tincidunt, nec pala vehicula neque sodales verum</p>
-                            </div>
+                                <h4 class="card-title">Quick & easy to use</h4>
+                                <p>Start preparing your menu right away. We have already prepared everything. Your first menu will be online within a few minutes! Need help? Chat or call +216 27 301 169.</div>
                         </div>
                         <!-- end of card -->
 
@@ -112,8 +111,8 @@
                                 <span class="fas fa-headphones-alt"></span>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Accept Orders</h4>
-                                <p>Streamline the ordering process for your customers by allowing them to order directly from the QR code menu. Enhance the efficiency of your service and provide a seamless experience.</p>
+                                <h4 class="card-title">Multi-language</h4>
+                                <p>QR Menu App supports your menu in English,French and Arabic.</p>
                             </div>
                         </div>
                         <!-- end of card -->
@@ -123,8 +122,8 @@
                                 <span class="fas fa-headphones-alt"></span>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Manage order</h4>
-                                <p>Streamline the ordering process for your customers by allowing them to order directly from the QR code menu. Enhance the efficiency of your service and provide a seamless experience.</p>
+                                <h4 class="card-title">Mobile Ordering</h4>
+                                <p>With QR Menu App it is possible to accept mobile orders, paid with Bancontact, iDeal or Payconiq. We support table ordering, takeaway and pickup orders (with time slots)</p>
                             </div>
                         </div>
                         <!-- end of card -->
@@ -154,15 +153,15 @@
 
 
         <!-- Details 1 -->
-        <div id="details" class="basic-1 bg-gray">
+        <div id="about" class="basic-1 bg-gray">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-xl-5">
                         <div class="text-container">
-                            <h2>Suivez les nouvelles recommandations sanitaires, c’est la fin des menus papiers.</h2>
-                            <p>Sans contact : moins de risque.</p>
-                            <p> Moins de papier : plus écolo .</p>
-                            <p>Moins d’encre : moins de produits chimiques néfastes pour la nature.</p>
+                            <h2>{{__('home.Follow the new sanitary recommendations, it\'s the end of paper menus.')}}</h2>
+                            <p>{{__('home.Contactless: less risk.')}}</p>
+                            <p>{{__('home.Less paper: more eco-friendly.')}}</p>
+                            <p>{{__('home.Less ink: fewer harmful chemicals for the environment.')}}</p>
                             </div> <!-- end of text-container -->
                     </div> <!-- end of col -->
 
@@ -243,10 +242,10 @@
                     </div> <!-- end of col -->
                     <div class="col-lg-6">
                         <div class="text-container">
-                            <h2>Faites gagner du temps à vos équipes.</h2>
-                            <p>Vos équipes ne perdent plus de temps pour distribuer les menus ou les désinfecter.</p>
-                            <p> Vos clients feront leur choix/commandes avant mêmes l’arrivée du serveur.</p>
-                            <p>Vos équipes ne perdent plus de temps pour distribuer les menus ou les désinfecter.</p>
+                            <h2>{{__('home.Save time for your teams.')}}</h2>
+                            <p>{{__('home.Your teams no longer waste time distributing menus or disinfecting them.')}}</p>
+                            <p> {{__('home.Your customers will make their choices/orders even before the server arrives.')}}</p>
+                            <p>{{__('home.Your teams no longer waste time distributing menus or disinfecting them.')}}</p>
                            
                         </div> <!-- end of text-container -->
                     </div> <!-- end of col -->
@@ -264,10 +263,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h4>Ioniq will change the way you think about CRM solutions due to it’s advanced tools and integrated functionalities</h4>
-                        <a class="btn-outline-lg page-scroll" href="{{ route('register') }}">Sign up for free</a>
-                    </div> <!-- end of col -->
-                </div> <!-- end of row -->
+                        <h4> What are you waiting for?</h4>
+                         </br>
+                        <h4>Start right away and digitize your menu in a few minutes!
+                            In the bottom right corner we are ready to help when necessary, 7/7!  </h4>
+                        <a class="btn-outline-lg page-scroll" href="{{ route('register') }}">Start now !</a>
+                        </br>
+                        Free 14-day trial.
+                    </div> <!-- end of col -->               </div> <!-- end of row -->
             </div> <!-- end of container -->
         </div> <!-- end of basic-3 -->
         <!-- end of invitation -->
@@ -278,7 +281,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2 class="h2-heading">Free forever tier and 2 pro plans</h2>
+                        <h2 class="h2-heading">{{__('home.Free forever tier and 2 pro plans')}}</h2>
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
                 <div class="row">
@@ -304,7 +307,7 @@
                                  
                                 </ul>
                                 <div class="price">{{ $subscription->price }} Dt<span>/mois</span></div>
-                                <a href="{{ route('register') }}" class="btn-solid-reg">Sign up</a>
+                                <a href="{{ route('register') }}" class="btn-solid-reg">{{__('home.Sign up')}}</a>
                             </div>
                         </div>
                         <!-- end of card -->
@@ -329,7 +332,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center mb-5">
-                    <i class="fas fa-edit mr-2 text-primary ckedit_btn" type="button" style="display: none"></i><h2 class="h2-heading" key="demo_title" id="demo_title">See a demo online menu</h2>
+                    <i class="fas fa-edit mr-2 text-primary ckedit_btn" type="button" style="display: none"></i><h2 class="h2-heading" key="demo_title" id="demo_title">See a demo online Menu</h2>
                     <i class="fas fa-edit mr-2 text-primary ckedit_btn" type="button" style="display: none"></i><p class="accordion-body" key="demo_subtitle" id="demo_subtitle">Just open the camera on your phone and scan the <span class="font-weight-bolder">QR code</span> below!</p>
                         <a href="#" class="icon icon-lg text-gray mr-3">
                             <img style="width:300px" src="https://zebra-qr.com/impactfront/img/qrdemo.jpg" />
@@ -340,7 +343,7 @@
                     <div class="col-12 text-center">
                         <!-- Button Modal -->
 
-                        <a href="{{ route('register') }}" class="btn-solid-reg"><span class="mr-2"><i class="fas fa-hand-pointer"></i></span>Create a menu for you, now!</a>
+                        <a href="{{ route('register') }}" class="btn-solid-reg"><span class="mr-2"><i class="fas fa-hand-pointer"></i></span>Create a Menu for you, now!</a>
                     </div>
                 </div>
             </div>
@@ -365,10 +368,10 @@
                             <!-- Accordion Item -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">How can I contact you quickly and get a reasonable quote more for my project?</button>
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">What do I have to do to get started?</button>
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">Sed lacinia cursus viverra. Nunc sed libero euismod, congue dui a, vulputate quam. Pellentesque neque nisi, ultrices ut ipsum ac, mattis sollicitudin neque. Ut ac nunc sem. Etiam id erat facilisis magna sagittis porta. Donec eu dolor eu dolor finibus sodales consectetur, et condimentum elit tincidunt</div>
+                                    <div class="accordion-body">Click on register, enter your details, customize our sample menu and print or order your QR codes!</div>
                                 </div>
                             </div>
                             <!-- end of accordion-item -->
@@ -376,10 +379,10 @@
                             <!-- Accordion Item -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Is the Free Tier available for unlimited time or it will end more words after a while?</button>
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">How can my waiters ans kitchen staff view QR Menu app orders</button>
                                 </h2>
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">Mauris faucibus placerat nisl. Sed eros odio, posuere at felis quis, tincidunt facilisis nibh. Nulla in ante sem. Nam aliquam urna nisi, cursus semper dolor convallis at. Duis vulputate est in consectetur, et condimentum elit tincidunt libero consectetur, et condimentum suis vulputate est in libero</div>
+                                    <div class="accordion-body">Créez des identifiants de connexion distincts pour chacun de vos quatre serveurs et cuisiniers dans le panneau d'administration de votre restaurant. Demandez-leur de se connecter à instalcarte.com en utilisant les détails fournis. Cela leur permettra d'accéder et de voir toutes les commandes Instalcarte reçues.</div>
                                 </div>
                             </div>
                             <!-- end of accordion-item -->
@@ -387,10 +390,40 @@
                             <!-- Accordion Item -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Can I use the app on mobile devices or it’s limited more words to desktop use?</button>
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Can I cancel my subscription anytime?
+                                       </button>
                                 </h2>
                                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">Nullam at diam at mi facilisis consectetur at non turpis. Proin a felis nisi. Sed at orci rutrum, tincidunt magna vel, pharetra libero. Proin mauris orci, faucibus eget malesuada vel, consectetur, et condimentum elit tincidunt pellentesque vitae ligula. Pellentesque euismod tincidun</div>
+                                    <div class="accordion-body"> Absolutely! You're free to cancel your subscription at any time.</div>
+                                </div>
+                            </div>
+                            <!-- end of accordion-item -->
+
+
+                             <!-- Accordion Item -->
+                             <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Where should I place the QR Codes?
+                                       
+                                       </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">  QR Code menus work for dine-in, delivery, and pickup. Paste QR Codes on tables, entry points, food pickup zones, or even delivery bags for future orders.</div>
+                                </div>
+                            </div>
+                            <!-- end of accordion-item -->
+
+
+                             <!-- Accordion Item -->
+                             <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Do my customers need an app to scan a QR Code?
+                                      
+                                       
+                                       </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">    No, they can simply use their phone cameras.</div>
                                 </div>
                             </div>
                             <!-- end of accordion-item -->
