@@ -22,6 +22,16 @@
       body {
         opacity: 0;
       }
+
+
+
+
+      .text-bg-success {
+      color: green; /* Couleur du texte */
+      background-color: #c8e6c9; /* Couleur de fond plus claire */
+      padding: 5px 10px; /* Optionnel : ajustez le rembourrage selon vos besoins */
+      border-radius: 10px; /* Optionnel : pour arrondir les coins */
+  }
     </style>
   </head>
 
@@ -42,8 +52,50 @@
               <hr>
       
           </div>
+
+          <div class="row py-2">
+            <div class="col-md-6">
+              <form action="/restaurant/search" method="GET">
+                <div class="input-group">
+                    
+                   
+                    <select class="form-select" name="restaurant_id">
+                      <option value="">Search</option>
+                      @foreach ($subscriptions as  $s)
+                          <option value="{{ $s->id }}"></option>
+                      @endforeach
+                    </select>
+                     </div>
+            </form>
+            
+            </div>
+            <div class="col-md-6 text-end">
+              <a class="btn btn-primary" class="mt-3" href="/subscription/create">Add Plan</a>
+               <button class="btn btn-outline-primary ms-2">Export CSV</button>
+            </div>
+        </div>
       
-          <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary" class="mt-3">Ajouter Plan</a>
+          <!-- Affichage des alertes de succès ou d'erreur -->
+          @if(session('success'))
+          <div class="alert alert-success alert-dismissible delete-alert" role="alert" style="background-color: green; border-color: #c3e6cb; color:#d4edda ;" >
+              {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" aria-setsize="10"></button>
+          </div>
+          <script>
+            // Sélectionne l'alerte de succès
+            var successAlert = document.querySelector('.alert-success');
+            // Ferme l'alerte après 10 secondes (10000 millisecondes)
+            setTimeout(function() {
+                successAlert.style.display = 'none';
+            }, 10000);
+    
+            // Ajoute un écouteur d'événement au bouton de fermeture
+            var closeButton = successAlert.querySelector('.btn-close');
+            closeButton.addEventListener('click', function() {
+                successAlert.style.display = 'none';
+            });
+        </script>
+       @endif
 
 
               <div class="mt-3">
@@ -53,29 +105,31 @@
                     <table class="table table-bordered table-striped fs--1 mb-0">
                       <thead class="bg-200 text-900">
                         <tr>
-                          <th class="sort" data-sort="#">#</th>
-                          <th class="sort" data-sort="Nom Subscription">Nom Subscription</th>
-                          <th class="sort" data-sort="Description Subscription">Description Subscription </th>
-                          <th class="sort" data-sort="Period Subscription">Period Subscription </th>
-                          <th class="sort" data-sort="Ordering Subscription">Ordering Subscription</th>
+                         
+                          <th class="sort" data-sort="Nom Subscription"> NAME</th>
+                          <th class="sort" data-sort="Description Subscription"> DESCRIPTION</th>
+                          <th class="sort" data-sort="Ordering Subscription">PRICE</th>
+                          <th class="sort" data-sort="Period Subscription">PERIOD </th>
+                          <th class="sort" data-sort="Ordering Subscription">ORDERING</th>
                           <th class="sort" data-sort="Action">Action</th>
                         
                         </tr>
                       </thead>
                       <tbody class="list">
-                        @foreach ($subscriptions as $index => $s)
+                        @foreach ($subscriptions as  $s)
                         <tr>
-                          <th scope="row">{{ $index }}</th>
+                          
                           <td class="Nom Subscription">{{ $s->name }}</td>
                           <td class="Description Subscription">{{ $s->description }}</td>
+                          <td class="Description Subscription">{{ $s->price }}</td>
                           <td class="Period Subscription">{{ $s->period }}</td>
                           <td class="Ordering Subscription">{{ $s->ordering }}</td>
                           <td class="Action">
-                            <a  data-bs-toggle="modal" data-bs-target="#editSubscription{{ $s->id }}" class="btn btn-success"> Modifier</a>
-
+                            <a   class="btn btn-success" href="/subscription/edit/{id}">Edit</a>
+                            
                             <a onclick="return confirm('voulez-vouz supprimer cette Subscription ? ') "
                                 href="/subscription/delete/{{ $s->id }}" class="btn btn-danger">
-                                Supprimer</a>
+                                Delete</a>
 
                           </td>
                         </tr>
@@ -85,152 +139,157 @@
 
 
                      <!-- Modal Ajout-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        style="display: none;" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Plan</h5><button class="btn p-1"
-                        type="button" data-bs-dismiss="modal" aria-label="Close"><svg
-                            class="svg-inline--fa fa-times fa-w-11 fs--1" aria-hidden="true" focusable="false"
-                            data-prefix="fas" data-icon="times" role="img"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg="">
-                            <path fill="currentColor"
-                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z">
-                            </path>
-                        </svg><!-- <span class="fas fa-times fs--1"></span> Font Awesome fontawesome.com --></button>
+     
+
+
+                    
+
+<!-- modal modifiier-->
+@foreach ($subscriptions as $s )
+<div class="modal fade" id="editCategory{{$s->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+ style="display: none;" aria-hidden="true">
+ <div class="modal-dialog">
+     <div class="modal-content">
+         <div class="modal-header">
+             <h5 class="modal-title" id="exampleModalLabel">Update Subscription</h5><button class="btn p-1"
+                 type="button" data-bs-dismiss="modal" aria-label="Close"><svg
+                     class="svg-inline--fa fa-times fa-w-11 fs--1" aria-hidden="true" focusable="false"
+                     data-prefix="fas" data-icon="times" role="img"
+                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg="">
+                     <path fill="currentColor"
+                         d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z">
+                     </path>
+                 </svg><!-- <span class="fas fa-times fs--1"></span> Font Awesome fontawesome.com --></button>
+         </div>
+         
+             
+         
+         <form action="/subscription/update/{id}" method="post">
+
+             @csrf
+
+             <div class="modal-body">
+              <!--espace name-->
+                <div class="mb-3">
+                    <label class="form-label" for="exampleFormControlInput1"> Name</label>
+                    <input name="name" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Plan name" required >
+                    @error('name')
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
+                  @enderror
+                
                 </div>
 
-                <form action="/subscription/add" method="post">
+                <!--espace description-->
+                <div class="mb-0">
+                    <label class="form-label" for="exampleTextarea">Plan Description </label>
+                    <textarea name="description" class="form-control" rows="3" placeholder=" Plan description...."required > </textarea>
 
-                    @csrf
 
-                  
-                    <div class="modal-body">
-                      <!--espace name-->
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleFormControlInput1"> Name</label>
-                            <input name="name" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Plan name" required >
-                            @error('name')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                          @enderror
-                        
+                    @error('description')
+                        <div class="alert alert-danger">
+                            {{ $message }}
                         </div>
+                    @enderror
+                </div>
+                <br/>
 
-                        <!--espace description-->
-                        <div class="mb-0">
-                            <label class="form-label" for="exampleTextarea">Plan Description </label>
-                            <textarea name="description" class="form-control" rows="3" placeholder=" Plan description...."required > </textarea>
+                <!--espace features_list-->
+                <div class="col-md-12">
+                  <div id="form-group-features" class="form-group  ">
+                       <label class="form-control-label" for="features">Features list (separate features with comma)</label>
+                       <input   step=".01"    type="text" name="features_list" id="features" class="form-control form-control   " placeholder="Plan Features comma separated..." value=""  required >
+                  </div>
+                  @error('features_list')
+                    <div class="alert alert-danger">
+                       {{ $message }}
+                     </div>
+                  @enderror
+              </div> 
+              <br/>
 
+                <!--espace price-->
+              <div id="form-group-price" class="form-group  ">
+                <label class="form-control-label" for="price">Price</label>
+                <input   step=".01"    type="number" name="price" id="price" class="form-control form-control   " placeholder="Plan price" value="" required >
+                @error('price')
+                  <div class="alert alert-danger">
+                      {{ $message }}
+                  </div>
+                @enderror
+              </div>
+              <br/>
 
-                            @error('description')
-                                <div class="alert alert-danger">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+              
+              
+                <!--espace items_limit-->
+              <div class="col-md-6">
+                <div id="form-group-limit_items" class="form-group  ">
+                 <label class="form-control-label" for="limit_items">Items limit</label>
+                 <input   step=".01"    type="number" name="items_limit" id="limit_items" class="form-control form-control   " placeholder="Number of items" value=""  required >
+                 @error('items_limit')
+                    <div class="alert alert-danger">
+                       {{ $message }}
+                    </div>
+                 @enderror
+                 <small class="text-muted"><strong>0 is unlimited numbers of items</strong></small>
+                </div>
+              </div>
+                
+             
+
+              <br/>
+              <div class="row">
+                <!-- epace plan period -->
+                <div class="col-md-6">
+                    <label class="form-control-label">Plan period</label>
+                    <div class="custom-control custom-radio mb-3">
+                        <input name="period" class="custom-control-input" id="monthly"   checked   value="monthly" type="radio" required >
+                        <label class="custom-control-label" for="monthly">Monthly</label>
+                    </div>
+                    <div class="custom-control custom-radio mb-3">
+                        <input name="period" class="custom-control-input" id="anually" value="anually"  type="radio" required >
+                        <label class="custom-control-label" for="anually">Anually</label>
+                    </div>
+                </div>
+                
+                
+                <!-- espace ordering -->
+                    <div class="col-md-6">
+                        <label class="form-control-label">Ordering</label>
+                        <div class="custom-control custom-radio mb-3">
+                            <input name="ordering" class="custom-control-input" id="enabled" value="enabled"   checked   type="radio" required >
+                            <label class="custom-control-label" for="enabled">Enabled</label>
                         </div>
-                        <br/>
-
-                        <!--espace features_list-->
-                        <div class="col-md-12">
-                          <div id="form-group-features" class="form-group  ">
-                               <label class="form-control-label" for="features">Features list (separate features with comma)</label>
-                               <input   step=".01"    type="text" name="features_list" id="features" class="form-control form-control   " placeholder="Plan Features comma separated..." value=""  required >
-                          </div>
-                          @error('features_list')
-                            <div class="alert alert-danger">
-                               {{ $message }}
-                             </div>
-                          @enderror
-                      </div> 
-                      <br/>
- 
-                        <!--espace price-->
-                      <div id="form-group-price" class="form-group  ">
-                        <label class="form-control-label" for="price">Price</label>
-                        <input   step=".01"    type="number" name="price" id="price" class="form-control form-control   " placeholder="Plan price" value="" required >
-                        @error('price')
-                          <div class="alert alert-danger">
-                              {{ $message }}
-                          </div>
-                        @enderror
-                      </div>
-                      <br/>
-
-                      
-                      
-                        <!--espace items_limit-->
-                      <div class="col-md-6">
-                        <div id="form-group-limit_items" class="form-group  ">
-                         <label class="form-control-label" for="limit_items">Items limit</label>
-                         <input   step=".01"    type="number" name="items_limit" id="limit_items" class="form-control form-control   " placeholder="Number of items" value=""  required >
-                         @error('items_limit')
-                            <div class="alert alert-danger">
-                               {{ $message }}
-                            </div>
-                         @enderror
-                         <small class="text-muted"><strong>0 is unlimited numbers of items</strong></small>
-                        </div>
-                      </div>
-                        
-                     
-
-                      <br/>
-                      <div class="row">
-                        <!-- epace plan period -->
-                        <div class="col-md-6">
-                            <label class="form-control-label">Plan period</label>
-                            <div class="custom-control custom-radio mb-3">
-                                <input name="period" class="custom-control-input" id="monthly"   checked   value="monthly" type="radio" required >
-                                <label class="custom-control-label" for="monthly">Monthly</label>
-                            </div>
-                            <div class="custom-control custom-radio mb-3">
-                                <input name="period" class="custom-control-input" id="anually" value="anually"  type="radio" required >
-                                <label class="custom-control-label" for="anually">Anually</label>
-                            </div>
-                        </div>
-                        
-                        
-                        <!-- espace ordering -->
-                            <div class="col-md-6">
-                                <label class="form-control-label">Ordering</label>
-                                <div class="custom-control custom-radio mb-3">
-                                    <input name="ordering" class="custom-control-input" id="enabled" value="enabled"   checked   type="radio" required >
-                                    <label class="custom-control-label" for="enabled">Enabled</label>
-                                </div>
-                                <div class="custom-control custom-radio mb-3">
-                                    <input name="ordering" class="custom-control-input" id="disabled" value="disabled"  type="radio" required >
-                                    <label class="custom-control-label" for="disabled">Disabled</label>
-                                </div>
-                            </div>
-                           
-                      </div>
-                        <!-- espace order limit -->
-                        <div class="col-md-6 mt-3">
-                            <div id="form-group-limit_orders" class="form-group  ">
-                             <label class="form-control-label" for="limit_orders">Orders limit per plan period</label>
-                             <input   step=".01"    type="number" name="orders_limit" id="limit_orders" class="form-control form-control   " placeholder="Number of orders per period" value="" required  >
-                             <small class="text-muted"><strong>0 is unlimited numbers of orders per period</strong></small>
-                            </div>
+                        <div class="custom-control custom-radio mb-3">
+                            <input name="ordering" class="custom-control-input" id="disabled" value="disabled"  type="radio" required >
+                            <label class="custom-control-label" for="disabled">Disabled</label>
                         </div>
                     </div>
-                      
-
-                    <div class="modal-footer">
-                          <button class="btn btn-primary" type="submit ">Okay</button>
-                          <button class="btn btn-outline-primary" type="button"
-                              data-bs-dismiss="modal">Cancel</button>
+                   
                     </div>
-                    
-                 
-        
-                </form>
-            </div>
-        </div>
-       </div>
+                <!-- espace order limit -->
+                <div class="col-md-6 mt-3">
+                    <div id="form-group-limit_orders" class="form-group  ">
+                     <label class="form-control-label" for="limit_orders">Orders limit per plan period</label>
+                     <input   step=".01"    type="number" name="orders_limit" id="limit_orders" class="form-control form-control   " placeholder="Number of orders per period" value="" required  >
+                     <small class="text-muted"><strong>0 is unlimited numbers of orders per period</strong></small>
+                    </div>
+                </div>
+              </div>
+             <div class="modal-footer">
+                 <button class="btn btn-primary" type="submit ">Okay</button>
+                 <button class="btn btn-outline-primary" type="button"
+                     data-bs-dismiss="modal">Cancel</button>
+             </div>
+         </form>
+     </div>
+ </div>
+</div>
 
+
+@endforeach
 
 
 
@@ -250,16 +309,7 @@
           
           
           
-          <footer class="footer">
-            <div class="row g-0 justify-content-between align-items-center h-100 mb-3">
-              <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-900">Thank you for creating with phoenix<span class="d-none d-sm-inline-block"></span><span class="mx-1">|</span><br class="d-sm-none">2022 &copy; <a href="https://themewagon.com">Themewagon</a></p>
-              </div>
-              <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-600">v1.1.0</p>
-              </div>
-            </div>
-          </footer>
+       
         </div>
       </div>
     </main>

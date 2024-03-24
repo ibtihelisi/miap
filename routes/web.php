@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\LocalizationController;
 
@@ -39,6 +40,14 @@ Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'da
 /** Route Restaurants */
 Route::get('/admin/restaurants', [App\Http\Controllers\RestaurantController::class, 'index']);
 Route::get('/restaurant/delete/{id}',[RestaurantController::class,'destroy']);
+Route::get('/restaurant/deactivate/{id}',[RestaurantController::class,'deactivate']);
+Route::get('/restaurant/activate/{id}',[RestaurantController::class,'activate']);
+Route::get('/restaurant/search',[RestaurantController::class,'search']);
+
+
+
+/** Route Settings */
+Route::get('/admin/settings', [App\Http\Controllers\SettingController::class, 'index']);
 
 /**Route categories */
 Route::get('/admin/categories', [App\Http\Controllers\CategoryController::class, 'index'])->middleware('auth','admin');
@@ -71,9 +80,12 @@ Route::get('/admin/subscriptions', [App\Http\Controllers\SubscriptionController:
 
 Route::post('/subscription/add',[SubscriptionController::class,'store']);
 
+Route::get('/subscription/create',[SubscriptionController::class,'create']);
+
 Route::get('/subscription/delete/{id}',[SubscriptionController::class,'destroy']);
 
 Route::post('/subscription/update/{id}',[SubscriptionController::class,'update']);
+Route::get('/subscription/edit/{id}',[SubscriptionController::class,'updateinter']);
 
 
 

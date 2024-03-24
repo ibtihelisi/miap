@@ -15,8 +15,19 @@ class SubscriptionController extends Controller
         return view('admin.subscriptions.index')->with('subscriptions', $subscriptions);
     }
 
+        //interface pour ajouter une subbscription
+        public function create() {
+            return view('admin.subscriptions.create');
+        }
 
 
+
+        
+        //interface pour modfifier une subbscription
+        public function updateinter($id) {
+            $subscription = Subscription::find($id);
+            return view('admin.subscriptions.update' , ['subscription' => $subscription]);
+        }
     // ajouter une subscription a la liste 
     public function store(Request $request){
         $request->validate([
@@ -42,24 +53,23 @@ class SubscriptionController extends Controller
         $subscription->orders_limit=$request->orders_limit;
        
 
-        if ($subscription->save())
-        {return redirect()->back();
-        }else{
-            return redirect()->back()->with('error', 'Error saving subscription.');
-  
-        }
+        if ($subscription->save()) {
+            return redirect('/admin/subscriptions')->with('success', 'Subscription successfully added');
+        } 
+
+
 
 
     }
 
-/*
-    //supprimer categorie
+
+    //supprimer subscription plan
     public function destroy($id) {
 
-        $categorie =Category::find($id);
+        $subscription =Subscription::find($id);
 
-        if($categorie->delete()){
-            return redirect()->back();
+        if($subscription->delete()){
+            return redirect()->back()->with('success', 'Subscription successfully removed from database. ');
         }else{echo"erreur"
         ;}
         
@@ -72,20 +82,34 @@ class SubscriptionController extends Controller
 
         $request->validate([
             'name'=>'required',
-            'description'=> 'required'
-
+            'description'=>'required',
+            'features_list'=>'required',
+            'price'=>'required',
+            'items_limit'=>'required',
+            'period'=>'required',
+            'ordering'=>'required',
+            'orders_limit'=>'required'
+            
         ]);
          
-        $id = $request->idcategory;
+        $id = $request->idsubscription;
 
-        $categorie =Category::find($id);
+        $subscription =Subscription::find($id);
 
-        $categorie->name=$request->name;
-        $categorie->description=$request->description;
+        $$subscription=new Subscription();
+        $subscription->name=$request->name;
+        $subscription->description=$request->description;
+        $subscription->features_list=$request->features_list;
+        $subscription->price=$request->price;
+        $subscription->items_limit=$request->items_limit;
+        $subscription->period=$request->period;
+        $subscription->ordering=$request->ordering;
+        $subscription->orders_limit=$request->orders_limit;
 
-        if($categorie->update()){
-            return redirect()->back();
-        }
+         if ($subscription->save()) {
+            return redirect('/admin/subscriptions')->with('success', 'Subscription successfully updated');
+        } 
+
         else{
             echo "erreur";
         }
@@ -94,6 +118,6 @@ class SubscriptionController extends Controller
        
         
      }
-*/
+
     
 }

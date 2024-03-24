@@ -37,7 +37,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" href="https://zebra-qr.com/finances">
+            <a class="nav-link active" href="/admin/settings">
               <div class="d-flex align-items-center">
                 <span class="nav-link-icon">
                   <!-- Remplacer le chemin vers l'icône par l'icône de finances de Font Awesome -->
@@ -50,7 +50,7 @@
 
 
           <li class="nav-item">
-            <a class="nav-link active" href="https://example.com">
+            <a class="nav-link active" href="/admin/subscriptions">
                 <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
                         <!-- Using Font Awesome credit card icon -->

@@ -23,6 +23,31 @@
         opacity: 0;
       }
     </style>
+
+<style>
+  .text-bg-success {
+      color: green; /* Couleur du texte */
+      background-color: #c8e6c9; /* Couleur de fond plus claire */
+      padding: 5px 10px; /* Optionnel : ajustez le rembourrage selon vos besoins */
+      border-radius: 10px; /* Optionnel : pour arrondir les coins */
+  }
+</style>
+<style>
+  .text-bg-danger {
+      color: #b71c1c; /* Red text color */
+      background-color: #ffcdd2; /* Lighter red background color */
+      padding: 5px 10px; /* Optional: adjust padding as needed */
+      border-radius: 10px; /* Optional: to round the corners */
+  }
+</style>
+
+
+<style>
+  .delete-alert {
+    max-height: 100px; /* Ajustez la valeur selon vos besoins */
+    /* Ajoute une barre de défilement si nécessaire */
+  }
+</style>
   </head>
 
   <body>
@@ -42,15 +67,64 @@
               <hr>
       
           </div>
-      
-          <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary" class="mt-3">Add Restaurant</a>
-
-
+          <div class="row py-2">
+            <div class="col-md-6">
+              <form action="/restaurant/search" method="GET">
+                <div class="input-group">
+                    
+                   
+                    <select class="form-select" name="restaurant_id">
+                      <option value="">Search</option>
+                      @foreach ($users as $u)
+                          <option value="{{ $u->id }}">{{ $u->restaurant_name }}</option>
+                      @endforeach
+                    </select>
+                     </div>
+            </form>
+            
+            </div>
+            <div class="col-md-6 text-end">
+                <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">Add Restaurant</a>
+                <button class="btn btn-outline-primary ms-2">Export CSV</button>
+            </div>
+        </div>
+        
+        
+        
+          
           
 
           <div class="mt-3">
             <div id="tableExample2" data-list="{&quot;value#s&quot;:[&quot;NAME&quot;,&quot;LOGO&quot;,&quot;OWNER&quot;,&quot;OWNER EMAIL&quot;,&quot;CREATION DATE&quot;,&quot;ACTION&quot;],&quot;page&quot;:5,&quot;pagination&quot;:true}">
-                <div class="table-responsive scrollbar">
+              
+             <!-- Affichage des alertes de succès ou d'erreur -->
+              @if(session('success'))
+                <div class="alert alert-success alert-dismissible delete-alert" role="alert" style="background-color: green; border-color: #c3e6cb; color:#d4edda ;" >
+                    {{ session('success') }}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" aria-setsize="10"></button>
+                </div>
+                <script>
+                  // Sélectionne l'alerte de succès
+                  var successAlert = document.querySelector('.alert-success');
+                  // Ferme l'alerte après 10 secondes (10000 millisecondes)
+                  setTimeout(function() {
+                      successAlert.style.display = 'none';
+                  }, 10000);
+          
+                  // Ajoute un écouteur d'événement au bouton de fermeture
+                  var closeButton = successAlert.querySelector('.btn-close');
+                  closeButton.addEventListener('click', function() {
+                      successAlert.style.display = 'none';
+                  });
+              </script>
+             @endif
+
+
+              
+
+
+
+              <div class="table-responsive scrollbar">
                     <table class="table table-bordered table-striped fs--1 mb-0">
                         <thead class="bg-200 text-900">
                             <tr>
@@ -75,7 +149,13 @@
                                 <td class="OWNER">{{ $u->owner_name }}</td>
                                 <td class="OWNER EMAIL">{{ $u->email }}</td>
                                 <td class="CREATION DATE">{{ $u->created_at }}</td>
-                                 <td class="ACTIVE"> <button type="button" class="btn btn-outline-success">{{ $u->active }}</button>
+                                <td class="ACTIVE"> 
+                                  @if ($u->active == 'active')
+                                      <span class="text-bg-success">active </span>
+                                  @else
+                                  <span class="text-bg-danger"> not active</span>
+                                  @endif
+                                  
                                  </td>
                                 <td class="ACTION">
                                     <div class="btn-group" role="group" aria-label="Actions">
@@ -89,12 +169,18 @@
                                             <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editRestaurant{{ $u->id }}">
                                                 <i class="fas fa-sign-in-alt"></i> Login as
                                             </a>
-                                            <a class="dropdown-item" onclick="return confirm('Are you sure you want to delete this Restaurant from Database? This will also delete all data related to it. This is an irreversible step.')" href="/restaurant/delete/{{ $u->id }}">
+                                            <a class="dropdown-item delete-restaurant" onclick="return confirm('Are you sure you want to delete this Restaurant from Database? This will also delete all data related to it. This is an irreversible step.')" href="/restaurant/delete/{{ $u->id }}"  >
                                                 <i class="fas fa-trash-alt"></i> Delete
                                             </a>
-                                            <a class="dropdown-item" onclick="return confirm('Are you sure you want to deactivate this restaurant?')" href="/restaurant/deactivate/{{ $u->id }}">
+                                            @if ($u->active == 'active')
+                                              <a class="dropdown-item" onclick="return confirm('Are you sure you want to deactivate this restaurant?')" href="/restaurant/deactivate/{{ $u->id }}">
                                                 <i class="fas fa-ban"></i> Deactivate
-                                            </a>
+                                              </a>
+                                            @else
+                                              <a class="dropdown-item" onclick="return confirm('Are you sure you want to activate this restaurant?')" href="/restaurant/activate/{{ $u->id }}">
+                                                <i class="fas fa-ban"></i> Activate
+                                              </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </td>
