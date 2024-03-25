@@ -8,6 +8,7 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\LocalizationController;
+use App\Models\Restaurant;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,10 +40,16 @@ Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'da
 
 /** Route Restaurants */
 Route::get('/admin/restaurants', [App\Http\Controllers\RestaurantController::class, 'index']);
+Route::post('/restaurant/add',[RestaurantController::class,'store']);
+
+Route::get('/restaurant/create',[RestaurantController::class,'create']);
 Route::get('/restaurant/delete/{id}',[RestaurantController::class,'destroy']);
 Route::get('/restaurant/deactivate/{id}',[RestaurantController::class,'deactivate']);
 Route::get('/restaurant/activate/{id}',[RestaurantController::class,'activate']);
 Route::get('/restaurant/search',[RestaurantController::class,'search']);
+
+Route::get('/restaurants/export', [RestaurantController::class,'export'])->name('export.restaurants');
+
 
 
 
@@ -86,6 +93,10 @@ Route::get('/subscription/delete/{id}',[SubscriptionController::class,'destroy']
 
 Route::post('/subscription/update/{id}',[SubscriptionController::class,'update']);
 Route::get('/subscription/edit/{id}',[SubscriptionController::class,'updateinter']);
+
+
+Route::get('/subscriptions/export', [SubscriptionController::class,'export'])->name('export.subscriptions');
+
 
 
 

@@ -82,7 +82,7 @@
               <!--espace name-->
                 <div class="mb-3">
                     <label class="form-label" for="exampleFormControlInput1"> Name</label>
-                    <input name="name" class="form-control" id="exampleFormControlInput1" type="text"  required >
+                    <input name="name" class="form-control" id="exampleFormControlInput1" type="text"  required  >
                     @error('name')
                     <div class="alert alert-danger">
                         {{ $message }}
@@ -122,7 +122,7 @@
                 <!--espace price-->
               <div id="form-group-price" class="form-group  ">
                 <label class="form-control-label" for="price" >Price</label>
-                <input   step=".01"    type="number" name="price" id="price" class="form-control form-control   " placeholder="Plan price" value="{{ $subscription->price }}"  required >
+                <input   step=".01"    type="number" name="price" id="price" class="form-control form-control   " placeholder="Plan price"  required >
                 @error('price')
                   <div class="alert alert-danger">
                       {{ $message }}

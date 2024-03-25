@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Response as FacadeResponse;
+
 class SubscriptionController extends Controller
 {
     //
@@ -119,5 +122,36 @@ class SubscriptionController extends Controller
         
      }
 
+
+
+     public function export()
+     {
+         // Fetch subscriptions data
+         $subscriptions = Subscription::all();
+     
+         // Define CSV headers
+         $headers = [
+             'Content-Type' => 'text/csv',
+             'Content-Disposition' => 'attachment; filename=subscriptions.csv',
+         ];
+     
+         // Create CSV file content
+         $callback = function () use ($subscriptions) {
+             $file = fopen('php://output', 'w');
+     
+             // Write CSV headers
+             fputcsv($file, ['Name', 'Description', 'Price', 'Period', 'Ordering']);
+     
+             // Write CSV rows
+             foreach ($subscriptions as $subscription) {
+                 fputcsv($file, [$subscription->name, $subscription->description, $subscription->price, $subscription->period, $subscription->ordering]);
+             }
+     
+             fclose($file);
+         };
+     
+         // Return CSV file as response
+         return FacadeResponse::stream($callback, 200, $headers);
+     }
     
 }

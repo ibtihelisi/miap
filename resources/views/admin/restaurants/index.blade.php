@@ -84,11 +84,37 @@
             
             </div>
             <div class="col-md-6 text-end">
-                <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">Add Restaurant</a>
-                <button class="btn btn-outline-primary ms-2">Export CSV</button>
+              <a class="btn btn-primary" class="mt-3" href="/restaurant/create">Add Restaurant</a>
+                <a class="btn btn-outline-primary ms-2" href="{{ route('export.restaurants') }}">Export CSV</a>
             </div>
         </div>
         
+
+
+
+
+
+          <!-- Affichage des alertes de succès ou d'erreur -->
+          @if(session('success'))
+          <div class="alert alert-success alert-dismissible delete-alert" role="alert" style="background-color: green; border-color: #c3e6cb; color:#d4edda ;" >
+              {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" aria-setsize="10"></button>
+          </div>
+          <script>
+            // Sélectionne l'alerte de succès
+            var successAlert = document.querySelector('.alert-success');
+            // Ferme l'alerte après 10 secondes (10000 millisecondes)
+            setTimeout(function() {
+                successAlert.style.display = 'none';
+            }, 10000);
+    
+            // Ajoute un écouteur d'événement au bouton de fermeture
+            var closeButton = successAlert.querySelector('.btn-close');
+            closeButton.addEventListener('click', function() {
+                successAlert.style.display = 'none';
+            });
+        </script>
+       @endif
         
         
           
@@ -97,33 +123,6 @@
           <div class="mt-3">
             <div id="tableExample2" data-list="{&quot;value#s&quot;:[&quot;NAME&quot;,&quot;LOGO&quot;,&quot;OWNER&quot;,&quot;OWNER EMAIL&quot;,&quot;CREATION DATE&quot;,&quot;ACTION&quot;],&quot;page&quot;:5,&quot;pagination&quot;:true}">
               
-             <!-- Affichage des alertes de succès ou d'erreur -->
-              @if(session('success'))
-                <div class="alert alert-success alert-dismissible delete-alert" role="alert" style="background-color: green; border-color: #c3e6cb; color:#d4edda ;" >
-                    {{ session('success') }}
-                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" aria-setsize="10"></button>
-                </div>
-                <script>
-                  // Sélectionne l'alerte de succès
-                  var successAlert = document.querySelector('.alert-success');
-                  // Ferme l'alerte après 10 secondes (10000 millisecondes)
-                  setTimeout(function() {
-                      successAlert.style.display = 'none';
-                  }, 10000);
-          
-                  // Ajoute un écouteur d'événement au bouton de fermeture
-                  var closeButton = successAlert.querySelector('.btn-close');
-                  closeButton.addEventListener('click', function() {
-                      successAlert.style.display = 'none';
-                  });
-              </script>
-             @endif
-
-
-              
-
-
-
               <div class="table-responsive scrollbar">
                     <table class="table table-bordered table-striped fs--1 mb-0">
                         <thead class="bg-200 text-900">
@@ -219,16 +218,7 @@
           
           
           
-          <footer class="footer">
-            <div class="row g-0 justify-content-between align-items-center h-100 mb-3">
-              <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-900">Thank you for creating with phoenix<span class="d-none d-sm-inline-block"></span><span class="mx-1">|</span><br class="d-sm-none">2022 &copy; <a href="https://themewagon.com">Themewagon</a></p>
-              </div>
-              <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-600">v1.1.0</p>
-              </div>
-            </div>
-          </footer>
+       
         </div>
       </div>
     </main>

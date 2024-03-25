@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Response as FacadeResponse;
 
 
 class RestaurantController extends Controller
@@ -15,6 +17,42 @@ class RestaurantController extends Controller
      public function index(){
         $users=User::all();
         return view('admin.restaurants.index')->with('users',$users);
+    }
+
+
+     //interface pour ajouter une subbscription
+     public function create() {
+        return view('admin.restaurants.create');
+    }
+
+
+
+    // ajouter un restau a la liste 
+    public function store(Request $request){
+        $request->validate([
+            'restaurant_name'=>'required',
+            'owner_name'=>'required',
+            'email'=>'required',
+            'owner_phone'=>'required',
+           
+            
+        ]);
+
+        $user=new User();
+        $user->restaurant_name=$request->restaurant_name;
+        $user->owner_name=$request->owner_name;
+        $user->email=$request->email;
+        $user->owner_phone=$request->owner_phone;
+     
+       
+
+        if ($user->save()) {
+            return redirect('/admin/restaurants')->with('success', 'Restaurant  successfully added');
+        } 
+
+
+
+
     }
 
 
@@ -79,7 +117,36 @@ class RestaurantController extends Controller
     } 
    
 
-
+    
+    public function export()
+    {
+        // Fetch restaurants data
+        $users=User::all();
+    
+        // Define CSV headers
+        $headers = [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename=restaurants.csv',
+        ];
+    
+        // Create CSV file content
+        $callback = function () use ($users) {
+            $file = fopen('php://output', 'w');
+    
+            // Write CSV headers
+            fputcsv($file, ['id','Restaurant Name', 'Owner Name', 'Owner Email', 'CreationDtae']);
+    
+            // Write CSV rows
+            foreach ($users as $user) {
+                fputcsv($file, [$user->id, $user->restaurant_name, $user->owner_name, $user->email, $user->created_at]);
+            }
+    
+            fclose($file);
+        };
+    
+        // Return CSV file as response
+        return FacadeResponse::stream($callback, 200, $headers);
+    }
 
 
     /*
@@ -110,5 +177,10 @@ class RestaurantController extends Controller
        
         
      }*/
+
+
+
+
+
 
 }
