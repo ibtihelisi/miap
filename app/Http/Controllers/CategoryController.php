@@ -5,15 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Item;
 
 class CategoryController extends Controller
 {
 
      //affichage de a liste
-    public function index(){
-        $categories=Category::all();
-        return view('admin.categories.index')->with('categories',$categories);
-    }
+     public function index()
+     {
+         $categories = Category::all();
+         $items = Item::all(); // Or fetch items based on your logic
+     
+         return view('client.menu.index', compact('categories', 'items'));
+     }
 
 
    
@@ -23,12 +27,12 @@ class CategoryController extends Controller
     public function store(Request $request){
         $request->validate([
             'name'=>'required',
-            'description'=>'required'
+           
         ]);
 
         $category=new Category();
         $category->name=$request->name;
-        $category->description=$request->description;
+        
 
         if ($category->save())
         {return redirect()->back();
@@ -59,8 +63,7 @@ class CategoryController extends Controller
 
         $request->validate([
             'name'=>'required',
-            'description'=> 'required'
-
+           
         ]);
          
         $id = $request->idcategory;
@@ -68,7 +71,7 @@ class CategoryController extends Controller
         $categorie =Category::find($id);
 
         $categorie->name=$request->name;
-        $categorie->description=$request->description;
+       
 
         if($categorie->update()){
             return redirect()->back();

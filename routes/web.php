@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\SettingController;
@@ -57,11 +58,11 @@ Route::get('/restaurants/export', [RestaurantController::class,'export'])->name(
 Route::get('/admin/settings', [App\Http\Controllers\SettingController::class, 'index']);
 
 /**Route categories */
-Route::get('/admin/categories', [App\Http\Controllers\CategoryController::class, 'index'])->middleware('auth','admin');
+Route::get('/admin/categories', [App\Http\Controllers\CategoryController::class, 'index']);
 
 //Route::get('/categorie/liste',[CategoryController::class,'liste'])->middleware('auth','admin');
 
-Route::post('/categorie/add',[CategoryController::class,'store'])->middleware('auth','admin');
+//Route::post('/categorie/add',[CategoryController::class,'store'])->middleware('auth','admin');
 
 Route::get('/categorie/delete/{id}',[CategoryController::class,'destroy'])->middleware('auth','admin');
 
@@ -110,3 +111,31 @@ Route::get('languageConverter/{locale}',function($locale){
     return redirect()->back();
 
 })->name('languageConverter');
+
+
+
+
+
+
+
+/**retaurant owner new orders Route */
+
+Route::get('/restaurant/live', [App\Http\Controllers\LiveController::class, 'index']);
+Route::get('/restaurant/orders', function(){return view('client.order.index');});
+Route::get('/restaurant/management', function(){return view('client.restaurant.index');});
+
+
+
+/**menu routes  */
+
+//Route::get('/restaurant/menu', function(){return view('client.menu.index');});
+Route::get('/restaurant/menu', [App\Http\Controllers\CategoryController::class, 'index']);
+Route::post('/restaurant/menu/categorie/add',[CategoryController::class,'store']);
+Route::get('/restaurant/menu/categorie/delete/{id}',[CategoryController::class,'destroy']);
+
+Route::post('/restaurant/menu/categorie/update/{id}',[CategoryController::class,'update']);
+//Route::get('/restaurant/menu', [App\Http\Controllers\ItemController::class, 'index']);
+Route::post('/restaurant/menu/item/add',[ItemController::class,'store']);
+Route::get('/restaurant/menu/item/delete/{id}',[ItemController::class,'destroy']);
+
+Route::post('/restaurant/menu/item/update/{id}',[ItemController::class,'update']);

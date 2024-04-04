@@ -1,170 +1,186 @@
-<nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+<nav class="navbar navbar-light navbar-vertical navbar-vibrant navbar-expand-lg">
+    <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
+      <div class="navbar-vertical-content scrollbar">
+        <ul class="navbar-nav flex-column" id="navbarVerticalNav">
+          <li class="nav-item"><a class="nav-link active" href="/client/dashboard">
+              <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">Dashboard</span></div>
+            </a></li>
 
-  <div class="container-fluid">
-      <!-- Toggler -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- Brand -->
-      <a class="navbar-brand pt-0" href="/">
-          <img src="/default/logo_qrzebra.png" class="navbar-brand-img" alt="...">
-      </a>
-      <!-- User -->
-      <ul class="nav align-items-center d-md-none">
-          <li class="nav-item dropdown">
-              <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <div class="media align-items-center">
-                      <span class="avatar avatar-sm rounded-circle">
-                          
-                          
-                          <img alt="..." src="https://www.gravatar.com/avatar/4cb1f144288e5d61695b0d3f9c63835c">
+
+
+
+
+
+            <li class="nav-item">
+                <a class="nav-link active" href="/restaurant/live">
+                    <div class="d-flex align-items-center">
+                        <span class="nav-link-icon">
+                            <!-- Utiliser la balise Font Awesome pour l'icône de magasin -->
+                            <i class="fas fa-shopping-basket"></i>
+
+                        </span>
+                        <span class="nav-link-text"> Live orders</span>
+                    </div>
+                </a>
+            </li>
+
+
+
+            
+
+            <li class="nav-item">
+                <a class="nav-link active" href="/restaurant/orders">
+                    <div class="d-flex align-items-center">
+                        <span class="nav-link-icon">
+                            <!-- Utiliser la balise Font Awesome pour l'icône de magasin -->
+                            <i class="fas fa-shopping-basket"></i>
+
+
+                        </span>
+                        <span class="nav-link-text">  Orders</span>
+                    </div>
+                </a>
+            </li>
+  
+  
+  
+
+            <li class="nav-item">
+              <a class="nav-link active" href="/restaurant/management">
+                  <div class="d-flex align-items-center">
+                      <span class="nav-link-icon">
+                          <!-- Utiliser la balise Font Awesome pour l'icône de magasin -->
+                          <i class="fas fa-store-alt"></i>
                       </span>
+                      <span class="nav-link-text">Restaurants</span>
                   </div>
               </a>
-              <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
-                  <div class=" dropdown-header noti-title">
-                      <h6 class="text-overflow m-0">Welcome!</h6>
-                  </div>
-                  <a href="https://zebra-qr.com/profile" class="dropdown-item">
-                      <i class="ni ni-single-02"></i>
-                      <span>My profile</span>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a href="https://zebra-qr.com/logout" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                      <i class="ni ni-user-run"></i>
-                      <span>Logout</span>
-                  </a>
+          </li>
+
+
+
+
+          
+          <li class="nav-item">
+            <a class="nav-link active" href="/restaurant/menu">
+                <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                        <!-- Utiliser la balise Font Awesome pour l'icône de magasin -->
+                        <i class="fas fa-store-alt"></i>
+                    </span>
+                    <span class="nav-link-text">menu</span>
+                </div>
+            </a>
+        </li>
+
+
+
+
+          <li class="nav-item">
+           
+            <a class="nav-link dropdown-indicator" href="#e-commerce" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="e-commerce">
+              <div class="d-flex align-items-center">
+                <div class="dropdown-indicator-icon d-flex flex-center"><span class="fas fa-caret-right fs-0"></span></div><span class="nav-link-icon"><span data-feather="shopping-cart"></span></span><span class="nav-link-text">Menu</span>
               </div>
+            </a>
+            <ul class="nav collapse parent" id="e-commerce">
+              <li class="nav-item"><a class="nav-link" href="/admin/products" data-bs-toggle="" aria-expanded="false">
+                  <div class="d-flex align-items-center"><span class="nav-link-text">Products</span></div>
+                </a></li>
+              <li class="nav-item"><a class="nav-link" href="/admin/categories" data-bs-toggle="" aria-expanded="false">
+                  <div class="d-flex align-items-center"><span class="nav-link-text">Catégories</span></div>
+                </a></li>
+            </ul>
           </li>
-      </ul>
-      <!-- Collapse -->
-      <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-          <!-- Collapse header -->
-          <div class="navbar-collapse-header d-md-none">
-              <div class="row">
-                  <div class="col-6 collapse-brand">
-                      <a href="https://zebra-qr.com/home">
-                          <img src="/default/logo_qrzebra.png">
-                      </a>
-                  </div>
-                  <div class="col-6 collapse-close">
-                      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
-                          <span></span>
-                          <span></span>
-                      </button>
-                  </div>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link active" href="https://zebra-qr.com/finances">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon">
+                  <!-- Remplacer le chemin vers l'icône par l'icône de finances de Font Awesome -->
+                  <i class="fas fa-coins"></i>
+                </span>
+                <span class="nav-link-text">Tables</span>
               </div>
-          </div>
-          <!-- Navigation -->
-                                      <span></span>
-          
-                          <span></span>
-          
-                          <span></span>
-          
-                          <ul class="navbar-nav">
-              <li class="nav-item">
-          <a class="nav-link" href="https://zebra-qr.com/home">
-              <i class="ni ni-tv-2 text-primary"></i> Dashboard
-          </a>
-      </li>
-                  <li class="nav-item">
-              <a class="nav-link" href="/live">
-                  <i class="ni ni-basket text-success"></i> Live Orders<div class="blob red"></div>
               </a>
           </li>
-      
-                  <li class="nav-item">
-              <a class="nav-link" href="https://zebra-qr.com/orders">
-                  <i class="ni ni-basket text-orangse"></i> Orders
+
+          <li class="nav-item">
+            <a class="nav-link active" href="/admin/settings">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon">
+                  <!-- Remplacer le chemin vers l'icône par l'icône de finances de Font Awesome -->
+                  <i class="fas fa-wrench"></i>
+                </span>
+                <span class="nav-link-text">Staff</span>
+              </div>
               </a>
           </li>
-          
-  <li class="nav-item">
-      <a class="nav-link" href="https://zebra-qr.com/restaurants/1/edit">
-          <i class="ni ni-shop text-info"></i> Restaurant
-      </a>
-  </li>
-  <li class="nav-item">
-     <a class="nav-link" href="https://zebra-qr.com/restaurants_apps">
-         <i class="ni ni-app text-red"></i> Apps
-     </a>
- </li>
-          <li class="nav-item">
-          <a class="nav-link" href="https://zebra-qr.com/items">
-              <i class="ni ni-collection text-pink"></i> Menu
-          </a>
-      </li>
-      
-                                                          <li class="nav-item">
-                      <a class="nav-link" href="https://zebra-qr.com/tables">
-                          <i class="ni ni-ungroup text-red"></i> Tables
-                      </a>
-                  </li>
-                                         
 
-  <!-- Exrta menus -->
-                              <li class="nav-item">
-                  <a class="nav-link" href="https://zebra-qr.com/clients">
-                      <i class="ni ni-single-02 text-blue"></i> Clients
-                  </a>
-              </li> 
-              
-                              <li class="nav-item">
-                  <a class="nav-link" href="https://zebra-qr.com/staff/list">
-                      <i class="ni ni-single-02 text-blue"></i> Staff
-                  </a>
-              </li> 
-              
-      
 
           <li class="nav-item">
-          <a class="nav-link" href="https://zebra-qr.com/qr">
-              <i class="ni ni-mobile-button text-red"></i> QR Builder
-          </a>
-      </li>
-              <li class="nav-item">
-          <a class="nav-link" href="https://zebra-qr.com/visits">
-              <i class="ni ni-calendar-grid-58 text-blue"></i> Customers log
-          </a>
-      </li>
+            <a class="nav-link active" href="/admin/subscriptions">
+                <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                        <!-- Using Font Awesome credit card icon -->
+                        <i class="fas fa-credit-card"></i>
+                    </span>
+                    <span class="nav-link-text">QR CODE</span>
+                </div>
+            </a>
+        </li>
+
+
+
+
+        
+        <li class="nav-item">
+            <a class="nav-link active" href="/admin/subscriptions">
+                <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                        <!-- Using Font Awesome credit card icon -->
+                        <i class="fas fa-credit-card"></i>
+                    </span>
+                    <span class="nav-link-text">Plan</span>
+                </div>
+            </a>
+        </li>
+        
+
+
+
           
-  
           <li class="nav-item">
-          <a class="nav-link" href="https://zebra-qr.com/plan">
-              <i class="ni ni-credit-card text-orange"></i> Plan
-          </a>
-      </li>
-  
-                  <li class="nav-item">
-              <a class="nav-link" href="https://zebra-qr.com/finances/owner">
-                  <i class="ni ni-money-coins text-blue"></i> Finances
-              </a>
+            <p class="navbar-vertical-label">Pos & orders</p>
+            <a class="nav-link" href="pages/starter.html" role="button" data-bs-toggle="" aria-expanded="false">
+              <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="flag"></span></span><span class="nav-link-text">pos</span></div>
+            </a>
+
+            <a class="nav-link" href="pages/starter.html" role="button" data-bs-toggle="" aria-expanded="false">
+              <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="flag"></span></span><span class="nav-link-text">pos Orders</span></div>
+            </a>
+
+            <a class="nav-link" href="pages/starter.html" role="button" data-bs-toggle="" aria-expanded="false">
+              <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="flag"></span></span><span class="nav-link-text">Table Orders</span></div>
+            </a>
+            
+           
           </li>
-      
-    
-    
-
-
           <li class="nav-item">
-          <a class="nav-link" href="https://zebra-qr.com/share/menu">
-              <i class="ni ni-send text-green"></i> Share
-          </a>
-      </li>
-      
+            <p class="navbar-vertical-label">Promo</p>
+            
+            <a class="nav-link" href="pages/starter.html" role="button" data-bs-toggle="" aria-expanded="false">
+              <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="flag"></span></span><span class="nav-link-text">Offers</span></div>
+            </a>
 
-</ul>
-
+            
+            
+          </li>
           
-                          <span></span>
-          
-                          <span></span>
-          
-          
-          <!-- Divider -->
-          <hr class="my-3">
-          <!-- Heading -->
-                      
+        </ul>
       </div>
-  </div>
-</nav>
+      <div class="navbar-vertical-footer"><a class="btn btn-link border-0 fw-semi-bold d-flex ps-0" href="#!"><span class="navbar-vertical-footer-icon" data-feather="log-out"></span><span>Settings</span></a></div>
+    </div>
+  </nav>
