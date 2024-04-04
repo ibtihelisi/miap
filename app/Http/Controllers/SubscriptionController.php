@@ -80,7 +80,7 @@ class SubscriptionController extends Controller
     }
 
 
-    //modif categorie
+    //modif subscription
      public function update(Request $request )  {
 
         $request->validate([
@@ -123,7 +123,7 @@ class SubscriptionController extends Controller
      }
 
 
-
+     //exportcsv file
      public function export()
      {
          // Fetch subscriptions data

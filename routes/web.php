@@ -64,9 +64,9 @@ Route::get('/admin/categories', [App\Http\Controllers\CategoryController::class,
 
 //Route::post('/categorie/add',[CategoryController::class,'store'])->middleware('auth','admin');
 
-Route::get('/categorie/delete/{id}',[CategoryController::class,'destroy'])->middleware('auth','admin');
+//Route::get('/categorie/delete/{id}',[CategoryController::class,'destroy'])->middleware('auth','admin');
 
-Route::post('/categorie/update/{id}',[CategoryController::class,'update'])->middleware('auth','admin');
+//Route::post('/categorie/update/{id}',[CategoryController::class,'update'])->middleware('auth','admin');
 
 
 /**Route produccts */
@@ -139,3 +139,5 @@ Route::post('/restaurant/menu/item/add',[ItemController::class,'store']);
 Route::get('/restaurant/menu/item/delete/{id}',[ItemController::class,'destroy']);
 
 Route::post('/restaurant/menu/item/update/{id}',[ItemController::class,'update']);
+
+Route::get('/restaurant/menu/item/edit/{id}',[ItemController::class,'updateinter']);

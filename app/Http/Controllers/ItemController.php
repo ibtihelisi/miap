@@ -56,7 +56,7 @@ class ItemController extends Controller
     
         $item=new Item();
         $item->name=$request->name;
-        $item->category_id=$request->categorie;
+        $item->category_id=$request->category_id;
         $item->description=$request->description;
         $item->price=$request->price;
         $item->photo=$newname;
@@ -92,5 +92,17 @@ class ItemController extends Controller
         
         
     }
+
+
+
+     //interface pour modfifier une subbscription
+     public function updateinter($id) {
+        $item =Item::find($id);
+        return view('client.menu.update' , ['item' => $item]);
+    }
+
+
+
+    
 
 }

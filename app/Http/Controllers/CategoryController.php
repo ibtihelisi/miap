@@ -35,7 +35,7 @@ class CategoryController extends Controller
         
 
         if ($category->save())
-        {return redirect()->back();
+        {return redirect()->back()->with('success', 'Category successfully added');
         }else{
             echo"error";
         }
@@ -50,7 +50,7 @@ class CategoryController extends Controller
         $categorie =Category::find($id);
 
         if($categorie->delete()){
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Category successfully removed from database. ');
         }else{echo"erreur"
         ;}    
         
@@ -74,7 +74,7 @@ class CategoryController extends Controller
        
 
         if($categorie->update()){
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Category successfully updated. ');
         }
         else{
             echo "erreur";
