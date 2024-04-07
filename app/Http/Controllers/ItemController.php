@@ -29,7 +29,7 @@ class ItemController extends Controller
             'price'=>'price',
             'photo'=>'photo'
         ]);
-*/
+        */
         $newname =uniqid();//4fd7a
         $image=$request->file('photo');
 
@@ -65,7 +65,7 @@ class ItemController extends Controller
         
 
         if ($item->save())
-        {return redirect()->back();
+        {return redirect()->back()->with('success', 'Item successfully added. ');;
         }else{
             echo"error";
         }
@@ -97,9 +97,45 @@ class ItemController extends Controller
 
      //interface pour modfifier une subbscription
      public function updateinter($id) {
-        $item =Item::find($id);
-        return view('client.menu.update' , ['item' => $item]);
+        $items =Item::find($id);
+        return view('client.menu.update' )->with( 'items', $items);
     }
+
+
+
+    public function update(Request $request, $id) {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'photo' => 'required|image', // Ensure it's an image file
+            'category_id' => 'required' 
+        ]);
+    
+        $item = Item::find($id);
+        if (!$item) {
+            return redirect('/restaurant/menu')->with('success', 'Item not found');
+        }
+    
+        // Handle file upload
+        $newName = uniqid() . '.' . $request->photo->getClientOriginalExtension();
+        $request->photo->move('uploads', $newName);
+        $item->photo = $newName;
+    
+        // Update other fields
+        $item->name = $request->name;
+        $item->description = $request->description;
+        $item->price = $request->price;
+        $item->category_id = $request->category_id;
+    
+        if ($item->update()) {
+            return redirect('/restaurant/menu')->with('success', 'Item successfully updated');
+        } else {
+            return redirect('/restaurant/menu')->with('error', 'Failed to update item');
+        }
+    }
+    
+
 
 
 

@@ -28,9 +28,11 @@ class SubscriptionController extends Controller
         
         //interface pour modfifier une subbscription
         public function updateinter($id) {
-            $subscription = Subscription::find($id);
-            return view('admin.subscriptions.update' , ['subscription' => $subscription]);
+            $subscriptions = Subscription::find($id);
+            return view('admin.subscriptions.update')->with('subscriptions', $subscriptions);
         }
+
+        
     // ajouter une subscription a la liste 
     public function store(Request $request){
         $request->validate([
@@ -81,7 +83,7 @@ class SubscriptionController extends Controller
 
 
     //modif subscription
-     public function update(Request $request )  {
+     public function update(Request $request ,$id )  {
 
         $request->validate([
             'name'=>'required',
@@ -95,11 +97,13 @@ class SubscriptionController extends Controller
             
         ]);
          
-        $id = $request->idsubscription;
+      
 
         $subscription =Subscription::find($id);
 
-        $$subscription=new Subscription();
+        if (!$subscription) {
+            return redirect('/admin/subscriptions')->with('error', 'Subscription not found');
+        }
         $subscription->name=$request->name;
         $subscription->description=$request->description;
         $subscription->features_list=$request->features_list;
@@ -109,7 +113,7 @@ class SubscriptionController extends Controller
         $subscription->ordering=$request->ordering;
         $subscription->orders_limit=$request->orders_limit;
 
-         if ($subscription->save()) {
+         if ($subscription->update()) {
             return redirect('/admin/subscriptions')->with('success', 'Subscription successfully updated');
         } 
 

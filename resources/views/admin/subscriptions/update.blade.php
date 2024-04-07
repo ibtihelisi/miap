@@ -73,7 +73,8 @@
         
           
           
-         <form action="/subscription/update/{id}" method="post">
+         <form action="/subscription/update/{{ $subscriptions->id }}" method="post">
+
 
             @csrf
 
@@ -82,7 +83,7 @@
               <!--espace name-->
                 <div class="mb-3">
                     <label class="form-label" for="exampleFormControlInput1"> Name</label>
-                    <input name="name" class="form-control" id="exampleFormControlInput1" type="text"  required  >
+                    <input name="name" value ="{{$subscriptions->name}}" class="form-control" id="exampleFormControlInput1" type="text"  required  >
                     @error('name')
                     <div class="alert alert-danger">
                         {{ $message }}
@@ -94,7 +95,7 @@
                 <!--espace description-->
                 <div class="mb-0">
                     <label class="form-label" for="exampleTextarea">Plan Description </label>
-                    <textarea name="description" class="form-control" rows="3" placeholder=" Plan description...."required > </textarea>
+                    <textarea name="description" class="form-control" rows="3" placeholder=" Plan description...."required > {{$subscriptions->description}}</textarea>
 
 
                     @error('description')
@@ -109,7 +110,7 @@
                 <div class="col-md-12">
                   <div id="form-group-features" class="form-group  ">
                        <label class="form-control-label" for="features">Features list (separate features with comma)</label>
-                       <input   step=".01"    type="text" name="features_list" id="features" class="form-control form-control   " placeholder="Plan Features comma separated..." value=""  required >
+                       <input   step=".01"   value ="{{$subscriptions->features_list}}" type="text" name="features_list" id="features" class="form-control form-control   " placeholder="Plan Features comma separated..." value=""  required >
                   </div>
                   @error('features_list')
                     <div class="alert alert-danger">
@@ -122,7 +123,7 @@
                 <!--espace price-->
               <div id="form-group-price" class="form-group  ">
                 <label class="form-control-label" for="price" >Price</label>
-                <input   step=".01"    type="number" name="price" id="price" class="form-control form-control   " placeholder="Plan price"  required >
+                <input   step=".01"  value ="{{$subscriptions->price}}"   type="number" name="price" id="price" class="form-control form-control   " placeholder="Plan price"  required >
                 @error('price')
                   <div class="alert alert-danger">
                       {{ $message }}
@@ -137,7 +138,7 @@
               <div class="col-md-6">
                 <div id="form-group-limit_items" class="form-group  ">
                  <label class="form-control-label" for="limit_items">Items limit</label>
-                 <input   step=".01"    type="number" name="items_limit" id="limit_items" class="form-control form-control   " placeholder="Number of items" value=""  required >
+                 <input   step=".01"   value ="{{$subscriptions->items_limit}}"  type="number" name="items_limit" id="limit_items" class="form-control form-control   " placeholder="Number of items" value=""  required >
                  @error('items_limit')
                     <div class="alert alert-danger">
                        {{ $message }}
@@ -151,39 +152,41 @@
 
               <br/>
               <div class="row">
-                <!-- epace plan period -->
-                <div class="col-md-6">
+                  <!-- epace plan period -->
+                  <div class="col-md-6">
                     <label class="form-control-label">Plan period</label>
                     <div class="custom-control custom-radio mb-3">
-                        <input name="period" class="custom-control-input" id="monthly"   checked   value="monthly" type="radio" required >
+                        <input name="period" class="custom-control-input" id="monthly" value="monthly" type="radio" required {{ $subscriptions->period == 'monthly' ? 'checked' : '' }}>
                         <label class="custom-control-label" for="monthly">Monthly</label>
                     </div>
                     <div class="custom-control custom-radio mb-3">
-                        <input name="period" class="custom-control-input" id="anually" value="anually"  type="radio" required >
-                        <label class="custom-control-label" for="anually">Anually</label>
+                        <input name="period" class="custom-control-input" id="anually" value="anually" type="radio" required {{ $subscriptions->period == 'anually' ? 'checked' : '' }}>
+                        <label class="custom-control-label" for="anually">Annually</label>
                     </div>
-                </div>
+                  </div>
+                
+              
+
                 
                 
-                <!-- espace ordering -->
-                    <div class="col-md-6">
-                        <label class="form-control-label">Ordering</label>
-                        <div class="custom-control custom-radio mb-3">
-                            <input name="ordering" class="custom-control-input" id="enabled" value="enabled"   checked   type="radio" required >
-                            <label class="custom-control-label" for="enabled">Enabled</label>
-                        </div>
-                        <div class="custom-control custom-radio mb-3">
-                            <input name="ordering" class="custom-control-input" id="disabled" value="disabled"  type="radio" required >
-                            <label class="custom-control-label" for="disabled">Disabled</label>
-                        </div>
+                  <!-- espace ordering -->
+                  <div class="col-md-6">
+                    <label class="form-control-label">Ordering</label>
+                    <div class="custom-control custom-radio mb-3">
+                        <input name="ordering" class="custom-control-input" id="enabled" value="enabled" {{ $subscriptions->ordering == 'enabled' ? 'checked' : '' }} type="radio" required>
+                        <label class="custom-control-label" for="enabled">Enabled</label>
                     </div>
-                   
+                    <div class="custom-control custom-radio mb-3">
+                        <input name="ordering" class="custom-control-input" id="disabled" value="disabled" {{ $subscriptions->ordering == 'disabled' ? 'checked' : '' }} type="radio" required>
+                        <label class="custom-control-label" for="disabled">Disabled</label>
                     </div>
+                  </div>
+              </div>
                 <!-- espace order limit -->
                 <div class="col-md-6 mt-3">
                     <div id="form-group-limit_orders" class="form-group  ">
                      <label class="form-control-label" for="limit_orders">Orders limit per plan period</label>
-                     <input   step=".01"    type="number" name="orders_limit" id="limit_orders" class="form-control form-control   " placeholder="Number of orders per period" value="" required  >
+                     <input   step=".01"    value ="{{$subscriptions->orders_limit}}" type="number" name="orders_limit" id="limit_orders" class="form-control form-control   " placeholder="Number of orders per period" value="" required  >
                      <small class="text-muted"><strong>0 is unlimited numbers of orders per period</strong></small>
                     </div>
                 </div>
@@ -192,7 +195,7 @@
 
             <div class="center">
               
-                  <button  class="btn btn-success" type="submit ">SAVE</button>
+                  <button  class="btn btn-success" type="submit ">UPDATE</button>
                   
             </div>
             

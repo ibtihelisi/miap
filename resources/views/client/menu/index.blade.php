@@ -185,9 +185,9 @@ description {
                     
                         <div class="col-lg-12">
                         <div class="row row-grid">
-                            @foreach ($c->items as  $i)
+                            @foreach ($items as  $i)
                             <div class="col-lg-3">
-                                <a href="/restaurant/menu/item/edit/{id}">
+                                <a href="/restaurant/menu/item/edit/{{$i->id}}">
                                 <div class="card">
 
 
