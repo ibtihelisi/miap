@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Phoenix</title>
+    <title>QR Menu|admin|Dashboard</title>
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('dashassets/img/favicons/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('dashassets/img/favicons/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('dashassets/img/favicons/favicon-16x16.png')}}">
@@ -44,25 +44,93 @@
 
 
 
-
-        <div class="content">
-          <div class="pb-5">
-            hello admin
-
+        <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+          <div class="container-fluid">
+              <div class="header-body">
+                  <!-- Card stats -->
+                  <div class="row">
+                      <div class="col-xl-3 col-lg-6">
+                          <div class="card card-stats mb-4 mb-xl-0">
+                              <div class="card-body">
+                                  <div class="row">
+                                      <div class="col">
+                                          <h5 class="card-title text-uppercase text-muted mb-0">Orders ( 30 days )</h5>
+                                          <span class="h2 font-weight-bold mb-0">141</span>
+                                      </div>
+                                      <div class="col-auto">
+                                          <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                              <i class="fas fa-shopping-basket"></i>
+                                          </div>
+                                      </div>
+                                  </div>
+      
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-xl-3 col-lg-6">
+                          <div class="card card-stats mb-4 mb-xl-0">
+                              <div class="card-body">
+                                  <div class="row">
+                                      <div class="col">
+                                          <h5 class="card-title text-uppercase text-muted mb-0">Sales Volume ( 30 days )</h5>
+                                          <span class="h2 font-weight-bold mb-0"> $8,557.96</span>
+                                      </div>
+                                      <div class="col-auto">
+                                          <div class="icon icon-shape bg-success text-white rounded-circle shadow">
+                                              <i class="fas fa-chart-line"></i>
+                                          </div>
+                                      </div>
+                                  </div>
+      
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-xl-3 col-lg-6">
+                          <div class="card card-stats mb-4 mb-xl-0">
+                              <div class="card-body">
+                                                                  <div class="row">
+                                          <div class="col">
+                                              <h5 class="card-title text-uppercase text-muted mb-0">Number of restaurants</h5>
+                                              <span class="h2 font-weight-bold mb-0">17 restaurants</span>
+                                          </div>
+                                          <div class="col-auto">
+                                              <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                                  <i class="fas fa-folder"></i>
+                                              </div>
+                                          </div>
+                                      </div>
+                                                                                          
+                              </div>
+                          </div>
+                      </div>
+      
+                      <div class="col-xl-3 col-lg-6">
+                          <div class="card card-stats mb-4 mb-xl-0">
+                              <div class="card-body">
+                                  <div class="row">
+                                      <div class="col">
+                                          <h5 class="card-title text-uppercase text-muted mb-0">Views</h5>
+                                          <span class="h2 font-weight-bold mb-0">53 views</span>
+                                      </div>
+                                      <div class="col-auto">
+                                          <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                              <i class="fas fa-users"></i>
+                                          </div>
+                                      </div>
+                                  </div>
+      
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <br>
+                                                      </div>
           </div>
+      </div>
           
           
-          
-          <footer class="footer">
-            <div class="row g-0 justify-content-between align-items-center h-100 mb-3">
-              <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-900">Thank you for creating with phoenix<span class="d-none d-sm-inline-block"></span><span class="mx-1">|</span><br class="d-sm-none">2022 &copy; <a href="https://themewagon.com">Themewagon</a></p>
-              </div>
-              <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-600">v1.1.0</p>
-              </div>
-            </div>
-          </footer>
+        
         </div>
       </div>
     </main>

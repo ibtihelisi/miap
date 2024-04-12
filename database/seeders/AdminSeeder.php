@@ -24,7 +24,7 @@ class AdminSeeder extends Seeder
 
 
             'restaurant_name'=>'XXXX',
-            'owner_name'=>'admin',
+            'owner_name'=>'QR Menu ADMIN',
             'email'=>'admin@admin.com',
             'owner_phone'=>'00000000',
             'password'=>Hash::make('123456789'),

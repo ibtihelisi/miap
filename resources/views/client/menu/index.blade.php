@@ -186,6 +186,7 @@ description {
                         <div class="col-lg-12">
                         <div class="row row-grid">
                             @foreach ($items as  $i)
+                            @if ($i->category_id == $c->id)
                             <div class="col-lg-3">
                                 <a href="/restaurant/menu/item/edit/{{$i->id}}">
                                 <div class="card">
@@ -207,7 +208,7 @@ description {
                                 </a>
                             </div>
 
-
+                            @endif
                             @endforeach
 
 

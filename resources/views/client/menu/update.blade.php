@@ -269,7 +269,7 @@
           
           
                                 <div class="text-center">
-                                    <form action="/restaurant/menu/item/delete/{id}" method="post">
+                                    <form action="/restaurant/menu/item/delete/{$item->id}" method="get">
                                         <input type="hidden" name="_token"  autocomplete="off">                      
                                                       <input type="hidden" name="_method" value="delete">                                    <button type="button" class="btn btn-danger mt-4" onclick="confirm('Are you sure you want to delete this item?') ? this.parentElement.submit() : ''">Delete</button>
                                     </form>

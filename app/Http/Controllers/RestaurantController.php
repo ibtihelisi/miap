@@ -48,7 +48,8 @@ class RestaurantController extends Controller
 
         if ($user->save()) {
             return redirect('/admin/restaurants')->with('success', 'Restaurant  successfully added');
-        } 
+        } else{ return redirect()->back();
+        }  
 
 
 

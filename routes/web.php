@@ -9,6 +9,8 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\LocalizationController;
+use App\Http\Controllers\HomeController;
+
 use App\Models\Restaurant;
 
 /*
@@ -37,7 +39,17 @@ Route::get('/client/dashboard', [App\Http\Controllers\ClientController::class, '
 
 Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->middleware('auth','admin');
 
+//prooooooooooooooooooooofile admin 
 
+Route::post('/admin/profile/update/{id}',[HomeController::class,'update_admin'])->middleware('auth','admin');
+Route::get('/admin/profile/{id}',[HomeController::class,'updateinteradmin'])->middleware('auth','admin');
+Route::post('/admin/profile/updatePassword/{id}', [HomeController::class, 'updatePasswordadmin'])->middleware('auth','admin');
+
+
+//prooooooooooooooooooooofile client
+Route::post('/client/profile/update/{id}',[HomeController::class,'update_client'])->middleware('auth','user');
+Route::get('/client/profile/{id}',[HomeController::class,'updateinterclient'])->middleware('auth','user');
+Route::post('/client/profile/updatePassword/{id}', [HomeController::class, 'updatePasswordclient'])->middleware('auth','user');
 
 /** Route Restaurants */
 Route::get('/admin/restaurants', [App\Http\Controllers\RestaurantController::class, 'index']);
@@ -50,6 +62,8 @@ Route::get('/restaurant/activate/{id}',[RestaurantController::class,'activate'])
 Route::get('/restaurant/search',[RestaurantController::class,'search']);
 
 Route::get('/restaurants/export', [RestaurantController::class,'export'])->name('export.restaurants');
+
+
 
 
 

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use App\Models\User;
+use Illuminate\Http\Request;
+
 class LoginController extends Controller
 {
     /*
@@ -35,5 +38,14 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        // Récupérer les données des utilisateurs à passer à la vue
+        $users = User::all(); // Vous pouvez ajuster cela selon vos besoins, par exemple, pour récupérer certains utilisateurs
+        
+        // Rediriger avec les données des utilisateurs
+        return redirect($this->redirectPath())->with('users', $users);
     }
 }

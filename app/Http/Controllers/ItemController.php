@@ -75,24 +75,31 @@ class ItemController extends Controller
 
 
     //supprimer produit
-    public function destroy($id) {
+   //supprimer un produit
+public function destroy($id) {
+    // Find the item by its ID
+    $item = Item::find($id);
 
-        $item =Item::find($id);
-
-        $file_path = public_path().'/uploads/'. $item->photo;
-
-        //dd($filepath);
-
-        unlink($file_path);
-
-        if( $item->delete()){
-            return redirect()->back();
-        }else{echo"erreur"
-        ;}
-        
-        
+    // Check if the item exists
+    if (!$item) {
+        return redirect()->back()->with('error', 'Item not found.');
     }
 
+    // Get the file path of the item's photo
+    $file_path = public_path('uploads/' . $item->photo);
+
+    // Check if the file exists before attempting to delete it
+    if (file_exists($file_path)) {
+        unlink($file_path); // Delete the file
+    }
+
+    // Delete the item from the database
+    if ($item->delete()) {
+        return redirect()->back()->with('success', 'Item removed from the database successfully.');
+    } else {
+        return redirect()->back()->with('error', 'Failed to remove item from the database.');
+    }
+}
 
 
      //interface pour modfifier une subbscription

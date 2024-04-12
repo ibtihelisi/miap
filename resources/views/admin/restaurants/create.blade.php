@@ -84,8 +84,8 @@
                 <div class="mb-3">
 
                     <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Restaurant Name</label>
-                    <input name="name_res" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Restaurant Name here..." required >
-                    @error('name_res')
+                    <input name="restaurant_name" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Restaurant Name here..." required >
+                    @error('restaurant_name')
                     <div class="alert alert-danger">
                         {{ $message }}
                     </div>
@@ -97,8 +97,8 @@
                 <h6 class="col-md-2 col-form-label text-md-end">Owner information</h6>
                 <div class="mb-3">
                     <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1">Owner Name</label>
-                    <input name="name_ow" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Owner Name here..." required >
-                    @error('name_ow')
+                    <input name="owner_name" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Owner Name here..." required >
+                    @error('owner_name')
                     <div class="alert alert-danger">
                         {{ $message }}
                     </div>
