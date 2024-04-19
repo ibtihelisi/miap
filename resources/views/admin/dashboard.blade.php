@@ -27,6 +27,11 @@
       body {
         opacity: 0;
       }
+
+
+    
+
+   
     </style>
   </head>
 
@@ -49,80 +54,25 @@
               <div class="header-body">
                   <!-- Card stats -->
                   <div class="row">
-                      <div class="col-xl-3 col-lg-6">
-                          <div class="card card-stats mb-4 mb-xl-0">
-                              <div class="card-body">
-                                  <div class="row">
-                                      <div class="col">
-                                          <h5 class="card-title text-uppercase text-muted mb-0">Orders ( 30 days )</h5>
-                                          <span class="h2 font-weight-bold mb-0">141</span>
-                                      </div>
-                                      <div class="col-auto">
-                                          <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                              <i class="fas fa-shopping-basket"></i>
-                                          </div>
-                                      </div>
-                                  </div>
-      
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-xl-3 col-lg-6">
-                          <div class="card card-stats mb-4 mb-xl-0">
-                              <div class="card-body">
-                                  <div class="row">
-                                      <div class="col">
-                                          <h5 class="card-title text-uppercase text-muted mb-0">Sales Volume ( 30 days )</h5>
-                                          <span class="h2 font-weight-bold mb-0"> $8,557.96</span>
-                                      </div>
-                                      <div class="col-auto">
-                                          <div class="icon icon-shape bg-success text-white rounded-circle shadow">
-                                              <i class="fas fa-chart-line"></i>
-                                          </div>
-                                      </div>
-                                  </div>
-      
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-xl-3 col-lg-6">
-                          <div class="card card-stats mb-4 mb-xl-0">
-                              <div class="card-body">
-                                                                  <div class="row">
-                                          <div class="col">
-                                              <h5 class="card-title text-uppercase text-muted mb-0">Number of restaurants</h5>
-                                              <span class="h2 font-weight-bold mb-0">17 restaurants</span>
-                                          </div>
-                                          <div class="col-auto">
-                                              <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                                  <i class="fas fa-folder"></i>
-                                              </div>
-                                          </div>
-                                      </div>
-                                                                                          
-                              </div>
-                          </div>
-                      </div>
-      
-                      <div class="col-xl-3 col-lg-6">
-                          <div class="card card-stats mb-4 mb-xl-0">
-                              <div class="card-body">
-                                  <div class="row">
-                                      <div class="col">
-                                          <h5 class="card-title text-uppercase text-muted mb-0">Views</h5>
-                                          <span class="h2 font-weight-bold mb-0">53 views</span>
-                                      </div>
-                                      <div class="col-auto">
-                                          <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                              <i class="fas fa-users"></i>
-                                          </div>
-                                      </div>
-                                  </div>
-      
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+                    <div class="col-xl-3 col-lg-6 offset-md-2 mb-2 mb-xl-4000"> 
+                        <div class="card card-stats">
+                            <div class="card-body">
+                                <div class="row align-items-center"> 
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Number of restaurants</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{ $restaurantCount }} restaurants</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow p-2">
+                                            <i class="fas fa-store-alt fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
       
                   <br>
                                                       </div>

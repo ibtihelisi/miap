@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Category;
+
+use Illuminate\Support\Facades\Auth;
 class ItemController extends Controller
 {
     //
@@ -52,7 +54,7 @@ class ItemController extends Controller
 
 
 
-
+        $user = Auth::user();
     
         $item=new Item();
         $item->name=$request->name;
@@ -60,6 +62,7 @@ class ItemController extends Controller
         $item->description=$request->description;
         $item->price=$request->price;
         $item->photo=$newname;
+        $item->user_id = $user->id;
         
 
         

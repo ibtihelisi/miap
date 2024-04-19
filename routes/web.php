@@ -10,6 +10,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TableController;
 
 use App\Models\Restaurant;
 
@@ -34,7 +35,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/client/dashboard', [App\Http\Controllers\ClientController::class, 'dashboard']);
+Route::get('/client/dashboard', [App\Http\Controllers\ClientController::class, 'dashboard'])->middleware('auth','user');
 
 
 Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->middleware('auth','admin');
@@ -62,6 +63,9 @@ Route::get('/restaurant/activate/{id}',[RestaurantController::class,'activate'])
 Route::get('/restaurant/search',[RestaurantController::class,'search']);
 
 Route::get('/restaurants/export', [RestaurantController::class,'export'])->name('export.restaurants');
+
+Route::post('/restaurant/update/{id}',[RestaurantController::class,'update']);
+Route::get('/restaurant/edit/{id}',[RestaurantController::class,'updateinter']);
 
 
 
@@ -155,3 +159,9 @@ Route::get('/restaurant/menu/item/delete/{id}',[ItemController::class,'destroy']
 Route::post('/restaurant/menu/item/update/{id}',[ItemController::class,'update']);
 
 Route::get('/restaurant/menu/item/edit/{id}',[ItemController::class,'updateinter']);
+
+
+/**tables des restaurant routes  */
+Route::get('/restaurant/table',[TableController::class,'index']);
+Route::post('/restaurant/table/add',[TableController::class,'store']);
+Route::get('/restaurant/table/create',[TableController::class,'create']);

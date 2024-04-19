@@ -162,7 +162,7 @@
                                             <i class="fas fa-bars"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editRestaurant{{ $u->id }}">
+                                            <a class="dropdown-item" href="/restaurant/edit/{{$u->id}}">
                                                 <i class="fas fa-edit"></i> Modifier
                                             </a>
                                             <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editRestaurant{{ $u->id }}">

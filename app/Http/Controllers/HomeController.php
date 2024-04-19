@@ -51,8 +51,9 @@ public function update_admin(Request $request, $id)
 
     // Retrieve the authenticated user
     $user = Auth::user();
-
-    
+    if (!($user instanceof \App\Models\User)) {
+        return redirect('/admin/profile/{$id}')->with('error', 'User object is not an instance of User model');
+    }
     
 
     // Update user attributes
@@ -69,7 +70,7 @@ public function update_admin(Request $request, $id)
 }
 
  
-        //interface pour modfifier une subbscription
+        //interface pour modfifier profile d'admin
         public function updateinteradmin($id) {
             
             $users=User::all();
@@ -113,12 +114,13 @@ public function update_admin(Request $request, $id)
 
 
         
-        //interface pour modfifier une subbscription
+        //interface pour modfifier profile de client
         public function updateinterclient($id) {
             
             $users=User::all();
             return view('client.profile.index')->with('users', $users);
         }
+
 
         public function updatePasswordadmin(Request $request, $id) {
             $request->validate([
@@ -127,24 +129,24 @@ public function update_admin(Request $request, $id)
             ]);
         
             $user = Auth::user();
-        
-         
-        
-            // Vérifier si l'utilisateur est un administrateur
-            if ($user->role === 'admin') {
-                // Affecter directement le nouveau mot de passe sans hacher
-                $user->password = $request->new_password;
-            } else {
-                // Si ce n'est pas un administrateur, hacher le nouveau mot de passe
-                $user->password = Hash::make($request->new_password);
+            if (!($user instanceof \App\Models\User)) {
+                return redirect("/admin/profile/{$id}")->with('success', 'User object is not an instance of User model');
             }
         
+            if (!Hash::check($request->current_password, $user->password)) {
+                return redirect("/admin/profile/{$id}")->with('success', 'Current password is incorrect');
+            }
+        
+            $user->password = Hash::make($request->new_password);
+        
             if ($user->save()) {
+                
                 return redirect("/admin/profile/{$id}")->with('success', 'Password successfully updated');
             } else {
                 return redirect("/admin/profile/{$id}")->with('success', 'Failed to update password');
             }
         }
+        
         
 
 
@@ -157,6 +159,9 @@ public function update_admin(Request $request, $id)
             ]);
         
             $user = Auth::user();
+            if (!($user instanceof \App\Models\User)) {
+                return redirect("/client/profile/{$id}")->with('success', 'User object is not an instance of User model');
+            }
         
             if (!Hash::check($request->current_password, $user->password)) {
                 return redirect("/client/profile/{$id}")->with('success', 'Current password is incorrect');

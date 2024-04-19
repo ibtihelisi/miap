@@ -16,7 +16,7 @@
             <div class="avatar avatar-l">
              
                   
-              <img class="rounded-circle" src="{{asset('dashassets/img/team/57.png')}}" alt="">
+              <img class="rounded-circle" src="{{asset('dashassets/img/team/avatar-placeholder.png')}}" alt="">
             </div>
             <span class="username"  >{{Auth::user()->owner_name}}</span><!-- Nom de l'utilisateur -->
            
@@ -27,7 +27,7 @@
                 <div class="text-center pt-4 pb-3">
                   <div class="avatar avatar-xl">
                               
-                    <img class="rounded-circle" src="{{asset('dashassets/img/team/57.png')}}" alt=""></div>
+                    <img class="rounded-circle" src="{{asset('dashassets/img/team/avatar-placeholder.png')}}" alt=""></div>
                   <h6 class="mt-2">{{Auth::user()->owner_name}}</h6>
                 </div>
                 
@@ -42,8 +42,7 @@
                 <br>
                 <div class="px-3">
                   <a    onclick="event.preventDefault();
-                         document.getElementById('logout-form').submit();" class="btn btn-phoenix-secondary d-flex flex-center w-100" 
-                         href="sign out">
+                       document.getElementById('logout-form').submit();" class="btn btn-phoenix-secondary d-flex flex-center w-100" href="sign out">
                     <span class="me-2" data-feather="log-out">
                       </span>Sign out
                     </a>

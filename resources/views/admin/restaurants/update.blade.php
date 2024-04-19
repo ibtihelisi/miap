@@ -18,12 +18,98 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
     <link href="{{asset('dashassets/css/phoenix.min.css')}} " rel="stylesheet" id="style-default">
     <link href="{{asset('dashassets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
+
+    
+
+    
     <style>
       body {
         opacity: 0;
       }
-    </style>
 
+
+
+
+      .center {
+    text-align: center;
+  }
+
+
+    
+  .card-title {
+      font-size: 1.5rem; /* Taille du titre de la carte */
+      margin-bottom: 15px; /* Marge inférieure du titre */
+    }
+
+
+    .custom {
+            border: 1px solid #ccc; /* Bordure */
+            border-radius: 10px; /* Coins arrondis */
+            padding: 20px; /* Espacement interne */
+            margin-bottom: 20px; /* Marge inférieure */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre */
+            width: 100%;
+            
+
+      }
+
+      .custom-toggle input {
+  display: none;
+}
+.custom-toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 1.5rem;
+}
+.custom-toggle input:checked + .custom-toggle-slider::before {
+  transform: translateX(1.625rem);
+  background: #222834;
+}
+.custom-toggle input:checked + .custom-toggle-slider {
+  border: 1px solid #222834;
+}
+
+.custom-toggle-slider::before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  border-radius: 50% !important;
+  background-color: #222834;
+  transition: all .2s cubic-bezier(.68,-.55,.265,1.55);
+}
+.custom-toggle-slider {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+  border: 1px solid #cad1d7;
+  border-radius: 34px !important;
+  background-color: transparent;
+}
+
+.input-group .input-group-append .input-group-text {
+    border-left: 0;
+    background-color: transparent;
+}
+
+.input-group .input-group-append .input-group-text i {
+    position: relative;
+    left: -26px; /* Ajustez cette valeur selon votre besoin */
+    z-index: 2;
+}
+
+        
+
+    </style>
 
 
 
@@ -35,12 +121,18 @@
       <div class="container-fluid px-0">
 
 
-        @include('inc.client.sidebar')
-        @include('inc.client.nav')
-      
+        @include('inc.admin.sidebar')
+        @include('inc.admin.nav')
+        
         
         <div class="content">
-          
+          <div class="pb-5">
+
+            <div class="container">
+              <h1 class="mt-3">Plans  Management</h1>
+              <hr>
+      
+          </div>
           <div class="container-fluid">
             <div class="nav-wrapper">
                 <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="res_management" role="tablist">
@@ -60,7 +152,11 @@
                           <i class="fas fa-map-marker-alt"></i> Location
                         </button>
                     </li>
-                   
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link mb-sm-3 mb-md-0" id="tabs-plan-main" data-bs-toggle="pill" data-bs-target="#plan" type="button" role="tab" aria-controls="plan" aria-selected="false">
+                          <i class="fas fa-coins"></i> Plans
+                        </button>
+                    </li>
                 </ul>
               </br>
                 <div class="tab-content" id="pills-tabContent">
@@ -70,222 +166,223 @@
 
 
 
-                       <!--contenu de l'onglet Restaurants management!-->
-                      <div class="col-md-12">
-                        <div class="custom">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h1 class="mt-3">Restaurant Management</h1>
-                                <a class="btn btn-primary me-1" href="#" >View it</a>
-                                <a class="btn btn-primary " href="#" >Login as</a>
-                            </div>
-                            <hr>
+                            <!--contenu de l'onglet Restaurants management!-->
+                          <div class="col-md-12">
+                            <div class="custom">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h1 class="mt-3">Restaurant Management</h1>
+                                    <a class="btn btn-primary me-1" href="/admin/restaurants" style="margin-left: auto;">Back to list</a>
+                                    <a class="btn btn-primary me-1" href="#" >View it</a>
+                                    <a class="btn btn-primary " href="#" >Login as</a>
+                                </div>
+                                <hr>
+                                
                             
-                        
-                  
-     
-                           <form action="" method="post" enctype="multipart/form-d">
+                      
+        
+                              <form action="" method="post" enctype="multipart/form-d">
 
 
-                               @csrf
+                                  @csrf
 
-                           
-                               <div class="modal-body">
-                               <!--espace name-->
-                               <h6 class="col-md-2 col-form-label text-md-end " >Restaurant information</h6>
-                                   <div class="mb-3">
-
-                                       <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Restaurant Name</label>
-                                       <input name="name"   value ="{{Auth::user()->owner_name}}"  class="form-control" id="exampleFormControlInput1" type="text"  required placeholder=" your Restaurant Name ......" >
-                                       @error('name')
-                                          <div class="alert alert-danger">
-                                             {{ $message }}
-                                          </div>
-                                      @enderror
-                                   
-                                   </div> 
-
-
-                                   <div class="mb-3">
-
-                                      <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Restaurant description</label>
-                                      <input name="description"   value =""  class="form-control" id="exampleFormControlInput1" type="text"  required placeholder=" your Restaurant Description ......" >
-                                      @error('description')
-                                        <div class="alert alert-danger">
-                                            {{ $message }}
-                                        </div>
-                                      @enderror
-                                
-                                   </div> 
-
-
-
-                                    <div class="mb-3">
-
-                                      <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Restaurant address</label>
-                                      <input name="adress"   value =""  class="form-control" id="exampleFormControlInput1" type="text"  required  placeholder=" your rRestaurant Adress ......">
-                                      @error('adress')
-                                        <div class="alert alert-danger">
-                                            {{ $message }}
-                                        </div>
-                                      @enderror
-                                
-                                    </div> 
-
-
-
-                                    <div class=" mb-3">
-                                      <label for="owner_phone" class="col-md-0 col-form-label text-md-end">{{ __('Owner Phone Number') }}</label>
-              
-                                      
-                                          <input id="owner_phone" type="number" value="{{Auth::user()->owner_phone}}" class="form-control @error('owner_phone') is-invalid @enderror" name="owner_phone"  placeholder=" Owner Phone number here..." required autocomplete="owner_phone" autofocus>
-              
-                                          
-                                      
-                                    </div>
-
-
-                                  
-
-                                  
-
-
-
-                                    
-
-                                   <div class="mb-3">
-
-                                       <div class="form-group text-center">
-                                           <label class="col-md-2 col-form-label text-md-end" for="input-name">Item Image</label>
-                                               <div class="text-center">
-                                               <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                   <div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 290px; height:200">
-                                                   <img src="/uploads/restorants/39e04f62-602e-4f80-997d-49ac271569e7_large.jpg" alt="">
-                                               </div>
-                                                   <div>
-                                                       <span class="btn btn-outline-secondary btn-file">
-                                                       <span class="fileinput-new">Select image</span>
-                                                       <span class="fileinput-exists">Change</span>
-                                                       
-                                                      
-                                                       <input type="file" name="item_image" accept="image/x-png,image/png,image/gif,image/jpeg">
-                                                       </span>
-                                                       <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                                   </div>
-                                               </div>
-                                              
-                                               
-                                           </div>
-                                           </div>
-                                   </div> 
-
-
-
-
-
-
-                                   <div class="col-md-6">
-
-                                        <div class="form-group text-center">
-                                           <label class="col-md-2 col-form-label text-md-end" for="input-name">Restaurant Cover Image</label>
-                                            <br> 
-                                                <div class="text-center">
-                                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                  <div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 200px; height: 100px; line-height: 100px;">
-                                                    <img src="/default/cover.jpg" alt="...">
-                                                   </div>
-                                                  <div>
-                                                  <span class="btn btn-outline-secondary btn-file">
-                                                  <span class="fileinput-new">Select image</span>
-                                                  <span class="fileinput-exists">Change</span>
-                                
-                               
-                                                      <input type="hidden" value="" name="resto_cover"><input type="file" name="" accept="image/x-png,image/png,image/gif,image/jpeg">
-                                                  </span>
-                                                  <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                                  </div>
-                                                </div>
-                       
-                        
-                                                </div>
-                                          </div>              
-                                    </div>
-
-
-                                   
-            
-
-
-                              <br>
-                                   <div class="center">
-                               
-                                      <button  class="btn btn-success" type="submit ">UPDATE</button>
-                                   
-                                   </div>
-                               
-                           
-                                  
-
-
-                                  <hr>
-
+                              
                                   <div class="modal-body">
-                                  <h6 class="col-md-2 col-form-label text-md-end " >Owner information</h6>
-                                  <div class="mb-3">
+                                  <!--espace name-->
+                                  <h6 class="col-md-2 col-form-label text-md-end " >Restaurant information</h6>
+                                      <div class="mb-3">
 
-                                      <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Owner Name</label>
-                                      <input name="name"  value="{{Auth::user()->owner_name}}"  class="form-control" id="exampleFormControlInput1" type="text"  readonly>
+                                          <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Restaurant Name</label>
+                                          <input name="name"   value ="{{Auth::user()->owner_name}}"  class="form-control" id="exampleFormControlInput1" type="text"  required placeholder=" your rRestaurant Name ......">
+                                          @error('name')
+                                              <div class="alert alert-danger">
+                                                {{ $message }}
+                                              </div>
+                                          @enderror
+                                      
+                                      </div> 
+
+
+                                      <div class="mb-3">
+
+                                          <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Restaurant description</label>
+                                          <input name="description"   value =""  class="form-control" id="exampleFormControlInput1" type="text"  required placeholder=" your rRestaurant Description ......" >
+                                          @error('description')
+                                            <div class="alert alert-danger">
+                                                {{ $message }}
+                                            </div>
+                                          @enderror
                                     
-                                  
-                                  </div> 
+                                      </div> 
 
 
-                                  <div class="mb-3">
 
-                                     <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Owner Email</label>
-                                     <input name="description"   value ="{{Auth::user()->email}}"  class="form-control" id="exampleFormControlInput1" type="text"  required placeholder="  Owner Email ..."  readonly>
+                                        <div class="mb-3">
+
+                                          <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Restaurant address</label>
+                                          <input name="adress"   value =""  class="form-control" id="exampleFormControlInput1" type="text"  required  placeholder=" your rRestaurant Adress ......">
+                                          @error('adress')
+                                            <div class="alert alert-danger">
+                                                {{ $message }}
+                                            </div>
+                                          @enderror
                                     
-                               
-                                  </div> 
+                                        </div> 
 
 
 
+                                        <div class=" mb-3">
+                                          <label for="owner_phone" class="col-md-0 col-form-label text-md-end">{{ __('Owner Phone Number') }}</label>
+                  
+                                          
+                                              <input id="owner_phone" type="number" value="{{Auth::user()->owner_phone}}" class="form-control @error('owner_phone') is-invalid @enderror" name="owner_phone"  placeholder=" Owner Phone number here..." required autocomplete="owner_phone" >
+                  
+                                              
+                                          
+                                        </div>
 
 
-                                  <div class=" mb-3">
-                                    <label for="owner_phone" class="col-md-0 col-form-label text-md-end">Owner Phone </label>
-                                    <input name="owner_phone"   value ="{{Auth::user()->owner_phone}}"  class="form-control" id="exampleFormControlInput1" type="text"  required placeholder="  Owner Email ..."  readonly>
-                                    
-                                    
-                                  </div>
+                                      
+
+                                      
+
+
 
                                         
+
+                                      <div class="mb-3">
+
+                                          <div class="form-group text-center">
+                                              <label class="col-md-2 col-form-label text-md-end" for="input-name">Item Image</label>
+                                                  <div class="text-center">
+                                                  <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                      <div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 290px; height:200">
+                                                      <img src="/uploads/restorants/39e04f62-602e-4f80-997d-49ac271569e7_large.jpg" alt="">
+                                                  </div>
+                                                      <div>
+                                                          <span class="btn btn-outline-secondary btn-file">
+                                                          <span class="fileinput-new">Select image</span>
+                                                          <span class="fileinput-exists">Change</span>
+                                                          
+                                                          
+                                                          <input type="file" name="item_image" accept="image/x-png,image/png,image/gif,image/jpeg">
+                                                          </span>
+                                                          <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                                      </div>
+                                                  </div>
+                                                  
+                                                  
+                                              </div>
+                                              </div>
+                                      </div> 
+
+
+
+
+
+
+                                      <div class="col-md-6">
+
+                                            <div class="form-group text-center">
+                                              <label class="col-md-2 col-form-label text-md-end" for="input-name">Restaurant Cover Image</label>
+                                                <br> 
+                                                    <div class="text-center">
+                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                      <div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 200px; height: 100px; line-height: 100px;">
+                                                        <img src="/default/cover.jpg" alt="...">
+                                                      </div>
+                                                      <div>
+                                                      <span class="btn btn-outline-secondary btn-file">
+                                                      <span class="fileinput-new">Select image</span>
+                                                      <span class="fileinput-exists">Change</span>
                                     
-                                  </div>
-                                  </div>
+                                  
+                                                          <input type="hidden" value="" name="resto_cover"><input type="file" name="" accept="image/x-png,image/png,image/gif,image/jpeg">
+                                                      </span>
+                                                      <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                                      </div>
+                                                    </div>
+                          
+                            
+                                                    </div>
+                                              </div>              
+                                        </div>
 
 
-                                    
+                                      
+                
 
 
-                               
-                       
-                           </form>
-     
-     
-                           
-                   
-   
-                         </div>
-                         </div>
+                                  <br>
+                                      <div class="center">
+                                  
+                                          <button  class="btn btn-success" type="submit ">UPDATE</button>
+                                      
+                                      </div>
+                                  
+                              
+                                      
 
 
-                      </div>
+                                      <hr>
+
+                                      <div class="modal-body">
+                                      <h6 class="col-md-2 col-form-label text-md-end " >Owner information</h6>
+                                      <div class="mb-3">
+
+                                          <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Owner Name</label>
+                                          <input name="name"  value="{{Auth::user()->owner_name}}"  class="form-control" id="exampleFormControlInput1" type="text"  readonly>
+                                        
+                                      
+                                      </div> 
+
+
+                                      <div class="mb-3">
+
+                                        <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Owner Email</label>
+                                        <input name="description"   value ="{{Auth::user()->email}}"  class="form-control" id="exampleFormControlInput1" type="text"  required placeholder="  Owner Email ..."  readonly>
+                                        
+                                  
+                                      </div> 
+
+
+
+
+
+                                      <div class=" mb-3">
+                                        <label for="owner_phone" class="col-md-0 col-form-label text-md-end">Owner Phone </label>
+                                        <input name="owner_phone"   value ="{{Auth::user()->owner_phone}}"  class="form-control" id="exampleFormControlInput1" type="text"  required placeholder="  Owner Email ..."  readonly>
+                                        
+                                        
+                                      </div>
+
+                                            
+                                        
+                                      </div>
+                                      </div>
+
+
+                                        
+
+
+                                  
+                          
+                              </form>
+        
+        
+                              
+                      
+      
+                            </div>
+                            </div>
+
+
+                          
                     </div>
+                    
                     <div class="tab-pane fade" id="hours" role="tabpanel" aria-labelledby="tabs-hours-main">   
 
 
 
-                        <!--contenu de l'onglet hours!-->
 
                         
                         <div class="col-md-12">
@@ -952,7 +1049,8 @@
           });
       });
   </script>
-     
+  
+  
     <script src="{{asset('dashassets/js/phoenix.js')}}"></script>
     <script src="{{asset('dashassets/js/ecommerce-dashboard.js')}}"></script>
   </body>

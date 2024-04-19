@@ -175,7 +175,7 @@ description {
                                     </a>
                                   
                                     
-                                    <a href="https://zebra-qr.com/items/reorder/1" class="btn btn-icon btn-sm btn-success">
+                                    <a href="" class="btn btn-icon btn-sm btn-success">
                                         <span class="btn-inner--icon"><i class="fas fa-arrow-down"></i></span>
                                     </a>
                                 </div>

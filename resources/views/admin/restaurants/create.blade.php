@@ -83,8 +83,8 @@
               <h6 class="col-md-2 col-form-label text-md-end">Restaurant information</h6>
                 <div class="mb-3">
 
-                    <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Restaurant Name</label>
-                    <input name="restaurant_name" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Restaurant Name here..." required >
+                    <label class="col-md-0 col-form-label text-md-end" for="restaurant_name"> Restaurant Name</label>
+                    <input name="restaurant_name" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Restaurant Name here..."  value="{{ old('restaurant_name') }}"  required >
                     @error('restaurant_name')
                     <div class="alert alert-danger">
                         {{ $message }}
@@ -97,7 +97,7 @@
                 <h6 class="col-md-2 col-form-label text-md-end">Owner information</h6>
                 <div class="mb-3">
                     <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1">Owner Name</label>
-                    <input name="owner_name" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Owner Name here..." required >
+                    <input name="owner_name" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Owner Name here..."  value="{{ old('owner_name') }}" required >
                     @error('owner_name')
                     <div class="alert alert-danger">
                         {{ $message }}
@@ -111,7 +111,7 @@
                         <label for="email" class="col-md-0 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                         
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email" placeholder=" Owner email here...">
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email" placeholder=" Owner email here..." value="{{ old('email') }}" >
 
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -126,7 +126,7 @@
                         <label for="owner_phone" class="col-md-0 col-form-label text-md-end">{{ __('Owner Phone Number') }}</label>
 
                         
-                            <input id="owner_phone" type="number" class="form-control @error('owner_phone') is-invalid @enderror" name="owner_phone"  placeholder=" Owner Phone number here..." required autocomplete="owner_phone" autofocus>
+                            <input id="owner_phone" type="number" class="form-control @error('owner_phone') is-invalid @enderror" name="owner_phone"  placeholder=" Owner Phone number here..." required autocomplete="owner_phone" value="{{ old('owner_phone') }}" >
 
                             @error('owner_phone')
                                 <span class="invalid-feedback" role="alert">
@@ -135,6 +135,27 @@
                             @enderror
                         
                     </div>
+
+
+                    <div class="mb-3">
+                      <label for="password" class="col-md-0 col-form-label text-md-end">{{ __('Password') }}</label>
+                      <div class="">
+                          <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                          @error('password')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror
+                      </div>
+                  </div>
+                  
+                  <div class="mb-3">
+                      <label for="password-confirm" class="col-md-0 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                      <div class="">
+                          <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                      </div>
+                  </div>
+                  
 
 
                    

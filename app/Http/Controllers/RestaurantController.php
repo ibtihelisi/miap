@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -34,8 +35,11 @@ class RestaurantController extends Controller
             'owner_name'=>'required',
             'email'=>'required',
             'owner_phone'=>'required',
+            'password' => 'required|min:8|confirmed',
            
             
+        ], [
+            'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
         ]);
 
         $user=new User();
@@ -43,6 +47,7 @@ class RestaurantController extends Controller
         $user->owner_name=$request->owner_name;
         $user->email=$request->email;
         $user->owner_phone=$request->owner_phone;
+        $user->password = Hash::make($request->password);
      
        
 
@@ -53,6 +58,7 @@ class RestaurantController extends Controller
 
 
 
+        return redirect()->back()->withErrors($request->all())->withInput();
 
     }
 
@@ -148,6 +154,30 @@ class RestaurantController extends Controller
         // Return CSV file as response
         return FacadeResponse::stream($callback, 200, $headers);
     }
+
+
+
+
+
+       
+        //interface pour modfifier une subbscription
+        public function updateinter($id) {
+        
+            $users=User::all();
+            return view('admin.restaurants.update')->with('users', $users);
+        }
+
+
+
+    
+                public function edit($id) {
+                    // Récupérer les informations du restaurant à partir de l'ID de l'utilisateur
+                    $restaurant = User::findOrFail($id);
+
+                    // Passer les informations du restaurant à la vue update.blade.php
+                    return view('update')->with('restaurant', $restaurant);
+                }
+
 
 
     /*

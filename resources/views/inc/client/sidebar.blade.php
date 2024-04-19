@@ -76,27 +76,10 @@
 
 
 
-          <li class="nav-item">
-           
-            <a class="nav-link dropdown-indicator" href="#e-commerce" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="e-commerce">
-              <div class="d-flex align-items-center">
-                <div class="dropdown-indicator-icon d-flex flex-center"><span class="fas fa-caret-right fs-0"></span></div><span class="nav-link-icon"><span data-feather="shopping-cart"></span></span><span class="nav-link-text">Menu</span>
-              </div>
-            </a>
-            <ul class="nav collapse parent" id="e-commerce">
-              <li class="nav-item"><a class="nav-link" href="/admin/products" data-bs-toggle="" aria-expanded="false">
-                  <div class="d-flex align-items-center"><span class="nav-link-text">Products</span></div>
-                </a></li>
-              <li class="nav-item"><a class="nav-link" href="/admin/categories" data-bs-toggle="" aria-expanded="false">
-                  <div class="d-flex align-items-center"><span class="nav-link-text">Catégories</span></div>
-                </a></li>
-            </ul>
-          </li>
-
 
 
           <li class="nav-item">
-            <a class="nav-link active" href="https://zebra-qr.com/finances">
+            <a class="nav-link active" href="/restaurant/table">
               <div class="d-flex align-items-center">
                 <span class="nav-link-icon">
                   <!-- Remplacer le chemin vers l'icône par l'icône de finances de Font Awesome -->

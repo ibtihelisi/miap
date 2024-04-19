@@ -45,11 +45,94 @@
 
 
 
-        <div class="content">
-          <div class="pb-5">
-            hello client
+        <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+          <div class="container-fluid">
+              <div class="header-body">
+                  <!-- Card stats -->
+                  <div class="row">
+                    <div class="col-xl-3 col-lg-6 offset-md-2 mb-2 mb-xl-4000"> 
+                        <div class="card card-stats">
+                            <div class="card-body">
+                                <div class="row align-items-center"> 
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Orders ( 30 days )</h5>
+                                        <span class="h2 font-weight-bold mb-0">50 restaurants</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow p-2">
+                                            <i class="fas fa-store-alt fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+
+
+                    <div class="col-xl-3 col-lg-6 offset-md-2 mb-2 mb-xl-4000"> 
+                      <div class="card card-stats">
+                          <div class="card-body">
+                              <div class="row align-items-center"> 
+                                  <div class="col">
+                                      <h5 class="card-title text-uppercase text-muted mb-0">Sales Volume ( 30 days )</h5>
+                                      <span class="h2 font-weight-bold mb-0">30000 DT</span>
+                                  </div>
+                                  <div class="col-auto">
+                                      <div class="icon icon-shape bg-warning text-white rounded-circle shadow p-2">
+                                          <i class="fas fa-store-alt fa-2x"></i>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+
+
+                    <div class="col-xl-3 col-lg-6 offset-md-2 mb-2 mb-xl-4000"> 
+                      <div class="card card-stats">
+                          <div class="card-body">
+                              <div class="row align-items-center"> 
+                                  <div class="col">
+                                      <h5 class="card-title text-uppercase text-muted mb-0">Number of categories</h5>
+                                      <span class="h2 font-weight-bold mb-0">5 categories</span>
+                                  </div>
+                                  <div class="col-auto">
+                                      <div class="icon icon-shape bg-warning text-white rounded-circle shadow p-2">
+                                          <i class="fas fa-store-alt fa-2x"></i>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+
+
+                    <div class="col-xl-3 col-lg-6 offset-md-2 mb-2 mb-xl-4000"> 
+                      <div class="card card-stats">
+                          <div class="card-body">
+                              <div class="row align-items-center"> 
+                                  <div class="col">
+                                      <h5 class="card-title text-uppercase text-muted mb-0">Number of items</h5>
+                                      <span class="h2 font-weight-bold mb-0">26 items</span>
+                                  </div>
+                                  <div class="col-auto">
+                                      <div class="icon icon-shape bg-warning text-white rounded-circle shadow p-2">
+                                          <i class="fas fa-store-alt fa-2x"></i>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+
+                  </div>
+                
+      
+                  <br>
+                </div>
           </div>
+      </div>
         
           
           

@@ -15,7 +15,7 @@
         <li class="nav-item dropdown"><a class="nav-link lh-1 px-0 ms-5" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="avatar avatar-l">
               
-              <img class="rounded-circle" src="{{asset('dashassets/img/team/57.png')}}" alt="">
+              <img class="rounded-circle" src="{{asset('dashassets/img/team/avatar-placeholder.png')}}" alt="">
             </div>
             <span class="username">{{Auth::user()->owner_name}}</span><!-- Nom de l'utilisateur -->
            
@@ -26,7 +26,7 @@
                 <div class="text-center pt-4 pb-3">
                   <div class="avatar avatar-xl">
                               
-                    <img class="rounded-circle" src="{{asset('dashassets/img/team/57.png')}}" alt=""></div>
+                    <img class="rounded-circle" src="{{asset('dashassets/img/team/avatar-placeholder.png')}}" alt=""></div>
                   <h6 class="mt-2">{{Auth::user()->owner_name}}</h6>
                 </div>
              

@@ -7,14 +7,25 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Item;
 
+use Illuminate\Support\Facades\Auth;
+
 class CategoryController extends Controller
 {
 
      //affichage de a liste
+
+
+
      public function index()
      {
-         $categories = Category::all();
-         $items = Item::all(); // Or fetch items based on your logic
+            // Récupérer l'utilisateur connecté
+            $user = Auth::user();
+
+            // Récupérer les catégories de l'utilisateur connecté
+            $categories = $user->categories;
+            
+            // Récupérer les articles en fonction des catégories de l'utilisateur connecté (si nécessaire)
+            $items = $user->items;
      
          return view('client.menu.index', compact('categories', 'items'));
      }
@@ -30,8 +41,12 @@ class CategoryController extends Controller
            
         ]);
 
+
+        $user = Auth::user();
+
         $category=new Category();
         $category->name=$request->name;
+        $category->user_id = $user->id; 
         
 
         if ($category->save())
