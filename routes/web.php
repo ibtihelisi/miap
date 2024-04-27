@@ -8,7 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\RestaurantController;
-use App\Http\Controllers\LocalizationController;
+use App\Http\Controllers\FeaturesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TableController;
 
@@ -74,6 +74,15 @@ Route::get('/restaurant/edit/{id}',[RestaurantController::class,'updateinter']);
 
 /** Route Settings */
 Route::get('/admin/settings', [App\Http\Controllers\SettingController::class, 'index']);
+Route::post('/admin/settings/update', [App\Http\Controllers\SettingController::class, 'update'])->name('admin_banner_home_update');
+/** Route featuress */
+Route::get('/admin/features', [App\Http\Controllers\FeaturesController::class, 'index'])->name('admin.features.index');
+Route::post('/feature/add',[FeaturesController::class,'store']);
+
+Route::get('/feature/delete/{id}',[FeaturesController::class,'destroy']);
+
+Route::post('/admin/features/update', [App\Http\Controllers\FeaturesController::class, 'update'])->name('admin_feature_update');
+Route::post('/admin/features/item/update/{id}', [App\Http\Controllers\FeaturesController::class, 'item_update'])->name('admin_feature_item_update');
 
 /**Route categories */
 Route::get('/admin/categories', [App\Http\Controllers\CategoryController::class, 'index']);

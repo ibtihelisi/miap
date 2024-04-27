@@ -2,7 +2,7 @@
     <div class="navbar-logo"><button class="btn navbar-toggler navbar-toggler-humburger-icon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button> <a class="navbar-brand me-1 me-sm-3" href="index.html">
         <div class="d-flex align-items-center">
           <div class="d-flex align-items-center"><img src="{{asset('dashassets/img/icons/logo.png')}}" alt="phoenix" width="32">
-              <a href="/admin/dashboard"> 
+              <a href="/"> 
                   <p class="logo-text ms-2 d-none d-sm-block">QR Menu</p>
               </a>
             </div>
@@ -12,7 +12,10 @@
       
       <ul class="navbar-nav navbar-nav-icons ms-auto flex-row">
         
-        <li class="nav-item dropdown"><a class="nav-link lh-1 px-0 ms-5" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li class="nav-item dropdown">
+          
+          <a class="nav-link lh-1 px-0 ms-5" id="navbarDropdownUser" href="" role="button"><i class="fas fa-store-alt"></i> My Restaurant</a>
+          <a class="nav-link lh-1 px-0 ms-5" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="avatar avatar-l">
               
               <img class="rounded-circle" src="{{asset('dashassets/img/team/avatar-placeholder.png')}}" alt="">
@@ -20,6 +23,7 @@
             <span class="username">{{Auth::user()->owner_name}}</span><!-- Nom de l'utilisateur -->
            
           </a>
+
           <div class="dropdown-menu dropdown-menu-end py-0 dropdown-profile shadow border border-300" aria-labelledby="navbarDropdownUser">
             <div class="card bg-white position-relative border-0">
               <div class="card-body p-0 overflow-auto scrollbar" style="height: 12rem;">
@@ -32,7 +36,7 @@
              
                 <ul class="nav d-flex flex-column mb-2 pb-1">
                   <li class="nav-item"><a class="nav-link px-3" href="/client/profile/{id}"><span class="me-2 text-900" data-feather="user"></span>Profile</a></li>
-                  <li class="nav-item"><a class="nav-link px-3" href="/client/dashboard"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
+                  <li class="nav-item"><a class="nav-link px-3" href="/client/dashboard"><span class="me-2 nav-link-icon"><span data-feather="cast"></span></span>Dashboard</a></li>
                  
                 </ul>
               </div>

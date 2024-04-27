@@ -3,7 +3,7 @@
     <div class="container">
 
         <!-- Image Logo -->
-        <a class="navbar-brand logo-image" href="/"><img src="{{asset('mainassets/images/logo.svg')}}" alt="alternative"></a> 
+        <a class="navbar-brand logo-image logosize" href="/"><img src="{{asset('mainassets/images/logo.svg')}}" alt="put logo" style="width: 60px; height: auto;"></a> 
 
         <!-- Text Logo - Use this if you don't have a graphic logo -->
         <!-- <a class="navbar-brand logo-text" href="index.html">MenuQR</a> -->
@@ -74,9 +74,19 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
+
+
+                            @if ( Auth::user()->role=='admin')
+                                
+                                <a class="dropdown-item" href="/admin/dashboard" >  <i class="me-2 fas fa-tachometer-alt"></i> Dashboard</a>
+                            @else
+                                <a class="dropdown-item" href="/client/dashboard"> <i class="me-2 fas fa-tachometer-alt"></i> Dashboard</a>
+
+                            @endif
+                       
+                            <a class="dropdown-item" href="{{ route('logout') }}" 
                                onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
+                                             document.getElementById('logout-form').submit();"><i class="me-2 fas fa-sign-out-alt"></i>
                                 {{ __('Logout') }}
                             </a>
 
@@ -84,13 +94,8 @@
                                 @csrf
                             </form>
 
+                              
 
-
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
                         </div>
                         
 

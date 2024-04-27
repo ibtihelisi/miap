@@ -174,10 +174,7 @@ description {
                                             <span class="btn-inner--icon"><i class="fa fa-trash"></i></span>
                                     </a>
                                   
-                                    
-                                    <a href="" class="btn btn-icon btn-sm btn-success">
-                                        <span class="btn-inner--icon"><i class="fas fa-arrow-down"></i></span>
-                                    </a>
+                          
                                 </div>
                             </div>
                         </div>

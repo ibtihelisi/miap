@@ -2,7 +2,7 @@
     <div class="navbar-logo"><button class="btn navbar-toggler navbar-toggler-humburger-icon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button> <a class="navbar-brand me-1 me-sm-3" href="index.html">
         <div class="d-flex align-items-center">
           <div class="d-flex align-items-center"><img src="{{asset('dashassets/img/icons/logo.png')}}" alt="phoenix" width="32">
-              <a href="/admin/dashboard"> 
+              <a href="/"> 
                   <p class="logo-text ms-2 d-none d-sm-block">QR Menu</p>
               </a>
             </div>
@@ -33,7 +33,7 @@
                 
                 <ul class="nav d-flex flex-column mb-2 pb-1">
                   <li class="nav-item"><a class="nav-link px-3" href="/admin/profile/{id}"><span class="me-2 text-900" data-feather="user"></span>Profile</a></li>
-                  <li class="nav-item"><a class="nav-link px-3" href="/admin/dashboard"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
+                  <li class="nav-item"><a class="nav-link px-3" href="/admin/dashboard"><span class="me-2 nav-link-icon"><span data-feather="cast"></span></span>Dashboard</a></li>
                  
                 </ul>
               </div>

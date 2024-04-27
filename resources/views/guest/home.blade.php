@@ -27,6 +27,7 @@
         <link href="{{asset('mainassets/css/swiper.css')}}" rel="stylesheet">
         <link href="{{asset('mainassets/css/styles.css')}}" rel="stylesheet">
         
+        
         <!-- Favicon  -->
         <link rel="icon" href="images/favicon.png">
     </head>
@@ -43,14 +44,14 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="text-container">
-                            <h1 class="h1-large"> {{__('home.The first QR Menu app for ')}} <span class="replace-me"> {{__('home.Restaurants, Bars, Hotels, Coffee shops ,tea Room')}}</span></h1>
-                            <p class="p-large">{{__('home.Their mobile is your menu now!')}}</p>
-                            <a class="btn-solid-lg" href="{{ route('register') }}">{{__('home.Sign up for free')}}</a>
+                            <h1 class="h1-large"> {{$setting->subheading}} <span class="replace-me"> {{$setting->heading}}</span></h1>
+                            <p class="p-large">{{$setting->text}}</p>
+                            <a class="btn-solid-lg" href="{{ route('register') }}">{{$setting->button_text}}</a>
                         </div> <!-- end of text-container -->
                     </div> <!-- end of col -->
                     <div class="col-lg-6">
                         <div class="image-container">
-                            <img class="img-fluid" src="{{asset('mainassets/images/header-illustration.svg')}}" alt="alternative">
+                            <img class="img-fluid" src="{{asset('uploads')}}/{{ $setting->photo }}" alt="alternative" >
                         </div> <!-- end of image-container -->
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
@@ -64,79 +65,23 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2 class="h2-heading">{{__('home.QR Menu application is packed with')}}<span>{{__('home.awesome features')}}</span></h2>
+                        <h2 class="h2-heading">{{$feature->Title}}<span>{{$feature->span}}</span></h2>
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
                 <div class="row">
-                    <div class="col-lg-12">
+
+                    @foreach($features as $f)
+                      @if ($f->id !='1')
+                        <div class="col-lg-4">
                         
                         <!-- Card -->
                         <div class="card">
                             <div class="card-icon">
-                                <span class="fas fa-headphones-alt"></span>
+                                <span class="" ><img src="{{asset('uploads')}}/{{ $f->icon }}" alt="" width="50"></span>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Full access to QR tool</h4>
-                                <p>Streamline the ordering process for your customers by allowing them to order directly from the QR code menu. Enhance the efficiency of your service and provide a seamless experience.</p>
-                            </div>
-                        </div>
-                        <!-- end of card -->
-
-                        <!-- Card -->
-                        <div class="card">
-                            <div class="card-icon green">
-                                <span class="far fa-clipboard"></span>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Access to the menu creation tool</h4>
-                                <p>Vulputate nibh feugiat. Morbi pellent diam nec libero lacinia, sed ultrices velit scelerisque. Nunc placerat justo sem</p>
-                            </div>
-                        </div>
-                        <!-- end of card -->
-
-                        <!-- Card -->
-                        <div class="card">
-                            <div class="card-icon blue">
-                                <span class="far fa-comments"></span>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Quick & easy to use</h4>
-                                <p>Start preparing your menu right away. We have already prepared everything. Your first menu will be online within a few minutes! Need help? Chat or call +216 27 301 169.</div>
-                        </div>
-                        <!-- end of card -->
-
-                          <!-- Card -->
-                          <div class="card">
-                            <div class="card-icon">
-                                <span class="fas fa-headphones-alt"></span>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Multi-language</h4>
-                                <p>QR Menu App supports your menu in English,French and Arabic.</p>
-                            </div>
-                        </div>
-                        <!-- end of card -->
-                        <!-- Card -->
-                        <div class="card">
-                            <div class="card-icon">
-                                <span class="fas fa-headphones-alt"></span>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Mobile Ordering</h4>
-                                <p>With QR Menu App it is possible to accept mobile orders, paid with Bancontact, iDeal or Payconiq. We support table ordering, takeaway and pickup orders (with time slots)</p>
-                            </div>
-                        </div>
-                        <!-- end of card -->
-
-
-                        <!-- Card -->
-                          <div class="card">
-                            <div class="card-icon">
-                                <span class="fas fa-headphones-alt"></span>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">Dedicated Support</h4>
-                                <p>Streamline the ordering process for your customers by allowing them to order directly from the QR code menu. Enhance the efficiency of your service and provide a seamless experience.</p>
+                                <h4 class="card-title">{{$f->feature_item_title }}</h4>
+                                <p>{{$f->feature_item_paragraph}}</p>
                             </div>
                         </div>
                         <!-- end of card -->
@@ -145,7 +90,9 @@
                         
 
 
-                    </div> <!-- end of col -->
+                        </div> <!-- end of col -->
+                       @endif
+                    @endforeach
                 </div> <!-- end of row -->
             </div> <!-- end of container -->
         </div> <!-- end of cards-1 -->

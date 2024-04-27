@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('features', function (Blueprint $table) {
             $table->id();
-            $table->String('subheading')->nullable();
-            $table->String('heading')->nullable();
-            $table->text('text')->nullable();
-            $table->string('button_text')->nullable();
-            $table->string('photo')->nullable();
+            $table->String('Title')->nullable();
+            $table->String('span')->nullable();
+            $table->String('icon')->nullable();
+            $table->string('feature_item_title')->nullable();
+            $table->text('feature_item_paragraph')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('features');
     }
 };
