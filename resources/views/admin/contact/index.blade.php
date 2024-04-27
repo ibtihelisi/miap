@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>QR Menu|CMS|Home</title>
+    <title>QR Menu|CMS|Contact</title>
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('dashassets/img/favicons/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('dashassets/img/favicons/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('dashassets/img/favicons/favicon-16x16.png')}}">
@@ -54,7 +54,7 @@
           <div class="pb-5">
 
             <div class="container">
-              <h1 class="mt-3">Edit Home Banner</h1>
+              <h1 class="mt-3">Edit Contact Banner</h1>
               <hr>
 
 
@@ -89,101 +89,114 @@
             @endif
         
            
-        <form action="{{route('admin_banner_home_update')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('admin_banner_contact_update')}}" method="post" >
 
 
           @csrf
 
         
           <div class="modal-body">
-            <!--espace exesting photo-->
-              <div class="mb-3">
-                  <label class="form-label" for="exampleFormControlInput1">Existing Photo</label>
-                  <div>
-                    
-                    <img src="{{asset('uploads')}}/{{ $setting->photo }}" alt="" width="200">
-                  </div>
-                  @error('photo')
-                  <div class="alert alert-danger">
-                      {{ $message }}
-                  </div>
-                @enderror
-              
-              </div>
-
-              <!--espace change photo-->
-              <div class="mb-3">
-                  <label class="form-label" for="exampleFormControlInput1">Change Photo</label>
-                  <div>
-                  <input type="file"  name="photo"    >
-                </div>
-                  @error('photo')
-                  <div class="alert alert-danger">
-                    {{ $message }}
-                  </div>
-                @enderror
-            
-              </div>
-
-              <!--espace subheading-->
+           
+              <!--espace title-->
 
               <div class="col-md-12">
                 <div id="form-group-features" class="form-group  ">
-                     <label class="form-control-label" for="">Subheading</label>
-                     <input type="text"    value ="{{$setting->subheading}}"  name="subheading"  class="form-control form-control   "  >
+                     <label class="form-control-label" for="">Title</label>
+                     <input type="text"    value ="{{$contact->title}}"  name="title"  class="form-control form-control   "  >
                 </div>
-                @error('subheading')
+                @error('title')
                   <div class="alert alert-danger">
                      {{ $message }}
                    </div>
                 @enderror
               </div> 
 
-
-                   <!--espace heading-->
+              <br>
+                   <!--espace description-->
 
                <div class="col-md-12">
                     <div id="form-group-features" class="form-group  ">
-                         <label class="form-control-label" for="">Heading</label>
-                         <input type="text"    value ="{{$setting->heading}}"  name="heading"  class="form-control form-control   "  >
+                         <label class="form-control-label" for="">Description</label>
+                         <textarea     name="desc"  class="form-control form-control   "  > {{$contact->desc}}</textarea>
                     </div>
-                    @error('heading')
+                    @error('desc')
                       <div class="alert alert-danger">
                          {{ $message }}
                        </div>
                     @enderror
               </div> 
 
+              <br>
 
-
-                   <!--espace Text-->
-
-              <div class="col-md-12">
-                          <div id="form-group-features" class="form-group  ">
-                               <label class="form-control-label" for="">Text</label>
-                               <textarea   name="text"  value ="{{$setting->text}}" class="form-control form-control   " cols="30"  rows="10">{{$setting->text}}</textarea>
-                          </div>
-                          @error('text')
-                            <div class="alert alert-danger">
-                               {{ $message }}
-                             </div>
-                          @enderror
-               </div> 
       
 
-                <!--espace button text-->
+                <!--espace link facebook-->
 
                 <div class="col-md-12">
                   <div id="form-group-features" class="form-group  ">
-                       <label class="form-control-label" for="">Button Text</label>
-                       <input type="text"    value ="{{$setting->button_text}}"  name="button_text"  class="form-control form-control   "  >
+                       <label class="form-control-label" for="">Link Facebook</label>
+                       <input type="text"    value ="{{$contact->face_link}}"  name="face_link"  class="form-control form-control   "  >
                   </div>
-                  @error('button_text')
+                  @error('face_link')
                     <div class="alert alert-danger">
                        {{ $message }}
                      </div>
                   @enderror
               </div> 
+
+              <br>
+
+                <!--espace link instagram-->
+
+                <div class="col-md-12">
+                    <div id="form-group-features" class="form-group  ">
+                         <label class="form-control-label" for="">Link Instagram</label>
+                         <input type="text"    value ="{{$contact->insta_link}}"  name="insta_link"  class="form-control form-control   "  >
+                    </div>
+                    @error('insta_link')
+                      <div class="alert alert-danger">
+                         {{ $message }}
+                       </div>
+                    @enderror
+                </div> 
+
+
+
+                <br>
+                 <!--espace tel-->
+
+                 <div class="col-md-12">
+                    <div id="form-group-features" class="form-group  ">
+                         <label class="form-control-label" for="">Phone Number</label>
+                         <input type="number"    value ="{{$contact->tel}}"  name="tel"  class="form-control form-control   "  >
+                    </div>
+                    @error('tel')
+                      <div class="alert alert-danger">
+                         {{ $message }}
+                       </div>
+                    @enderror
+                </div> 
+  
+
+
+                <br>
+
+                 <!--espace email-->
+
+                 <div class="col-md-12">
+                    <div id="form-group-features" class="form-group  ">
+                         <label class="form-control-label" for="">Email Adress</label>
+                         <input type="email"    value ="{{$contact->email}}"  name="email"  class="form-control form-control   "  >
+                    </div>
+                    @error('email')
+                      <div class="alert alert-danger">
+                         {{ $message }}
+                       </div>
+                    @enderror
+                </div> 
+  
+  
+  
 
 
 

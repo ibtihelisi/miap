@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>QR Menu|CMS|Features</title>
+    <title>QR menu|CMS|FAQ</title>
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('dashassets/img/favicons/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('dashassets/img/favicons/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('dashassets/img/favicons/favicon-16x16.png')}}">
@@ -50,12 +50,12 @@
           <div class="pb-5">
 
             <div class="container">
-              <h1 class="mt-3">Features</h1>
+              <h1 class="mt-3">Edit FAQ Banner</h1>
               <hr>
       
           </div>
 
-         
+        
       
           <!-- Affichage des alertes de succès ou d'erreur -->
           @if(session('success'))
@@ -79,7 +79,7 @@
         </script>
        @endif
 
-       <form action="{{route('admin_feature_update')}}" method="post" >
+       <form action="{{route('admin_faq_update')}}" method="post" >
 
 
           @csrf
@@ -90,7 +90,7 @@
               <div class="col-md-12">
                 <div id="form-group-features" class="form-group  ">
                      <label class="form-control-label" for="">Title</label>
-                     <input type="text"    value ="{{$feature->Title}}"  name="title"  class="form-control form-control   "  >
+                     <input type="text"   value="{{$faq->Title}}"   name="title"  class="form-control form-control   "  >
                 </div>
                 @error('title')
                   <div class="alert alert-danger">
@@ -99,24 +99,10 @@
                 @enderror
               </div> 
             </br>
+             
+
+
               
-
-               <!--espace span-->
-
-               <div class="col-md-12">
-                <div id="form-group-features" class="form-group  ">
-                     <label class="form-control-label" for="">Span</label>
-                     <input type="text"    value ="{{$feature->span}}"  name="span"  class="form-control form-control   "  >
-                </div>
-                @error('span')
-                  <div class="alert alert-danger">
-                     {{ $message }}
-                   </div>
-                @enderror
-              </div> 
-
-
-              <br>
               <div class="center">
             
                 <button  class="btn btn-success" type="submit ">UPDATE</button>
@@ -124,24 +110,22 @@
               </div>
               <br>
       </form>
-
               <hr>
 
-              
-            
-          <div class="row py-2">
-            <div class="col-md-6">
-             
-            
-            </div>
-            <div class="col-md-6 text-end">
-              <a class="btn btn-primary" class="mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Features</a>
-              
 
+            <div class="row py-2">
+                <div class="col-md-6">
+                 
+                
+                </div>
+                <div class="col-md-6 text-end">
+                  <a class="btn btn-primary" class="mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Q and A</a>
+                  
+    
+                </div>
             </div>
-        </div>
+
               <br>
-              
             <!--l'espaces des items pour l'update ou le delete-->
            
             
@@ -151,72 +135,47 @@
                    
 
                     <div  class="row">
-                      @foreach($features as $f)
-                      @if ($f->id !='1')
+                      @foreach($faqs as $index => $faq)
+                      @if ($faq->id !='1')
                           
                      
                            
-                                <div class="col-xl-4">
-                                  <form action="/admin/features/item/update/{{$f->id}}" method="post" enctype="multipart/form-data">
+                                <div class="col-xl-12">
+                                  <form action="/admin/faq/item/update/{{$faq->id}}" method="post" >
 
 
                                     @csrf 
                                   
                                     <div class="card">
+
+                                        <div class="card-header">
+                                            <h5 class="card-title">FAQ{{$index}}</h5>
+                                        </div>
+
+                                        
                                         
                                         <div class="card-body">
 
-                                            <!--espace exesting photo-->
-                                            <div class="mb-3">
-                                                <label class="form-label" for="exampleFormControlInput1">Existing Icon</label>
-                                                <div>
-                        
-                                                    <img src="{{asset('uploads')}}/{{ $f->icon }}" alt="" width="50">
-                                                </div>
-                                                @error('icon')
-                                                <div class="alert alert-danger">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                    
-                                            </div>
-
-
-                                            
-                                            <!--espace change photo-->
-                                            <div class="mb-3">
-                                                <label class="form-label" for="exampleFormControlInput1">Change Icon</label>
-                                                <div>
-                                                    <input type="file"  name="icon"    >
-                                                </div>
-                                                @error('icon')
-                                                <div class="alert alert-danger">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                        
-                                            </div>
-                                            
-
+                                         
                                             <div class="col-md-12">
                                                 <div id="form-group-features" class="form-group  ">
-                                                    <label class="form-control-label" for="">Feature item title</label>
-                                                    <input type="text"    value ="{{$f->feature_item_title }}"  name="feature_item_title"  class="form-control form-control   "  >
+                                                    <label class="form-control-label" for="">Question</label>
+                                                    <input type="text"    value ="{{$faq->question }}"  name="question"  class="form-control form-control   "  >
                                                 </div>
-                                                @error('feature_item_title')
+                                                @error('question')
                                                 <div class="alert alert-danger">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
                                             </div> 
 
-
+                                            <br>
                                             <div class="col-md-12">
                                                 <div id="form-group-features" class="form-group  ">
-                                                    <label class="form-control-label" for="">Feature item description</label>
-                                                    <input type="text"    value ="{{$f->feature_item_paragraph}}"  name="feature_item_paragraph"  class="form-control form-control   "  >
+                                                    <label class="form-control-label" for="">Answer</label>
+                                                    <textarea type="text"     name="answer"  class="form-control form-control   "  > {{$faq->answer}}</textarea>
                                                 </div>
-                                                @error('feature_item_paragraph')
+                                                @error('answer')
                                                 <div class="alert alert-danger">
                                                     {{ $message }}
                                                 </div>
@@ -226,8 +185,8 @@
 
                                             <br>
                                             <div class="center">
-                                                <a  class="btn btn-danger" onclick="return confirm('voulez-vouz supprimer cette Feature ? ') "
-                                                href="/feature/delete/{{ $f->id }}" class="btn btn-danger">
+                                                <a  class="btn btn-danger" onclick="return confirm('voulez-vouz supprimer cette FAQ ? ') "
+                                                href="/faq/delete/{{ $faq->id }}" class="btn btn-danger">
                                                 Delete</a>
                                                 <button  class="btn btn-success"  type="submit ">UPDATE</button>
                                                 <!--<button  class="btn btn-danger" type="submit ">Delete</button>-->
@@ -237,6 +196,9 @@
                                     
                                   </form>
                                 </div>
+
+
+                                <hr><hr><hr>
                        @endif
                       @endforeach
                                     
@@ -285,7 +247,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Add feature</h5><button class="btn p-1"
+                                    <h5 class="modal-title" id="exampleModalLabel">Add Q and A</h5><button class="btn p-1"
                                         type="button" data-bs-dismiss="modal" aria-label="Close"><svg
                                             class="svg-inline--fa fa-times fa-w-11 fs--1" aria-hidden="true" focusable="false"
                                             data-prefix="fas" data-icon="times" role="img"
@@ -296,54 +258,42 @@
                                         </svg><!-- <span class="fas fa-times fs--1"></span> Font Awesome fontawesome.com --></button>
                                 </div>
                 
-                                <form action="/feature/add" method="post" enctype="multipart/form-data">
+                                <form action="/faq/add" method="post" >
                 
                                     @csrf
                 
                                 
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label class="form-label" for="exampleFormControlInput1">Feature Title</label>
-                                            <input name="feature_item_title" class="form-control" id="exampleFormControlInput1"
-                                                type="text" placeholder=" feature title ..." required>
+                                            <label class="form-label" for="exampleFormControlInput1">Question</label>
+                                            <input name="question" class="form-control" id="exampleFormControlInput1"
+                                                type="text" placeholder=" question ...">
                 
-                                            @error('feature_item_title')
+                                            @error('question')
+                                                <div class="alert alert-danger">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label class="form-label" for="exampleFormControlInput1">Answer</label>
+                                            <textarea name="answer" class="form-control" id="exampleFormControlInput1"
+                                                type="text" placeholder=" answer ..."></textarea>
+                
+                                            @error('answer')
                                                 <div class="alert alert-danger">
                                                     {{ $message }}
                                                 </div>
                                             @enderror
                                         </div>
                 
-                                        <div class="mb-0">
-                                            <label class="form-label" for="exampleTextarea">Feature description</label>
-                                            <textarea name="feature_item_paragraph" class="form-control" rows="3" required> </textarea>
-                
-                
-                                            @error('feature_item_paragraph')
-                                                <div class="alert alert-danger">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                
+                                  
                 
                             
                 
                 
-                                        <div class="mb-0">
-                                            <label class="form-label" for="exampleTextarea">Feature Icon</label>
-                                            <input name="icon" class="form-control"  id="exampleFormControlInput1"
-                                            type="file" placeholder=" tapper  prix produit" required>
-                
-                
-                                            @error('icon')
-                                                <div class="alert alert-danger">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                
-                
+                                     
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn btn-primary" type="submit ">Add</button>

@@ -6,11 +6,14 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\WhyController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\FeaturesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TableController;
+use App\Http\Controllers\DemoController;
+use App\Http\Controllers\FaqController;
 
 use App\Models\Restaurant;
 
@@ -83,6 +86,30 @@ Route::get('/feature/delete/{id}',[FeaturesController::class,'destroy']);
 
 Route::post('/admin/features/update', [App\Http\Controllers\FeaturesController::class, 'update'])->name('admin_feature_update');
 Route::post('/admin/features/item/update/{id}', [App\Http\Controllers\FeaturesController::class, 'item_update'])->name('admin_feature_item_update');
+
+/**Route why qr menu app ? */
+Route::get('/admin/why', [App\Http\Controllers\WhyController::class, 'index']);
+Route::post('/why/add',[WhyController::class,'store']);
+Route::get('/why/delete/{id}',[WhyController::class,'destroy']);
+Route::post('/admin/why/update/{id}', [App\Http\Controllers\WhyController::class, 'update'])->name('admin_why_update');
+
+/**demo route */
+Route::get('/admin/demo', [App\Http\Controllers\DemoController::class, 'index']);
+Route::post('/admin/demo/update', [App\Http\Controllers\DemoController::class, 'update'])->name('admin_demo_update');
+
+/**frequent questions and their answers */
+Route::get('/admin/faq', [App\Http\Controllers\FaqController::class, 'index'])->name('admin.faq.index');
+Route::post('/faq/add',[FaqController::class,'store']);
+Route::get('/faq/delete/{id}',[FaqController::class,'destroy']);
+
+Route::post('/admin/faq/update', [App\Http\Controllers\FaqController::class, 'update'])->name('admin_faq_update');
+Route::post('/admin/faq/item/update/{id}', [App\Http\Controllers\FaqController::class, 'item_update'])->name('admin_faq_item_update');
+
+/**contact routes */
+Route::get('/admin/contacts', [App\Http\Controllers\ContactController::class, 'index']);
+Route::post('/admin/contact/update', [App\Http\Controllers\ContactController::class, 'update'])->name('admin_banner_contact_update');
+
+
 
 /**Route categories */
 Route::get('/admin/categories', [App\Http\Controllers\CategoryController::class, 'index']);

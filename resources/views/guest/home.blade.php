@@ -99,107 +99,38 @@
         <!-- end of services -->
 
 
-        <!-- Details 1 -->
-        <div id="about" class="basic-1 bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-xl-5">
-                        <div class="text-container">
-                            <h2>{{__('home.Follow the new sanitary recommendations, it\'s the end of paper menus.')}}</h2>
-                            <p>{{__('home.Contactless: less risk.')}}</p>
-                            <p>{{__('home.Less paper: more eco-friendly.')}}</p>
-                            <p>{{__('home.Less ink: fewer harmful chemicals for the environment.')}}</p>
-                            </div> <!-- end of text-container -->
-                    </div> <!-- end of col -->
-
-
-                    
-                    <div class="col-lg-6 col-xl-7">
-                        <div class="image-container">
-                            <img class="img-fluid" src="{{asset('mainassets/images/details-1.svg')}}" alt="alternative">
-                        </div> <!-- end of image-container -->
-                    </div> <!-- end of col -->
-                </div> <!-- end of row -->
-            </div> <!-- end of container -->
-        </div> <!-- end of basic-1 -->
-        <!-- end of details 1 -->
-
-
-
-        
-
-
-        <!-- Details Modal -->
-        <div id="staticBackdrop" class="modal fade" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="row">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        <div class="col-lg-8">
-                            <div class="image-container">
-                                <img class="img-fluid" src="{{asset('mainassets/images/details-modal.jpg')}}" alt="alternative">
-                            </div> <!-- end of image-container -->
-                        </div> <!-- end of col -->
-                        <div class="col-lg-4">
-                            <h3>Goals Setting</h3>
-                            <hr>
-                            <p>In gravida at nunc sodales pretium. Vivamus semper, odio vitae mattis auctor, elit elit semper magna ac tum nico vela spider</p>
-                            <h4>User Feedback</h4>
-                            <p>Sapien vitae eros. Praesent ut erat a tellus posuere nisi more thico cursus pharetra finibus posuere nisi. Vivamus feugiat</p>
-                            <ul class="list-unstyled li-space-lg">
-                                <li class="d-flex">
-                                    <i class="fas fa-chevron-right"></i>
-                                    <div class="flex-grow-1">Tincidunt sem vel brita bet mala</div>
-                                </li>
-                                <li class="d-flex">
-                                    <i class="fas fa-chevron-right"></i>
-                                    <div class="flex-grow-1">Sapien condimentum sacoz sil necr</div>
-                                </li>
-                                <li class="d-flex">
-                                    <i class="fas fa-chevron-right"></i>
-                                    <div class="flex-grow-1">Fusce interdum nec ravon fro urna</div>
-                                </li>
-                                <li class="d-flex">
-                                    <i class="fas fa-chevron-right"></i>
-                                    <div class="flex-grow-1">Integer pulvinar biolot bat tortor</div>
-                                </li>
-                                <li class="d-flex">
-                                    <i class="fas fa-chevron-right"></i>
-                                    <div class="flex-grow-1">Id ultricies fringilla fangor raq trinit</div>
-                                </li>
-                            </ul>
-                            <a id="modalCtaBtn" class="btn-solid-reg" href="#your-link">Details</a>
-                            <button type="button" class="btn-outline-reg" data-bs-dismiss="modal">Close</button>
-                        </div> <!-- end of col -->
-                    </div> <!-- end of row -->
-                </div> <!-- end of modal-content -->
-            </div> <!-- end of modal-dialog -->
-        </div> <!-- end of modal -->
-        <!-- end of details modal -->
-
-
-        <!-- Details 2 -->
-        <div class="basic-2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="image-container">
-                            <img class="img-fluid" src="{{asset('mainassets/images/details-2.png')}}" alt="alternative">
-                        </div> <!-- end of image-container -->
-                    </div> <!-- end of col -->
-                    <div class="col-lg-6">
-                        <div class="text-container">
-                            <h2>{{__('home.Save time for your teams.')}}</h2>
-                            <p>{{__('home.Your teams no longer waste time distributing menus or disinfecting them.')}}</p>
-                            <p> {{__('home.Your customers will make their choices/orders even before the server arrives.')}}</p>
-                            <p>{{__('home.Your teams no longer waste time distributing menus or disinfecting them.')}}</p>
-                           
+       <!-- Details 1 -->
+       <div id="about" class="basic-1 bg-gray">
+        <div class="container">
+            <div class="row">
+                @foreach($whies as $why)
+                <div class="col-lg-6 col-xl-5  mb-5">
+                    <div class="text-container">
+                        <h2>{{$why->title }}</h2>
+                        <p>{{$why->desc1 }}</p>
+                        <p>{{$why->desc2 }}</p>
+                        <p>{{$why->desc3 }}</p>
                         </div> <!-- end of text-container -->
-                    </div> <!-- end of col -->
-                </div> <!-- end of row -->
-            </div> <!-- end of container -->
-        </div> <!-- end of basic-2 -->
-        <!-- end of details 2 -->
+                </div> <!-- end of col -->
+
+
+                
+                <div class="col-lg-6 col-xl-6 mb-5">
+                    <div class="image-container">
+                        <img class="img-fluid" src="{{asset('uploads')}}/{{ $why->icon }}" alt="alternative">
+                    </div> <!-- end of image-container -->
+                </div> <!-- end of col -->
+                <br>
+                <br>
+                @endforeach
+                
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of details 1 -->
+
+
+
 
              
         
@@ -279,10 +210,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center mb-5">
-                    <i class="fas fa-edit mr-2 text-primary ckedit_btn" type="button" style="display: none"></i><h2 class="h2-heading" key="demo_title" id="demo_title">See a demo online Menu</h2>
-                    <i class="fas fa-edit mr-2 text-primary ckedit_btn" type="button" style="display: none"></i><p class="accordion-body" key="demo_subtitle" id="demo_subtitle">Just open the camera on your phone and scan the <span class="font-weight-bolder">QR code</span> below!</p>
+                    <i class="fas fa-edit mr-2 text-primary ckedit_btn" type="button" style="display: none"></i><h2 class="h2-heading" key="demo_title" id="demo_title">{{ $demo->subheading }}</h2>
+                    <i class="fas fa-edit mr-2 text-primary ckedit_btn" type="button" style="display: none"></i><p class="accordion-body" key="demo_subtitle" id="demo_subtitle">{{ $demo->heading }}</p>
+                    <p class="accordion-body" key="demo_subtitle" id="demo_subtitle">{{ $demo->text }}</p>
+                                                                                                                
                         <a href="#" class="icon icon-lg text-gray mr-3">
-                            <img style="width:300px" src="https://zebra-qr.com/impactfront/img/qrdemo.jpg" />
+                            <img style="width:350px" src="{{asset('uploads')}}/{{ $demo->photo }}" />
         
                         </a>
         
@@ -290,7 +223,7 @@
                     <div class="col-12 text-center">
                         <!-- Button Modal -->
 
-                        <a href="{{ route('register') }}" class="btn-solid-reg"><span class="mr-2"><i class="fas fa-hand-pointer"></i></span>Create a Menu for you, now!</a>
+                        <a href="{{ route('register') }}" class="btn-solid-reg"><span class="mr-2"><i class="fas fa-hand-pointer me-2"></i></span>{{ $demo->button_text }}</a>
                     </div>
                 </div>
             </div>
@@ -305,75 +238,30 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2 class="h2-heading">Frequent questions</h2>
+                        <h2 class="h2-heading">{{$faq->Title}}</h2>
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->   
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="accordion" id="accordionExample">
+
+                            @foreach($faqs as $index =>  $faq)
+                                @if ($faq->id !='1')
                             
-                            <!-- Accordion Item -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">What do I have to do to get started?</button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">Click on register, enter your details, customize our sample menu and print or order your QR codes!</div>
-                                </div>
-                            </div>
-                            <!-- end of accordion-item -->
-
-                            <!-- Accordion Item -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">How can my waiters ans kitchen staff view QR Menu app orders</button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">Créez des identifiants de connexion distincts pour chacun de vos quatre serveurs et cuisiniers dans le panneau d'administration de votre restaurant. Demandez-leur de se connecter à instalcarte.com en utilisant les détails fournis. Cela leur permettra d'accéder et de voir toutes les commandes Instalcarte reçues.</div>
-                                </div>
-                            </div>
-                            <!-- end of accordion-item -->
-
-                            <!-- Accordion Item -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Can I cancel my subscription anytime?
-                                       </button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body"> Absolutely! You're free to cancel your subscription at any time.</div>
-                                </div>
-                            </div>
-                            <!-- end of accordion-item -->
+                                    <!-- Accordion Item -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="heading{{$index}}">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$index}}" aria-expanded="true" aria-controls="collapse{{$index}}"> {{"$faq->question"}} </button>
+                                        </h2>
+                                        <div id="collapse{{$index}}" class="accordion-collapse collapse " aria-labelledby="heading{{$index}}" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body"> {{"$faq->answer"}}</div>
+                                        </div>
+                                    </div>
+                                    <!-- end of accordion-item -->
+                                @endif
+                            @endforeach
 
 
-                             <!-- Accordion Item -->
-                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Where should I place the QR Codes?
-                                       
-                                       </button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">  QR Code menus work for dine-in, delivery, and pickup. Paste QR Codes on tables, entry points, food pickup zones, or even delivery bags for future orders.</div>
-                                </div>
-                            </div>
-                            <!-- end of accordion-item -->
-
-
-                             <!-- Accordion Item -->
-                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Do my customers need an app to scan a QR Code?
-                                      
-                                       
-                                       </button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">    No, they can simply use their phone cameras.</div>
-                                </div>
-                            </div>
-                            <!-- end of accordion-item -->
 
                         </div> <!-- end of accordion -->
                     </div> <!-- end of col -->

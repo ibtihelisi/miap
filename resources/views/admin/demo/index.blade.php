@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>QR Menu|CMS|Home</title>
+    <title>QR Menu|CMS|Demo</title>
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('dashassets/img/favicons/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('dashassets/img/favicons/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('dashassets/img/favicons/favicon-16x16.png')}}">
@@ -54,16 +54,17 @@
           <div class="pb-5">
 
             <div class="container">
-              <h1 class="mt-3">Edit Home Banner</h1>
+              <h1 class="mt-3">Edit Demo Banner</h1>
               <hr>
 
 
 
       
           </div>
-          
+          <div class="row py-2">
+           
             
-        </div>
+            </div>
 
         
                <!-- Affichage des alertes de succès ou d'erreur -->
@@ -89,7 +90,7 @@
             @endif
         
            
-        <form action="{{route('admin_banner_home_update')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('admin_demo_update')}}" method="post" enctype="multipart/form-data">
 
 
           @csrf
@@ -101,7 +102,7 @@
                   <label class="form-label" for="exampleFormControlInput1">Existing Photo</label>
                   <div>
                     
-                    <img src="{{asset('uploads')}}/{{ $setting->photo }}" alt="" width="200">
+                    <img src="{{asset('uploads')}}/{{ $demo->photo }}" alt="" width="200">
                   </div>
                   @error('photo')
                   <div class="alert alert-danger">
@@ -130,7 +131,7 @@
               <div class="col-md-12">
                 <div id="form-group-features" class="form-group  ">
                      <label class="form-control-label" for="">Subheading</label>
-                     <input type="text"    value ="{{$setting->subheading}}"  name="subheading"  class="form-control form-control   "  >
+                     <input type="text"    value ="{{$demo->subheading}}"  name="subheading"  class="form-control form-control   "  >
                 </div>
                 @error('subheading')
                   <div class="alert alert-danger">
@@ -145,7 +146,7 @@
                <div class="col-md-12">
                     <div id="form-group-features" class="form-group  ">
                          <label class="form-control-label" for="">Heading</label>
-                         <input type="text"    value ="{{$setting->heading}}"  name="heading"  class="form-control form-control   "  >
+                         <input type="text"    value ="{{$demo->heading}}"  name="heading"  class="form-control form-control   "  >
                     </div>
                     @error('heading')
                       <div class="alert alert-danger">
@@ -161,7 +162,7 @@
               <div class="col-md-12">
                           <div id="form-group-features" class="form-group  ">
                                <label class="form-control-label" for="">Text</label>
-                               <textarea   name="text"  value ="{{$setting->text}}" class="form-control form-control   " cols="30"  rows="10">{{$setting->text}}</textarea>
+                               <textarea   name="text"  value ="{{$demo->text}}" class="form-control form-control   " cols="30"  rows="10">{{$demo->text}}</textarea>
                           </div>
                           @error('text')
                             <div class="alert alert-danger">
@@ -176,7 +177,7 @@
                 <div class="col-md-12">
                   <div id="form-group-features" class="form-group  ">
                        <label class="form-control-label" for="">Button Text</label>
-                       <input type="text"    value ="{{$setting->button_text}}"  name="button_text"  class="form-control form-control   "  >
+                       <input type="text"    value ="{{$demo->button_text}}"  name="button_text"  class="form-control form-control   "  >
                   </div>
                   @error('button_text')
                     <div class="alert alert-danger">

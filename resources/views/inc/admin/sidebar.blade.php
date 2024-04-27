@@ -84,9 +84,62 @@
               </a>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link active" href="/admin/why">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon">
+                  
+                  <i class="fas fa-wrench"></i>
+                </span>
+                <span class="nav-link-text">why page</span>
+              </div>
+              </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link active" href="/admin/demo">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon">
+                  
+                  <i class="fas fa-wrench"></i>
+                </span>
+                <span class="nav-link-text">Demo</span>
+              </div>
+              </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link active" href="/admin/faq">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon">
+                  
+                  <i class="fas fa-wrench"></i>
+                </span>
+                <span class="nav-link-text">FAQ</span>
+              </div>
+              </a>
+          </li>
 
 
 
+          
+          <li class="nav-item">
+            <a class="nav-link active" href="/admin/contacts">
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon">
+                  
+                  <i class="fas fa-wrench"></i>
+                </span>
+                <span class="nav-link-text">Contact</span>
+              </div>
+              </a>
+          </li>
+
+
+
+          
          
         </ul>
       </div>
