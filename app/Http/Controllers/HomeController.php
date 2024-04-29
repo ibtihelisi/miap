@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
+use App\Models\Qrcode;
+
 class HomeController extends Controller
 {
     /**
@@ -171,10 +173,35 @@ public function update_admin(Request $request, $id)
         
             if ($user->save()) {
                 return redirect("/client/profile/{$id}")->with('success', 'Password successfully updated');
-            } else {
+            } 
+            else {
                 return redirect("/client/profile/{$id}")->with('success', 'Failed to update password');
             }
         }
+        
+
+
+       
+
+        public function generateQRCode()
+        {
+            $user = Auth::user(); // Ou récupérez l'utilisateur d'une autre manière
+            $url = route('pageWithData'); // Remplacez 'pageWithData' par le nom de votre route
+            $qrCode = QrCode::size(300)->generate($url);
+            
+            // Retournez la vue avec le QR code
+            return view('qrcode', compact('qrCode'));
+        }
+
+        public function showWithData()
+{
+    $user = Auth::user(); // Ou récupérez l'utilisateur d'une autre manière
+    $categories = $user->categories; // Récupérez les catégories de l'utilisateur
+    
+    // Retournez la vue avec les données
+    return view('page_with_data', compact('categories'));
+}
+
         
 
 

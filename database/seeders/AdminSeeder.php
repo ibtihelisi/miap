@@ -24,6 +24,9 @@ class AdminSeeder extends Seeder
 
 
             'restaurant_name'=>'XXXX',
+            'desc'=>'XXXX',
+            'logo'=>'',
+            'location'=>'XX',
             'owner_name'=>'QR Menu ADMIN',
             'email'=>'admin@admin.com',
             'owner_phone'=>'00000000',

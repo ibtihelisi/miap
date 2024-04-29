@@ -35,9 +35,9 @@ class GuestController extends Controller
         $faq = faq::findOrFail(1);
         $faqs = faq::all();
 
-        $contact = Contact::findOrFail(1);
+       
 
-        return view('guest.home', compact('subscriptions', 'setting','feature','features','whies','demo','faq','faqs','contact')); // Passez les données à la vue
+        return view('guest.home', compact('subscriptions', 'setting','feature','features','whies','demo','faq','faqs')); // Passez les données à la vue
   
     }
 }

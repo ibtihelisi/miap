@@ -104,7 +104,7 @@
 
 
           <li class="nav-item">
-            <a class="nav-link active" href="/admin/subscriptions">
+            <a class="nav-link active" href="/page-avec-donnees">
                 <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
                         <!-- Using Font Awesome credit card icon -->
@@ -135,33 +135,7 @@
 
 
           
-          <li class="nav-item">
-            <p class="navbar-vertical-label">Pos & orders</p>
-            <a class="nav-link" href="pages/starter.html" role="button" data-bs-toggle="" aria-expanded="false">
-              <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="flag"></span></span><span class="nav-link-text">pos</span></div>
-            </a>
-
-            <a class="nav-link" href="pages/starter.html" role="button" data-bs-toggle="" aria-expanded="false">
-              <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="flag"></span></span><span class="nav-link-text">pos Orders</span></div>
-            </a>
-
-            <a class="nav-link" href="pages/starter.html" role="button" data-bs-toggle="" aria-expanded="false">
-              <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="flag"></span></span><span class="nav-link-text">Table Orders</span></div>
-            </a>
-            
-           
-          </li>
-          <li class="nav-item">
-            <p class="navbar-vertical-label">Promo</p>
-            
-            <a class="nav-link" href="pages/starter.html" role="button" data-bs-toggle="" aria-expanded="false">
-              <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="flag"></span></span><span class="nav-link-text">Offers</span></div>
-            </a>
-
-            
-            
-          </li>
-          
+         
         </ul>
       </div>
       <div class="navbar-vertical-footer"><a class="btn btn-link border-0 fw-semi-bold d-flex ps-0" href="#!"><span class="navbar-vertical-footer-icon" data-feather="log-out"></span><span>Settings</span></a></div>

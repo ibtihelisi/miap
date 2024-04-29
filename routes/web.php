@@ -68,7 +68,7 @@ Route::get('/restaurant/search',[RestaurantController::class,'search']);
 Route::get('/restaurants/export', [RestaurantController::class,'export'])->name('export.restaurants');
 
 Route::post('/restaurant/update/{id}',[RestaurantController::class,'update']);
-Route::get('/restaurant/edit/{id}',[RestaurantController::class,'updateinter']);
+Route::get('/restaurant/edit/{id}  ',[RestaurantController::class,'updateinter']);
 
 
 
@@ -201,3 +201,19 @@ Route::get('/restaurant/menu/item/edit/{id}',[ItemController::class,'updateinter
 Route::get('/restaurant/table',[TableController::class,'index']);
 Route::post('/restaurant/table/add',[TableController::class,'store']);
 Route::get('/restaurant/table/create',[TableController::class,'create']);
+
+
+
+
+
+
+
+/**qr cooode */
+
+Route::get('/page-avec-donnees', [App\Http\Controllers\HomeController::class, 'showWithData'])->name('pageWithData');
+
+/**interface client finale */
+
+
+
+Route::get('/QRMenu/restaurant/{id}', [App\Http\Controllers\RestaurantController::class, 'show']);

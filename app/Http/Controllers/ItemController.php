@@ -85,7 +85,7 @@ public function destroy($id) {
 
     // Check if the item exists
     if (!$item) {
-        return redirect()->back()->with('error', 'Item not found.');
+        return redirect()->back()->with('success', 'Item not found.');
     }
 
     // Get the file path of the item's photo
@@ -100,9 +100,11 @@ public function destroy($id) {
     if ($item->delete()) {
         return redirect()->back()->with('success', 'Item removed from the database successfully.');
     } else {
-        return redirect()->back()->with('error', 'Failed to remove item from the database.');
+        return redirect()->back()->with('success', 'Failed to remove item from the database.');
     }
 }
+
+
 
 
      //interface pour modfifier une subbscription

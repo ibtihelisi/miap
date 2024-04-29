@@ -37,6 +37,49 @@
                             @enderror
                         </div>
                     </div>
+
+
+                    <div class="row mb-3">
+                        <label for="desc" class="col-md-4 col-form-label text-md-end">Restaurant Description </label>
+
+                        <div class="col-md-6">
+                            <input id="desc" type="text" class="form-control @error('desc') is-invalid @enderror" name="desc" value="{{ old('desc') }}"  autocomplete="desc" autofocus>
+
+                            @error('desc')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="location" class="col-md-4 col-form-label text-md-end">Restaurant Location </label>
+
+                        <div class="col-md-6">
+                            <input id="location" type="text" class="form-control @error('location') is-invalid @enderror" name="location" value="{{ old('location') }}"  autocomplete="location" autofocus>
+
+                            @error('location')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="logo" class="col-md-4 col-form-label text-md-end">Restaurant Logo </label>
+
+                        <div class="col-md-6">
+                            <input id="logo" type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" value="{{ old('logo') }}"  autocomplete="logo" autofocus>
+
+                            @error('logo')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
                     <hr class="my-4">
                     <h6 class="heading-small text-muted mb-4">Owner information</h6>
 

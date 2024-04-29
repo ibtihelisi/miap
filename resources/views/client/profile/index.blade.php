@@ -55,8 +55,8 @@
         <div class="container-fluid px-0">
 
 
-            @include('inc.admin.sidebar')
-            @include('inc.admin.nav')
+            @include('inc.client.sidebar')
+            @include('inc.client.nav')
             
             
             <div class="content">

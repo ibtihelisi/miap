@@ -23,7 +23,12 @@ class User extends Authenticatable
     {
     return $this->hasMany(Category::class, 'user_id', 'id');
     }
+    
 
+    public function qrcode()
+    {
+        return $this->hasOne(Qrcode::class, 'user_id','id');
+    }
 
     /**
      * The attributes that are mass assignable.

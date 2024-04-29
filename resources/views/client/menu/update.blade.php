@@ -99,6 +99,56 @@
 
 
 
+        /* Style for file input button */
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+/* Adjust alignment of file input button */
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Style for the "Select image" button */
+.fileinput-new {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style for the "Change" button */
+.fileinput-exists {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #e6e6e6;
+    border: 1px solid #adadad;
+    border-radius: 4px;
+}
+
+
+
 
 
 
@@ -165,34 +215,12 @@
                                         
                                         </div> 
 
-                                        <div class="mb-3">
-
-                                            <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> 
-                                                Category</label>
-
-                                                <select name="category" id="" class="form-control">
-                                                
-                                                    <option value="">cat1</option>
-                                                    
-                                                    <option value="">cat2</option>
-                                                    
-                                                    
-                                                    
-                                                </select>
-
-                                            @error('category')
-                                            <div class="alert alert-danger">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                        
-                                        </div>
 
 
                                         <div class="mb-3">
 
                                             <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Item Description</label>
-                                            <textarea id="item_description" name="item_description" class="form-control form-control-alternative"  value="" required="" autofocus="" rows="3"></textarea>
+                                            <textarea id="item_description" name="item_description" class="form-control form-control-alternative"  value=""   rows="3">{{$items->description}}</textarea>
                                             @error('item_description')
                                             <div class="alert alert-danger">
                                                 {{ $message }}
@@ -203,24 +231,24 @@
 
 
                                         <div class="mb-3">
+                                            <!--espace exesting photo-->
 
                                             <div class="form-group text-center">
                                                 <label class="form-control-label" for="input-name">Item Image</label>
                                                     <div class="text-center">
                                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                                         <div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 290px; height:200">
-                                                        <img src="/uploads/restorants/39e04f62-602e-4f80-997d-49ac271569e7_large.jpg" alt="...">
+                                                            <img src="{{asset('uploads')}}/{{ $items->photo }}" alt="" width="290">
                                                     </div>
                                                         <div>
                                                             <span class="btn btn-outline-secondary btn-file">
-                                                            <span class="fileinput-new">Select image</span>
+                                                            
                                                             <span class="fileinput-exists">Change</span>
                                                             
                                                            
-                                                            <input type="file" name="item_image" accept="image/x-png,image/png,image/gif,image/jpeg">
+                                                            <input type="file" name="photo" accept="image/x-png,image/png,image/gif,image/jpeg">
                                                             </span>
-                                                            <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                                        </div>
+                                                               </div>
                                                     </div>
                                                    
                                                     
@@ -230,22 +258,23 @@
 
 
                                         
-                                        <div class="mb-3">
-
-                                            <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Item image</label>
-                                            <input name="name_res" class="form-control" id="exampleFormControlInput1" type="text"  required >
-                                            @error('name_res')
-                                            <div class="alert alert-danger">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
                                         
-                                        </div> 
 
 
                                         <div class="form-group">
                             
-                                            <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Item image</label>
+                                            <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Item available</label>
+                                            <label class="custom-toggle" style="float: right">
+                                                <input type="checkbox" name="itemAvailable" id="itemAvailable" checked="">
+                                                <span class="custom-toggle-slider rounded-circle"></span>
+                                            </label>
+                                        </div>
+
+
+                                        
+                                        <div class="form-group">
+                            
+                                            <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Enable variants</label>
                                             <label class="custom-toggle" style="float: right">
                                                 <input type="checkbox" name="itemAvailable" id="itemAvailable" checked="">
                                                 <span class="custom-toggle-slider rounded-circle"></span>

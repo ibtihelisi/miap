@@ -170,47 +170,56 @@ class RestaurantController extends Controller
 
 
     
-                public function edit($id) {
-                    // Récupérer les informations du restaurant à partir de l'ID de l'utilisateur
-                    $restaurant = User::findOrFail($id);
+             
+        public function update(Request $request, $id){
 
-                    // Passer les informations du restaurant à la vue update.blade.php
-                    return view('update')->with('restaurant', $restaurant);
-                }
-
-
-
-    /*
-    //modif categorie
-     public function update(Request $request )  {
-
-        $request->validate([
-            'name'=>'required',
-            'description'=> 'required'
-
-        ]);
-         
-        $id = $request->idcategory;
-
-        $categorie =Category::find($id);
-
-        $categorie->name=$request->name;
-        $categorie->description=$request->description;
-
-        if($categorie->update()){
-            return redirect()->back();
-        }
-        else{
-            echo "erreur";
-        }
-
-
-       
+            $request->validate([
+                
+            ]);
         
-     }*/
+            //$feature = Features::where('id', '!=', 1)->findOrFail($id);
+          
+            $user=User::find($id);
+
+            if($request->icon !=''){
+                $request->validate([
+                    'icon'=>['mimes:jpeg,jpg,png,svg'],
+                ]);
+                if($user->icon!=''){
+                    unlink(public_path('uploads/'.$user->icon));
+                }
+                $file_name='setting_'.time().'.'.$request->icon->extension();
+                $request->icon->move(public_path('uploads'),$file_name);
+                $user->icon=$file_name;
+            }
+
+            $user->restaurant_name = $request->restaurant_name;
+            $user->desc = $request->fedesc;
+            $user->location = $request->location;
+            $user->owner_phone = $request->owner_phone;
+            
+        
+            if ($user->update()) {
+                // Redirigez vers la page d'index des fonctionnalités après une mise à jour réussie
+                return redirect()->route('admin.features.index')->with('success', 'Feature item updated successfully');
+            } else {
+                // Gérez les erreurs si la sauvegarde échoue
+                return back()->with('error', 'Failed to update feature item');
+            }// Assurez-vous que les noms de champ correspondent aux noms dans le formulaire
+        }
+        
+
+        
 
 
 
+    
+
+ //affichage de a liste
+ public function show($id){
+    $users=User::all();
+    return view('consomateur.dashboard')->with('users',$users);
+}
 
 
 

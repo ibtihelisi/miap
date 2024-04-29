@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>MEAP</title>
+    <title>QR Menu|Restaurants</title>
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('dashassets/img/favicons/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('dashassets/img/favicons/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('dashassets/img/favicons/favicon-16x16.png')}}">
@@ -69,18 +69,7 @@
           </div>
           <div class="row py-2">
             <div class="col-md-6">
-              <form action="/restaurant/search" method="GET">
-                <div class="input-group">
-                    
-                   
-                    <select class="form-select" name="restaurant_id">
-                      <option value="">Search</option>
-                      @foreach ($users as $u)
-                          <option value="{{ $u->id }}">{{ $u->restaurant_name }}</option>
-                      @endforeach
-                    </select>
-                     </div>
-            </form>
+              
             
             </div>
             <div class="col-md-6 text-end">

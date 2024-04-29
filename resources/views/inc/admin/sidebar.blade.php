@@ -8,7 +8,8 @@
         <ul class="navbar-nav flex-column" id="navbarVerticalNav">
           <li class="nav-item"><a class="nav-link active" href="/admin/dashboard">
               <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">Dashboard</span></div>
-            </a></li>
+            </a>
+          </li>
 
 
 
@@ -19,7 +20,8 @@
                   <div class="d-flex align-items-center">
                       <span class="nav-link-icon">
                           
-                          <i class="fas fa-store-alt"></i>
+                        <i class="fas fa-utensils"></i>
+
                       </span>
                       <span class="nav-link-text">Restaurants</span>
                   </div>
@@ -27,116 +29,133 @@
           </li>
 
 
+          <li class="nav-item">
+            
+            <p class="navbar-vertical-label">Site QR Menu Management</p>
+           
+
+
+                 
+
+              <li class="nav-item">
+                <a class="nav-link active" href="/admin/settings">
+                  <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                      
+                      <i class="fas fa-home"></i>
+
+                    </span>
+                    <span class="nav-link-text">Home </span>
+                  </div>
+                  </a>
+              </li>
 
 
           
-          <li class="nav-item">
-            <a class="nav-link active" href="/admin/subscriptions">
-                <div class="d-flex align-items-center">
+              <li class="nav-item">
+                <a class="nav-link active" href="/admin/features">
+                  <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
-                        
-                        <i class="fas fa-credit-card"></i>
+                      
+                      <i class="fas fa-thumbs-up"></i>
+
                     </span>
-                    <span class="nav-link-text">Pricing Plans</span>
-                </div>
-            </a>
-        </li>
+                    <span class="nav-link-text">Features </span>
+                  </div>
+                  </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active" href="/admin/why">
+                  <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                      
+                      <i class="fas fa-lightbulb"></i>
+                    </span>
+                    <span class="nav-link-text">Reasons </span>
+                  </div>
+                  </a>
+              </li>
+
+
+              <li class="nav-item">
+                <a class="nav-link active" href="/admin/subscriptions">
+                    <div class="d-flex align-items-center">
+                        <span class="nav-link-icon">
+                            
+                            <i class="fas fa-credit-card"></i>
+                        </span>
+                        <span class="nav-link-text">Pricing Plans </span>
+                    </div>
+                </a>
+            </li>
+            
+
+
+              <li class="nav-item">
+                <a class="nav-link active" href="/admin/demo">
+                  <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                      
+                      <i class="fas fa-play"></i>
+
+                    </span>
+                    <span class="nav-link-text">Demo</span>
+                  </div>
+                  </a>
+              </li>
+
+
+              <li class="nav-item">
+                <a class="nav-link active" href="/admin/faq">
+                  <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                      
+                      <i class="fas fa-question-circle"></i>
+
+                    </span>
+                    <span class="nav-link-text">FAQ</span>
+                  </div>
+                  </a>
+              </li>
+
+
+
+              
+              <li class="nav-item">
+                <a class="nav-link active" href="/admin/contacts">
+                  <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                      
+                      <i class="fas fa-envelope"></i>
+
+                    </span>
+                    <span class="nav-link-text">Contact</span>
+                  </div>
+                  </a>
+              </li>
+
+            
+              
+              
+
+              
+            
+          </li>
+
+
+
+
+
+
+
+          
         
 
 
 
 
-          <li class="nav-item">
-            <a class="nav-link active" href="">
-              <div class="d-flex align-items-center">
-                <span class="nav-link-icon">
-                  
-                  <i class="fas fa-coins"></i>
-                </span>
-                <span class="nav-link-text">Finances</span>
-              </div>
-              </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" href="/admin/settings">
-              <div class="d-flex align-items-center">
-                <span class="nav-link-icon">
-                  
-                  <i class="fas fa-wrench"></i>
-                </span>
-                <span class="nav-link-text">Site settings</span>
-              </div>
-              </a>
-          </li>
-
-
-          
-          <li class="nav-item">
-            <a class="nav-link active" href="/admin/features">
-              <div class="d-flex align-items-center">
-                <span class="nav-link-icon">
-                  
-                  <i class="fas fa-wrench"></i>
-                </span>
-                <span class="nav-link-text">features</span>
-              </div>
-              </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" href="/admin/why">
-              <div class="d-flex align-items-center">
-                <span class="nav-link-icon">
-                  
-                  <i class="fas fa-wrench"></i>
-                </span>
-                <span class="nav-link-text">why page</span>
-              </div>
-              </a>
-          </li>
-
-
-          <li class="nav-item">
-            <a class="nav-link active" href="/admin/demo">
-              <div class="d-flex align-items-center">
-                <span class="nav-link-icon">
-                  
-                  <i class="fas fa-wrench"></i>
-                </span>
-                <span class="nav-link-text">Demo</span>
-              </div>
-              </a>
-          </li>
-
-
-          <li class="nav-item">
-            <a class="nav-link active" href="/admin/faq">
-              <div class="d-flex align-items-center">
-                <span class="nav-link-icon">
-                  
-                  <i class="fas fa-wrench"></i>
-                </span>
-                <span class="nav-link-text">FAQ</span>
-              </div>
-              </a>
-          </li>
-
-
-
-          
-          <li class="nav-item">
-            <a class="nav-link active" href="/admin/contacts">
-              <div class="d-flex align-items-center">
-                <span class="nav-link-icon">
-                  
-                  <i class="fas fa-wrench"></i>
-                </span>
-                <span class="nav-link-text">Contact</span>
-              </div>
-              </a>
-          </li>
-
+      
 
 
           

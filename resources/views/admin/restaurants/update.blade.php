@@ -184,7 +184,12 @@
 
 
                                   @csrf
-
+                                  @foreach ($users as $user )
+                                  @if ($user->role !='admin')
+                                      
+                                  
+                                    
+                                  
                               
                                   <div class="modal-body">
                                   <!--espace name-->
@@ -192,8 +197,8 @@
                                       <div class="mb-3">
 
                                           <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Restaurant Name</label>
-                                          <input name="name"   value ="{{Auth::user()->owner_name}}"  class="form-control" id="exampleFormControlInput1" type="text"  required placeholder=" your rRestaurant Name ......">
-                                          @error('name')
+                                          <input name="restaurant_name"   value ="{{$user->restaurant_name}}"  class="form-control" id="exampleFormControlInput1" type="text"   placeholder=" your rRestaurant Name ......">
+                                          @error('restaurant_name')
                                               <div class="alert alert-danger">
                                                 {{ $message }}
                                               </div>
@@ -205,8 +210,8 @@
                                       <div class="mb-3">
 
                                           <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Restaurant description</label>
-                                          <input name="description"   value =""  class="form-control" id="exampleFormControlInput1" type="text"  required placeholder=" your rRestaurant Description ......" >
-                                          @error('description')
+                                          <input name="desc"   value =""  class="form-control" id="exampleFormControlInput1" type="text"   placeholder=" your rRestaurant Description ......" >
+                                          @error('desc')
                                             <div class="alert alert-danger">
                                                 {{ $message }}
                                             </div>
@@ -219,8 +224,8 @@
                                         <div class="mb-3">
 
                                           <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Restaurant address</label>
-                                          <input name="adress"   value =""  class="form-control" id="exampleFormControlInput1" type="text"  required  placeholder=" your rRestaurant Adress ......">
-                                          @error('adress')
+                                          <input name="location"   value =""  class="form-control" id="exampleFormControlInput1" type="text"  required  placeholder=" your rRestaurant Adress ......">
+                                          @error('location')
                                             <div class="alert alert-danger">
                                                 {{ $message }}
                                             </div>
@@ -234,7 +239,7 @@
                                           <label for="owner_phone" class="col-md-0 col-form-label text-md-end">{{ __('Owner Phone Number') }}</label>
                   
                                           
-                                              <input id="owner_phone" type="number" value="{{Auth::user()->owner_phone}}" class="form-control @error('owner_phone') is-invalid @enderror" name="owner_phone"  placeholder=" Owner Phone number here..." required autocomplete="owner_phone" >
+                                              <input id="owner_phone" type="number" value="{{$user->owner_phone}}" class="form-control @error('owner_phone') is-invalid @enderror" name="owner_phone"  placeholder=" Owner Phone number here..." required autocomplete="owner_phone" >
                   
                                               
                                           
@@ -246,82 +251,55 @@
                                       
 
 
+                                            <!--espace exesting photo-->
+                                            <div class="mb-3">
+                                              <label class="form-label" for="exampleFormControlInput1">Existing Photo</label>
+                                              <div>
+                      
+                                                  <img src="{{asset('uploads')}}/{{ $user->logo }}" alt="" width="50">
+                                              </div>
+                                              @error('logo')
+                                              <div class="alert alert-danger">
+                                                  {{ $message }}
+                                              </div>
+                                              @enderror
+                  
+                                          </div>
+
+
+                                          
+                                          <!--espace change photo-->
+                                          <div class="mb-3">
+                                              <label class="form-label" for="exampleFormControlInput1">Change Icon</label>
+                                              <div>
+                                                  <input type="file"  name="logo"    >
+                                              </div>
+                                              @error('logo')
+                                              <div class="alert alert-danger">
+                                                  {{ $message }}
+                                              </div>
+                                              @enderror
+                                      
+                                          </div>
+                                          
 
                                         
-
-                                      <div class="mb-3">
-
-                                          <div class="form-group text-center">
-                                              <label class="col-md-2 col-form-label text-md-end" for="input-name">Item Image</label>
-                                                  <div class="text-center">
-                                                  <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                      <div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 290px; height:200">
-                                                      <img src="/uploads/restorants/39e04f62-602e-4f80-997d-49ac271569e7_large.jpg" alt="">
-                                                  </div>
-                                                      <div>
-                                                          <span class="btn btn-outline-secondary btn-file">
-                                                          <span class="fileinput-new">Select image</span>
-                                                          <span class="fileinput-exists">Change</span>
-                                                          
-                                                          
-                                                          <input type="file" name="item_image" accept="image/x-png,image/png,image/gif,image/jpeg">
-                                                          </span>
-                                                          <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                                      </div>
-                                                  </div>
-                                                  
-                                                  
-                                              </div>
-                                              </div>
-                                      </div> 
-
-
-
-
-
-
-                                      <div class="col-md-6">
-
-                                            <div class="form-group text-center">
-                                              <label class="col-md-2 col-form-label text-md-end" for="input-name">Restaurant Cover Image</label>
-                                                <br> 
-                                                    <div class="text-center">
-                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                      <div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 200px; height: 100px; line-height: 100px;">
-                                                        <img src="/default/cover.jpg" alt="...">
-                                                      </div>
-                                                      <div>
-                                                      <span class="btn btn-outline-secondary btn-file">
-                                                      <span class="fileinput-new">Select image</span>
-                                                      <span class="fileinput-exists">Change</span>
-                                    
-                                  
-                                                          <input type="hidden" value="" name="resto_cover"><input type="file" name="" accept="image/x-png,image/png,image/gif,image/jpeg">
-                                                      </span>
-                                                      <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                                      </div>
-                                                    </div>
-                          
-                            
-                                                    </div>
-                                              </div>              
-                                        </div>
-
 
                                       
                 
 
 
                                   <br>
+
                                       <div class="center">
                                   
                                           <button  class="btn btn-success" type="submit ">UPDATE</button>
                                       
                                       </div>
                                   
-                              
+                                      @endif
+                                      @endforeach
                                       
-
 
                                       <hr>
 

@@ -56,6 +56,10 @@ class RegisterController extends Controller
 
 
             'restaurant_name' => ['required', 'string', 'max:255'],
+            'desc' => ['nullable', 'string'], // Add 'nullable' rule here
+            'logo' => ['nullable', 'string'], // Add 'nullable' rule here
+            'location' => ['nullable', 'string'], // Add 'nullable' rule here
+   
             'owner_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', ],
             'owner_phone' => ['required', 'string', 'max:255'],
@@ -75,14 +79,13 @@ class RegisterController extends Controller
         return User::create([
 
             
-            /*
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),*/
 
 
 
             'restaurant_name'=> $data['restaurant_name'],
+            'desc'=> $data['desc'],
+            'logo'=> $data['logo'],
+            'location'=> $data['location'],
             'owner_name'=> $data['owner_name'],
             'email' => $data['email'],
             'owner_phone'=> $data['owner_phone'],

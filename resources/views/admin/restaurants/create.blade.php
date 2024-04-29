@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>MEAP</title>
+    <title>QR Menu|Create|Restaurant</title>
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('dashassets/img/favicons/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('dashassets/img/favicons/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('dashassets/img/favicons/favicon-16x16.png')}}">
@@ -80,7 +80,7 @@
           
             <div class="modal-body">
               <!--espace name-->
-              <h6 class="col-md-2 col-form-label text-md-end">Restaurant information</h6>
+              <h6 class="col-md-7 col-form-label text-md-end">Restaurant information</h6>
                 <div class="mb-3">
 
                     <label class="col-md-0 col-form-label text-md-end" for="restaurant_name"> Restaurant Name</label>
@@ -93,8 +93,10 @@
                 
                 </div> 
                 <hr class="my-4">
+               
+                
                 <!--espace owner name-->
-                <h6 class="col-md-2 col-form-label text-md-end">Owner information</h6>
+                <h6 class="col-md-7 col-form-label text-md-end">Owner information</h6>
                 <div class="mb-3">
                     <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1">Owner Name</label>
                     <input name="owner_name" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Owner Name here..."  value="{{ old('owner_name') }}" required >
