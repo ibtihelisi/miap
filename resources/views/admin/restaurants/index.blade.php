@@ -22,6 +22,11 @@
       body {
         opacity: 0;
       }
+
+      .logo-img {
+    max-width: 100px; /* Définissez la largeur maximale de l'image */
+    height: 100px; /* Laissez la hauteur être automatique pour conserver les proportions */
+}
     </style>
 
 <style>
@@ -118,6 +123,8 @@
                             <tr>
                                 <th class="sort" data-sort="NAME">NAME</th>
                                 <th class="sort" data-sort="LOGO">LOGO</th>
+                                <th class="sort" data-sort="LOCATION">LOCATION</th>
+                                <th class="sort" data-sort="DESC">DESCRIPTION</th>
                                 <th class="sort" data-sort="OWNER">OWNER</th>
                                 <th class="sort" data-sort="OWNER EMAIL">OWNER EMAIL</th>
                                 <th class="sort" data-sort="CREATION DATE">CREATION DATE</th>
@@ -133,7 +140,9 @@
                             @if ($u->role == 'user')
                             <tr>
                                 <td class="NAME">{{ $u->restaurant_name }}</td>
-                                <td class="LOGO"></td>
+                                <td class="LOGO"> <img src="{{ asset('uploads/' . $u->logo) }}" alt="Logo"  class="logo-img"></td>
+                                <td class="LOCATION">{{ $u->location }}</td>
+                                <td class="DESC">{{ $u->desc }}</td>
                                 <td class="OWNER">{{ $u->owner_name }}</td>
                                 <td class="OWNER EMAIL">{{ $u->email }}</td>
                                 <td class="CREATION DATE">{{ $u->created_at }}</td>
@@ -152,11 +161,9 @@
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="/restaurant/edit/{{$u->id}}">
-                                                <i class="fas fa-edit"></i> Modifier
+                                                <i class="fas fa-edit"></i> Update
                                             </a>
-                                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editRestaurant{{ $u->id }}">
-                                                <i class="fas fa-sign-in-alt"></i> Login as
-                                            </a>
+                                           
                                             <a class="dropdown-item delete-restaurant" onclick="return confirm('Are you sure you want to delete this Restaurant from Database? This will also delete all data related to it. This is an irreversible step.')" href="/restaurant/delete/{{ $u->id }}"  >
                                                 <i class="fas fa-trash-alt"></i> Delete
                                             </a>

@@ -73,7 +73,7 @@
         
           
           
-         <form action="/restaurant/add" method="post">
+         <form action="/restaurant/add" method="post" enctype="multipart/form-data">
 
             @csrf
 
@@ -92,6 +92,56 @@
                   @enderror
                 
                 </div> 
+
+
+
+                <div class="mb-0">
+                  <label class="form-label" for="exampleTextarea">Restaurant Logo</label>
+                  <input name="logo" class="form-control"  id="exampleFormControlInput1"
+                  type="file" placeholder=" "  required>
+
+
+                  @error('logo')
+                      <div class="alert alert-danger">
+                          {{ $message }}
+                      </div>
+                  @enderror
+              </div>
+
+
+
+
+                <div class="mb-3">
+
+                  <label class="col-md-0 col-form-label text-md-end" for="restaurant_name"> Restaurant Location</label>
+                  <input name="location" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Restaurant Name here..."  value="{{ old('restaurant_name') }}"  required >
+                  @error('location')
+                  <div class="alert alert-danger">
+                      {{ $message }}
+                  </div>
+                @enderror
+              
+              </div> 
+
+
+
+
+
+
+              <div class="mb-3">
+
+                <label class="col-md-0 col-form-label text-md-end" for="restaurant_name"> Restaurant Description</label>
+                <input name="desc" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Restaurant Name here..."  value="{{ old('restaurant_name') }}"  required >
+                @error('desc')
+                <div class="alert alert-danger">
+                    {{ $message }}
+                </div>
+              @enderror
+            
+            </div> 
+
+
+
                 <hr class="my-4">
                
                 

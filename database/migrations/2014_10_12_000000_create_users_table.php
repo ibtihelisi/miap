@@ -24,9 +24,9 @@ return new class extends Migration
 
             $table->id();
             $table->string('restaurant_name')->unique();
-            $table->string('desc')->nullable();
-            $table->string('logo')->nullable();
-            $table->string('location')->nullable();
+            $table->string('desc');
+            $table->string('logo');
+            $table->string('location');
             $table->string('owner_name');
             $table->string('email')->unique();
             $table->string('owner_phone')->unique();

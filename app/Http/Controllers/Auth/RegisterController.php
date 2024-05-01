@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use App\Models\Subscription;
 class RegisterController extends Controller
 {
     /*
@@ -40,6 +40,9 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+
+    
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -56,9 +59,11 @@ class RegisterController extends Controller
 
 
             'restaurant_name' => ['required', 'string', 'max:255'],
-            'desc' => ['nullable', 'string'], // Add 'nullable' rule here
-            'logo' => ['nullable', 'string'], // Add 'nullable' rule here
-            'location' => ['nullable', 'string'], // Add 'nullable' rule here
+            'desc' => ['required', 'string', 'max:255'], // Add 'nullable' rule here
+           
+            'logo' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'], // Exemple pour accepter les images JPEG, PNG, JPG, GIF avec une taille maximale de 2 Mo
+
+            'location' => ['required', 'string', 'max:255'], // Add 'nullable' rule here
    
             'owner_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', ],
@@ -76,24 +81,29 @@ class RegisterController extends Controller
     protected function create(array $data)
     
     {   
-        return User::create([
+        $logoPath = null;
 
-            
+        // Check if logo is provided in the data
+        if(isset($data['logo'])) {
+            // Store the logo file in the 'uploads' directory
+            $newName = uniqid() . '.' . $data['logo']->getClientOriginalExtension();
+            $data['logo']->move(public_path('uploads'), $newName);
+            $logoPath = $newName;
+         }
 
-
-
-            'restaurant_name'=> $data['restaurant_name'],
-            'desc'=> $data['desc'],
-            'logo'=> $data['logo'],
-            'location'=> $data['location'],
-            'owner_name'=> $data['owner_name'],
-            'email' => $data['email'],
-            'owner_phone'=> $data['owner_phone'],
-            'password' => Hash::make($data['password']),
-
-
-        ]);
-    }
+    // Create a new User instance with the provided data
+    return User::create([
+        'restaurant_name' => $data['restaurant_name'],
+        'desc' => $data['desc'],
+        'logo' => $logoPath, // Assign the logo path to the 'logo' field
+        'location' => $data['location'],
+        'owner_name' => $data['owner_name'],
+        'email' => $data['email'],
+        'owner_phone' => $data['owner_phone'],
+        'password' => Hash::make($data['password']),
+    ]);
+ 
+}
 
 
 

@@ -8,6 +8,7 @@ use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response as FacadeResponse;
 
 
@@ -36,14 +37,34 @@ class RestaurantController extends Controller
             'email'=>'required',
             'owner_phone'=>'required',
             'password' => 'required|min:8|confirmed',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust max file size as needed
+   
+            
            
             
         ], [
             'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
         ]);
 
+
+            $newname =uniqid();//4fd7a
+             $image=$request->file('logo');
+     
+             //si je veux récupére l'extension de l'image
+             $newname .=".". $image->getClientOriginalExtension();//.jpeg
+     
+             //upload image
+             $destinationPath='uploads';
+             $image->move($destinationPath ,$newname);
+     
+             
+              
+
         $user=new User();
         $user->restaurant_name=$request->restaurant_name;
+        $user->logo=$newname;
+        $user->location=$request->location;
+        $user->desc=$request->desc;
         $user->owner_name=$request->owner_name;
         $user->email=$request->email;
         $user->owner_phone=$request->owner_phone;
@@ -141,11 +162,11 @@ class RestaurantController extends Controller
             $file = fopen('php://output', 'w');
     
             // Write CSV headers
-            fputcsv($file, ['id','Restaurant Name', 'Owner Name', 'Owner Email', 'CreationDtae']);
+            fputcsv($file, ['id','Restaurant Name','Logo','Location','Description', 'Owner Name', 'Owner Email', 'CreationDtae']);
     
             // Write CSV rows
             foreach ($users as $user) {
-                fputcsv($file, [$user->id, $user->restaurant_name, $user->owner_name, $user->email, $user->created_at]);
+                fputcsv($file, [$user->id, $user->restaurant_name,$user->logo,$user->location,$user->desc, $user->owner_name, $user->email, $user->created_at]);
             }
     
             fclose($file);
@@ -162,8 +183,8 @@ class RestaurantController extends Controller
        
         //interface pour modfifier une subbscription
         public function updateinter($id) {
-        
-            $users=User::all();
+                // Récupérer les informations du restaurant à partir de son ID
+            $users=User::findOrFail($id);
             return view('admin.restaurants.update')->with('users', $users);
         }
 
@@ -181,30 +202,37 @@ class RestaurantController extends Controller
           
             $user=User::find($id);
 
-            if($request->icon !=''){
+            if($request->logo !=''){
                 $request->validate([
-                    'icon'=>['mimes:jpeg,jpg,png,svg'],
+                    'logo'=>['mimes:jpeg,jpg,png,svg'],
                 ]);
-                if($user->icon!=''){
-                    unlink(public_path('uploads/'.$user->icon));
+                if($user->logo!=''){
+                    unlink(public_path('uploads/'.$user->logo));
                 }
-                $file_name='setting_'.time().'.'.$request->icon->extension();
-                $request->icon->move(public_path('uploads'),$file_name);
-                $user->icon=$file_name;
+                $file_name='logo_'.time().'.'.$request->logo->extension();
+                $request->logo->move(public_path('uploads'),$file_name);
+                $user->logo=$file_name;
             }
 
             $user->restaurant_name = $request->restaurant_name;
-            $user->desc = $request->fedesc;
+            $user->desc = $request->desc;
             $user->location = $request->location;
             $user->owner_phone = $request->owner_phone;
             
         
             if ($user->update()) {
-                // Redirigez vers la page d'index des fonctionnalités après une mise à jour réussie
-                return redirect()->route('admin.features.index')->with('success', 'Feature item updated successfully');
-            } else {
+                if(Auth::user()->role=='admin'){
+                      // Redirigez vers la page d'index des fonctionnalités après une mise à jour réussie
+                return redirect()->route('admin.restaurants.index')->with('success', 'Restaurant   updated successfully');
+            
+
+                }else{
+                    return redirect()->back()->with('success', 'Restaurant   updated successfully');
+            
+                }
+              } else {
                 // Gérez les erreurs si la sauvegarde échoue
-                return back()->with('error', 'Failed to update feature item');
+                return back()->with('success', 'Failed to update feature item');
             }// Assurez-vous que les noms de champ correspondent aux noms dans le formulaire
         }
         
@@ -220,6 +248,14 @@ class RestaurantController extends Controller
     $users=User::all();
     return view('consomateur.dashboard')->with('users',$users);
 }
+
+
+ public function sub(){
+    $user=Auth::user();
+    return view('client.subscription.index')->with('user',$user);
+}
+
+
 
 
 

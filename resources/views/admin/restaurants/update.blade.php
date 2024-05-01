@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>MEAP</title>
+    <title>MEAPffff</title>
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('dashassets/img/favicons/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('dashassets/img/favicons/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('dashassets/img/favicons/favicon-16x16.png')}}">
@@ -152,13 +152,34 @@
                           <i class="fas fa-map-marker-alt"></i> Location
                         </button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link mb-sm-3 mb-md-0" id="tabs-plan-main" data-bs-toggle="pill" data-bs-target="#plan" type="button" role="tab" aria-controls="plan" aria-selected="false">
-                          <i class="fas fa-coins"></i> Plans
-                        </button>
-                    </li>
+                    
                 </ul>
               </br>
+
+
+              
+
+          <!-- Affichage des alertes de succès ou d'erreur -->
+          @if(session('success'))
+          <div class="alert alert-success alert-dismissible delete-alert" role="alert" style="background-color: green; border-color: #c3e6cb; color:#d4edda ;" >
+              {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" aria-setsize="10"></button>
+          </div>
+          <script>
+            // Sélectionne l'alerte de succès
+            var successAlert = document.querySelector('.alert-success');
+            // Ferme l'alerte après 10 secondes (10000 millisecondes)
+            setTimeout(function() {
+                successAlert.style.display = 'none';
+            }, 10000);
+    
+            // Ajoute un écouteur d'événement au bouton de fermeture
+            var closeButton = successAlert.querySelector('.btn-close');
+            closeButton.addEventListener('click', function() {
+                successAlert.style.display = 'none';
+            });
+        </script>
+       @endif
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="management" role="tabpanel" aria-labelledby="tabs-management-main">
 
@@ -172,20 +193,18 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <h1 class="mt-3">Restaurant Management</h1>
                                     <a class="btn btn-primary me-1" href="/admin/restaurants" style="margin-left: auto;">Back to list</a>
-                                    <a class="btn btn-primary me-1" href="#" >View it</a>
-                                    <a class="btn btn-primary " href="#" >Login as</a>
+                                   
                                 </div>
                                 <hr>
                                 
                             
                       
         
-                              <form action="" method="post" enctype="multipart/form-d">
+                              <form action="/restaurant/update/{{$users->id}}" method="post" enctype="multipart/form-data">
 
 
                                   @csrf
-                                  @foreach ($users as $user )
-                                  @if ($user->role !='admin')
+                                 
                                       
                                   
                                     
@@ -194,10 +213,13 @@
                                   <div class="modal-body">
                                   <!--espace name-->
                                   <h6 class="col-md-2 col-form-label text-md-end " >Restaurant information</h6>
-                                      <div class="mb-3">
+                                 
+                                   
+                                      
+                                    <div class="mb-3">
 
                                           <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Restaurant Name</label>
-                                          <input name="restaurant_name"   value ="{{$user->restaurant_name}}"  class="form-control" id="exampleFormControlInput1" type="text"   placeholder=" your rRestaurant Name ......">
+                                          <input name="restaurant_name"   value ="{{$users->restaurant_name}}"  class="form-control" id="exampleFormControlInput1" type="text"   placeholder=" your rRestaurant Name ......">
                                           @error('restaurant_name')
                                               <div class="alert alert-danger">
                                                 {{ $message }}
@@ -210,7 +232,7 @@
                                       <div class="mb-3">
 
                                           <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Restaurant description</label>
-                                          <input name="desc"   value =""  class="form-control" id="exampleFormControlInput1" type="text"   placeholder=" your rRestaurant Description ......" >
+                                          <input name="desc"   value ="{{$users->desc}}"  class="form-control" id="exampleFormControlInput1" type="text"   placeholder=" your Restaurant Description ......" >
                                           @error('desc')
                                             <div class="alert alert-danger">
                                                 {{ $message }}
@@ -224,7 +246,7 @@
                                         <div class="mb-3">
 
                                           <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Restaurant address</label>
-                                          <input name="location"   value =""  class="form-control" id="exampleFormControlInput1" type="text"  required  placeholder=" your rRestaurant Adress ......">
+                                          <input name="location"   value ="{{$users->location}}"  class="form-control" id="exampleFormControlInput1" type="text"   placeholder=" your rRestaurant Adress ......">
                                           @error('location')
                                             <div class="alert alert-danger">
                                                 {{ $message }}
@@ -239,7 +261,7 @@
                                           <label for="owner_phone" class="col-md-0 col-form-label text-md-end">{{ __('Owner Phone Number') }}</label>
                   
                                           
-                                              <input id="owner_phone" type="number" value="{{$user->owner_phone}}" class="form-control @error('owner_phone') is-invalid @enderror" name="owner_phone"  placeholder=" Owner Phone number here..." required autocomplete="owner_phone" >
+                                              <input id="owner_phone" type="number" value="{{$users->owner_phone}}" class="form-control @error('owner_phone') is-invalid @enderror" name="owner_phone"  placeholder=" Owner Phone number here..." required autocomplete="owner_phone" >
                   
                                               
                                           
@@ -251,39 +273,36 @@
                                       
 
 
-                                            <!--espace exesting photo-->
-                                            <div class="mb-3">
-                                              <label class="form-label" for="exampleFormControlInput1">Existing Photo</label>
-                                              <div>
-                      
-                                                  <img src="{{asset('uploads')}}/{{ $user->logo }}" alt="" width="50">
-                                              </div>
-                                              @error('logo')
-                                              <div class="alert alert-danger">
-                                                  {{ $message }}
-                                              </div>
-                                              @enderror
-                  
-                                          </div>
-
-
-                                          
-                                          <!--espace change photo-->
-                                          <div class="mb-3">
-                                              <label class="form-label" for="exampleFormControlInput1">Change Icon</label>
-                                              <div>
-                                                  <input type="file"  name="logo"    >
-                                              </div>
-                                              @error('logo')
-                                              <div class="alert alert-danger">
-                                                  {{ $message }}
-                                              </div>
-                                              @enderror
-                                      
-                                          </div>
-                                          
-
+                                         
                                         
+
+                                        <div class="mb-3">
+                                          <label class="form-label" for="exampleFormControlInput1">Existing Photo</label>
+                                          <div>
+                                            
+                                            <img src="{{asset('uploads')}}/{{ $users->logo }}" alt="" width="200">
+                                          </div>
+                                          @error('logo')
+                                          <div class="alert alert-danger">
+                                              {{ $message }}
+                                          </div>
+                                        @enderror
+                                      
+                                      </div>
+                        
+                                      <!--espace change photo-->
+                                      <div class="mb-3">
+                                          <label class="form-label" for="exampleFormControlInput1">Change Photo</label>
+                                          <div>
+                                          <input type="file"  name="logo"    >
+                                        </div>
+                                          @error('logo')
+                                          <div class="alert alert-danger">
+                                            {{ $message }}
+                                          </div>
+                                        @enderror
+                                    
+                                      </div>
 
                                       
                 
@@ -296,44 +315,16 @@
                                           <button  class="btn btn-success" type="submit ">UPDATE</button>
                                       
                                       </div>
-                                  
-                                      @endif
-                                      @endforeach
+                                      
+                                   
                                       
 
-                                      <hr>
+                                    
 
-                                      <div class="modal-body">
-                                      <h6 class="col-md-2 col-form-label text-md-end " >Owner information</h6>
-                                      <div class="mb-3">
-
-                                          <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Owner Name</label>
-                                          <input name="name"  value="{{Auth::user()->owner_name}}"  class="form-control" id="exampleFormControlInput1" type="text"  readonly>
-                                        
                                       
-                                      </div> 
 
 
-                                      <div class="mb-3">
-
-                                        <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Owner Email</label>
-                                        <input name="description"   value ="{{Auth::user()->email}}"  class="form-control" id="exampleFormControlInput1" type="text"  required placeholder="  Owner Email ..."  readonly>
-                                        
-                                  
-                                      </div> 
-
-
-
-
-
-                                      <div class=" mb-3">
-                                        <label for="owner_phone" class="col-md-0 col-form-label text-md-end">Owner Phone </label>
-                                        <input name="owner_phone"   value ="{{Auth::user()->owner_phone}}"  class="form-control" id="exampleFormControlInput1" type="text"  required placeholder="  Owner Email ..."  readonly>
-                                        
-                                        
-                                      </div>
-
-                                            
+                                      
                                         
                                       </div>
                                       </div>
@@ -661,314 +652,7 @@
                         </div>
 
                     </div>
-                    <div class="tab-pane fade" id="location" role="tabpanel" aria-labelledby="tabs-location-main"> 
-                      
-                      
-                      
-                         <!--contenu de l'onglet location!-->
-                         <div class="col-md-12">
-                          <div class="custom">
-                              <div class="d-flex justify-content-between align-items-center">
-                                  <h1 class="mt-3">Item Management</h1>
-                                  <a class="btn btn-primary me-1" href="#" style="margin-left: auto;">Back to items</a>
-                                  <a class="btn btn-primary me-1" href="#" >Back to items</a>
-                                  <a class="btn btn-primary " href="#" >Back to items</a>
-                              </div>
-                              <hr>
-                              
-                          
-                             <form action="" method="post" enctype="multipart/form-d">
-  
-  
-                                 @csrf
-  
-                             
-                                 <div class="modal-body">
-                                 <!--espace name-->
-                                 <h6 class="col-md-2 col-form-label text-md-end " >Item information</h6>
-                                     <div class="mb-3">
-  
-                                         <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Item Name</label>
-                                         <input name="name"   value =""  class="form-control" id="exampleFormControlInput1" type="text"  required  >
-                                         @error('name')
-                                         <div class="alert alert-danger">
-                                             {{ $message }}
-                                         </div>
-                                     @enderror
-                                     
-                                     </div> 
-  
-                                     <div class="mb-3">
-  
-                                         <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> 
-                                             Category</label>
-  
-                                             <select name="category" id="" class="form-control">
-                                             
-                                                 <option value="">cat1</option>
-                                                 
-                                                 <option value="">cat2</option>
-                                                 
-                                                 
-                                                 
-                                             </select>
-  
-                                         @error('category')
-                                         <div class="alert alert-danger">
-                                             {{ $message }}
-                                         </div>
-                                     @enderror
-                                     
-                                     </div>
-  
-  
-                                     <div class="mb-3">
-  
-                                         <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Item Description</label>
-                                         <textarea id="item_description" name="item_description" class="form-control form-control-alternative"  value="" required="" autofocus="" rows="3"></textarea>
-                                         @error('item_description')
-                                         <div class="alert alert-danger">
-                                             {{ $message }}
-                                         </div>
-                                     @enderror
-                                     
-                                     </div> 
-  
-  
-                                     <div class="mb-3">
-  
-                                         <div class="form-group text-center">
-                                             <label class="form-control-label" for="input-name">Item Image</label>
-                                                 <div class="text-center">
-                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                     <div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 290px; height:200">
-                                                     <img src="/uploads/restorants/39e04f62-602e-4f80-997d-49ac271569e7_large.jpg" alt="...">
-                                                 </div>
-                                                     <div>
-                                                         <span class="btn btn-outline-secondary btn-file">
-                                                         <span class="fileinput-new">Select image</span>
-                                                         <span class="fileinput-exists">Change</span>
-                                                         
-                                                        
-                                                         <input type="file" name="item_image" accept="image/x-png,image/png,image/gif,image/jpeg">
-                                                         </span>
-                                                         <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                                     </div>
-                                                 </div>
-                                                
-                                                 
-                                             </div>
-                                             </div>
-                                     </div> 
-  
-  
-                                     
-                                     <div class="mb-3">
-  
-                                         <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Item image</label>
-                                         <input name="name_res" class="form-control" id="exampleFormControlInput1" type="text"  required >
-                                         @error('name_res')
-                                         <div class="alert alert-danger">
-                                             {{ $message }}
-                                         </div>
-                                     @enderror
-                                     
-                                     </div> 
-  
-  
-                                     <div class="form-group">
-                         
-                                         <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Item image</label>
-                                         <label class="custom-toggle" style="float: right">
-                                             <input type="checkbox" name="itemAvailable" id="itemAvailable" checked="">
-                                             <span class="custom-toggle-slider rounded-circle"></span>
-                                         </label>
-                                     </div>
-  
-                                     <div class="center">
-                                 
-                                     <button  class="btn btn-success" type="submit ">UPDATE</button>
-                                     
-                                     </div>
-                                 
-                             
-                                 </div>
-                                 
-                         
-                             </form>
-       
-       
-                             <div class="text-center">
-                                 <form action="/restaurant/menu/item/delete/{$item->id}" method="get">
-                                     <input type="hidden" name="_token"  autocomplete="off">                      
-                                                   <input type="hidden" name="_method" value="delete">                                    <button type="button" class="btn btn-danger mt-4" onclick="confirm('Are you sure you want to delete this item?') ? this.parentElement.submit() : ''">Delete</button>
-                                 </form>
-                             </div>
-                     
-     
-                         </div>
-                        
-                      
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    </div>
-                    <div class="tab-pane fade" id="plan" role="tabpanel" aria-labelledby="tabs-plan-main">
-                      
-
-                          <!--contenu de l'onglet plans!-->
-                          <div class="col-md-12">
-                            <div class="custom">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h1 class="mt-3">Item Management</h1>
-                                    <a class="btn btn-primary me-1" href="#" style="margin-left: auto;">Back to items</a>
-                                    <a class="btn btn-primary me-1" href="#" >Back to items</a>
-                                    <a class="btn btn-primary " href="#" >Back to items</a>
-                                </div>
-                                <hr>
-                                
-                            
-                               <form action="" method="post" enctype="multipart/form-d">
-    
-    
-                                   @csrf
-    
-                               
-                                   <div class="modal-body">
-                                   <!--espace name-->
-                                   <h6 class="col-md-2 col-form-label text-md-end " >Item information</h6>
-                                       <div class="mb-3">
-    
-                                           <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Item Name</label>
-                                           <input name="name"   value =""  class="form-control" id="exampleFormControlInput1" type="text"  required  >
-                                           @error('name')
-                                           <div class="alert alert-danger">
-                                               {{ $message }}
-                                           </div>
-                                       @enderror
-                                       
-                                       </div> 
-    
-                                       <div class="mb-3">
-    
-                                           <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> 
-                                               Category</label>
-    
-                                               <select name="category" id="" class="form-control">
-                                               
-                                                   <option value="">cat1</option>
-                                                   
-                                                   <option value="">cat2</option>
-                                                   
-                                                   
-                                                   
-                                               </select>
-    
-                                           @error('category')
-                                           <div class="alert alert-danger">
-                                               {{ $message }}
-                                           </div>
-                                       @enderror
-                                       
-                                       </div>
-    
-    
-                                       <div class="mb-3">
-    
-                                           <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Item Description</label>
-                                           <textarea id="item_description" name="item_description" class="form-control form-control-alternative"  value="" required="" autofocus="" rows="3"></textarea>
-                                           @error('item_description')
-                                           <div class="alert alert-danger">
-                                               {{ $message }}
-                                           </div>
-                                       @enderror
-                                       
-                                       </div> 
-    
-    
-                                       <div class="mb-3">
-    
-                                           <div class="form-group text-center">
-                                               <label class="form-control-label" for="input-name">Item Image</label>
-                                                   <div class="text-center">
-                                                   <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                       <div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 290px; height:200">
-                                                       <img src="/uploads/restorants/39e04f62-602e-4f80-997d-49ac271569e7_large.jpg" alt="...">
-                                                   </div>
-                                                       <div>
-                                                           <span class="btn btn-outline-secondary btn-file">
-                                                           <span class="fileinput-new">Select image</span>
-                                                           <span class="fileinput-exists">Change</span>
-                                                           
-                                                          
-                                                           <input type="file" name="item_image" accept="image/x-png,image/png,image/gif,image/jpeg">
-                                                           </span>
-                                                           <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                                       </div>
-                                                   </div>
-                                                  
-                                                   
-                                               </div>
-                                               </div>
-                                       </div> 
-    
-    
-                                       
-                                       <div class="mb-3">
-    
-                                           <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Item image</label>
-                                           <input name="name_res" class="form-control" id="exampleFormControlInput1" type="text"  required >
-                                           @error('name_res')
-                                           <div class="alert alert-danger">
-                                               {{ $message }}
-                                           </div>
-                                       @enderror
-                                       
-                                       </div> 
-    
-    
-                                       <div class="form-group">
-                           
-                                           <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Item image</label>
-                                           <label class="custom-toggle" style="float: right">
-                                               <input type="checkbox" name="itemAvailable" id="itemAvailable" checked="">
-                                               <span class="custom-toggle-slider rounded-circle"></span>
-                                           </label>
-                                       </div>
-    
-                                       <div class="center">
-                                   
-                                       <button  class="btn btn-success" type="submit ">UPDATE</button>
-                                       
-                                       </div>
-                                   
-                               
-                                   </div>
-                                   
-                           
-                               </form>
-         
-         
-                               <div class="text-center">
-                                   <form action="/restaurant/menu/item/delete/{$item->id}" method="get">
-                                       <input type="hidden" name="_token"  autocomplete="off">                      
-                                                     <input type="hidden" name="_method" value="delete">                                    <button type="button" class="btn btn-danger mt-4" onclick="confirm('Are you sure you want to delete this item?') ? this.parentElement.submit() : ''">Delete</button>
-                                   </form>
-                               </div>
-                       
-       
-                           </div>
-                          
-
-
-
-
-                          </div>
+        
                     </div>
             </div>
         </div>
@@ -986,16 +670,7 @@
           
           
           
-          <!--<footer class="footer">
-            <div class="row g-0 justify-content-between align-items-center h-100 mb-3">
-              <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-900">Thank you for creating with phoenix<span class="d-none d-sm-inline-block"></span><span class="mx-1">|</span><br class="d-sm-none">2022 &copy; <a href="https://themewagon.com">Themewagon</a></p>
-              </div>
-              <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-600">v1.1.0</p>
-              </div>
-            </div>
-          </footer>-->
+        
         
       </div>
     </main>

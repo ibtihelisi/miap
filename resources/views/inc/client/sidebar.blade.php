@@ -1,10 +1,34 @@
+<style>.nav-link-icon {
+    font-size: 22px; /* Augmente la taille de l'icône */
+}
+
+.nav-link-text {
+    font-size: 16px; /* Augmente la taille du texte */
+}
+
+.nav-item:not(:first-child) {
+    margin-top: 10px; /* Ajoute un espacement au-dessus de chaque élément sauf le premier */
+}
+
+
+
+</style>
+
+
+
 <nav class="navbar navbar-light navbar-vertical navbar-vibrant navbar-expand-lg">
     <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
       <div class="navbar-vertical-content scrollbar">
         <ul class="navbar-nav flex-column" id="navbarVerticalNav">
-          <li class="nav-item"><a class="nav-link active" href="/client/dashboard">
-              <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">Dashboard</span></div>
-            </a></li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/client/dashboard">
+                    <div class="d-flex align-items-center">
+                        <span class="nav-link-icon"><i class="fas fa-tachometer-alt" style="font-size: 22px;"></i></span>
+                        <span class="nav-link-text">Dashboard</span>
+                    </div>
+                </a>
+            </li>
+            
 
 
 
@@ -16,7 +40,7 @@
                     <div class="d-flex align-items-center">
                         <span class="nav-link-icon">
                             <!-- Utiliser la balise Font Awesome pour l'icône de magasin -->
-                            <i class="fas fa-shopping-basket"></i>
+                            <i class="far fa-clock"></i>
 
                         </span>
                         <span class="nav-link-text"> Live orders</span>
@@ -33,7 +57,7 @@
                     <div class="d-flex align-items-center">
                         <span class="nav-link-icon">
                             <!-- Utiliser la balise Font Awesome pour l'icône de magasin -->
-                            <i class="fas fa-shopping-basket"></i>
+                            <i class="fas fa-shopping-cart"></i>
 
 
                         </span>
@@ -66,9 +90,9 @@
                 <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
                         <!-- Utiliser la balise Font Awesome pour l'icône de magasin -->
-                        <i class="fas fa-store-alt"></i>
+                        <i class="fas fa-utensils"></i>
                     </span>
-                    <span class="nav-link-text">menu</span>
+                    <span class="nav-link-text">Menu</span>
                 </div>
             </a>
         </li>
@@ -83,7 +107,7 @@
               <div class="d-flex align-items-center">
                 <span class="nav-link-icon">
                   <!-- Remplacer le chemin vers l'icône par l'icône de finances de Font Awesome -->
-                  <i class="fas fa-coins"></i>
+                  <i class="fas fa-chair"></i>
                 </span>
                 <span class="nav-link-text">Tables</span>
               </div>
@@ -91,11 +115,11 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" href="/admin/settings">
+            <a class="nav-link active" href="/restaurant/staff">
               <div class="d-flex align-items-center">
                 <span class="nav-link-icon">
                   <!-- Remplacer le chemin vers l'icône par l'icône de finances de Font Awesome -->
-                  <i class="fas fa-wrench"></i>
+                  <i class="fas fa-users"></i>
                 </span>
                 <span class="nav-link-text">Staff</span>
               </div>
@@ -104,11 +128,11 @@
 
 
           <li class="nav-item">
-            <a class="nav-link active" href="/page-avec-donnees">
+            <a class="nav-link active" href="">
                 <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
                         <!-- Using Font Awesome credit card icon -->
-                        <i class="fas fa-credit-card"></i>
+                        <i class="fas fa-qrcode"></i>
                     </span>
                     <span class="nav-link-text">QR CODE</span>
                 </div>
@@ -120,7 +144,7 @@
 
         
         <li class="nav-item">
-            <a class="nav-link active" href="/admin/subscriptions">
+            <a class="nav-link active" href="/client/subscription">
                 <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
                         <!-- Using Font Awesome credit card icon -->
@@ -138,6 +162,6 @@
          
         </ul>
       </div>
-      <div class="navbar-vertical-footer"><a class="btn btn-link border-0 fw-semi-bold d-flex ps-0" href="#!"><span class="navbar-vertical-footer-icon" data-feather="log-out"></span><span>Settings</span></a></div>
+      
     </div>
   </nav>

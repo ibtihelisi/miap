@@ -23,12 +23,20 @@ class User extends Authenticatable
     {
     return $this->hasMany(Category::class, 'user_id', 'id');
     }
+
+    public function subscriptions() 
+     {
+        return $this->belongsTo(Subscription::class,'user_id','id');
+    }
+    
+    public function staffs() 
+     {
+        return $this->hasMany(Staff::class,'user_id','id');
+    }
+    
     
 
-    public function qrcode()
-    {
-        return $this->hasOne(Qrcode::class, 'user_id','id');
-    }
+    
 
     /**
      * The attributes that are mass assignable.
@@ -41,6 +49,9 @@ class User extends Authenticatable
         'password',
         'role'*/
         'restaurant_name',
+        'location',
+        'logo',
+        'desc',
         'owner_name',
         'email',
         'owner_phone',

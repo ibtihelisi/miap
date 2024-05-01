@@ -12,7 +12,7 @@ use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\FeaturesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TableController;
-use App\Http\Controllers\DemoController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\FaqController;
 
 use App\Models\Restaurant;
@@ -56,7 +56,7 @@ Route::get('/client/profile/{id}',[HomeController::class,'updateinterclient'])->
 Route::post('/client/profile/updatePassword/{id}', [HomeController::class, 'updatePasswordclient'])->middleware('auth','user');
 
 /** Route Restaurants */
-Route::get('/admin/restaurants', [App\Http\Controllers\RestaurantController::class, 'index']);
+Route::get('/admin/restaurants', [App\Http\Controllers\RestaurantController::class, 'index'])->name('admin.restaurants.index');
 Route::post('/restaurant/add',[RestaurantController::class,'store']);
 
 Route::get('/restaurant/create',[RestaurantController::class,'create']);
@@ -204,6 +204,8 @@ Route::get('/restaurant/table/create',[TableController::class,'create']);
 
 
 
+/**staff */
+Route::get('/restaurant/staff',[StaffController::class,'index']);
 
 
 
@@ -217,3 +219,9 @@ Route::get('/page-avec-donnees', [App\Http\Controllers\HomeController::class, 's
 
 
 Route::get('/QRMenu/restaurant/{id}', [App\Http\Controllers\RestaurantController::class, 'show']);
+Route::get('/user/{userId}/categories', [App\Http\Controllers\QrcodeController::class, 'showCategories'])->name('user.categories');
+
+Route::post('/scan-qrcode', [App\Http\Controllers\QrcodeController::class, 'scanQrCode'])->name('scan.qrcode');
+Route::post('/generate-qrcode', [App\Http\Controllers\QrcodeController::class, 'generateQrCode'])->name('generate.qrcode');
+
+Route::get('/client/subscription', [App\Http\Controllers\RestaurantController::class, 'sub']);

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>QR Menu|QR Code</title>
+    <title>QR Menu|restaurant|subscription</title>
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('dashassets/img/favicons/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('dashassets/img/favicons/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('dashassets/img/favicons/favicon-16x16.png')}}">
@@ -22,66 +22,100 @@
       body {
         opacity: 0;
       }
-    </style>
 
-<style>
-  .text-bg-success {
+
+
+
+      .text-bg-success {
       color: green; /* Couleur du texte */
       background-color: #c8e6c9; /* Couleur de fond plus claire */
       padding: 5px 10px; /* Optionnel : ajustez le rembourrage selon vos besoins */
       border-radius: 10px; /* Optionnel : pour arrondir les coins */
   }
-</style>
-<style>
-  .text-bg-danger {
-      color: #b71c1c; /* Red text color */
-      background-color: #ffcdd2; /* Lighter red background color */
-      padding: 5px 10px; /* Optional: adjust padding as needed */
-      border-radius: 10px; /* Optional: to round the corners */
-  }
-</style>
 
 
-<style>
-  .delete-alert {
-    max-height: 100px; /* Ajustez la valeur selon vos besoins */
-    /* Ajoute une barre de défilement si nécessaire */
-  }
-</style>
+
+  .alert {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+    </style>
   </head>
 
   <body>
     <main class="main" id="top">
-        <div class="container-fluid px-0">
+      <div class="container-fluid px-0">
 
 
-            @include('inc.client.sidebar')
-            @include('inc.client.nav')
+        @include('inc.client.sidebar')
+        @include('inc.client.nav')
+        
+        
+        <div class="content">
+          <div class="pb-5">
+
+            <div class="container">
+              <h1 class="mt-3">Your current plan</h1>
+              <hr>
+
+
+              <div class="card-body">
+                <h4>You are currently using the {{$user->id}} plan</h4><p>
+
+                <!-- ORDERS -->
+                </p><div class="alert alert-success" role="alert">
+                    You can receive unlimited number of orders
+                </div>
+
+                <!-- ITEMS -->
+                <div class="alert alert-success" role="alert">
+                    You can add unlimited number of items
+                </div>
+
+                 <!-- duration -->
+                 <div class="alert alert-success" role="alert">
+                  Your plan duration is 3 months
+              </div>
+
+                
+                    
+
+
+                            </div>
+
+
+
+
+
             
+          </div>
+
+          <div class="row py-2">
+            <div class="col-md-6">
+             
             
-            <div class="content">
-                <div class="pb-5">
+            </div>
+            <div class="col-md-6 text-end">
+              <a class="btn btn-primary" class="mt-3" href="/restaurant/table/create">Add new table </a>
+              <a class="btn btn-outline-primary ms-2" href="">Areas</a>
 
-                    <div class="container">
-                        <h1 class="mt-3">Your QR Code</h1>
-                        <hr>
-                        
-
-                        <div>
-                             <!-- Afficher l'image du QR code -->
-                            @if($user->qrcode)
-                               <img src="{{ $user->qrcode->qr_code_url }}" alt="QR Code">
-                            @else
-                                <p>No QR code available</p>
-                            @endif
-                        </div>
-
-
-
-
-                    </div>
-
-                      <!-- Affichage des alertes de succès ou d'erreur -->
+            </div>
+        </div>
+      
+          <!-- Affichage des alertes de succès ou d'erreur -->
           @if(session('success'))
           <div class="alert alert-success alert-dismissible delete-alert" role="alert" style="background-color: green; border-color: #c3e6cb; color:#d4edda ;" >
               {{ session('success') }}
@@ -103,19 +137,20 @@
         </script>
        @endif
 
-                   
-            
-            
-        
-                </div>
-            </div>
+
+          
+              
 
 
-
-
+          </div>
+          
+          
+          
+       
         </div>
+      </div>
     </main>
-   
+
 
   
 

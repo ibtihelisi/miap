@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Table extends Model
+class Area extends Model
 {
     use HasFactory;
 
 
-    public function area()
+    public function tables()
     {
-        return $this->belongsTo(Area::class);
+        return $this->hasMany(Table::class);
     }
 }
