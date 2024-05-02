@@ -183,14 +183,14 @@ Route::get('/restaurant/management', function(){return view('client.restaurant.i
 /**menu routes  */
 
 //Route::get('/restaurant/menu', function(){return view('client.menu.index');});
-Route::get('/restaurant/menu', [App\Http\Controllers\CategoryController::class, 'index']);
+Route::get('/restaurant/menu', [App\Http\Controllers\CategoryController::class, 'index'])->name('restaurant.menu');
 Route::post('/restaurant/menu/categorie/add',[CategoryController::class,'store']);
 Route::get('/restaurant/menu/categorie/delete/{id}',[CategoryController::class,'destroy']);
 
 Route::post('/restaurant/menu/categorie/update/{id}',[CategoryController::class,'update']);
 //Route::get('/restaurant/menu', [App\Http\Controllers\ItemController::class, 'index']);
 Route::post('/restaurant/menu/item/add',[ItemController::class,'store']);
-Route::get('/restaurant/menu/item/delete/{id}',[ItemController::class,'destroy']);
+Route::delete('/restaurant/menu/item/delete/{id}',[ItemController::class,'destroy']);
 
 Route::post('/restaurant/menu/item/update/{id}',[ItemController::class,'update']);
 
@@ -211,14 +211,18 @@ Route::get('/restaurant/staff',[StaffController::class,'index']);
 
 
 /**qr cooode */
+//Route::get('/download-qrcode', 'QRCodeController@downloadQRCode')->name('download.qrcode');
 
-Route::get('/page-avec-donnees', [App\Http\Controllers\HomeController::class, 'showWithData'])->name('pageWithData');
+Route::get('/download-qrcode', [App\Http\Controllers\QrcodeController::class, 'downloadQRCode'])->name('download.qrcode');
+Route::get('/qrcode', [App\Http\Controllers\QrcodeController::class, 'generateQRCode'])->name('qrcode.index');
+
+//Route::get('/qrcode', 'QRCodeController@generateQRCode')->name('qrcode.index');
 
 /**interface client finale */
 
 
 
-Route::get('/QRMenu/restaurant/{id}', [App\Http\Controllers\RestaurantController::class, 'show']);
+Route::get('/QRMenu/restaurant/{id}', [App\Http\Controllers\ConsomateurController::class, 'index']);
 Route::get('/user/{userId}/categories', [App\Http\Controllers\QrcodeController::class, 'showCategories'])->name('user.categories');
 
 Route::post('/scan-qrcode', [App\Http\Controllers\QrcodeController::class, 'scanQrCode'])->name('scan.qrcode');

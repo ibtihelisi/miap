@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Response;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,64 +12,55 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 class QrcodeController extends Controller
 {
     //
-
+    public function generateQRCode()
+    {
+        // Fetch user data from the database
+        $user = Auth::user();
+        $data = [
+            'id' => $user->id,
+            'name' => $user->restaurant_name,
+        ];
+    
+        // Generate the QR code
+        $qrCode = QrCode::size(300)->generate(json_encode($data));
+    
+        return view('client.qrcode.index', compact('qrCode'));
+    }
 
 
     
-    public function showCategories($userId)
-{
-    $user = User::findOrFail($userId);
-    $categories = $user->categories()->pluck('name');
+    public function downloadQRCode()
+    {
+        // Fetch user data from the database
+        $user = Auth::user();
+        $data = [
+            'id' => $user->id,
+            'name' => $user->restaurant_name,
+        ];
     
-    return response()->json(['categories' => $categories]);
-}
-
-public function scanQrCode(Request $request)
-{
-    // Récupérer l'ID de l'utilisateur à partir des données du QR code
-    $userId = $request->input('user_id');
-
-    // Vérifier si l'utilisateur existe dans la base de données
-    $user = User::find($userId);
-
-    if (!$user) {
-        // Si l'utilisateur n'existe pas, retourner une erreur ou rediriger vers une page d'erreur
-        return redirect()->route('error')->with('message', 'Utilisateur introuvable.');
+        // Generate the QR code
+        $qrCode = QrCode::size(300)->generate(json_encode($data));
+    
+        // Convert QR code image to PNG format
+        $imageData = base64_decode($qrCode);
+    
+        // Define the path to save the QR code image
+        $qrCodePath = public_path('uploads/qrcodes/qrcode.png');
+    
+        // Save the QR code image to the specified path
+        file_put_contents($qrCodePath, $imageData);
+    
+        // Set the download response
+        $headers = [
+            'Content-Type' => 'image/png',
+            'Content-Disposition' => 'attachment; filename=qrcode.png',
+ 
+           
+        ];
+    // Return the download response with the file contents
+        return response()->file($qrCodePath,  $headers);
     }
+    
 
-    // Rediriger l'utilisateur vers la page appropriée, par exemple, la page affichant ses catégories
-    return redirect()->route('user.categories', ['userId' => $userId]);
-}
-
-
-
-
-
-
-
-
-
-
-
-public function generateQrCode(Request $request)
-{
-    $userId = $request->input('user_id');
-    $user = User::find($userId);
-
-    if (!$user) {
-        return redirect()->route('error')->with('message', 'Utilisateur introuvable.');
-    }
-
-    // Génération du QR code
-    $qrCode = QrCode::size(200)->generate($user->email);
-
-    // Enregistrement de l'URL du QR code dans la base de données
-    $qrcode = Qrcode::updateOrCreate(
-        ['user_id' => $userId],
-        ['qr_code_url' => $qrCode]
-    );
-
-    return redirect()->route('user.categories', ['userId' => $userId]);
-}
 
 }

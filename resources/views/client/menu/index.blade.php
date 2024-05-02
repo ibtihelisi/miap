@@ -197,7 +197,7 @@ description {
                                             <span class="badge badge-primary badge-pill">{{$i->price}}DT</span>
 
                                             <p class="mt-3 mb-0 text-sm">
-                                                <span class="text-success mr-2">AVAILABLE</span>
+                                                <span class="text-success mr-2">{{$i->available}}</span>
                                             </p>
                                         </div>
                                 </div>

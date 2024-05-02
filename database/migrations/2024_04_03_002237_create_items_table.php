@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->decimal('price', 7, 3);
             $table->string('photo');
+            $table->enum('available',['available','not available'])->default('available');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');

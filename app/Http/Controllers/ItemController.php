@@ -77,32 +77,18 @@ class ItemController extends Controller
     }
 
 
-    //supprimer produit
-   //supprimer un produit
-public function destroy($id) {
-    // Find the item by its ID
-    $item = Item::find($id);
+    
+    public function destroy($id) {
+        // Find the item by its ID
+        $items = Item::find($id);
 
-    // Check if the item exists
-    if (!$item) {
-        return redirect()->back()->with('success', 'Item not found.');
+        // Delete the item from the database
+        if ($items->delete()) {
+             return redirect()-> route('restaurant.menu') ->with('success', 'Item removed from the database successfully.');
+         } else {
+             return redirect()->back()->with('success', 'Failed to remove item from the database.');
+        }
     }
-
-    // Get the file path of the item's photo
-    $file_path = public_path('uploads/' . $item->photo);
-
-    // Check if the file exists before attempting to delete it
-    if (file_exists($file_path)) {
-        unlink($file_path); // Delete the file
-    }
-
-    // Delete the item from the database
-    if ($item->delete()) {
-        return redirect()->back()->with('success', 'Item removed from the database successfully.');
-    } else {
-        return redirect()->back()->with('success', 'Failed to remove item from the database.');
-    }
-}
 
 
 
@@ -117,33 +103,43 @@ public function destroy($id) {
 
     public function update(Request $request, $id) {
         $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'photo' => 'required|image', // Ensure it's an image file
-            'category_id' => 'required' 
+          
         ]);
     
         $item = Item::find($id);
-        if (!$item) {
-            return redirect('/restaurant/menu')->with('success', 'Item not found');
+        // Vérifier si une nouvelle image a été téléchargée
+        if($request->hasFile('photo')){
+            $request->validate([
+                'name' => 'required',
+                'description' => 'required', // Ajoutez cette ligne pour valider le champ description
+                'price' => 'required',
+                //'category_id' => 'required',
+                'photo' => 'nullable|mimes:jpeg,jpg,png,svg', // Assurez-vous que le champ photo est nullable
+            ]);
+           // Supprimer l'ancienne image si elle existe
+        if ($item->photo != '') {
+            $imagePath = public_path('uploads/'.$item->photo);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
         }
-    
-        // Handle file upload
-        $newName = uniqid() . '.' . $request->photo->getClientOriginalExtension();
-        $request->photo->move('uploads', $newName);
-        $item->photo = $newName;
+            $file_name='photoitem_'.time().'.'.$request->photo->extension();
+            $request->photo->move(public_path('uploads'),$file_name);
+            $item->photo=$file_name;
+        }
     
         // Update other fields
         $item->name = $request->name;
         $item->description = $request->description;
         $item->price = $request->price;
-        $item->category_id = $request->category_id;
+        // Update availability status
+        $item->available = $request->has('available') ? 'available' : 'not available';
+
     
         if ($item->update()) {
             return redirect('/restaurant/menu')->with('success', 'Item successfully updated');
         } else {
-            return redirect('/restaurant/menu')->with('error', 'Failed to update item');
+            return redirect('/restaurant/menu')->with('success', 'Failed to update item');
         }
     }
     

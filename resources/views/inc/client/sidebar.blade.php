@@ -76,7 +76,7 @@
                           <!-- Utiliser la balise Font Awesome pour l'icône de magasin -->
                           <i class="fas fa-store-alt"></i>
                       </span>
-                      <span class="nav-link-text">Restaurants</span>
+                      <span class="nav-link-text"> My Restaurant </span>
                   </div>
               </a>
           </li>
@@ -128,7 +128,7 @@
 
 
           <li class="nav-item">
-            <a class="nav-link active" href="">
+            <a class="nav-link active" href="/qrcode">
                 <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
                         <!-- Using Font Awesome credit card icon -->

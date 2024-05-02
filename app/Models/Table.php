@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Area;
+use App\Models\User;
 
 class Table extends Model
 {
@@ -12,6 +14,12 @@ class Table extends Model
 
     public function area()
     {
-        return $this->belongsTo(Area::class);
+        return $this->belongsTo(Area::class,'area_id','id');
+    }
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id','id');
     }
 }

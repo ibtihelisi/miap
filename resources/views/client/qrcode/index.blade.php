@@ -62,46 +62,24 @@
             <div class="content">
                 <div class="pb-5">
 
-                    <div class="container">
-                        <h1 class="mt-3">Your QR Code</h1>
-                        <hr>
-                        
+                        <div class="container">
+                          <div class="row justify-content-center">
+                              <div class="col-md-8">
+                                  <div class="card">
+                                      <div class="card-header">QR Code</div>
+                                      <div class="card-body text-center">
 
-                        <div>
-                             <!-- Afficher l'image du QR code -->
-                            @if($user->qrcode)
-                               <img src="{{ $user->qrcode->qr_code_url }}" alt="QR Code">
-                            @else
-                                <p>No QR code available</p>
-                            @endif
-                        </div>
+                                        {{ $qrCode }}
+                                       
+                                          <br><br>
+                                          <a href="{{ route('download.qrcode') }}" class="btn btn-primary">Download</a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+              </div>
 
-
-
-
-                    </div>
-
-                      <!-- Affichage des alertes de succès ou d'erreur -->
-          @if(session('success'))
-          <div class="alert alert-success alert-dismissible delete-alert" role="alert" style="background-color: green; border-color: #c3e6cb; color:#d4edda ;" >
-              {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" aria-setsize="10"></button>
-          </div>
-          <script>
-            // Sélectionne l'alerte de succès
-            var successAlert = document.querySelector('.alert-success');
-            // Ferme l'alerte après 10 secondes (10000 millisecondes)
-            setTimeout(function() {
-                successAlert.style.display = 'none';
-            }, 10000);
-    
-            // Ajoute un écouteur d'événement au bouton de fermeture
-            var closeButton = successAlert.querySelector('.btn-close');
-            closeButton.addEventListener('click', function() {
-                successAlert.style.display = 'none';
-            });
-        </script>
-       @endif
+              
 
                    
             

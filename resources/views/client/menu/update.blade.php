@@ -94,6 +94,7 @@
             padding: 20px; /* Espacement interne */
             margin-bottom: 20px; /* Marge inférieure */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre */
+            width: 100%;
         }
 
 
@@ -176,7 +177,7 @@
 
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-14">
                              <div class="custom">
                                 <div class="d-flex justify-content-between align-items-center">
                                  <h1 class="mt-3">Item Management</h1>
@@ -194,7 +195,7 @@
         
                                 
           
-                                <form action="/restaurant/menu/item/update/{{$items->id}}" method="post" enctype="multipart/form-d">
+                                <form action="/restaurant/menu/item/update/{{$items->id}}" method="post" enctype="multipart/form-data">
     
 
                                     @csrf
@@ -220,8 +221,22 @@
                                         <div class="mb-3">
 
                                             <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Item Description</label>
-                                            <textarea id="item_description" name="item_description" class="form-control form-control-alternative"  value=""   rows="3">{{$items->description}}</textarea>
-                                            @error('item_description')
+                                            <textarea id="description" name="description" class="form-control form-control-alternative"  value="{{$items->description}}"   rows="3">{{$items->description}}</textarea>
+                                            @error('description')
+                                            <div class="alert alert-danger">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                        
+                                        </div> 
+
+
+
+                                        <div class="mb-3">
+
+                                            <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Item Price</label>
+                                            <input name="price"   value ="{{$items->price}}"  class="form-control" id="exampleFormControlInput1" type="number"  required  >
+                                            @error('price')
                                             <div class="alert alert-danger">
                                                 {{ $message }}
                                             </div>
@@ -265,21 +280,14 @@
                             
                                             <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Item available</label>
                                             <label class="custom-toggle" style="float: right">
-                                                <input type="checkbox" name="itemAvailable" id="itemAvailable" checked="">
+                                                <input type="checkbox" name="available" id="itemAvailable"  {{ $items->available == 'available' ? 'checked' : '' }}>
                                                 <span class="custom-toggle-slider rounded-circle"></span>
                                             </label>
                                         </div>
 
 
                                         
-                                        <div class="form-group">
-                            
-                                            <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Enable variants</label>
-                                            <label class="custom-toggle" style="float: right">
-                                                <input type="checkbox" name="itemAvailable" id="itemAvailable" checked="">
-                                                <span class="custom-toggle-slider rounded-circle"></span>
-                                            </label>
-                                        </div>
+                                        
 
                                         <div class="center">
                                     
@@ -295,10 +303,13 @@
           
           
                                 <div class="text-center">
-                                    <form action="/restaurant/menu/item/delete/{$item->id}" method="get">
-                                        <input type="hidden" name="_token"  autocomplete="off">                      
-                                                      <input type="hidden" name="_method" value="delete">                                    <button type="button" class="btn btn-danger mt-4" onclick="confirm('Are you sure you want to delete this item?') ? this.parentElement.submit() : ''">Delete</button>
+                                    <form action="/restaurant/menu/item/delete/{{$items->id}}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="delete">
+                                        <button type="button" class="btn btn-danger mt-4" onclick="confirm('Are you sure you want to delete this item?') ? this.parentElement.submit() : ''">Delete</button>
                                     </form>
+                                    
+                                    
                                 </div>
                         
         
@@ -311,7 +322,7 @@
 
     
 
-                        <div class="col-md-6">
+                       <!-- <div class="col-md-6">
                             <div class="custom">
                                 <div class="d-flex justify-content-between align-items-center">
                                 <h1 class="mt-3">Extras</h1>
@@ -343,7 +354,7 @@
 
                                     
                                         <div class="modal-body">
-                                                <!--espace name-->
+                                                espace name-
                                     
                                             <div class="table-responsive">
                                                 <table class="table align-items-center">
@@ -438,7 +449,7 @@
                                 </div>
                                 </main>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
    

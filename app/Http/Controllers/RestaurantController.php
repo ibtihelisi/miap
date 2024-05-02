@@ -243,11 +243,6 @@ class RestaurantController extends Controller
 
     
 
- //affichage de a liste
- public function show($id){
-    $users=User::all();
-    return view('consomateur.dashboard')->with('users',$users);
-}
 
 
  public function sub(){

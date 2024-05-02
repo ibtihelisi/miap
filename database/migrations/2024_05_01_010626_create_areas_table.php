@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('areas', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->unsignedBigInteger('user_id'); // Clé étrangère vers la table des utilisateurs
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
+            $table->unsignedBigInteger('staff_id'); // Clé étrangère vers la table du personnel
+            $table->foreign('staff_id')->references('id')->on('staff')->onDelete('cascade');
+            
+            $table->unsignedBigInteger('table_id'); // Clé étrangère vers la table des tables (tables)
+            $table->foreign('table_id')->references('id')->on('tables')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

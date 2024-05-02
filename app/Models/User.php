@@ -33,6 +33,17 @@ class User extends Authenticatable
      {
         return $this->hasMany(Staff::class,'user_id','id');
     }
+
+
+    public function areas()
+    {
+        return $this->hasMany(Area::class,'user_id','id');
+    }
+
+    public function tables()
+    {
+        return $this->hasMany(Table::class,'user_id','id');
+    }
     
     
 
