@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light navbar-top navbar-expand">
+<nav class="navbar navbar-light navbar-top navbar-expand ">
     <div class="navbar-logo"><button class="btn navbar-toggler navbar-toggler-humburger-icon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button> <a class="navbar-brand me-1 me-sm-3" href="index.html">
         <div class="d-flex align-items-center">
           <div class="d-flex align-items-center"><img src="{{asset('dashassets/img/icons/logo.svg')}}" alt="phoenix" width="32">
@@ -15,7 +15,7 @@
         <li class="nav-item dropdown">
         
           
-          <a class="nav-link lh-1 px-0 ms-5" id="navbarDropdownUser" href="/QRMenu/restaurant/{id}" role="button"><i class="fas fa-store-alt"></i> My Restaurant</a>
+          <a class="nav-link lh-1 px-0 ms-5" id="navbarDropdownUser" href="/QRMenu/restaurant/{id}" target="_blank" role="button"><i class="fas fa-store-alt"></i> My Restaurant</a>
          
           <a class="nav-link lh-1 px-0 ms-5" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="avatar avatar-l">

@@ -225,7 +225,7 @@ Route::get('/qrcode', [App\Http\Controllers\QrcodeController::class, 'generateQR
 Route::get('/QRMenu/restaurant/{id}', [App\Http\Controllers\ConsomateurController::class, 'index']);
 Route::get('/user/{userId}/categories', [App\Http\Controllers\QrcodeController::class, 'showCategories'])->name('user.categories');
 
-Route::post('/scan-qrcode', [App\Http\Controllers\QrcodeController::class, 'scanQrCode'])->name('scan.qrcode');
-Route::post('/generate-qrcode', [App\Http\Controllers\QrcodeController::class, 'generateQrCode'])->name('generate.qrcode');
+//Route::post('/scan-qrcode', [App\Http\Controllers\QrcodeController::class, 'scanQrCode'])->name('scan.qrcode');
+//Route::post('/generate-qrcode', [App\Http\Controllers\QrcodeController::class, 'generateQrCode'])->name('generate.qrcode');
 
 Route::get('/client/subscription', [App\Http\Controllers\RestaurantController::class, 'sub']);

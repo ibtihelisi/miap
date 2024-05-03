@@ -38,6 +38,13 @@
                 font-weight: 300;
                 line-height: 3;
             }
+            .card-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
         </style>
     </head>
     <body data-bs-spy="scroll" data-bs-target="#navbarExample">
@@ -54,7 +61,7 @@
             <div>
             
 
-                <section class="section-profile-cover section-shaped grayscale-05 d-none d-md-none d-lg-block d-lx-block">
+                <section class="section-profile-cover section-shaped grayscale-05  ">
                     <!-- Circles background -->
                     <img class="bg-image" loading="lazy" src="{{asset('uploads')}}/{{ Auth::user()->logo }}" style="width: 100%;">
                     <!-- SVG separator -->
@@ -63,25 +70,28 @@
                         <polygon class="fill-white" fill="#fff2dc" points="2560 0 2560 100 0 100"></polygon>
                       </svg>
                     </div>
-                  </section>
+                </section>
             
-                <section class="mt-5 mb-2 ">
+                <section class="mt-5 mb-2  ">
                     <div class="container">
-                        <div class="row">
+                        <div class="row justify-content-center" >
                             <div class="col-md-12">
                                 <div class="title white" style="border-bottom: 10px solid #ffffff;">
-                                    <h1 class="display-3 ">{{Auth::user()->restaurant_name}} </h1>
+                                    <h1 class=" ">Welcom to  {{Auth::user()->restaurant_name}} </h1>
                                     
-                                    <p class="display-4" style="margin-top: 120px">{{Auth::user()->desc}}</p>
+                                    <p class="" style="margin-top: 5px">{{Auth::user()->desc}}</p>
                                     <div class="row">
-                    <div class="col-md-12">
+                        <div class="col-md-12">
                         <ul class="list-inline ">
                             </ul>
                     </div>
                     </div>
             
             
-                                    <p><i class="ni ni-watch-time"></i>  <span class="opened_time">Opened 00:00 closed 23:58</span>  |   <i class="ni ni-pin-3"></i> <a target="_blank" href=""><span class="notranslate">{{Auth::user()->location}}</span></a>  |   <i class="ni ni-mobile-button"></i> <a href="">(+216){{Auth::user()->owner_phone}} </a> </p>
+                                    <p><i class="fas fa-stopwatch me-2"></i>
+                                        <span class="opened_time">Opened 00:00 closed 23:58</span>  |  
+                                        <i class="fas fa-thumbtack me-2"></i><a target="_blank" href=""><span class="notranslate">{{Auth::user()->location}}</span></a>  | 
+                                        <i class="fas fa-phone me-2 fa-flip-horizontal "></i><a href="">(+216){{Auth::user()->owner_phone}} </a> </p>
                                 </div>
                             </div>
                         </div>
@@ -109,13 +119,13 @@
                                 </li>   
 
                                 @foreach($categories as $c )
-                                @if ($c->user_id == Auth::user()->id )
+                                        @if ($c->user_id == Auth::user()->id )
                                     
                                          
                                     
                                
-                                                                                    <li class="nav-item nav-item-category" id="cat_salads0">
-                                            <a class="nav-link mb-sm-3 mb-md-0" data-toggle="tab" role="tab" id="nav_salads0" href="#salads0">{{$c->name}}</a>
+                                            <li class="nav-item nav-item-category" id="cat_salads{{$loop->index}}">
+                                                <a class="nav-link mb-sm-3 mb-md-0" data-toggle="tab" role="tab" id="nav_salads{{$loop->index}}" href="#salads{{$loop->index}}">{{$c->name}}</a>
                                              </li>
                                             
                                         @endif                                                                       
@@ -132,7 +142,7 @@
                             @foreach($categories as $c )
                             @if ($c->user_id == Auth::user()->id )
             
-                                                                    <div id="salads0" class="salads0">
+                                                                    <div id="salads{{$loop->index}}" class="salads{{$loop->index}}">
                                                                         <h1>{{$c->name}}</h1><br>
                                                                     </div>
                                                                     
@@ -143,7 +153,7 @@
                                                                         @foreach ($c->items as $i )   
                                           <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
 
-                                            
+                                            <div class="card-container">
                                                                      <div class="strip">
                                                                             <figure>
                                                 <a onclick="setCurrentItem(1)" href="javascript:void(0)"><img src="{{asset('uploads')}}/{{ $i->photo }}" loading="lazy" data-src="/default/restaurant_large.jpg" class="img-fluid lazy" alt=""></a>
@@ -167,7 +177,7 @@
                                             
                                             
                                         </div>
-                                        
+                                    </div>
                                     </div>
                                     @endforeach
                                     @endif
