@@ -19,6 +19,14 @@ class Item extends Model
         return $this->belongsTo(User::class ,'user_id' ,'id');
     }
 
-    
+      // Méthode pour raccourcir la description si elle est trop longue
+      public function shortDescription($length = 100)
+      {
+          if (strlen($this->description) > $length) {
+              return substr($this->description, 0, $length) . '...';
+          }
+  
+          return $this->description;
+      }
 
 }

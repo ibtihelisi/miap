@@ -213,7 +213,7 @@ Route::get('/restaurant/staff',[StaffController::class,'index']);
 /**qr cooode */
 //Route::get('/download-qrcode', 'QRCodeController@downloadQRCode')->name('download.qrcode');
 
-Route::get('/download-qrcode', [App\Http\Controllers\QrcodeController::class, 'downloadQRCode'])->name('download.qrcode');
+//Route::get('/download-qrcode', [App\Http\Controllers\QrcodeController::class, 'downloadQRCode'])->name('download.qrcode');
 Route::get('/qrcode', [App\Http\Controllers\QrcodeController::class, 'generateQRCode'])->name('qrcode.index');
 
 //Route::get('/qrcode', 'QRCodeController@generateQRCode')->name('qrcode.index');
@@ -222,7 +222,7 @@ Route::get('/qrcode', [App\Http\Controllers\QrcodeController::class, 'generateQR
 
 
 
-Route::get('/QRMenu/restaurant/{id}', [App\Http\Controllers\ConsomateurController::class, 'index']);
+Route::get('/QRMenu/restaurant/{id}', [App\Http\Controllers\ConsomateurController::class, 'index'])->name('QRMenu.restaurant');
 Route::get('/user/{userId}/categories', [App\Http\Controllers\QrcodeController::class, 'showCategories'])->name('user.categories');
 
 //Route::post('/scan-qrcode', [App\Http\Controllers\QrcodeController::class, 'scanQrCode'])->name('scan.qrcode');

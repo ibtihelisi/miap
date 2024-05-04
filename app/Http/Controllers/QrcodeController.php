@@ -14,19 +14,18 @@ class QrcodeController extends Controller
     //
     public function generateQRCode()
     {
-        // Fetch user data from the database
-        $user = Auth::user();
-        $data = [
-            'id' => $user->id,
-            'name' => $user->restaurant_name,
-        ];
+        // Lien vers la page que vous voulez que le QR code ouvre
+        $url = 'http://127.0.0.1:8000/QRMenu/restaurant';
     
-        // Generate the QR code
-        $qrCode = QrCode::size(300)->generate(json_encode($data));
+        // Générer le code QR avec l'URL spécifique
+        $qrCode = QrCode::size(300)->generate($url);
     
+        // Passer les données à la vue
         return view('client.qrcode.index', compact('qrCode'));
     }
+    
 
+    
 
     
     public function downloadQRCode()

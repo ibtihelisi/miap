@@ -15,7 +15,7 @@
         <li class="nav-item dropdown">
         
           
-          <a class="nav-link lh-1 px-0 ms-5" id="navbarDropdownUser" href="/QRMenu/restaurant/{id}" target="_blank" role="button"><i class="fas fa-store-alt"></i> My Restaurant</a>
+          <a class="nav-link lh-1 px-0 ms-5" id="navbarDropdownUser" href="/QRMenu/restaurant/{{Auth::user()->id}}" target="_blank" role="button"><i class="fas fa-store-alt"></i> My Restaurant</a>
          
           <a class="nav-link lh-1 px-0 ms-5" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="avatar avatar-l">
