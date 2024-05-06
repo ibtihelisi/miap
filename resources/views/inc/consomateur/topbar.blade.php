@@ -31,7 +31,7 @@
 
                    
                         <li class="nav-item">
-                            <a class="btn-outline-sm" href="" > <i class="fas fa-shopping-basket me-2"></i> Card</a>
+                            <a class="btn-outline-sm" href="" > <i class="fas fa-shopping-basket me-2"></i> Cart</a>
                         </li>
                    
                
