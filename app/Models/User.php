@@ -44,6 +44,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Table::class,'user_id','id');
     }
+    public function commande(){
+
+        return $this->hasMany(Commande::class ,'user_id','id');
+    }
     
     
 

@@ -159,8 +159,8 @@
 
               
                 .sidebar.active {
-    right: 0; /* Afficher la barre latérale lorsque la classe active est ajoutée */
-}
+                right: 0; /* Afficher la barre latérale lorsque la classe active est ajoutée */
+                }
 
                 .offcanvas-menu-inner {
                 padding: 0 20px 0 30px;
@@ -184,443 +184,502 @@
                     letter-spacing: .025em;
                 }
         </style>
-    </head>
-    <body data-bs-spy="scroll" data-bs-target="#navbarExample">
-        
-            <!-- top bar start-->
 
-                    <!-- Navigation -->
-            <nav id="navbarExample" class="navbar navbar-expand-lg fixed-top " aria-label="Main navigation">
-                <div class="container">
-
-                    <!-- Image Logo -->
-                    
-                    <a class="navbar-brand logo-image logosize" href="/"><img src="{{asset('mainassets/images/logo.svg')}}" alt="put logo" style="width: 60px; height: auto;"></a> 
-
-                    <!-- Text Logo - Use this if you don't have a graphic logo -->
-                    <!-- <a class="navbar-brand logo-text" href="index.html">MenuQR</a> -->
-
-                    <!-- Bouton de basculement du menu -->
-                    <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="navbar-collapse " id="navbarsExampleDefault">
-                        
-
-
-
-                        <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ms-auto d-flex justify-content-between align-items-center ">
-                            <!-- Authentication Links -->
-                            
-                                
-                                    <li class="nav-item">
-                                        <a class="btn-outline-sm" href=""> <i class="fas fa-bell me-2"></i>Call Waiter</a>
-                                    </li>
-                            
-
-                                    <li class="nav-item">
-                                        <a class="btn-outline-sm" id="cartButton" > <i class="fas fa-shopping-basket me-2"></i> Cart <span class="badge badge-primary " style="color: #f25c05" ></span></a>
-                                    </li>
-                                    
-
-
-                            
-                        
-                        
-                            
-                        </ul>
-
-
-
-
-
-
-                    
-                    </div> <!-- end of navbar-collapse -->
-                </div> <!-- end of container -->
-            </nav> <!-- end of navbar -->
-            <!-- end of navigation -->
-
-
-            <div id="sidebar" class="sidebar">
-                <!-- Contenu de la sidebar -->
-                <div class="offcanvas-menu-inner">
-                    <button type="button" class="close" onclick="closeSidebar()" aria-label="Close" style="background-color: #fff2dc;">
-                        <span aria-hidden="true" style="color: #f25c05;">X</span>
-
-                        
-                    </button>
-                    
-                    <div class="minicart-content">
-                        <div class="minicart-heading">
-                            <h4 style="margin-bottom: 0; padding-bottom: 25px; font-size: 1.5rem;">Shopping Cart</h4>
-                        </div>
-                        <div class="searchable-container">
-                            <div id="cartList">
-
-                                @foreach ($commande->lignecommandes as $lc )
-                                    
-                                
-                                    <div class="items col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix" style="position: relative;
-                                            width: 100%;padding-right: 15px;padding-left: 15px;">
-                                
-                                        <div class="info-block block-info clearfix" style="border-color: #f25c05;
-                                            border-right: 5px solid #f25c05;
-                                            margin-bottom: 25px;">
-                                            <div class="square-box pull-left" style="  background-color: #f25c05;
-                                                min-height: 10px;
-                                                height: 112px;
-                                                margin-right: 22px;
-                                                text-align: center !important;
-                                                width: 100px;
-                                                float: left;">
-                                                <img src="{{asset('uploads')}}/{{$lc->item->photo }}" width="100" height="105" alt="" class="productImage" style="max-width: 100%;
-                                                height: 100px;   width: 100px;">
-                                            </div> 
-                                            <h6 class="product-item_title" style="margin-bottom: .5rem;
-                                            font-family: inherit;
-                                            font-weight: 400;
-                                            line-height: 1.5;
-                                            color: #32325d;">{{$lc->item->name}}</h6> 
-                                            <p class="product-item_quantity" style="margin-bottom: 1rem;">{{$lc->quantity}} x {{$lc->item->price}} DTN </p> 
-                                            <div class="row" style="display: flex;">
-                                            
-                                                <button type="button" value="1714922522" class="btnn btn-outline-primary btn-icon btn-sm page-link btn-cart-radius custom-btn">
-                                                    <span class="btn-inner--icon btn-cart-icon"><i class="fa fa-minus"></i></span>
-                                                </button> 
-                                                <button type="button" value="1714922522" class="btnn btn-outline-primary btn-icon btn-sm page-link btn-cart-radius custom-btn">
-                                                    <span class="btn-inner--icon btn-cart-icon"><i class="fa fa-plus"></i></span>
-                                                </button> 
-                                                <button type="button" value="1714922522" class="btnn btn-outline-primary btn-icon btn-sm page-link btn-cart-radius custom-btn">
-                                                    <span class="btn-inner--icon btn-cart-icon"><i class="fa fa-trash"></i></span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                @endforeach
-
-                                
-                            </div>
-                            <div id="totalPrices">
-                                <div class="card card-stats mb-4 mb-xl-0">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col">
-                                                <span><strong>Subtotal:</strong></span> 
-                                                <span class="ammount"><strong>$43.96</strong></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <br> 
-                                <div class="text-center mobile-menu" >
-                                    
-                                    <a  type="button" href="/cart-checkout" class="btn btn-primary text-white">Checkout</a>
-                                </div> 
-                                <br> 
-                                <div class="text-center mobile-menu">
-                                    <a type="button"   onclick="closeSidebar()"  class="btn btn-primary text-white" style="text-transform: none;">Continue Shopping</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                </div>
-            </div>
-            
-
-           
-            <!-- top bar end-->
-        
-        
-         
-
-            
-            <div>
-            
-
-                <section class="section-profile-cover section-shaped grayscale-05  ">
-                    <!-- Circles background -->
-                    <img class="bg-image" loading="lazy" src="{{asset('uploads')}}/{{ $user->logo }} " style="width: 100%">
-                    <!-- SVG separator -->
-                    <div class="separator separator-bottom separator-skew">
-                      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                        <polygon class="fill-white" fill="#fff2dc" points="2560 0 2560 100 0 100"></polygon>
-                      </svg>
-                    </div>
-                </section>
-            
-                <section class="mt-5 mb-2   " >
-                    <div class="container">
-                        <div class="row " >
-                            <div class="col-md-12">
-                                <div class="title white" style="border-bottom: 10px solid #ffffff;">
-                                    <h1 class=" section-custom-margin">Welcom to  {{$user->restaurant_name}} </h1>
-                                    
-                                    <p class="" style="margin-top: 5px">{{$user->desc}}</p>
-                                    <div class="row">
-                        <div class="col-md-12">
-                        <ul class="list-inline ">
-                            </ul>
-                    </div>
-                    </div>
-            
-            
-                                    <p><i class="fas fa-stopwatch me-2"></i>
-                                        <span class="opened_time">Opened 00:00 closed 23:58</span>  |  
-                                        <i class="fas fa-thumbtack me-2"></i><a target="_blank" href=""><span class="notranslate">{{$user->location}}</span></a>  | 
-                                        <i class="fas fa-phone me-2 fa-flip-horizontal "></i><a href="">(+216){{$user->owner_phone}} </a> </p>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <div class="row">
-                            <div class="col-lg-12">
-                                                </div>
-                                        </div>
-                    </div>
-            
-                </section>
-
-
-            
-                <section class="section pt-lg-0" id="restaurant-content" style="padding-top: 0px">
-                    <input type="hidden" id="rid" value="1">
-                    <div class="container container-restorant">
-            
-                        
-                        
-                                <nav class="tabbable sticky holder-left" style="top: 64px;">
-                            <ul class="nav nav-pills bg-white mb-2">
-                                <li class="nav-item nav-item-category ">
-                                    <a class="nav-link  mb-sm-3 mb-md-0 active" data-toggle="tab" role="tab" href="">All categories</a>
-                                </li>   
-
-                                @foreach($categories as $c )
-                                        @if ($c->user_id == $user->id )
-                                    
-                                         
-                                    
-                               
-                                            <li class="nav-item nav-item-category" id="cat_salads{{$loop->index}}">
-                                                <a class="nav-link mb-sm-3 mb-md-0" data-toggle="tab" role="tab" id="nav_salads{{$loop->index}}" href="#salads{{$loop->index}}">{{$c->name}}</a>
-                                             </li>
-                                            
-                                        @endif                                                                       
-                                 @endforeach                                                                   
-                                                                                          
-                             </ul>
-            
-                            
-                            </nav>
-            
-                        
-                        
-                        
-                            @foreach($categories as $c )
-                            @if ($c->user_id == $user->id )
-            
-                                                                    <div id="salads{{$loop->index}}" class="salads{{$loop->index}}">
-                                                                        <h1>{{$c->name}}</h1><br>
-                                                                    </div>
-                                                                    
-                                                                        
-                                                                    
-                                                                    <div class="row ">
-                                                                       
-                                                                        @foreach ($c->items as $i )   
-                                          <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-
-                                            <div class="card-container">
-                                                                     <div class="strip">
-                                                                            <figure>
-                                                <a ><img src="{{asset('uploads')}}/{{ $i->photo }}" loading="lazy" data-src="/default/restaurant_large.jpg" class="img-fluid lazy rounded" alt=""></a>
-                                            </figure>
-                                                                            
-                                                                                <div class="res_title"><b><a >{{$i->name}}</a></b></div>
-                                            
-                                                                        <div class="res_description res_description_limit">{{$i->description}}</div>
-
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="res_mimimum">
-                                                                                                   {{$i->price}}                                       </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="allergens" style="text-align: right;">
-                                                                                                     
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="card-footer-buttons">
-                                                    <a data-bs-toggle="modal" data-bs-target="#editItem{{ $i->id }}" class=""  id="edit"       data-placement="top" >
-                                                        <button class="btn btn-custom float-left btn-rounded"><i class="fas fa-eye me-1"></i>View Detail</button>
-                                                    </a>
-                                                    <button  id="cartButton"  class="btn btn-custom float-right btn-rounded"><i class="fas fa-shopping-cart me-1"></i>Add To Cart</button>
-                                                </div>
-                                            </div>
-                                            
-                                            
-                                            
-                                        </div>
-                                    </div>
-                                    </div>
-                                    @endforeach
-                                    @endif
-                                    @endforeach
-                                                       
-                                                                
-                                 
-                                                </div>
-                                                <!-- Check if is installed -->
-                                        
-                            <!-- Check if there is value -->
-                                        
-                       
-                        
-                    </div>
-            
-                                <div onclick="toggleSidebar()" class="callOutShoppingButtonBottom icon icon-shape bg-gradient-red text-white rounded-circle shadow mb-4">
-                            <i class="fas fa-shopping-basket"></i>
-                        </div>
-                    
-                </section>
+        <style>
+            .text-bg-success {
+                color: green; /* Couleur du texte */
+                background-color: #c8e6c9; /* Couleur de fond plus claire */
+                padding: 5px 10px; /* Optionnel : ajustez le rembourrage selon vos besoins */
+                border-radius: 10px; /* Optionnel : pour arrondir les coins */
+            }
+        </style>
+            </head>
+            <body data-bs-spy="scroll" data-bs-target="#navbarExample">
                 
-                   
-                  
-             </div>
+                    <!-- top bar start-->
 
-       
+                            <!-- Navigation -->
 
 
-        
+                    <nav id="navbarExample" class="navbar navbar-expand-lg fixed-top " aria-label="Main navigation">
+                        <div class="container">
 
-            <!-- bottom bar start-->
-
-            @include('inc.consomateur.bottombar')
-            <!-- bottom bar end-->
-                        
+                            <!-- Image Logo -->
                             
+                            <a class="navbar-brand logo-image logosize" href="/"><img src="{{asset('mainassets/images/logo.svg')}}" alt="put logo" style="width: 60px; height: auto;"></a> 
 
+                            <!-- Text Logo - Use this if you don't have a graphic logo -->
+                            <!-- <a class="navbar-brand logo-text" href="index.html">MenuQR</a> -->
 
+                            <!-- Bouton de basculement du menu -->
+                            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
 
-  
-
-
-
-
-
-
-          @foreach($categories as $c )
-            @if ($c->user_id == $user->id )
-                @foreach ($c->items as $i )  
-
-
-               
-
-                    <div class="modal fade" id="editItem{{$i->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        
-                         aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h2 class="modal-title" id="exampleModalLabel">{{$i->name}}</h2>
-                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="background-color: #fff2dc;">
-                                        <span aria-hidden="true" style="color: #f25c05;">X</span>
-                                    </button>
-                                    
-                                    
-                                </div>
+                            <div class="navbar-collapse " id="navbarsExampleDefault">
                                 
+
+
+
+                                <!-- Right Side Of Navbar -->
+                                <ul class="navbar-nav ms-auto d-flex justify-content-between align-items-center ">
+                                    <!-- Authentication Links -->
                                     
-                                
-                                <form action="/QRMenu/restaurant/order/add" method="post">
-                    
-                                    @csrf
-                    
-                                
-                                    <div class="modal-body p-0">
-                                        <div class="card shadow border-0">
-                                            <div class="card-body px-lg-5 py-lg-5">
-                                                <div class="row">
-                                                    <div class="col-sm col-md col-lg text-center" id="modalImgPart">
-                        
+                                        
+                                            <li class="nav-item">
+                                                <a class="btn-outline-sm" href=""> <i class="fas fa-bell me-2"></i>Call Waiter</a>
+                                            </li>
+                                    
+
+                                            <li class="nav-item">
+                                                <a class="btn-outline-sm" id="cartButton" > <i class="fas fa-shopping-basket me-2"></i> Cart <span class="badge badge-primary " style="color: #f25c05" ></span></a>
+                                            </li>
                                             
-                                                        <label for="photo"><img src="{{asset('uploads')}}/{{ $i->photo }}" loading="lazy" data-src="/default/restaurant_large.jpg" class="img-fluid lazy" alt=""></label>
-                                                        <br><br>
 
-                                                    </div>
-                                                    <div class="col-sm col-md col-lg col-lg" id="modalItemDetailsPart">
 
-                                                        <h5 for="price" style="text-size:20px">{{$i->price}} DTN</h5>
-                                                        </br>
-                                                        
-                                                        <label for="desc">{{$i->description}}</label><br>
-                                                        <label for="available">{{$i->available}}</label>
-                                                        </br>
-                                                    </br>
+                                    
+                                
+                                
+                                    
+                                </ul>
 
+
+
+
+
+
+                            
+                            </div> <!-- end of navbar-collapse -->
+                        </div> <!-- end of container -->
+                    </nav> <!-- end of navbar -->
+                    <!-- end of navigation -->
+
+                    <!--sidenav pour la panier -->
+                    <div id="sidebar" class="sidebar">
+                        <!-- Contenu de la sidebar -->
+                        <div class="offcanvas-menu-inner">
+                            <button type="button" class="close" onclick="closeSidebar()" aria-label="Close" style="background-color: #fff2dc;">
+                                <span aria-hidden="true" style="color: #f25c05;">X</span>
+
+                                
+                            </button>
+                            
+                            <div class="minicart-content">
+                                <div class="minicart-heading">
+                                    <h4 style="margin-bottom: 0; padding-bottom: 25px; font-size: 1.5rem;">Shopping Cart</h4>
+                                </div>
+                                <div class="searchable-container">
+                                    <div id="cartList">
+
+                                        @foreach ($commande->lignecommandes as $lc )
                                             
                                         
-                                                        
-                                                        <label for="quantity">Quantity</label>
+                                            <div class="items col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix" style="position: relative;
+                                                    width: 100%;padding-right: 15px;padding-left: 15px;">
+                                        
+                                                <div class="info-block block-info clearfix" style="border-color: #f25c05;
+                                                    border-right: 5px solid #f25c05;
+                                                    margin-bottom: 25px;">
+                                                    <div class="square-box pull-left" style="  background-color: #f25c05;
+                                                        min-height: 10px;
+                                                        height: 112px;
+                                                        margin-right: 22px;
+                                                        text-align: center !important;
+                                                        width: 100px;
+                                                        float: left;">
+                                                        <img src="{{asset('uploads')}}/{{$lc->item->photo }}" width="100" height="105" alt="" class="productImage" style="max-width: 100%;
+                                                        height: 100px;   width: 100px;">
+                                                    </div> 
+                                                    <h6 class="product-item_title" style="margin-bottom: .5rem;
+                                                    font-family: inherit;
+                                                    font-weight: 400;
+                                                    line-height: 1.5;
+                                                    color: #32325d;">{{$lc->item->name}}</h6> 
+                                                    <p class="product-item_quantity" style="margin-bottom: 1rem;">{{$lc->quantity}} x {{$lc->item->price}} DTN </p> 
+                                                    <div class="row" style="display: flex;">
                                                     
-                                                        <input type="number" step="1"  min="1" placeholder="1" name="quantity">
-                    
-                                                        <input type="hidden" value="{{ $i->id}}" name="idcategory"   class="form-control form-control-alternative">
-                                                        <input type="hidden" value="{{ $i->id}}" name="iditem"   class="form-control form-control-alternative" >
-                                                  
-                                                        <input type="hidden" value="{{ $user->id}}" name="iduser"   class="form-control form-control-alternative">
-                                                  
-                                                    
+                                                        <a href=" /QRMenu/restaurant/lc/{{$lc->id}}/moinsQuantity" type="button" value="1714922522" class="btnn btn-outline-primary btn-icon btn-sm page-link btn-cart-radius custom-btn">
+                                                            <span class="btn-inner--icon btn-cart-icon"><i class="fa fa-minus"></i></span>
+                                                        </a> 
+                                                        <a   href="/QRMenu/restaurant/lc/{{$lc->id}}/plusQuantity" type="button" value="1714922522" class="btnn btn-outline-primary btn-icon btn-sm page-link btn-cart-radius custom-btn">
+                                                            <span class="btn-inner--icon btn-cart-icon"><i class="fa fa-plus"></i></span>
+                                                        </a> 
+                                                        <a href="/QRMenu/restaurant/lc/{{$lc->id}}/destroy" type="button"  class="btnn btn-outline-primary btn-icon btn-sm page-link btn-cart-radius custom-btn">
+                                                            <span class="btn-inner--icon btn-cart-icon"><i class="fa fa-trash"></i></span>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
+
+                                        @endforeach
+
+                                        
+                                    </div>
+                                    
+                                    <div id="totalPrices">
+                                        <div class="card card-stats mb-4 mb-xl-0">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col"> 
+                                                        
+                                                        <?php
+                                                        // Initialiser le sous-total à zéro
+                                                        $subTotal = 0;
+                                                        
+                                                        // Parcourir chaque ligne de commande
+                                                        foreach ($commande->lignecommandes as $lc) {
+                                                            // Calculer le montant pour cette ligne en multipliant la quantité par le prix
+                                                            $lineTotal = $lc->quantity * $lc->item->price;
+                                                            
+                                                            // Ajouter le montant de cette ligne au sous-total total
+                                                            $subTotal += $lineTotal;
+                                                        }
+                                                        
+                                                        // Maintenant $subTotal contient le sous-total de tous les articles dans le panier
+                                                        ?>
+                                                        
+                                                        
+                                                        <span><strong>Subtotal:</strong></span> 
+                                                        <span class="ammount"><strong>{{$subTotal}} DTN</strong></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        <br> 
+                                        <div class="text-center mobile-menu" >
+                                            
+                                            <a  type="button" href="/QRMenu/restaurant/checkout" class="btn btn-primary text-white">Checkout</a>
+                                        </div> 
+                                        <br> 
+                                        <div class="text-center mobile-menu">
+                                            <a type="button"   onclick="closeSidebar()"  class="btn btn-primary text-white" style="text-transform: none;">Continue Shopping</a>
                                         </div>
-                    
                                     </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-primary" id="cartButton"  >Add To Cart</button>
-                                        <button class="btn btn-outline-primary" type="button"
-                                            data-bs-dismiss="modal">X</button>
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
+                            </div>  
                         </div>
                     </div>
+                    
 
+                
+                    
+                
+                
+                
+
+                    
+                    <div>
+                    
+                        <!--section pour le logo du restaurant -->
+                        <section class="section-profile-cover section-shaped grayscale-05  ">
+                            <!-- Circles background -->
+                            <img class="bg-image" loading="lazy" src="{{asset('uploads')}}/{{ $user->logo }} " style="width: 100% ;height: 400px;">
+                            <!-- SVG separator -->
+                            <div class="separator separator-bottom separator-skew">
+                            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                <polygon class="fill-white" fill="#fff2dc" points="2560 0 2560 100 0 100"></polygon>
+                            </svg>
+                            </div>
+                        </section>
+                        
+
+                        <!--section pour le titre la localisation du restaurant -->
+                        <section class="mt-5 mb-2   " >
+                            <div class="container">
+                                <div class="row " >
+                                    <div class="col-md-12">
+                                        <div class="title white" style="border-bottom: 10px solid #ffffff;">
+                                            <h1 class=" section-custom-margin">Welcom to  {{$user->restaurant_name}} </h1>
+                                            
+                                            <p class="" style="margin-top: 5px">{{$user->desc}}</p>
+                                            <div class="row">
+                                <div class="col-md-12">
+                                <ul class="list-inline ">
+                                    </ul>
+                            </div>
+                            </div>
+                    
+                    
+                                            <p><i class="fas fa-stopwatch me-2"></i>
+                                                <span class="opened_time">Opened 00:00 closed 23:58</span>  |  
+                                                <i class="fas fa-thumbtack me-2"></i><a target="_blank" href=""><span class="notranslate">{{$user->location}}</span></a>  | 
+                                                <i class="fas fa-phone me-2 fa-flip-horizontal "></i><a href="">(+216){{$user->owner_phone}} </a> </p>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                                        </div>
+                                                </div>
+                            </div>
+                    
+                        </section>
+
+
+                        <!--section for the menu items and categoories-->
+                        <section class="section pt-lg-0" id="restaurant-content" style="padding-top: 0px">
+                            <input type="hidden" id="rid" value="1">
+                            <div class="container container-restorant">
+                    
+                                
+                                
+                                        <nav class="tabbable sticky holder-left" style="top: 64px;">
+                                    <ul class="nav nav-pills bg-white mb-2">
+                                                <!-- Affichage des alertes de succès ou d'erreur -->
+        
+
+            
+
+                                        <li class="nav-item nav-item-category ">
+                                            <a class="nav-link  mb-sm-3 mb-md-0 active" data-toggle="tab" role="tab" href="">All categories</a>
+                                        </li>   
+
+                                        @foreach($categories as $c )
+                                                @if ($c->user_id == $user->id )
+                                            
+                                                
+                                            
+                                    
+                                                    <li class="nav-item nav-item-category" id="cat_salads{{$loop->index}}">
+                                                        <a class="nav-link mb-sm-3 mb-md-0" data-toggle="tab" role="tab" id="nav_salads{{$loop->index}}" href="#salads{{$loop->index}}">{{$c->name}}</a>
+                                                    </li>
+                                                    
+                                                @endif                                                                       
+                                        @endforeach                                                                   
+                                                                                                
+                                    </ul>
+
+                                    @if(session('success'))
+                                    <div class="alert alert-success alert-dismissible delete-alert" role="alert" style="background-color: green; border-color: #c3e6cb; color:#d4edda ;" >
+                                        {{ session('success') }}
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" aria-setsize="10"></button>
+                                    </div>
+                                    <script>
+                                        // Sélectionne l'alerte de succès
+                                        var successAlert = document.querySelector('.alert-success');
+                                        // Ferme l'alerte après 10 secondes (10000 millisecondes)
+                                        setTimeout(function() {
+                                            successAlert.style.display = 'none';
+                                        }, 10000);
+                                
+                                        // Ajoute un écouteur d'événement au bouton de fermeture
+                                        var closeButton = successAlert.querySelector('.btn-close');
+                                        closeButton.addEventListener('click', function() {
+                                            successAlert.style.display = 'none';
+                                        });
+                                    </script>
+                                @endif
+                    
+                                    
+                                    </nav>
+                    
+                                
+                                
+                                
+                                    @foreach($categories as $c )
+                                    @if ($c->user_id == $user->id )
+                    
+                                                                            <div id="salads{{$loop->index}}" class="salads{{$loop->index}}">
+                                                                                <h1>{{$c->name}}</h1><br>
+                                                                            </div>
+                                                                            
+                                                                                
+                                                                            
+                                                                            <div class="row ">
+                                                                            
+                                                                                @foreach ($c->items as $i )   
+                                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+
+                                                    <div class="card-container">
+                                                                            <div class="strip">
+                                                                                    <figure>
+                                                        <a ><img src="{{asset('uploads')}}/{{ $i->photo }}" loading="lazy" data-src="/default/restaurant_large.jpg" class="img-fluid lazy rounded" alt=""></a>
+                                                    </figure>
+                                                                                    
+                                                                                        <div class="res_title"><b><a >{{$i->name}}</a></b></div>
+                                                    
+                                                                                <div class="res_description res_description_limit">{{$i->description}}</div>
+
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div class="res_mimimum">
+                                                                                                        {{$i->price}}                                       </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="allergens" style="text-align: right;">
+                                                                                                            
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="card-footer-buttons">
+                                                            <a data-bs-toggle="modal" data-bs-target="#editItem{{ $i->id }}" class=""  id="edit"       data-placement="top" >
+                                                                <button class="btn btn-custom float-left btn-rounded"><i class="fas fa-eye me-1"></i>View Detail</button>
+                                                            </a>
+                                                            <button  id="cartButton"  class="btn btn-custom float-right btn-rounded"><i class="fas fa-shopping-cart me-1"></i>Add To Cart</button>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                            </div>
+                                            @endforeach
+                                            @endif
+                                            @endforeach
+                                                            
+                                                                        
+                                        
+                                                        </div>
+                                                        <!-- Check if is installed -->
+                                                
+                                    <!-- Check if there is value -->
+                                                
+                            
+                                
+                            </div>
+                    
+                                        <div onclick="toggleSidebar()" class="callOutShoppingButtonBottom icon icon-shape bg-gradient-red text-white rounded-circle shadow mb-4">
+                                    <i class="fas fa-shopping-basket"></i>
+                                </div>
+                            
+                        </section>
+                        
+                        
+                        
+                    </div>
+
+            
+
+
+                
+
+                    <!-- bottom bar start-->
+
+                    @include('inc.consomateur.bottombar')
+                    <!-- bottom bar end-->
+                                
+                                    
+
+
+
+        
+
+
+
+
+                    <!--modal d'ajout de item ou pannier -->
+
+                @foreach($categories as $c )
+                    @if ($c->user_id == $user->id )
+                        @foreach ($c->items as $i )  
+
+
+                    
+
+                            <div class="modal fade" id="editItem{{$i->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h2 class="modal-title" id="exampleModalLabel">{{$i->name}}</h2>
+                                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="background-color: #fff2dc;">
+                                                <span aria-hidden="true" style="color: #f25c05;">X</span>
+                                            </button>
+                                            
+                                            
+                                        </div>
+                                        
+                                            
+                                        
+                                        <form action="/QRMenu/restaurant/order/add" method="post">
+                            
+                                            @csrf
+                            
+                                        
+                                            <div class="modal-body p-0">
+                                                <div class="card shadow border-0">
+                                                    <div class="card-body px-lg-5 py-lg-5">
+                                                        <div class="row">
+                                                            <div class="col-sm col-md col-lg text-center" id="modalImgPart">
+                                
+                                                    
+                                                                <label for="photo"><img src="{{asset('uploads')}}/{{ $i->photo }}" loading="lazy" data-src="/default/restaurant_large.jpg" class="img-fluid lazy" alt=""></label>
+                                                                <br><br>
+
+                                                            </div>
+                                                            <div class="col-sm col-md col-lg col-lg" id="modalItemDetailsPart">
+
+                                                                <h5 for="price" style="text-size:20px">{{$i->price}} DTN</h5>
+                                                                </br>
+                                                                
+                                                                <label for="desc">{{$i->description}}</label><br>
+                                                                <label for="available">{{$i->available}}</label>
+                                                                </br>
+                                                            </br>
+
+                                                    
+                                                
+                                                                
+                                                                <label for="quantity">Quantity</label>
+                                                            
+                                                                <input type="number" step="1"  min="1" placeholder="1" name="quantity">
+                            
+                                                                <input type="hidden" value="{{ $i->id}}" name="idcategory"   class="form-control form-control-alternative">
+                                                                <input type="hidden" value="{{ $i->id}}" name="iditem"   class="form-control form-control-alternative" >
+                                                        
+                                                                <input type="hidden" value="{{ $user->id}}" name="iduser"   class="form-control form-control-alternative">
+                                                        
+                                                            
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                            
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-primary" id="cartButton"  >Add To Cart</button>
+                                                <button class="btn btn-outline-primary" type="button"
+                                                    data-bs-dismiss="modal">X</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        @endforeach
+                    @endif
                 @endforeach
-            @endif
-        @endforeach
 
 
-           
+                
+
+                <!--scripte for oopen/close side nav-->
+                <script>
+                    function toggleSidebar(event) {
+                        event.preventDefault(); // Empêcher le comportement par défaut du lien
+                        var sidebar = document.getElementById("sidebar");
+                        sidebar.classList.toggle("active");
+                    }
+                
+                    function closeSidebar() {
+                        var sidebar = document.getElementById("sidebar");
+                        sidebar.classList.remove("active");
+                    }
+                
+                    document.getElementById("cartButton").addEventListener("click", toggleSidebar);
+                
+                    // Masquer la barre latérale au chargement de la page
+                    window.addEventListener("DOMContentLoaded", function() {
+                        var sidebar = document.getElementById("sidebar");
+                        sidebar.classList.remove("active");
+                    });
+                </script>
 
 
-        <script>
-            function toggleSidebar(event) {
-                event.preventDefault(); // Empêcher le comportement par défaut du lien
-                var sidebar = document.getElementById("sidebar");
-                sidebar.classList.toggle("active");
-            }
-        
-            function closeSidebar() {
-                var sidebar = document.getElementById("sidebar");
-                sidebar.classList.remove("active");
-            }
-        
-            document.getElementById("cartButton").addEventListener("click", toggleSidebar);
-        
-            // Masquer la barre latérale au chargement de la page
-            window.addEventListener("DOMContentLoaded", function() {
-                var sidebar = document.getElementById("sidebar");
-                sidebar.classList.remove("active");
-            });
-        </script>
-        
         
 
 

@@ -15,7 +15,7 @@ class QrcodeController extends Controller
     public function generateQRCode()
     {
         // Lien vers la page que vous voulez que le QR code ouvre
-        $url = 'http://127.0.0.1:8000/QRMenu/restaurant';
+        $url = route('QRMenu.restaurant', ['id' => Auth::user()->id]);
     
         // Générer le code QR avec l'URL spécifique
         $qrCode = QrCode::size(300)->generate($url);
@@ -27,38 +27,27 @@ class QrcodeController extends Controller
 
     
 
+
     
-    public function downloadQRCode()
-    {
-        // Fetch user data from the database
-        $user = Auth::user();
-        $data = [
-            'id' => $user->id,
-            'name' => $user->restaurant_name,
-        ];
+        public function downloadQRCode()
+        {
+            // Lien vers la page du restaurant spécifique
+            $url = route('QRMenu.restaurant', ['id' => Auth::user()->id]);
     
-        // Generate the QR code
-        $qrCode = QrCode::size(300)->generate(json_encode($data));
+            // Générer le code QR avec l'URL spécifique
+            $qrCode = QrCode::size(300)->generate($url);
     
-        // Convert QR code image to PNG format
-        $imageData = base64_decode($qrCode);
+            // Générer une réponse avec l'image du code QR
+            $response = Response::make($qrCode);
     
-        // Define the path to save the QR code image
-        $qrCodePath = public_path('uploads/qrcodes/qrcode.png');
+            // Définir les en-têtes de la réponse pour indiquer qu'il s'agit d'une image PNG à télécharger
+            $response->header('Content-Type', 'image/png');
+            $response->header('Content-Disposition', 'attachment; filename="qrcode.png"');
     
-        // Save the QR code image to the specified path
-        file_put_contents($qrCodePath, $imageData);
+            return $response;
+        }
     
-        // Set the download response
-        $headers = [
-            'Content-Type' => 'image/png',
-            'Content-Disposition' => 'attachment; filename=qrcode.png',
- 
-           
-        ];
-    // Return the download response with the file contents
-        return response()->file($qrCodePath,  $headers);
-    }
+    
     
 
 

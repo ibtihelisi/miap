@@ -211,12 +211,10 @@ Route::get('/restaurant/staff',[StaffController::class,'index']);
 
 
 /**qr cooode */
-//Route::get('/download-qrcode', 'QRCodeController@downloadQRCode')->name('download.qrcode');
 
-//Route::get('/download-qrcode', [App\Http\Controllers\QrcodeController::class, 'downloadQRCode'])->name('download.qrcode');
 Route::get('/qrcode', [App\Http\Controllers\QrcodeController::class, 'generateQRCode'])->name('qrcode.index');
+Route::get('/qrcode/download', [App\Http\Controllers\QrcodeController::class, 'downloadQRCode'])->name('qrcode.download');
 
-//Route::get('/qrcode', 'QRCodeController@generateQRCode')->name('qrcode.index');
 
 /**interface client finale */
 
@@ -226,9 +224,18 @@ Route::get('/QRMenu/restaurant/{id}', [App\Http\Controllers\ConsomateurControlle
 
 Route::post('/QRMenu/restaurant/order/add', [App\Http\Controllers\ConsomateurController::class, 'addcmd'])->name('QRMenu.restaurant.order.add');
 
+Route::get('/QRMenu/restaurant/lc/{idlc}/destroy', [App\Http\Controllers\ConsomateurController::class, 'ligneCommandeDestroy'])->name('QRMenu.restaurant.lc.delete');
+
+Route::get('/QRMenu/restaurant/lc/{idlc}/plusQuantity', [App\Http\Controllers\ConsomateurController::class, 'ligneCommandePlusQuantity'])->name('QRMenu.restaurant.lc.plusQuantity');
+
+
+Route::get('/QRMenu/restaurant/lc/{idlc}/moinsQuantity', [App\Http\Controllers\ConsomateurController::class, 'ligneCommandeMoinsQuantity'])->name('QRMenu.restaurant.lc.moinsQuantity');
+
+
+Route::get('/QRMenu/restaurant/checkout', [App\Http\Controllers\ConsomateurController::class, 'showcheckout'])->name('QRMenu.restaurant.checkout');
+
 Route::get('/user/{userId}/categories', [App\Http\Controllers\QrcodeController::class, 'showCategories'])->name('user.categories');
 
-//Route::post('/scan-qrcode', [App\Http\Controllers\QrcodeController::class, 'scanQrCode'])->name('scan.qrcode');
-//Route::post('/generate-qrcode', [App\Http\Controllers\QrcodeController::class, 'generateQrCode'])->name('generate.qrcode');
+
 
 Route::get('/client/subscription', [App\Http\Controllers\RestaurantController::class, 'sub']);

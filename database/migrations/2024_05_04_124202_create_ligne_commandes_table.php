@@ -19,11 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('commande_id');
             $table->foreign('commande_id')->references('id')->on('commandes')->onDelete('cascade');
             
-            $table->unsignedBigInteger('commande_id');
-            $table->foreign('commande_id')->references('id')->on('commandes')->onDelete('cascade');
-            
-            
-            
+           
             $table->timestamps();
         });
     }
