@@ -142,7 +142,7 @@
 
 
               
-              <li class="nav-item">
+             <!-- <li class="nav-item">
                 <a class="nav-link active" href="/admin/contacts">
                   <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
@@ -153,7 +153,7 @@
                     <span class="nav-link-text">Contact</span>
                   </div>
                   </a>
-              </li>
+              </li>-->
 
             
               

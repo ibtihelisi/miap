@@ -25,7 +25,7 @@ class Staff extends Model
 
     public function areas()
     {
-        return $this->belongsToMany(Area::class,'area_id','id');
+        return $this->belongsToMany(Area::class,'staff_id','id');
     }
      
    

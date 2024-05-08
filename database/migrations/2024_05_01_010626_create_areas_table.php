@@ -19,9 +19,7 @@ return new class extends Migration
             
             $table->unsignedBigInteger('staff_id'); // Clé étrangère vers la table du personnel
             $table->foreign('staff_id')->references('id')->on('staff')->onDelete('cascade');
-            
-            $table->unsignedBigInteger('table_id'); // Clé étrangère vers la table des tables (tables)
-            $table->foreign('table_id')->references('id')->on('tables')->onDelete('cascade');
+           
             
             $table->timestamps();
         });

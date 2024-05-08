@@ -59,7 +59,7 @@
             
             </div>
             <div class="col-md-6 text-end">
-              <a class="btn btn-primary" class="mt-3" href="">Add new staff </a>
+              <a class="btn btn-primary" class="mt-3" href="/staff/create" style="background-color: #f25c05">Add new staff </a>
               
 
             </div>
@@ -90,7 +90,7 @@
 
               <div class="mt-3">
 
-                <div id="tableExample2" data-list="{&quot;value#s&quot;:[&quot;#&quot;,&quot;Nom &quot;,&quot;Size&quot;,&quot;Area&quot;,&quot;Action&quot;],&quot;page&quot;:5,&quot;pagination&quot;:true}">
+                <div id="tableExample2" data-list="{&quot;value#s&quot;:[&quot;#&quot;,&quot;Nom &quot;,&quot;Size&quot;,&quot;Action&quot;],&quot;page&quot;:5,&quot;pagination&quot;:true}">
                   <div class="table-responsive scrollbar">
                     <table class="table table-bordered table-striped fs--1 mb-0">
                       <thead class="bg-200 text-900">
@@ -106,23 +106,25 @@
                       <tbody class="list">
                            
                                 
+                           @foreach ($staffs as $staff )
+                             
+                          
+                        
+                          <tr>
+                              <td class="NAME">{{$staff->name}}</td>
+                              <td class="EMAIL">{{$staff->email}} </td>
                             
-                        @foreach ($staffs as $staff)
-                        
-                        <tr>
-                            <td class="NAME">{{ $staff->name }}</td>
-                            <td class="EMAIL">{{ $staff->email }} <</td>
-                           
-                            <td class="ACTION">
-                              <td>
-                                <a href="https://zebra-qr.com/staff/3/edit" class="btn btn-primary btn-sm">Edit</a>
-                                <a href="https://zebra-qr.com/staff/del/3" class="btn btn-danger btn-sm">Delete</a>
-                               
+                              <td class="ACTION">
+                                
+                                  <!--<a href="" class="btn btn-primary btn-sm" style="background-color: #222834">Edit</a>-->
+                                  <a href="/staff/delete/{{$staff->id}}" class="btn btn-danger btn-sm" style="background-color: #222834"  onclick="return confirm('Are you sure you want to delete this Staff?')" >Delete</a>
+                                
+                                
                               </td>
-                            </td>
-                        </tr>
+                          </tr>
                         
-                        @endforeach
+                        @endforeach 
+                      
                         
                     </tbody>
                     </table>

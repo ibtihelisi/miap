@@ -53,13 +53,13 @@
           <div class="pb-5">
 
             <div class="container">
-              <h1 class="mt-3">New table</h1>
+              <h1 class="mt-3">New area</h1>
               <hr>
       
           </div>
           <div class="row py-2">
             <div class="col-md-14 text-end">
-                <a class="btn btn-primary" href="/restaurant/table">Back </a>
+                <a class="btn btn-primary" href="/restaurant/area">Back </a>
                 
                 
             
@@ -73,7 +73,7 @@
         
           
           
-         <form action="/restaurant/table/add" method="post">
+         <form action="/restaurant/area/add" method="post">
 
             @csrf
 
@@ -91,47 +91,32 @@
                 
                 </div>
 
-          
-
-                <!--espace size-->
-                <div class="col-md-12">
-                  <div id="form-group-features" class="form-group  ">
-                       <label class="form-control-label" for="features">Size</label>
-                       <input   step="1"    type="text" name="size" id="features" class="form-control form-control   " placeholder="Enter table person size (exemple: 4)" value=""  required >
+                <div class="mb-3">
+                  <label class="form-group" for="exampleFormControlInput1">Staff</label>
+                  <div class="form-check">
+                      @foreach($staffs as $staff)
+                      <input class="form-check-input" type="radio" name="staff" id="staff{{$staff->id}}" value="{{$staff->id}}">
+                      <label class="form-check-label" for="staff{{$staff->id}}">
+                          {{$staff->name}}
+                      </label>
+                      <br>
+                      @endforeach
                   </div>
-                  @error('size')
-                    <div class="alert alert-danger">
-                       {{ $message }}
-                     </div>
-                  @enderror
-              </div> 
-              <br/>
-
-                <!--espace area-->
-              <div id="form-group-price" class="form-group  ">
-                <label class="form-control-label" for="area">Area</label>
-                </br>
-                <select name="area" id="restaurantarea_id">
-                    <option disabled="" selected="" value="" data-select2-id="2"> Select Area </option>
-
-                    
-                                                            <option value="1" data-select2-id="14">Inside</option>
-                                                    
-                    
-                                                            <option value="2" data-select2-id="15">Terrasse</option>
-                                                    
-                        </select><span class="select2 select2-container select2-container--default select2-container--below" dir="ltr" data-select2-id="1" style="width: 431.333px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-restoarea_id-container"><span class="select2-selection__rendered" id="select2-restoarea_id-container" role="textbox" aria-readonly="true" title=" Select Area ">  </span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-            
-                     @error('area')
+                  @error('staff')
                   <div class="alert alert-danger">
                       {{ $message }}
                   </div>
-                @enderror
+                  @enderror
               </div>
               
-              <input type="hidden" name="$user->id">
+                <input type="hidden" name=" $user->id" >
 
-              <br/>
+                <!--espace input hidden pour staff_id-->
+                
+
+                <!--espace input hidden id_user-->
+              
+              
 
 
 

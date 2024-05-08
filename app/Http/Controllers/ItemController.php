@@ -15,7 +15,7 @@ class ItemController extends Controller
 
     public function index()
     {
-        $categories = Category::all(); // Or fetch categories based on your logic
+        $categories = Category::all(); 
         $items = Item::all();
     
         return view('client.menu.index')->with('items',$items)->with('categories',$categories);

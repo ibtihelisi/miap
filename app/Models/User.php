@@ -29,7 +29,7 @@ class User extends Authenticatable
         return $this->belongsTo(Subscription::class,'user_id','id');
     }
     
-    public function staffs() 
+    public function staff() 
      {
         return $this->hasMany(Staff::class,'user_id','id');
     }

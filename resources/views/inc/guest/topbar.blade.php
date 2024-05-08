@@ -30,7 +30,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#demo">{{__('topnav.demo')}}</a>
                 </li>
-                <li class="nav-item dropdown">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#faq">FAQ</a>
+                </li>
+                <!--<li class="nav-item dropdown">
                     <a class="nav-link" href="#">
                                                      <span>{{__('topnav.langue')}}</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <i class="fas fa-angle-down nav-link-arrow ml-2"></i>
                     </a>
@@ -47,7 +51,7 @@
                                 <a class="dropdown-item" href="{{route('languageConverter','ar')}}">{{__('topnav.arabic')}}</a>
                             </li>
                                             </ul>
-                </li>
+                </li>-->
             </ul>
 
 

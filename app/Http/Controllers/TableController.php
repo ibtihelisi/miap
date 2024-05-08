@@ -38,16 +38,23 @@ class TableController extends Controller
         $table=new Table();
         $table->name=$request->name;
         $table->size=$request->size;
-        $table->area=$request->area;
+        $table->area_id=$request->area;
         $table->user_id = $user->id; 
         
 
         if ($table->save())
-        {return redirect()->back()->with('success', ' Table successfully added');
+        {return view('client.table.index')->with('success', ' Table successfully added');
         }else{
             echo"error";
         }
 
 
     }
+
+
+
+      
+
+
+
 }

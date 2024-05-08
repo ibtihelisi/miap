@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>MEAP</title>
+    <title>QR Menu|Area</title>
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('dashassets/img/favicons/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('dashassets/img/favicons/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('dashassets/img/favicons/favicon-16x16.png')}}">
@@ -48,7 +48,7 @@
           <div class="pb-5">
 
             <div class="container">
-              <h1 class="mt-3">Tables management</h1>
+              <h1 class="mt-3">Areas management</h1>
               <hr>
       
           </div>
@@ -59,8 +59,8 @@
             
             </div>
             <div class="col-md-6 text-end">
-              <a class="btn btn-primary" class="mt-3" href="/restaurant/table/create">Add new table </a>
-              <a class="btn btn-outline-primary ms-2" href="/restaurant/area">Areas</a>
+              <a class="btn btn-primary" class="mt-3" href="/restaurant/area/create">Add new area </a>
+              <a class="btn btn-outline-primary ms-2" href="/restaurant/table">Tables</a>
 
             </div>
         </div>
@@ -97,14 +97,45 @@
                         <tr>
                          
                           <th class="sort" data-sort="Nom "> NAME</th>
-                          <th class="sort" data-sort="Size"> Size</th>
-                          <th class="sort" data-sort="Area">AREA</th>
+                          
+                       
                           <th class="sort" data-sort="Action">Action</th>
                         
                         </tr>
                       </thead>
                       <tbody class="list">
                        
+
+
+
+                         
+                        @foreach ($areas as $area)
+                        
+                        <tr>
+                            <td class="NAME">{{ $area->name }}</td>
+                           
+                             
+                            <td class="ACTION">
+                              <a href="/restaurant/edit/{{$area->id}}" class="btn btn-secondary mr-2" title="Update">
+                                  <i class="fas fa-edit"></i> Update
+                              </a>
+                              <form action="/restaurant/area/delete/{{$area->id}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" onclick="return confirm('Are you sure you want to delete this Area from Database?')" style="background-color: #f26514" class="btn btn-secondary" title="Delete">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </form>
+                            
+                          </td>
+                          
+                          
+                          
+                          
+                        </tr>
+                       
+                        @endforeach
+
                      </tbody>
                     </table>
 

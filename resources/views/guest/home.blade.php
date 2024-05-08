@@ -172,8 +172,10 @@
                                 <div class="card-title">
                                     <img class="decoration-lines" src="{{asset('mainassets/images/decoration-lines.svg')}}" alt="alternative">
                                     <span>{{ $subscription->name }}</span>
+                                    
                                     <img class="decoration-lines flipped" src="{{asset('mainassets/images/decoration-lines.svg')}}" alt="alternative">
                                 </div>
+                                <h6>{{ $subscription->description }}</h6>
                                 <ul class="list-unstyled li-space-lg">
                                     @php
                                     $features = explode(',', $subscription->features_list);
@@ -234,7 +236,7 @@
 
 
          <!-- Questions -->
-         <div class="accordion-1">
+         <div id="faq" class="accordion-1">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">

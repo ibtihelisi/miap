@@ -12,7 +12,7 @@ class Area extends Model
 
     public function tables()
     {
-        return $this->hasMany(Table::class,'table_id','id');
+        return $this->hasMany(Table::class,'area_id','id');
     }
 
 

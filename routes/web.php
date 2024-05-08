@@ -14,7 +14,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\FaqController;
-
+use App\Models\Area;
 use App\Models\Restaurant;
 
 /*
@@ -203,12 +203,19 @@ Route::post('/restaurant/table/add',[TableController::class,'store']);
 Route::get('/restaurant/table/create',[TableController::class,'create']);
 
 
+/**areas des restaurant routes  */
+Route::get('/restaurant/area',[App\Http\Controllers\AreaController::class,'index']);
+Route::get('/restaurant/area/create',[App\Http\Controllers\AreaController::class,'create']);
+Route::post('/restaurant/area/add',[App\Http\Controllers\AreaController::class,'store']);
+Route::delete('/restaurant/area/delete/{id}',[App\Http\Controllers\AreaController::class,'destroy']);
+Route::get('/restaurant/area/update/{id}',[App\Http\Controllers\AreaController::class,'updateinter']);
 
 /**staff */
 Route::get('/restaurant/staff',[StaffController::class,'index']);
+Route::get('/staff/create',[StaffController::class,'create']);
 
-
-
+Route::post('/staff/add',[StaffController::class,'store']);
+Route::get('/staff/delete/{id}',[StaffController::class,'destroy']);
 
 /**qr cooode */
 
