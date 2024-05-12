@@ -32,9 +32,10 @@ class RestaurantController extends Controller
     // ajouter un restau a la liste 
     public function store(Request $request){
         $request->validate([
-            'restaurant_name'=>'required',
+            'restaurant_name'=>'required|unique:users,restaurant_name',
+       
             'owner_name'=>'required',
-            'email'=>'required',
+            'email'=>'required|unique:users,email',
             'owner_phone'=>'required',
             'password' => 'required|min:8|confirmed',
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust max file size as needed
@@ -43,6 +44,9 @@ class RestaurantController extends Controller
            
             
         ], [
+            'restaurant_name.unique' => 'The restaurant name is already taken.',
+            'email.unique' => 'The restaurant email is already taken.',
+       
             'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
         ]);
 

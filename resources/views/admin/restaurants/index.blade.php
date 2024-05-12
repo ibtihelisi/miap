@@ -68,7 +68,7 @@
           <div class="pb-5">
 
             <div class="container">
-              <h1 class="mt-3">Restaurants</h1>
+              <h1 class="mt-3" style="color: #272556">Restaurants</h1>
               <hr>
       
           </div>
@@ -77,9 +77,32 @@
               
             
             </div>
+            <style> 
+                    .btn.btn-primary {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
+
+                      .btn.btn-outline-primary {
+                        background-color: #fff;
+                        border-color: #f25c05;
+                        color: #f25c05;
+                      }
+
+                      .btn.btn-outline-primary:hover,
+                      .btn.btn-outline-primary:focus,
+                      .btn.btn-outline-primary:active {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
+
+
+            </style>
             <div class="col-md-6 text-end">
-              <a class="btn btn-primary" class="mt-3" href="/restaurant/create">Add Restaurant</a>
-                <a class="btn btn-outline-primary ms-2" href="{{ route('export.restaurants') }}">Export CSV</a>
+              <a class="btn btn-primary" style="background-color: #f25c05" class="mt-3" href="/restaurant/create">Add Restaurant</a>
+                <a class="btn btn-outline-primary ms-2" href="{{ route('export.restaurants') }}" style="" >Export CSV</a>
             </div>
         </div>
         
@@ -156,7 +179,7 @@
                                  </td>
                                 <td class="ACTION">
                                     <div class="btn-group" role="group" aria-label="Actions">
-                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:#272556">
                                             <i class="fas fa-bars"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

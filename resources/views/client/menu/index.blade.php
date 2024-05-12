@@ -19,48 +19,48 @@
     <link href="{{asset('dashassets/css/phoenix.min.css')}} " rel="stylesheet" id="style-default">
     <link href="{{asset('dashassets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
     <style>
-      body {
+        body {
         opacity: 0;
-      }
-      .badge {
-    display: inline-block;
-    padding: 0.25em 0.4em;
-    font-size: 110%;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: 0.25rem;
-}
-.badge-pill {
-  padding-right: .875em;
-  padding-left: .875em;
-  border-radius: 10rem;}
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.25em 0.4em;
+            font-size: 110%;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+            }
+        .badge-pill {
+            padding-right: .875em;
+            padding-left: .875em;
+            border-radius: 10rem;}
 
-.badge-primary {
-    color: #fff;
-    background-color:#5f6471;
-}
-.text-primary {
-  color: #222834 ;
-}
+        .badge-primary {
+                color: #fff;
+                background-color:#5f6471;
+            }
+        .text-primary {
+            color: #222834 ;
+            }
 
-.colororange {
-  color: #e5780b ;
-}
-.color {
-  color: #222834 ;
-}
-.text-uppercase {
-  text-transform: uppercase !important;
-}
-.card-title {
-  margin-bottom: 1.25rem;
-}
-description {
-  font-size: .875rem;
-}     
+        .colororange {
+            color: #e5780b ;
+            }
+        .color {
+            color: #222834 ;
+            }
+        .text-uppercase {
+            text-transform: uppercase !important;
+            }
+        .card-title {
+            margin-bottom: 1.25rem;
+            }
+        .description {
+            font-size: .875rem;
+            }     
 
     </style>
 
@@ -134,10 +134,10 @@ description {
                  
                   <!-- Affichage des alertes de succès ou d'erreur -->
           @if(session('success'))
-          <div class="alert alert-success alert-dismissible delete-alert" role="alert" style="background-color: green; border-color: #c3e6cb; color:#d4edda ;" >
-              {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" aria-setsize="10"></button>
-          </div>
+            <div class="alert alert-success alert-dismissible delete-alert" role="alert" style="background-color: green; border-color: #c3e6cb; color:#d4edda ;" >
+                {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" aria-setsize="10"></button>
+            </div>
           <script>
             // Sélectionne l'alerte de succès
             var successAlert = document.querySelector('.alert-success');
@@ -350,6 +350,7 @@ description {
 
 
               
+  @endforeach            
               <!-- Modal Ajout  item-->
 @foreach ($categories as $index=>$c )
 <div class="modal fade" id="modal-item-{{$index}}" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -430,7 +431,7 @@ description {
 @endforeach
 
 
-@endforeach
+
              
 
         <script src="{{asset('dashassets/js/phoenix.js')}}"></script>

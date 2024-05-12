@@ -17,16 +17,14 @@ class AreaController extends Controller
     
     //interface pour ajouter une area
     public function index() {
-
         $user = Auth::user();
-
+    
         $areas = Area::where('user_id', $user->id)->get(); // Récupère toutes les zones de l'utilisateur connecté
-   
         $staffs = Staff::where('user_id', $user->id)->get(); // Récupère tous les membres du personnel de l'utilisateur connecté
-       
-      
-        return view('client.area.index')->with('user',$user)->with('areas' ,$areas)->with('staffs', $staffs);
+    
+        return view('client.area.index', compact('user', 'areas', 'staffs'));
     }
+    
 
 
 
@@ -35,9 +33,10 @@ class AreaController extends Controller
         $user = Auth::user();
 
         $staffs = Staff::where('user_id', $user->id)->get(); // Récupère tous les membres du personnel de l'utilisateur connecté
+        $areas = Area::where('user_id', $user->id)->get(); // Récupère toutes les zones de l'utilisateur connecté
+       
         
-        
-        return view('client.area.create')->with('user',$user)->with('staffs' ,$staffs);
+        return view('client.area.create')->with('user',$user)->with('staffs' ,$staffs)->with('areas',$areas);
     }
 
     
@@ -65,8 +64,8 @@ class AreaController extends Controller
 
      
 
-     if ($area->save())
-     {return view('client.area.index')->with('success', 'area successfully added. ');
+     if ($area->save()){
+        return redirect('/restaurant/area')->with('success', 'Area successfully added.');
      }else{
          echo"error";
      }
@@ -86,7 +85,8 @@ class AreaController extends Controller
     if($area->delete()){
         return redirect()->back()->with('success', 'area successfully deleted. ');
     }else{echo"erreur"
-    ;}}
+    ;}
+}
 
 
 

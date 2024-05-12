@@ -4,7 +4,7 @@
 
         <!-- Image Logo -->
         
-        <a class="navbar-brand logo-image logosize" href="/"><img src="{{asset('mainassets/images/logo.svg')}}" alt="put logo" style="width: 60px; height: auto;"></a> 
+        <a class="navbar-brand logo-image logosize" href="/"><img src="{{Auth::user()->logo}}" alt="put logo" style="width: 60px; height: auto;"></a> 
 
         <!-- Text Logo - Use this if you don't have a graphic logo -->
         <!-- <a class="navbar-brand logo-text" href="index.html">MenuQR</a> -->

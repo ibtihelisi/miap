@@ -68,7 +68,9 @@
                                   <div class="card">
                                       <div class="card-header">QR Code</div>
                                       <div class="card-body text-center">
-                                        <img src="data:image/png;base64,{{ $qrCode }}" alt="QR Code">
+
+                                        {{ $qrCode }}
+                                        
                                         <br><br>
                                         <a href="{{ route('qrcode.download') }}" class="btn btn-primary">Download </a>
                                     </div>

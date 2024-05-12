@@ -11,16 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ligne_commandes', function (Blueprint $table) {
+        Schema::create('expense_categories', function (Blueprint $table) {
             $table->id();
-            $table->integer('quantity');
-            $table->unsignedBigInteger('item_id');
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
+            $table->string('name');
+           
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             
-           
+
             $table->timestamps();
+
+
+
         });
     }
 
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ligne_commandes');
+        Schema::dropIfExists('expense_categories');
     }
 };

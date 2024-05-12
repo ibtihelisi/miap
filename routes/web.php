@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubscriptionController;
@@ -222,6 +223,19 @@ Route::get('/staff/delete/{id}',[StaffController::class,'destroy']);
 Route::get('/qrcode', [App\Http\Controllers\QrcodeController::class, 'generateQRCode'])->name('qrcode.index');
 Route::get('/qrcode/download', [App\Http\Controllers\QrcodeController::class, 'downloadQRCode'])->name('qrcode.download');
 
+
+
+
+/**expenses */
+
+Route::get('/client/expenses',[App\Http\Controllers\ExpensesController::class,'index']);
+Route::post('/expense_category/add',[ExpensesController::class,'store']);
+Route::get('/expense_category/delete/{id}',[ExpensesController::class,'destroy']);
+Route::post('/expense_category/update/{id}',[ExpensesController::class,'update']);
+
+Route::post('/expense/add',[ExpensesController::class,'store_expense']);
+Route::get('/expense/delete/{id}',[ExpensesController::class,'destroy_expense']);
+Route::post('/expense/update/{id}',[ExpensesController::class,'update_expense']);
 
 /**interface client finale */
 

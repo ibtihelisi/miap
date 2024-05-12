@@ -195,13 +195,19 @@ public function ligneCommandeMoinsQuantity($idlc){
 
 
 
-public function showcheckout()  {
-  return view('client.consomateur.checkout');
+
+
+public function showcheckout($id){
+  $users=User::all();
+  $user = User::find($id);
+  $categories=Category::all();
+  $items=Item::all();
+  $consommateur = Consommateur::firstOrCreate([]);
+  $commande=Commande::Where('consomateur_id' , $consommateur->id)->where('etat','en cours')->first();
+
   
+  return view('consomateur.checkout')->with('users',$users)->with('categories',$categories)->with('items',$items)->with('user',$user)->with('commande',$commande);
 }
-
-
-
 
 
 

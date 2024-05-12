@@ -48,6 +48,11 @@ class User extends Authenticatable
 
         return $this->hasMany(Commande::class ,'user_id','id');
     }
+
+    public function expensescartegories()
+    {
+        return $this->hasMany(ExpenseCategory::class,'user_id','id');
+    }
     
     
 

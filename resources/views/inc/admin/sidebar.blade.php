@@ -26,6 +26,8 @@
   <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
       <div class="navbar-vertical-content scrollbar">
         <ul class="navbar-nav flex-column" id="navbarVerticalNav">
+
+
           <li class="nav-item"><a class="nav-link active" href="/admin/dashboard">
               <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">Dashboard</span></div>
             </a>
@@ -36,7 +38,7 @@
 
 
             <li class="nav-item">
-              <a class="nav-link active" href="/admin/restaurants">
+              <a class="nav-link " href="/admin/restaurants">
                   <div class="d-flex align-items-center">
                       <span class="nav-link-icon">
                           
@@ -58,7 +60,7 @@
                  
 
               <li class="nav-item">
-                <a class="nav-link active" href="/admin/settings">
+                <a class="nav-link " href="/admin/settings">
                   <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
                       
@@ -73,7 +75,7 @@
 
           
               <li class="nav-item">
-                <a class="nav-link active" href="/admin/features">
+                <a class="nav-link " href="/admin/features">
                   <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
                       
@@ -86,7 +88,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link active" href="/admin/why">
+                <a class="nav-link " href="/admin/why">
                   <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
                       
@@ -99,7 +101,7 @@
 
 
               <li class="nav-item">
-                <a class="nav-link active" href="/admin/subscriptions">
+                <a class="nav-link " href="/admin/subscriptions">
                     <div class="d-flex align-items-center">
                         <span class="nav-link-icon">
                             
@@ -113,7 +115,7 @@
 
 
               <li class="nav-item">
-                <a class="nav-link active" href="/admin/demo">
+                <a class="nav-link " href="/admin/demo">
                   <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
                       
@@ -127,7 +129,7 @@
 
 
               <li class="nav-item">
-                <a class="nav-link active" href="/admin/faq">
+                <a class="nav-link " href="/admin/faq">
                   <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
                       

@@ -193,7 +193,7 @@
                 border-radius: 10px; /* Optionnel : pour arrondir les coins */
             }
         </style>
-            </head>
+    </head>
             <body data-bs-spy="scroll" data-bs-target="#navbarExample">
                 
                     <!-- top bar start-->
@@ -206,7 +206,7 @@
 
                             <!-- Image Logo -->
                             
-                            <a class="navbar-brand logo-image logosize" href="/"><img src="{{asset('mainassets/images/logo.svg')}}" alt="put logo" style="width: 60px; height: auto;"></a> 
+                            <a class="navbar-brand logo-image logosize" href="/"><img src="{{asset('uploads')}}/{{$user->logo }}" alt="put logo" style="width: 60px; height: auto;"></a> 
 
                             <!-- Text Logo - Use this if you don't have a graphic logo -->
                             <!-- <a class="navbar-brand logo-text" href="index.html">MenuQR</a> -->
@@ -254,72 +254,87 @@
                     </nav> <!-- end of navbar -->
                     <!-- end of navigation -->
 
+
+
                     <!--sidenav pour la panier -->
                     <div id="sidebar" class="sidebar">
                         <!-- Contenu de la sidebar -->
                         <div class="offcanvas-menu-inner">
-                            <button type="button" class="close" onclick="closeSidebar()" aria-label="Close" style="background-color: #fff2dc;">
-                                <span aria-hidden="true" style="color: #f25c05;">X</span>
 
-                                
-                            </button>
+                            <div class="d-flex justify-content-end"> <!-- Utilisation de flexbox pour aligner le contenu à droite -->
+                                <div class="text-center"> <!-- Centrage horizontal du bouton -->
+                                    <button type="button" class="close btn-outline-sm" onclick="closeSidebar()" aria-label="Close" style="background-color: #fff2dc;">
+                                        <span aria-hidden="true" style="color: #f25c05;">X</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            
                             
                             <div class="minicart-content">
                                 <div class="minicart-heading">
-                                    <h4 style="margin-bottom: 0; padding-bottom: 25px; font-size: 1.5rem;">Shopping Cart</h4>
+                                    <h4 style="margin-bottom: 0; padding-bottom: 10px; font-size: 1.5rem;">Items</h4>
+                                    <hr>
                                 </div>
                                 <div class="searchable-container">
                                     <div id="cartList">
 
                                         @foreach ($commande->lignecommandes as $lc )
                                             
+                                            @if ($lc->item->user_id ==$user->id)
+                                            
                                         
-                                            <div class="items col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix" style="position: relative;
-                                                    width: 100%;padding-right: 15px;padding-left: 15px;">
-                                        
-                                                <div class="info-block block-info clearfix" style="border-color: #f25c05;
-                                                    border-right: 5px solid #f25c05;
-                                                    margin-bottom: 25px;">
-                                                    <div class="square-box pull-left" style="  background-color: #f25c05;
-                                                        min-height: 10px;
-                                                        height: 112px;
-                                                        margin-right: 22px;
-                                                        text-align: center !important;
-                                                        width: 100px;
-                                                        float: left;">
-                                                        <img src="{{asset('uploads')}}/{{$lc->item->photo }}" width="100" height="105" alt="" class="productImage" style="max-width: 100%;
-                                                        height: 100px;   width: 100px;">
-                                                    </div> 
-                                                    <h6 class="product-item_title" style="margin-bottom: .5rem;
-                                                    font-family: inherit;
-                                                    font-weight: 400;
-                                                    line-height: 1.5;
-                                                    color: #32325d;">{{$lc->item->name}}</h6> 
-                                                    <p class="product-item_quantity" style="margin-bottom: 1rem;">{{$lc->quantity}} x {{$lc->item->price}} DTN </p> 
-                                                    <div class="row" style="display: flex;">
-                                                    
-                                                        <a href=" /QRMenu/restaurant/lc/{{$lc->id}}/moinsQuantity" type="button" value="1714922522" class="btnn btn-outline-primary btn-icon btn-sm page-link btn-cart-radius custom-btn">
-                                                            <span class="btn-inner--icon btn-cart-icon"><i class="fa fa-minus"></i></span>
-                                                        </a> 
-                                                        <a   href="/QRMenu/restaurant/lc/{{$lc->id}}/plusQuantity" type="button" value="1714922522" class="btnn btn-outline-primary btn-icon btn-sm page-link btn-cart-radius custom-btn">
-                                                            <span class="btn-inner--icon btn-cart-icon"><i class="fa fa-plus"></i></span>
-                                                        </a> 
-                                                        <a href="/QRMenu/restaurant/lc/{{$lc->id}}/destroy" type="button"  class="btnn btn-outline-primary btn-icon btn-sm page-link btn-cart-radius custom-btn">
-                                                            <span class="btn-inner--icon btn-cart-icon"><i class="fa fa-trash"></i></span>
-                                                        </a>
+                                                <div class="items col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix" style="position: relative;
+                                                        width: 100%;padding-right: 15px;padding-left: 15px;">
+                                            
+                                                    <div class="info-block block-info clearfix" style="border-color: #f25c05;
+                                                        border-right: 5px solid #f25c05;
+                                                        margin-bottom: 25px;">
+                                                        <div class="square-box pull-left" style="  background-color: #f25c05;
+                                                            min-height: 10px;
+                                                            height: 112px;
+                                                            margin-right: 22px;
+                                                            text-align: center !important;
+                                                            width: 100px;
+                                                            float: left;">
+                                                            <img src="{{asset('uploads')}}/{{$lc->item->photo }}" width="100" height="105" alt="" class="productImage" style="max-width: 100%;
+                                                            height: 100px;   width: 100px;">
+                                                        </div> 
+                                                        <h6 class="product-item_title" style="margin-bottom: .5rem;
+                                                        font-family: inherit;
+                                                        font-weight: 400;
+                                                        line-height: 1.5;
+                                                        color: #32325d;">{{$lc->item->name}}</h6> 
+                                                        <p class="product-item_quantity" style="margin-bottom: 1rem;">{{$lc->quantity}} x {{$lc->item->price}} Dt </p> 
+                                                        <div class="row" style="display: flex;">
+                                                        
+                                                            <a href=" /QRMenu/restaurant/lc/{{$lc->id}}/moinsQuantity" type="button" value="1714922522" class="btnn btn-outline-primary btn-icon btn-sm page-link btn-cart-radius custom-btn">
+                                                                <span class="btn-inner--icon btn-cart-icon"><i class="fa fa-minus"></i></span>
+                                                            </a> 
+                                                            <a   href="/QRMenu/restaurant/lc/{{$lc->id}}/plusQuantity" type="button" value="1714922522" class="btnn btn-outline-primary btn-icon btn-sm page-link btn-cart-radius custom-btn">
+                                                                <span class="btn-inner--icon btn-cart-icon"><i class="fa fa-plus"></i></span>
+                                                            </a> 
+                                                            <a href="/QRMenu/restaurant/lc/{{$lc->id}}/destroy" type="button"  class="btnn btn-outline-primary btn-icon btn-sm page-link btn-cart-radius custom-btn">
+                                                                <span class="btn-inner--icon btn-cart-icon"><i class="fa fa-trash"></i></span>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-
+                                            @endif
                                         @endforeach
 
                                         
                                     </div>
+                                    <br></br>
                                     
                                     <div id="totalPrices">
+                                        <h4 style="margin-bottom: 0; padding-bottom: 5px; font-size: 1.5rem;">Total</h4>
+                                        <hr>
                                         <div class="card card-stats mb-4 mb-xl-0">
                                             <div class="card-body">
+                                               
                                                 <div class="row">
+                                                   
                                                     <div class="col"> 
                                                         
                                                         <?php
@@ -328,32 +343,62 @@
                                                         
                                                         // Parcourir chaque ligne de commande
                                                         foreach ($commande->lignecommandes as $lc) {
+                                                            if ($lc->item->user_id ==$user->id){
                                                             // Calculer le montant pour cette ligne en multipliant la quantité par le prix
                                                             $lineTotal = $lc->quantity * $lc->item->price;
                                                             
                                                             // Ajouter le montant de cette ligne au sous-total total
                                                             $subTotal += $lineTotal;
-                                                        }
+                                                        }}
                                                         
                                                         // Maintenant $subTotal contient le sous-total de tous les articles dans le panier
                                                         ?>
                                                         
                                                         
-                                                        <span><strong>Subtotal:</strong></span> 
-                                                        <span class="ammount"><strong>{{$subTotal}} DTN</strong></span>
+                                                        <span><strong>Total:</strong></span> 
+                                                        <span class="ammount"><strong>{{$subTotal}} Dt</strong></span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div> 
                                         <br> 
-                                        <div class="text-center mobile-menu" >
-                                            
-                                            <a  type="button" href="/QRMenu/restaurant/checkout" class="btn btn-primary text-white">Checkout</a>
-                                        </div> 
-                                        <br> 
-                                        <div class="text-center mobile-menu">
-                                            <a type="button"   onclick="closeSidebar()"  class="btn btn-primary text-white" style="text-transform: none;">Continue Shopping</a>
+
+                                        <div>
+
+                                            <div class="form-group">
+                                                <h4 style="margin-bottom: 0; padding-bottom: 5px; font-size: 1.5rem;" for="tableSelect">Table</h4>
+                                                <hr>
+                                                
+                                                <select class="form-control" id="tableSelect">
+                                                    <option value="" selected disabled>select your table</option>
+      
+                                                    <option value="table1">Table 1</option>
+                                                    <option value="table2">Table 2</option>
+                                                    <!-- Ajoutez d'autres options de table si nécessaire -->
+                                                </select>
+                                            </div>
+
+                                            <br>
+                                            <div class="form-group">
+                                                <h4 style="margin-bottom: 0; padding-bottom: 5px; font-size: 1.5rem;" for="tableSelect">Paiement</h4>
+                                                <hr>
+                                                 <select class="form-control" id="paymentMethod">
+                                                    <option value="" selected disabled>select your payment method</option>
+                                                    <option value="cash">cash on hand</option>
+                                                    <option value="tpe">payment by electronic payment terminal</option>
+                                                    <!-- Ajoutez d'autres options de paiement si nécessaire -->
+                                                </select>
+                                            </div>
+
+                                            <BR></BR>
+                                            <div class="text-center mobile-menu" >
+                                                
+                                                <a  type="button" href="/QRMenu/restaurant/checkout" class=" btn-outline-sm ">Checkout</a>
+                                            </div> 
+
                                         </div>
+                                        <br> 
+                            
                                     </div>
                                 </div>
                             </div>  
@@ -400,8 +445,8 @@
                             </div>
                     
                     
-                                            <p><i class="fas fa-stopwatch me-2"></i>
-                                                <span class="opened_time">Opened 00:00 closed 23:58</span>  |  
+                                            <p>
+                                                
                                                 <i class="fas fa-thumbtack me-2"></i><a target="_blank" href=""><span class="notranslate">{{$user->location}}</span></a>  | 
                                                 <i class="fas fa-phone me-2 fa-flip-horizontal "></i><a href="">(+216){{$user->owner_phone}} </a> </p>
                                         </div>
@@ -432,7 +477,7 @@
             
 
                                         <li class="nav-item nav-item-category ">
-                                            <a class="nav-link  mb-sm-3 mb-md-0 active" data-toggle="tab" role="tab" href="">All categories</a>
+                                            <a class="btn-outline-sm " data-toggle="tab" role="tab" href="" style="background-color: #fff2dc">All categories</a>
                                         </li>   
 
                                         @foreach($categories as $c )
@@ -442,7 +487,7 @@
                                             
                                     
                                                     <li class="nav-item nav-item-category" id="cat_salads{{$loop->index}}">
-                                                        <a class="nav-link mb-sm-3 mb-md-0" data-toggle="tab" role="tab" id="nav_salads{{$loop->index}}" href="#salads{{$loop->index}}">{{$c->name}}</a>
+                                                        <a class="nav-link mb-sm-3 mb-md-0" style="color: #f25c05"  data-toggle="tab" role="tab" id="nav_salads{{$loop->index}}" href="#salads{{$loop->index}}">{{$c->name}}</a>
                                                     </li>
                                                     
                                                 @endif                                                                       

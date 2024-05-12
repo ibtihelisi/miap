@@ -67,7 +67,7 @@ public function update_admin(Request $request, $id)
     if ($user->save()) {
         return redirect('/admin/profile/{$id}')->with('success', 'Your Profile was successfully updated');
     } else {
-        return redirect('/admin/profile/{$id}')->with('error', 'Failed to update profile');
+        return redirect('/admin/profile/{$id}')->with('success', 'Failed to update profile');
     }
 }
 
@@ -138,6 +138,12 @@ public function update_admin(Request $request, $id)
             if (!Hash::check($request->current_password, $user->password)) {
                 return redirect("/admin/profile/{$id}")->with('success', 'Current password is incorrect');
             }
+
+
+            if (!Hash::check($request->new_password , $request->new_password_confirmation)) {
+                return redirect("/admin/profile/{$id}")->with('success', 'Password and confirmation do not match');
+            }
+        
         
             $user->password = Hash::make($request->new_password);
         

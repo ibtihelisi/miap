@@ -54,7 +54,7 @@
           <div class="pb-5">
 
             <div class="container">
-              <h1 class="mt-3">Edit Home Banner</h1>
+              <h1 class="mt-3" style="color: #272556">Edit Home Banner</h1>
               <hr>
 
 
