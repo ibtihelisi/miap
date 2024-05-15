@@ -95,14 +95,14 @@
                   <label class="form-group" for="exampleFormControlInput1">Staff</label>
                   <div class="form-check">
                       @foreach($staffs as $staff)
-                      <input class="form-check-input" type="radio" name="staff" id="staff{{$staff->id}}" value="{{$staff->id}}">
+                      <input class="form-check-input" type="checkbox" name="staffs[]" id="staff{{$staff->id}}" value="{{$staff->id}}">
                       <label class="form-check-label" for="staff{{$staff->id}}">
                           {{$staff->name}}
                       </label>
                       <br>
                       @endforeach
                   </div>
-                  @error('staff')
+                  @error('staffs')
                   <div class="alert alert-danger">
                       {{ $message }}
                   </div>

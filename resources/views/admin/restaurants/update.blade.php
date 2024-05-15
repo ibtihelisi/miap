@@ -128,32 +128,10 @@
         <div class="content">
           <div class="pb-5">
 
-            <div class="container">
-              <h1 class="mt-3">Plans  Management</h1>
-              <hr>
-      
-          </div>
+           
           <div class="container-fluid">
             <div class="nav-wrapper">
-                <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="res_management" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link mb-sm-3 mb-md-0 active" id="tabs-management-main" data-bs-toggle="pill" data-bs-target="#management" type="button" role="tab" aria-controls="management" aria-selected="true">
-                          <i class="fas fa-award"></i>
-                          Restaurant Management
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link mb-sm-3 mb-md-0" id="tabs-hours-main" data-bs-toggle="pill" data-bs-target="#hours" type="button" role="tab" aria-controls="hours" aria-selected="false">
-                          <i class="far fa-clock"></i> Working Hours
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link mb-sm-3 mb-md-0" id="tabs-location-main" data-bs-toggle="pill" data-bs-target="#location" type="button" role="tab" aria-controls="location" aria-selected="false">
-                          <i class="fas fa-map-marker-alt"></i> Location
-                        </button>
-                    </li>
-                    
-                </ul>
+             
               </br>
 
 
@@ -191,7 +169,7 @@
                           <div class="col-md-12">
                             <div class="custom">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <h1 class="mt-3">Restaurant Management</h1>
+                                    <h1 class="mt-3">Update Restaurant </h1>
                                     <a class="btn btn-primary me-1" href="/admin/restaurants" style="margin-left: auto;">Back to list</a>
                                    
                                 </div>

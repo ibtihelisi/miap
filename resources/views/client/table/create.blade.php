@@ -62,6 +62,31 @@
                 <a class="btn btn-primary" href="/restaurant/table">Back </a>
                 
                 
+          <!-- Affichage des alertes de succès ou d'erreur -->
+          @if(session('error'))
+            <div class="alert alert-danger alert-dismissible delete-alert" role="alert" style="background-color: #f8d7da; border-color: #f5c6cb; color: #721c24;">
+                  {{ session('error') }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" aria-setsize="10"></button>
+              </div>
+              <script>
+                  // Sélectionne l'alerte d'erreur
+                  var errorAlert = document.querySelector('.alert-danger');
+                  // Ferme l'alerte après 10 secondes (10000 millisecondes)
+                  setTimeout(function() {
+                      errorAlert.style.display = 'none';
+                  }, 10000);
+
+                  // Ajoute un écouteur d'événement au bouton de fermeture
+                  var closeButton = errorAlert.querySelector('.btn-close');
+                  closeButton.addEventListener('click', function() {
+                      errorAlert.style.display = 'none';
+                  });
+              </script>
+          @endif
+
+
+    
+
             
             </div>
 
@@ -107,27 +132,24 @@
               </div> 
               <br/>
 
+                
                 <!--espace area-->
-              <div id="form-group-price" class="form-group  ">
-                <label class="form-control-label" for="area">Area</label>
-                </br>
-                <select name="area" id="restaurantarea_id">
-                    <option disabled="" selected="" value="" data-select2-id="2"> Select Area </option>
-
-                    
-                                                            <option value="1" data-select2-id="14">Inside</option>
-                                                    
-                    
-                                                            <option value="2" data-select2-id="15">Terrasse</option>
-                                                    
-                        </select><span class="select2 select2-container select2-container--default select2-container--below" dir="ltr" data-select2-id="1" style="width: 431.333px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-restoarea_id-container"><span class="select2-selection__rendered" id="select2-restoarea_id-container" role="textbox" aria-readonly="true" title=" Select Area ">  </span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-            
-                     @error('area')
-                  <div class="alert alert-danger">
-                      {{ $message }}
+                  <div id="form-group-price" class="form-group">
+                    <label class="form-control-label" for="area">Area</label>
+                    <br>
+                    <select name="area" id="restaurantarea_id">
+                        <option disabled selected value="">Select Area</option>
+                        @foreach($areas as $area)
+                            <option value="{{ $area->id }}">{{ $area->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('area')
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
+                    @enderror
                   </div>
-                @enderror
-              </div>
+
               
               <input type="hidden" name="$user->id">
 

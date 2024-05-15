@@ -12,7 +12,7 @@ class Staff extends Model
 
     public function tables()
     {
-        return $this->hasManyThrough(Table::class, 'table_id','id');
+        return $this->hasMany(Table::class, 'table_id','id');
     }
 
 
@@ -24,9 +24,10 @@ class Staff extends Model
     }
 
     public function areas()
-    {
-        return $this->belongsToMany(Area::class,'staff_id','id');
-    }
+{
+    return $this->belongsToMany(Area::class, 'area_staff', 'staff_id', 'area_id');
+}
+
      
    
     

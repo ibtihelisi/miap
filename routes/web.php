@@ -199,9 +199,10 @@ Route::get('/restaurant/menu/item/edit/{id}',[ItemController::class,'updateinter
 
 
 /**tables des restaurant routes  */
-Route::get('/restaurant/table',[TableController::class,'index']);
+Route::get('/restaurant/table',[TableController::class,'index'])->name('table.index');
 Route::post('/restaurant/table/add',[TableController::class,'store']);
 Route::get('/restaurant/table/create',[TableController::class,'create']);
+Route::delete('/restaurant/table/delete/{id}',[App\Http\Controllers\TableController::class,'destroy']);
 
 
 /**areas des restaurant routes  */

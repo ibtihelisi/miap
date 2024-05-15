@@ -103,11 +103,11 @@
                                 <div class="form-group focused">
                                     <label class="col-md-0 col-form-label text-md-end" for="input-name">Name</label>
                                     <input type="text" name="owner_name" id="input-name" class="form-control form-control-alternative"  value="{{Auth::user()->owner_name}}" required="" autofocus="">
-                                </br>
+                                
                                                             </div>
                                 <div class="form-group focused">
-                                    <label class="col-md-0 col-form-label text-md-end" for="input-email">Email</label>
-                                    <input type="email" name="email" id="input-email" class="form-control form-control-alternative"  value="{{Auth::user()->email}}" required="">
+                                   
+                                    <input type="hidden" name="email" id="input-email" class="form-control form-control-alternative"  value="{{Auth::user()->email}}" required="">
 
                                                                     </div></br>
                                 <div class="form-group focused">

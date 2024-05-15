@@ -97,19 +97,56 @@
                         <tr>
                          
                           <th class="sort" data-sort="Nom "> NAME</th>
-                          <th class="sort" data-sort="Size"> Size</th>
-                          <th class="sort" data-sort="Area">AREA</th>
-                          <th class="sort" data-sort="Action">Action</th>
+                          <th class="sort" data-sort="Size"> SIZE</th>
+                          <th class="sort" data-sort="AREA"> AREA</th>
+                          <th class="sort" data-sort="Action">ACTION</th>
                         
                         </tr>
                       </thead>
                       <tbody class="list">
+
+                        
+
+
+                        
+                        @foreach ($tables as $tab)
                        
-                     </tbody>
+                            <tr>
+                                <td class="NAME">{{ $tab->name }}</td>
+                                <td class="SIZE">{{ $tab->size }}</td>
+                                @foreach ($areas as $area)
+                                  @if ($area->id==$tab->area_id)
+                                      
+                                    <td class="SIZE">{{ $area->name }}</td>
+                                  @endif
+                                @endforeach
+                              
+                                
+                                <td class="ACTION">
+                                  <a href="/restaurant/edit/{{$tab->id}}" class="btn btn-secondary mr-2" title="Update">
+                                      <i class="fas fa-edit"></i> Update
+                                  </a>
+                                  <form action="/restaurant/table/delete/{{$tab->id}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return confirm('Are you sure you want to delete this Table from Database?')" style="background-color: #f26514" class="btn btn-secondary" title="Delete">
+                                        <i class="fas fa-trash-alt"></i> Delete
+                                    </button>
+                                </form>
+                                
+                              </td>
+                              
+                              
+                              
+                              
+                            </tr>
+                          
+                        @endforeach
+                       
+                       
+                      </tbody>
                     </table>
 
-
-                     <!-- Modal Ajout-->
      
 
 

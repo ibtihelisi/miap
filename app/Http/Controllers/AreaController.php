@@ -17,12 +17,19 @@ class AreaController extends Controller
     
     //interface pour ajouter une area
     public function index() {
+
         $user = Auth::user();
-    
+        
+        $all=Area::with('staff')->where('user_id', $user->id)->get();
+        //dd($all->toArray());
+        
+       // $all=Staff::with('areas')->where('user_id', $user->id)->get();
+        //dd($all->toArray());
+
         $areas = Area::where('user_id', $user->id)->get(); // Récupère toutes les zones de l'utilisateur connecté
         $staffs = Staff::where('user_id', $user->id)->get(); // Récupère tous les membres du personnel de l'utilisateur connecté
     
-        return view('client.area.index', compact('user', 'areas', 'staffs'));
+        return view('client.area.index', compact('user', 'areas', 'staffs','all'));
     }
     
 
@@ -43,13 +50,11 @@ class AreaController extends Controller
     
   // ajouter une items la liste 
   public function store(Request $request){
-    /* $request->validate([
-         'name'=>'required',
-         
-     ]);
-     */
-
-
+    $request->validate([
+        'name' => 'required|unique:areas',
+        //'staffs' => 'required|array',
+        //'staffs.*' => 'exists:staff,id'
+    ]);
 
 
      $user = Auth::user();
@@ -57,8 +62,9 @@ class AreaController extends Controller
      $area=new Area();
      $area->name=$request->name;
      $area->user_id = $user->id;
-     $area->staff_id=$request->staff;
-    
+     //$area->staff_id=$request->staff;
+      // Attach staffs to the area
+   // $area->staff()->attach($request->staffs);
     
      
 

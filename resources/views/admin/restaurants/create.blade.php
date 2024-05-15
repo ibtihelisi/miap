@@ -51,9 +51,12 @@
         
         <div class="content">
           <div class="pb-5">
+          <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="management" role="tabpanel" aria-labelledby="tabs-management-main">
+
 
             <div class="container">
-              <h1 class="mt-3">Restaurant Management</h1>
+              <h1 class="mt-3">Add Restaurant </h1>
               <hr>
       
           </div>
@@ -237,6 +240,9 @@
             </div>
           </footer>-->
         
+      </div>
+      </div>
+      </div>
       </div>
     </main>
    

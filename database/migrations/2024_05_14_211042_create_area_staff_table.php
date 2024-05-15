@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('areas', function (Blueprint $table) {
+        Schema::create('area_staff', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->unsignedBigInteger('user_id'); // Clé étrangère vers la table des utilisateurs
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            
-           
-            
+            $table->bigInteger('area_id');
+            $table->bigInteger('staff_id');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('areas');
+        Schema::dropIfExists('area_staff');
     }
 };

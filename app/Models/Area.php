@@ -15,11 +15,12 @@ class Area extends Model
         return $this->hasMany(Table::class,'area_id','id');
     }
 
-
     public function staff()
     {
-        return $this->belongsToMany(Staff::class,'staff_id','id');
+        return $this->belongsToMany(Staff::class, 'area_staff', 'area_id', 'staff_id');
     }
+
+    
 
 
 

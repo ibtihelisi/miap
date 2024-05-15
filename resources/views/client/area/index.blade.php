@@ -97,7 +97,7 @@
                         <tr>
                          
                           <th class="sort" data-sort="Nom "> NAME</th>
-                          
+                          <th class="sort" data-sort="STAFF "> staffs</th>
                        
                           <th class="sort" data-sort="Action">Action</th>
                         
@@ -114,7 +114,12 @@
                         <tr>
                             <td class="NAME">{{ $area->name }}</td>
                            
-                             
+                            <td class="STAFF">
+                              @foreach ($area->staff as $staff)
+                              {{ $staff->name }}
+                              <br> <!-- Afficher le nom du personnel -->
+                              @endforeach
+                            </td>
                             <td class="ACTION">
                               <a href="/restaurant/edit/{{$area->id}}" class="btn btn-secondary mr-2" title="Update">
                                   <i class="fas fa-edit"></i> Update
