@@ -346,7 +346,7 @@
                 </div>
                 </div>
 
-             @endforeach   
+            @endforeach   
              
              
               <!-- Modal Ajout  item-->

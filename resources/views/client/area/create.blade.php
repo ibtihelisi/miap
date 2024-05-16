@@ -82,7 +82,7 @@
               <!--espace name-->
                 <div class="mb-3">
                     <label class="form-group " for="exampleFormControlInput1"> Name</label>
-                    <input name="name" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Enter table name or internal id (exemple:Table 2)" required >
+                    <input name="name" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Enter your area name " required >
                     @error('name')
                     <div class="alert alert-danger">
                         {{ $message }}

@@ -203,6 +203,7 @@ Route::get('/restaurant/table',[TableController::class,'index'])->name('table.in
 Route::post('/restaurant/table/add',[TableController::class,'store']);
 Route::get('/restaurant/table/create',[TableController::class,'create']);
 Route::delete('/restaurant/table/delete/{id}',[App\Http\Controllers\TableController::class,'destroy']);
+Route::post('/restaurant/table/update/{id}',[TableController::class,'update']);
 
 
 /**areas des restaurant routes  */

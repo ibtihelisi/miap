@@ -98,6 +98,7 @@
                          
                           <th class="sort" data-sort="Nom "> NAME</th>
                           <th class="sort" data-sort="Size"> Email</th>
+                          <!--<th class="sort" data-sort="AREA"> areas</th>-->
                           
                           <th class="sort" data-sort="Action">ACTIONS</th>
                         
@@ -113,6 +114,15 @@
                           <tr>
                               <td class="NAME">{{$staff->name}}</td>
                               <td class="EMAIL">{{$staff->email}} </td>
+
+                              <!--<td class="AREA">
+                                {{$staff->name}} belongs to :
+                                <br>
+                                @foreach ($staff->areas as $area)
+                                {{ $area->name }}
+                                <br>  Afficher le nom du personnel 
+                                @endforeach
+                              </td>-->
                             
                               <td class="ACTION">
                                 

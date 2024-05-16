@@ -115,6 +115,8 @@
                             <td class="NAME">{{ $area->name }}</td>
                            
                             <td class="STAFF">
+                              staffs who took care of {{ $area->name }}:
+                              <br>
                               @foreach ($area->staff as $staff)
                               {{ $staff->name }}
                               <br> <!-- Afficher le nom du personnel -->

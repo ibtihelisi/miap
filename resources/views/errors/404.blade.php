@@ -11,6 +11,11 @@
     <div class="container">
         <div class="p-5 m-5 text-center">
             <div class="card p-5 rounded-5" style="background-color: #fff2dc">
+                <!-- Ajout de l'image du logo -->
+                <img src="{{asset('mainassets/images/logo.svg')}}" alt="Votre logo" style="position: absolute; top: 10px; left: 10px; width: 100px; height: auto;">
+
+                
+                <!-- Fin de l'ajout de l'image du logo -->
                 <h1 class="display-1 fw-bold">404</h1>
                 <h3 class="display-6">Page Not Found</h3>
                 <hr>

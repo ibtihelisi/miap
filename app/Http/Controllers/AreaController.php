@@ -49,35 +49,32 @@ class AreaController extends Controller
     
     
   // ajouter une items la liste 
-  public function store(Request $request){
+  public function store(Request $request) {
     $request->validate([
         'name' => 'required|unique:areas',
-        //'staffs' => 'required|array',
-        //'staffs.*' => 'exists:staff,id'
+        'staffs' => 'array', // Assurez-vous que staffs est un tableau
     ]);
 
+    $user = Auth::user();
 
-     $user = Auth::user();
-    
-     $area=new Area();
-     $area->name=$request->name;
-     $area->user_id = $user->id;
-     //$area->staff_id=$request->staff;
-      // Attach staffs to the area
-   // $area->staff()->attach($request->staffs);
-    
-     
+    // Créer la nouvelle zone
+    $area = new Area();
+    $area->name = $request->name;
+    $area->user_id = $user->id;
 
-     
+    if ($area->save()) {
+        // Associer les membres du personnel sélectionnés à la zone
+        if ($request->has('staffs')) {
+            $staffIds = $request->input('staffs');
+            $area->staff()->attach($staffIds); // Utilisez attach pour associer les staffs à la zone
+        }
 
-     if ($area->save()){
         return redirect('/restaurant/area')->with('success', 'Area successfully added.');
-     }else{
-         echo"error";
-     }
+    } else {
+        return redirect()->back()->with('error', 'Failed to add area.');
+    }
+}
 
-
- }
 
 
 

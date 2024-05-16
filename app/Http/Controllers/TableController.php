@@ -64,7 +64,7 @@ class TableController extends Controller
             $areas = $user->areas;
     
             // Retourne la vue avec les erreurs, les tables et les zones
-            return  redirect()->route('table.index')->with('success', 'This table  already exists')->with('tables', $tables)->with('areas', $areas);
+            return  redirect()->route('table.index')->with('error', 'This table  already exists')->with('tables', $tables)->with('areas', $areas);
         }
     
         $user = Auth::user();
@@ -84,25 +84,58 @@ class TableController extends Controller
             return redirect()->route('table.index')->with('success', 'Table successfully added');
         } else {
             // En cas d'échec, retourne à la page d'index avec un message d'erreur
-            return redirect()->route('table.index')->with('success', 'Failed to add table');
+            return redirect()->route('table.index')->with('error', 'Failed to add table');
         }
     }
     
 
 
-     //supprimer produit
-  public function destroy($id) {
+        //supprimer produit
+        public function destroy($id) {
 
-    $table =Table::find($id);
+            $table =Table::find($id);
 
 
-    if($table->delete()){
-        return redirect()->back()->with('success', 'Table successfully deleted. ');
-    }else{echo"erreur"
-    ;}
-}
+            if($table->delete()){
+                return redirect()->back()->with('success', 'Table successfully deleted. ');
+            }else{echo"erreur"
+            ;}
+        }
 
-      
+
+        public function update(Request $request) {
+            $request->validate([
+                'name' => 'required',
+                'size' => 'required',
+                'area' => 'required|exists:areas,id',
+            ]);
+        
+            $id = $request->idtable;
+            $table = Table::find($id);
+        
+            // Vérifier si le nom de la table a été modifié
+            if ($request->name !== $table->name || $request->area != $table->area_id) {
+                // Si le nom ou la zone a été modifié, vérifier l'unicité du nouveau nom dans la nouvelle zone
+                $validator = Validator::make($request->all(), [
+                    'name' => 'required|unique:tables,name,NULL,id,area_id,' . $request->input('area'),
+                ]);
+        
+                if ($validator->fails()) {
+                    return redirect()->back()->withErrors($validator)->withInput();
+                }
+            }
+        
+            $table->name = $request->name;
+            $table->size = $request->size;
+            $table->area_id = $request->area;
+        
+            if($table->update()) {
+                return redirect()->back()->with('success', 'Table successfully updated.');
+            } else {
+                return redirect()->back()->with('error', 'Error updating table.');
+            }
+        }
+        
 
 
 

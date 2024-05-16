@@ -65,27 +65,48 @@
             </div>
         </div>
       
-          <!-- Affichage des alertes de succès ou d'erreur -->
-          @if(session('success'))
-          <div class="alert alert-success alert-dismissible delete-alert" role="alert" style="background-color: green; border-color: #c3e6cb; color:#d4edda ;" >
-              {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" aria-setsize="10"></button>
-          </div>
-          <script>
+        @if(session('success'))
+        <div class="alert alert-success alert-dismissible delete-alert" role="alert" style="background-color: green; border-color: #c3e6cb; color:#d4edda ;">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" aria-setsize="10"></button>
+        </div>
+        <script>
             // Sélectionne l'alerte de succès
             var successAlert = document.querySelector('.alert-success');
             // Ferme l'alerte après 10 secondes (10000 millisecondes)
             setTimeout(function() {
                 successAlert.style.display = 'none';
             }, 10000);
-    
+        
             // Ajoute un écouteur d'événement au bouton de fermeture
             var closeButton = successAlert.querySelector('.btn-close');
             closeButton.addEventListener('click', function() {
                 successAlert.style.display = 'none';
             });
         </script>
-       @endif
+        @endif
+        
+        @if(session('error'))
+        <div class="alert alert-danger alert-dismissible delete-alert" role="alert" style="background-color: red; border-color: #dc3545; color: #f8d7da;">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" aria-setsize="10"></button>
+        </div>
+        <script>
+            // Sélectionne l'alerte d'erreur
+            var errorAlert = document.querySelector('.alert-danger');
+            // Ferme l'alerte après 10 secondes (10000 millisecondes)
+            setTimeout(function() {
+                errorAlert.style.display = 'none';
+            }, 10000);
+        
+            // Ajoute un écouteur d'événement au bouton de fermeture
+            var closeButton = errorAlert.querySelector('.btn-close');
+            closeButton.addEventListener('click', function() {
+                errorAlert.style.display = 'none';
+            });
+        </script>
+        @endif
+        
 
 
               <div class="mt-3">
@@ -123,7 +144,7 @@
                               
                                 
                                 <td class="ACTION">
-                                  <a href="/restaurant/edit/{{$tab->id}}" class="btn btn-secondary mr-2" title="Update">
+                                  <a data-bs-toggle="modal" data-bs-target="#editTable{{ $tab->id }}" class="btn btn-secondary mr-2" title="Update">
                                       <i class="fas fa-edit"></i> Update
                                   </a>
                                   <form action="/restaurant/table/delete/{{$tab->id}}" method="POST">
@@ -173,6 +194,83 @@
        
         </div>
       </div>
+
+
+      @foreach ($tables as $index=>$table )
+      <div class="modal fade" id="editTable{{$table->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+      style="display: none;" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit table</h5><button class="btn p-1"
+                      type="button" data-bs-dismiss="modal" aria-label="Close"><svg
+                          class="svg-inline--fa fa-times fa-w-11 fs--1" aria-hidden="true" focusable="false"
+                          data-prefix="fas" data-icon="times" role="img"
+                          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg="">
+                          <path fill="currentColor"
+                              d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z">
+                          </path>
+                      </svg><!-- <span class="fas fa-times fs--1"></span> Font Awesome fontawesome.com --></button>
+              </div>
+              
+                  
+              
+              <form action="/restaurant/table/update/{id}" method="post">
+
+                  @csrf
+
+              
+                  <div class="modal-body">
+                      <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                          <input name="name"  value ="{{$table->name}}"  class="form-control" id="exampleFormControlInput1"
+                              type="text"   >
+                          @error('name')
+                              <div class="alert alert-danger">
+                                  {{ $message }}
+                              </div>
+                          @enderror
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="size" class="form-label">Size</label>
+                        <input name="size"  value ="{{$table->size}}"  class="form-control" id="exampleFormControlInput1"
+                            type="text"   >
+                        @error('size')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+
+                    <div class="mb-3">
+                      <label for="area" class="form-label">Area</label>
+                      <select name="area" class="form-control" id="area">
+                          @foreach($areas as $area)
+                              <option value="{{ $area->id }}" {{ $table->area_id == $area->id ? 'selected' : '' }}>{{ $area->name }}</option>
+                          @endforeach
+                      </select>
+                  </div>
+                  
+
+
+                      <input type="hidden" value="{{ $table->id}}" name="idtable" >
+
+
+
+                  </div>
+                  <div class="modal-footer">
+                      <button class="btn btn-primary" type="submit ">Save</button>
+                      <button class="btn btn-outline-primary" type="button"
+                          data-bs-dismiss="modal">Cancel</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+      </div>
+
+  @endforeach   
     </main>
 
 

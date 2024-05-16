@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Staff;
+use App\Models\Area;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -18,24 +19,29 @@ class StaffController extends Controller
         // Récupérer l'utilisateur connecté
         $user = Auth::user();
 
+        $all=Staff::with('areas')->where('user_id', $user->id)->get();
         // Récupérer les catégories de l'utilisateur connecté
         $staffs = $user->staff;
-       
-        return view('client.staff.index')->with('user',$user)->with('staffs',$staffs);
+        $areas = Area::where('user_id', $user->id)->get(); // Récupère toutes les zones de l'utilisateur connecté
+        //$staffs = Staff::where('user_id', $user->id)->get(); // Récupère tous les membres du personnel de l'utilisateur connecté
+    
+        //dd($all->toArray());
+        return view('client.staff.index')->with('user',$user)->with('staffs',$staffs)->with('all',$all)->with('areas',$areas);
     }
 
 
     public function create() {
         $user = Auth::user();
-        $staffs = $user->staff;
+        $staffs = Staff::where('user_id', $user->id)->get(); // Récupère tous les membres du personnel de l'utilisateur connecté
+       
         return view('client.staff.create')->with('staffs',$staffs)->with('user',$user);
     }
 
 
     public function store(Request $request){
         $request->validate([
-            'staff_name'=>'required',
-            'email'=>'required',
+            'staff_name'=>'required|unique:staff,name',
+            'email'=>'required|email|unique:staff,email',
             'password' => 'required|min:8|confirmed',
         ], [
             'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
