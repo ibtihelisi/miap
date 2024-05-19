@@ -147,6 +147,17 @@ class RestaurantController extends Controller
         return redirect()->back()->with('success', '"'. $users->restaurant_name.' "restaurant was successfully activated. ');
        
     } 
+
+
+
+    public function afficherMsgBloquer()
+    
+    {
+        return view('client.bloquer');
+    }
+
+
+    
    
 
     

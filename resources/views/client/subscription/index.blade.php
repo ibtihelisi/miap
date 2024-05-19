@@ -108,11 +108,7 @@
              
             
             </div>
-            <div class="col-md-6 text-end">
-              <a class="btn btn-primary" class="mt-3" href="/restaurant/table/create">Add new table </a>
-              <a class="btn btn-outline-primary ms-2" href="">Areas</a>
-
-            </div>
+          
         </div>
       
           <!-- Affichage des alertes de succès ou d'erreur -->

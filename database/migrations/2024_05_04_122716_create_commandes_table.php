@@ -14,8 +14,15 @@ return new class extends Migration
         Schema::create('commandes', function (Blueprint $table) {
             $table->id();
             $table->enum('etat', ['en cours', 'cheked'])->default('en cours');
-            $table->unsignedBigInteger('consomateur_id');
-            $table->foreign('consomateur_id')->references('id')->on('consomateurs')->onDelete('cascade');
+            
+            $table->enum('pay', ['cash on hand', 'payment by electronic payment terminal']);
+          
+            $table->unsignedBigInteger('table_id');
+            $table->foreign('table_id')->references('id')->on('tables')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
+           
             $table->timestamps();
            
         });

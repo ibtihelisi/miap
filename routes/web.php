@@ -39,7 +39,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/client/dashboard', [App\Http\Controllers\ClientController::class, 'dashboard'])->middleware('auth','user');
+Route::get('/client/dashboard', [App\Http\Controllers\ClientController::class, 'dashboard'])->middleware('auth','user','active');
 
 
 Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->middleware('auth','admin');
@@ -64,6 +64,9 @@ Route::get('/restaurant/create',[RestaurantController::class,'create']);
 Route::get('/restaurant/delete/{id}',[RestaurantController::class,'destroy']);
 Route::get('/restaurant/deactivate/{id}',[RestaurantController::class,'deactivate']);
 Route::get('/restaurant/activate/{id}',[RestaurantController::class,'activate']);
+//l'interface  qui s'affiche si le user et disactivé
+Route::get('/restaurant/deactivate',[RestaurantController::class,'afficherMsgBloquer'])->middleware('auth');
+
 Route::get('/restaurant/search',[RestaurantController::class,'search']);
 
 Route::get('/restaurants/export', [RestaurantController::class,'export'])->name('export.restaurants');

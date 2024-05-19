@@ -22,7 +22,7 @@ class Item extends Model
 
     public function lignecommande()
     {
-        return $this->hasMany(LigneCommande::class ,'item_id' ,'id');
+        return $this->belongsTo(LigneCommande::class ,'item_id' ,'id');
     }
 
       // Méthode pour raccourcir la description si elle est trop longue

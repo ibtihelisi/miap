@@ -16,8 +16,8 @@ class Commande extends Model
 
 
 
-    public function consommateur(){
-        return $this->belongsTo(Consommateur::class,'consommateur_id','id');
+    public function table(){
+        return $this->belongsTo(Table::class,'table_id','id');
     }
 
 

@@ -278,7 +278,7 @@
                                 </div>
                                 <div class="searchable-container">
                                     <div id="cartList">
-
+                                        
                                         @foreach ($commande->lignecommandes as $lc )
                                             
                                             @if ($lc->item->user_id ==$user->id)
@@ -369,11 +369,26 @@
                                                 <h4 style="margin-bottom: 0; padding-bottom: 5px; font-size: 1.5rem;" for="tableSelect">Table</h4>
                                                 <hr>
                                                 
-                                                <select class="form-control" id="tableSelect">
-                                                    <option value="" selected disabled>select your table</option>
-      
-                                                    <option value="table1">Table 1</option>
-                                                    <option value="table2">Table 2</option>
+                                                <select class="form-control" id="tableSelect" name="table_id" required>
+                                                    <option value="table_id" selected disabled>select your table</option>
+                                                    
+                                                            @foreach ($tables as $tab)
+                                                                @if ($user->id==$tab->user_id)
+                                                                <option value="{{$tab->id}}">
+                                                                    @foreach ($areas as $area )
+                                                                    @if ($tab->area_id==$area->id)
+                                                                    {{$tab->name}}-{{$area->name}}
+                                                                    @break
+                                                                    @endif
+                                                                   
+                                                                    @endforeach
+                                                                </option>
+                                                                    
+                                                                @endif
+                                                            @endforeach
+                                                            
+                                                   
+                                                    
                                                     <!-- Ajoutez d'autres options de table si nécessaire -->
                                                 </select>
                                             </div>
@@ -382,13 +397,15 @@
                                             <div class="form-group">
                                                 <h4 style="margin-bottom: 0; padding-bottom: 5px; font-size: 1.5rem;" for="tableSelect">Paiement</h4>
                                                 <hr>
-                                                 <select class="form-control" id="paymentMethod">
+                                                 <select class="form-control" id="paymentMethod" name="paymentMethod" required>
                                                     <option value="" selected disabled>select your payment method</option>
                                                     <option value="cash">cash on hand</option>
                                                     <option value="tpe">payment by electronic payment terminal</option>
                                                     <!-- Ajoutez d'autres options de paiement si nécessaire -->
                                                 </select>
                                             </div>
+
+                                            
 
                                             <BR></BR>
                                             <div class="text-center mobile-menu" >
@@ -559,7 +576,7 @@
 
 
                                                         <div class="card-footer-buttons">
-                                                            <a data-bs-toggle="modal" data-bs-target="#editItem{{ $i->id }}" class=""  id="edit"       data-placement="top" >
+                                                            <a data-bs-toggle="modal" data-bs-target="#addItem{{ $i->id }}" class=""  id="edit"       data-placement="top" >
                                                                 <button class="btn btn-custom float-left btn-rounded"><i class="fas fa-eye me-1"></i>View Detail</button>
                                                             </a>
                                                             <button  id="cartButton"  class="btn btn-custom float-right btn-rounded"><i class="fas fa-shopping-cart me-1"></i>Add To Cart</button>
@@ -624,15 +641,17 @@
 
                     
 
-                            <div class="modal fade" id="editItem{{$i->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            <div class="modal fade" id="addItem{{$i->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
                                 
                                 aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h2 class="modal-title" id="exampleModalLabel">{{$i->name}}</h2>
-                                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="background-color: #fff2dc;">
+                                           
+                                            <button type="button" class="close btn-outline-sm" data-bs-dismiss="modal" aria-label="Close" style="background-color: #fff2dc;">
                                                 <span aria-hidden="true" style="color: #f25c05;">X</span>
+                                                
                                             </button>
                                             
                                             
@@ -658,7 +677,7 @@
                                                             </div>
                                                             <div class="col-sm col-md col-lg col-lg" id="modalItemDetailsPart">
 
-                                                                <h5 for="price" style="text-size:20px">{{$i->price}} DTN</h5>
+                                                                <h5 for="price" style="text-size:20px">{{$i->price}} Dt</h5>
                                                                 </br>
                                                                 
                                                                 <label for="desc">{{$i->description}}</label><br>
@@ -673,7 +692,7 @@
                                                             
                                                                 <input type="number" step="1"  min="1" placeholder="1" name="quantity">
                             
-                                                                <input type="hidden" value="{{ $i->id}}" name="idcategory"   class="form-control form-control-alternative">
+                                                                <input type="hidden" value="{{ $c->id}}" name="idcategory"   class="form-control form-control-alternative">
                                                                 <input type="hidden" value="{{ $i->id}}" name="iditem"   class="form-control form-control-alternative" >
                                                         
                                                                 <input type="hidden" value="{{ $user->id}}" name="iduser"   class="form-control form-control-alternative">
@@ -686,9 +705,8 @@
                             
                                             </div>
                                             <div class="modal-footer">
-                                                <button class="btn btn-primary" id="cartButton"  >Add To Cart</button>
-                                                <button class="btn btn-outline-primary" type="button"
-                                                    data-bs-dismiss="modal">X</button>
+                                                <button class="btn btn-outline" id="cartButton"   style="background-color:  #f25c05; " >Add To Cart</button>
+                                                
                                             </div>
                                         </form>
                                     </div>
@@ -725,6 +743,9 @@
                 </script>
 
 
+
+
+                
         
 
 

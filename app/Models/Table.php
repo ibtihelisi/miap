@@ -22,4 +22,12 @@ class Table extends Model
     {
         return $this->belongsTo(User::class,'user_id','id');
     }
+
+    public function commande(){
+
+        return $this->hasMany(Commande::class ,'table_id','id');
+    }
+
+
+
 }

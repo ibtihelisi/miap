@@ -9,7 +9,7 @@ class LigneCommande extends Model
 {
     use HasFactory;
     public function commande(){
-        return $this->belongsTo(Commande::class ,'commande_id','id');
+        return $this->belongsTo (Commande::class ,'commande_id','id');
     }
 
 
