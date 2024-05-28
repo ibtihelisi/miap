@@ -30,9 +30,35 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
 
     <style>
-      body {
-        opacity: 0;
-      }
+     
+ .btn.btn-primary {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
+
+                      .btn.btn-outline-primary {
+                        background-color: #fff;
+                        border-color: #f25c05;
+                        color: #f25c05;
+                      }
+
+                      .btn.btn-outline-primary:hover,
+                      .btn.btn-outline-primary:focus,
+                      .btn.btn-outline-primary:active {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
+
+
+  body {
+            opacity: 0;
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #fff2dc;
+        }
+
+
 
 
 
@@ -389,7 +415,7 @@
             <div class="pb-5">
 
                 <div class="container">
-                    <h1 class="mt-3">Orders</h1>
+                    <h1 class="mt-3" style="color: #272556">Orders</h1>
                     <hr>
 
 

@@ -15,6 +15,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\WaiterCallController;
 use App\Models\Area;
 use App\Models\Restaurant;
 
@@ -257,11 +258,16 @@ Route::get('/QRMenu/restaurant/lc/{idlc}/plusQuantity', [App\Http\Controllers\Co
 
 Route::get('/QRMenu/restaurant/lc/{idlc}/moinsQuantity', [App\Http\Controllers\ConsomateurController::class, 'ligneCommandeMoinsQuantity'])->name('QRMenu.restaurant.lc.moinsQuantity');
 
+Route::post('/cart/add', [App\Http\Controllers\ConsomateurController::class, 'addToCart'])->name('cart.add');
 
-Route::get('/QRMenu/restaurant/checkout', [App\Http\Controllers\ConsomateurController::class, 'showcheckout'])->name('QRMenu.restaurant.checkout');
+Route::get('/QRMenu/restaurant/placeOrder', [App\Http\Controllers\ConsomateurController::class, 'placeOrder']);
 
 Route::get('/user/{userId}/categories', [App\Http\Controllers\QrcodeController::class, 'showCategories'])->name('user.categories');
 
 
 
 Route::get('/client/subscription', [App\Http\Controllers\RestaurantController::class, 'sub']);
+//call waiter
+
+Route::post('/call-waiter', [WaiterCallController::class, 'callWaiter']);
+

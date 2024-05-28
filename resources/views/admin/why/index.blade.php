@@ -18,14 +18,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
     <link href="{{asset('dashassets/css/phoenix.min.css')}} " rel="stylesheet" id="style-default">
     <link href="{{asset('dashassets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+  
     <style>
-      body {
-        opacity: 0;
+       body {
+          opacity: 0;
+          font-family: 'Nunito Sans', sans-serif;
+          background-color: #fff2dc;
       }
 
       .center {
         text-align: center;
       }
+
+      .btn.btn-primary {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
+
+                      .btn.btn-outline-primary {
+                        background-color: #fff;
+                        border-color: #f25c05;
+                        color: #f25c05;
+                      }
+
+                      .btn.btn-outline-primary:hover,
+                      .btn.btn-outline-primary:focus,
+                      .btn.btn-outline-primary:active {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
 
 
       .text-bg-success {
@@ -50,7 +74,7 @@
           <div class="pb-5">
 
             <div class="container">
-              <h1 class="mt-3">Why QR Menu CMS</h1>
+              <h1 class="mt-3" style="color: #272556">Why QR Menu CMS</h1>
               <hr>
       
           </div>
@@ -149,7 +173,7 @@
 
                                             <div class="col-md-12">
                                                 <div id="form-group-features" class="form-group  ">
-                                                    <label class="form-control-label" for="">why item title</label>
+                                                    <label class="col-form-label text-md-end" for="">why item title</label>
                                                     <input type="text"    value ="{{$why->title }}"  name="title"  class="form-control form-control   "  >
                                                 </div>
                                                 @error('title')
@@ -162,7 +186,7 @@
 
                                             <div class="col-md-12">
                                                 <div id="form-group-features" class="form-group  ">
-                                                    <label class="form-control-label" for="">why item first advantage</label>
+                                                    <label class="col-form-label text-md-end" for="">why item first advantage</label>
                                                     <input type="text"    value ="{{$why->desc1}}"  name="desc1"  class="form-control form-control   "  >
                                                 </div>
                                                 @error('desc1')
@@ -176,7 +200,7 @@
 
                                             <div class="col-md-12">
                                                 <div id="form-group-features" class="form-group  ">
-                                                    <label class="form-control-label" for="">why item second advantage</label>
+                                                    <label class="col-form-label text-md-end" for="">why item second advantage</label>
                                                     <input type="text"    value ="{{$why->desc2}}"  name="desc2"  class="form-control form-control   "  >
                                                 </div>
                                                 @error('desc2')
@@ -190,7 +214,7 @@
 
                                             <div class="col-md-12">
                                                 <div id="form-group-features" class="form-group  ">
-                                                    <label class="form-control-label" for="">why item third advantage</label>
+                                                    <label class="col-form-label text-md-end" for="">why item third advantage</label>
                                                     <input type="text"    value ="{{$why->desc3}}"  name="desc3"  class="form-control form-control   "  >
                                                 </div>
                                                 @error('desc3')
@@ -208,10 +232,10 @@
 
                                             <br>
                                             <div class="center">
-                                                <a  class="btn btn-danger" onclick="return confirm('voulez-vouz supprimer cette Feature ? ') "
+                                                <a  class="btn btn-primary" onclick="return confirm('voulez-vouz supprimer cette Feature ? ') "
                                                 href="/why/delete/{{ $why->id }}" class="btn btn-danger">
                                                 Delete</a>
-                                                <button  class="btn btn-success"  type="submit ">UPDATE</button>
+                                                <button  class="btn btn-outline-primary"  type="submit ">UPDATE</button>
                                                 <!--<button  class="btn btn-danger" type="submit ">Delete</button>-->
                                             </div>
                                         </div>

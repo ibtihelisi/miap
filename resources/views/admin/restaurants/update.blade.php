@@ -26,8 +26,10 @@
 
     
     <style>
-      body {
-        opacity: 0;
+            body {
+          opacity: 0;
+          font-family: 'Nunito Sans', sans-serif;
+          background-color: #fff2dc;
       }
 
 
@@ -113,7 +115,8 @@
 
 
 
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+  
   </head>
 
   <body>
@@ -169,8 +172,8 @@
                           <div class="col-md-12">
                             <div class="custom">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <h1 class="mt-3">Update Restaurant </h1>
-                                    <a class="btn btn-primary me-1" href="/admin/restaurants" style="margin-left: auto;">Back to list</a>
+                                    <h1 class="mt-3" style="color: #272556" >Update Restaurant </h1>
+                                    <a class="btn btn-primary me-1"  style="background-color: #f25c05" href="/admin/restaurants" style="margin-left: auto;">Back to list</a>
                                    
                                 </div>
                                 <hr>
@@ -231,7 +234,121 @@
                                             </div>
                                           @enderror
                                     
+                                        </div>
+                                        
+                                        
+
+
+                                 
+                                        <div class="mb-3">
+
+                                          <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Second restaurant address</label>
+                                          <input name="location2"   value ="{{$users->location2}}"  class="form-control" id="exampleFormControlInput1" type="text"    placeholder=" your seconde Restaurant Adress ......">
+                                          @error('location2')
+                                            <div class="alert alert-danger">
+                                                {{ $message }}
+                                            </div>
+                                          @enderror
+                                    
                                         </div> 
+       
+       
+       
+       
+                      
+       
+                                          <br>
+       
+                                          <div class="row mb-3">
+                                            <label for="governorate" class="col-md-1 col-form-label text-md-end">Governorate</label>
+                                            <br>
+                                            <div class="col-md-6">
+                                                <select id="governorate" class="form-control @error('governorate') is-invalid @enderror" name="governorate" required>
+                                                    <option value="">{{ $users->governorate }}</option>
+                                                    <option value="Tunis" {{ $users->governorate == 'Tunis' ? 'selected' : '' }}>Tunis</option>
+                                                    <option value="Ariana" {{ $users->governorate == 'Ariana' ? 'selected' : '' }}>Ariana</option>
+                                                    <option value="Ben Arous" {{ $users->governorate == 'Ben Arous' ? 'selected' : '' }}>Ben Arous</option>
+                                                    <option value="Manouba" {{ $users->governorate == 'Manouba' ? 'selected' : '' }}>Manouba</option>
+                                                    <option value="Nabeul" {{ $users->governorate == 'Nabeul' ? 'selected' : '' }}>Nabeul</option>
+                                                    <option value="Zaghouan" {{ $users->governorate == 'Zaghouan' ? 'selected' : '' }}>Zaghouan</option>
+                                                    <option value="Bizerte" {{ $users->governorate == 'Bizerte' ? 'selected' : '' }}>Bizerte</option>
+                                                    <option value="Beja" {{ $users->governorate == 'Beja' ? 'selected' : '' }}>Beja</option>
+                                                    <option value="Jendouba" {{ $users->governorate == 'Jendouba' ? 'selected' : '' }}>Jendouba</option>
+                                                    <option value="Kef" {{ $users->governorate == 'Kef' ? 'selected' : '' }}>Kef</option>
+                                                    <option value="Siliana" {{ $users->governorate == 'Siliana' ? 'selected' : '' }}>Siliana</option>
+                                                    <option value="Sousse" {{ $users->governorate == 'Sousse' ? 'selected' : '' }}>Sousse</option>
+                                                    <option value="Monastir" {{ $users->governorate == 'Monastir' ? 'selected' : '' }}>Monastir</option>
+                                                    <option value="Mahdia" {{ $users->governorate == 'Mahdia' ? 'selected' : '' }}>Mahdia</option>
+                                                    <option value="Sfax" {{ $users->governorate == 'Sfax' ? 'selected' : '' }}>Sfax</option>
+                                                    <option value="Kairouan" {{ $users->governorate == 'Kairouan' ? 'selected' : '' }}>Kairouan</option>
+                                                    <option value="Kasserine" {{ $users->governorate == 'Kasserine' ? 'selected' : '' }}>Kasserine</option>
+                                                    <option value="Sidi Bouzid" {{ $users->governorate == 'Sidi Bouzid' ? 'selected' : '' }}>Sidi Bouzid</option>
+                                                    <option value="Gabes" {{ $users->governorate == 'Gabes' ? 'selected' : '' }}>Gabes</option>
+                                                    <option value="Medenine" {{ $users->governorate == 'Medenine' ? 'selected' : '' }}>Medenine</option>
+                                                    <option value="Tataouine" {{ $users->governorate == 'Tataouine' ? 'selected' : '' }}>Tataouine</option>
+                                                    <option value="Gafsa" {{ $users->governorate == 'Gafsa' ? 'selected' : '' }}>Gafsa</option>
+                                                    <option value="Tozeur" {{ $users->governorate == 'Tozeur' ? 'selected' : '' }}>Tozeur</option>
+                                                    <option value="Kebili" {{ $users->governorate == 'Kebili' ? 'selected' : '' }}>Kebili</option>
+                                                </select>
+                                                @error('governorate')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            
+                                        
+       
+       
+                                        
+                                        <div class="mb-3">
+       
+                                          <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> City </label>
+                                          <input name="city"   value ="{{$users->city}}"  class="form-control" id="exampleFormControlInput1" type="text"    placeholder=" your city ......">
+                                          @error('city')
+                                            <div class="alert alert-danger">
+                                                {{ $message }}
+                                            </div>
+                                          @enderror
+                                    
+                                        </div> 
+       
+       
+       
+                                        
+       
+       
+       
+                                        
+                                        <div class="mb-3">
+       
+                                          <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Restaurant patent number</label>
+                                          <input name="patnumber"   value ="{{$users->patnumber}}"  class="form-control" id="exampleFormControlInput1" type="text"    placeholder=" your  restaurant patent number ......">
+                                          @error('patnumber')
+                                            <div class="alert alert-danger">
+                                                {{ $message }}
+                                            </div>
+                                          @enderror
+                                    
+                                        </div> 
+       
+       
+       
+       
+                                        
+                                        
+                                        <div class="mb-3">
+       
+                                          <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Postal</label>
+                                          <input name="Postal_code"   value ="{{$users->postal_code}}"  class="form-control" id="exampleFormControlInput1" type="text"    placeholder=" your postal code ......">
+                                          @error('Postal_code')
+                                            <div class="alert alert-danger">
+                                                {{ $message }}
+                                            </div>
+                                          @enderror
+                                    
+                                        </div> 
+
 
 
 
@@ -290,7 +407,7 @@
 
                                       <div class="center">
                                   
-                                          <button  class="btn btn-success" type="submit ">UPDATE</button>
+                                          <button  class="btn btn-success" type="submit " style="background-color: #f25c05" >UPDATE</button>
                                       
                                       </div>
                                       
@@ -326,303 +443,7 @@
                           
                     </div>
                     
-                    <div class="tab-pane fade" id="hours" role="tabpanel" aria-labelledby="tabs-hours-main">   
-
-
-
-
-                        
-                        <div class="col-md-12">
-                          <div class="custom">
-                              <div class="d-flex justify-content-between align-items-center">
-                                  <h1 class="mt-3">Working Hours</h1>
-                                  <a class="btn btn-primary me-1" href="/admin/restaurants" style="margin-left: auto;">Back to list</a>
-                                 
-                              </div>
-                              <hr>
-                              
-                              <div class="card-body">
-                                <div class="tab-content" id="shifts">
-                                                            <div class="tab-pane fade show active" id="shift18" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
-                                <form method="post" action="https://zebra-qr.com/restaurant/workinghours" autocomplete="off" enctype="multipart/form-data">
-                                    <input type="hidden" name="_token" value="ieVvhOnMvGHMnXSNvhsCuBH0hS6cHCGK6L7x4Y7Q" autocomplete="off">                    <input type="hidden" id="rid" name="rid" value="17">
-                                    <input type="hidden" id="shift_id" name="shift_id" value="18">
-                                    <div class="form-group">
-                                                                <br>
-                                        <div class="row">
-                                          <div class="col-4">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" name="days" class="custom-control-input" id="day0_shift18" value="0" valuetwo="18" checked="checked">
-                                                <label class="custom-control-label" for="day0_shift18">Monday</label>
-                                            </div>
-                                          </div>
-                                          <div class="col-3">
-                                              <!-- Champ de saisie de temps avec Flatpickr -->
-                                            <div class="input-group">
-                                              <input id="from_shift18" name="from_shift18" class="flatpickr datetimepicker form-control" placeholder="Start Time" type="text">
-                                              <div class="input-group-append">
-                                                  <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                              </div>
-                                            </div>
-                                          </div>
-
-                                        
-                                      
-                                      
-                                            <div class="col-2 text-center">
-                                               <p class="display-4">-</p>
-                                            </div>
-
-
-
-
-                                            <div class="col-3">
-                                              <!-- Champ de saisie de temps avec Flatpickr -->
-                                            <div class="input-group">
-                                              <input id="to_shift18" name="to_shift18" class="flatpickr datetimepicker form-control" placeholder="End Time" type="text" >
-                                              <div class="input-group-append">
-                                                  <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          
-                                        </div>
-                                                                <br>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" name="days" class="custom-control-input" id="day1_shift18" value="1" valuetwo="18" checked="checked">
-                                                    <label class="custom-control-label" for="day1_shift18">Tuesday</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                              <!-- Champ de saisie de temps avec Flatpickr -->
-                                            <div class="input-group">
-                                              <input id="from_shift18" name="from_shift18" class="flatpickr datetimepicker form-control" placeholder="Start Time" type="text">
-                                              <div class="input-group-append">
-                                                  <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                              </div>
-                                            </div>
-                                          </div>
-
-                                        
-                                      
-                                      
-                                            <div class="col-2 text-center">
-                                               <p class="display-4">-</p>
-                                            </div>
-
-
-
-
-                                            <div class="col-3">
-                                              <!-- Champ de saisie de temps avec Flatpickr -->
-                                            <div class="input-group">
-                                              <input id="to_shift18" name="to_shift18" class="flatpickr datetimepicker form-control" placeholder="End Time" type="text" >
-                                              <div class="input-group-append">
-                                                  <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                                                <br>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" name="days" class="custom-control-input" id="day2_shift18" value="2" valuetwo="18" checked="checked">
-                                                    <label class="custom-control-label" for="day2_shift18">Wednesday</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                              <!-- Champ de saisie de temps avec Flatpickr -->
-                                            <div class="input-group">
-                                              <input id="from_shift18" name="from_shift18" class="flatpickr datetimepicker form-control" placeholder="Start Time" type="text">
-                                              <div class="input-group-append">
-                                                  <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                              </div>
-                                            </div>
-                                          </div>
-
-                                        
-                                      
-                                      
-                                            <div class="col-2 text-center">
-                                               <p class="display-4">-</p>
-                                            </div>
-
-
-
-
-                                            <div class="col-3">
-                                              <!-- Champ de saisie de temps avec Flatpickr -->
-                                            <div class="input-group">
-                                              <input id="to_shift18" name="to_shift18" class="flatpickr datetimepicker form-control" placeholder="End Time" type="text" >
-                                              <div class="input-group-append">
-                                                  <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                                                <br>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" name="days" class="custom-control-input" id="day3_shift18" value="3" valuetwo="18" checked="checked">
-                                                    <label class="custom-control-label" for="day3_shift18">Thursday</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                              <!-- Champ de saisie de temps avec Flatpickr -->
-                                            <div class="input-group">
-                                              <input id="from_shift18" name="from_shift18" class="flatpickr datetimepicker form-control" placeholder="Start Time" type="text">
-                                              <div class="input-group-append">
-                                                  <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                              </div>
-                                            </div>
-                                          </div>
-
-                                        
-                                      
-                                      
-                                            <div class="col-2 text-center">
-                                               <p class="display-4">-</p>
-                                            </div>
-
-
-
-
-                                            <div class="col-3">
-                                              <!-- Champ de saisie de temps avec Flatpickr -->
-                                            <div class="input-group">
-                                              <input id="to_shift18" name="to_shift18" class="flatpickr datetimepicker form-control" placeholder="End Time" type="text" >
-                                              <div class="input-group-append">
-                                                  <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                                                <br>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" name="days" class="custom-control-input" id="day4_shift18" value="4" valuetwo="18" checked="checked">
-                                                    <label class="custom-control-label" for="day4_shift18">Friday</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                              <!-- Champ de saisie de temps avec Flatpickr -->
-                                            <div class="input-group">
-                                              <input id="from_shift18" name="from_shift18" class="flatpickr datetimepicker form-control" placeholder="Start Time" type="text">
-                                              <div class="input-group-append">
-                                                  <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                              </div>
-                                            </div>
-                                          </div>
-
-                                        
-                                      
-                                      
-                                            <div class="col-2 text-center">
-                                               <p class="display-4">-</p>
-                                            </div>
-
-
-
-
-                                            <div class="col-3">
-                                              <!-- Champ de saisie de temps avec Flatpickr -->
-                                            <div class="input-group">
-                                              <input id="to_shift18" name="to_shift18" class="flatpickr datetimepicker form-control" placeholder="End Time" type="text" >
-                                              <div class="input-group-append">
-                                                  <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                                                <br>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" name="days" class="custom-control-input" id="day5_shift18" value="5" valuetwo="18" checked="checked">
-                                                    <label class="custom-control-label" for="day5_shift18">Saturday</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                              <!-- Champ de saisie de temps avec Flatpickr -->
-                                            <div class="input-group">
-                                              <input id="from_shift18" name="from_shift18" class="flatpickr datetimepicker form-control" placeholder="Start Time" type="text">
-                                              <div class="input-group-append">
-                                                  <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                              </div>
-                                            </div>
-                                          </div>
-
-                                        
-                                      
-                                      
-                                            <div class="col-2 text-center">
-                                               <p class="display-4">-</p>
-                                            </div>
-
-
-
-
-                                            <div class="col-3">
-                                              <!-- Champ de saisie de temps avec Flatpickr -->
-                                            <div class="input-group">
-                                              <input id="to_shift18" name="to_shift18" class="flatpickr datetimepicker form-control" placeholder="End Time" type="text" >
-                                              <div class="input-group-append">
-                                                  <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                                                <br>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" name="days" class="custom-control-input" id="day6_shift18" value="6" valuetwo="18" checked="checked">
-                                                    <label class="custom-control-label" for="day6_shift18">Sunday</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                              <!-- Champ de saisie de temps avec Flatpickr -->
-                                            <div class="input-group">
-                                              <input id="from_shift18" name="from_shift18" class="flatpickr datetimepicker form-control" placeholder="Start Time" type="text">
-                                              <div class="input-group-append">
-                                                  <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                              </div>
-                                            </div>
-                                          </div>
-
-                                        
-                                      
-                                      
-                                            <div class="col-2 text-center">
-                                               <p class="display-4">-</p>
-                                            </div>
-
-
-
-
-                                            <div class="col-3">
-                                              <!-- Champ de saisie de temps avec Flatpickr -->
-                                            <div class="input-group">
-                                              <input id="to_shift18" name="to_shift18" class="flatpickr datetimepicker form-control" placeholder="End Time" type="text" >
-                                              <div class="input-group-append">
-                                                  <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                              </div>
-                                            </div>
-                                          </div>
-                                                            </div>
-                                    <div class="text-center">
-                                                                <button type="submit" class="btn btn-success mt-4">Save</button>   
-                                    </div>
-                                </form>
-                            </div>
-                                </div>
-                        
-                    </div>
+               
                              
                      
      

@@ -19,8 +19,10 @@
     <link href="{{asset('dashassets/css/phoenix.min.css')}} " rel="stylesheet" id="style-default">
     <link href="{{asset('dashassets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
     <style>
-      body {
-        opacity: 0;
+       body {
+          opacity: 0;
+          font-family: 'Nunito Sans', sans-serif;
+          background-color: #fff2dc;
       }
 
       .logo-img {
@@ -53,6 +55,9 @@
     /* Ajoute une barre de défilement si nécessaire */
   }
 </style>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+  
   </head>
 
   <body>

@@ -18,14 +18,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
     <link href="{{asset('dashassets/css/phoenix.min.css')}} " rel="stylesheet" id="style-default">
     <link href="{{asset('dashassets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+  
     <style>
-      body {
-        opacity: 0;
+       body {
+          opacity: 0;
+          font-family: 'Nunito Sans', sans-serif;
+          background-color: #fff2dc;
       }
 
       
       .center {
         text-align: center;
+      }
+      .header {
+         background-color: #fff2dc
+          color: white;
       }
 
       .text-bg-success {
@@ -54,7 +63,7 @@
           <div class="pb-5">
 
             <div class="container">
-              <h1 class="mt-3">Edit Demo Banner</h1>
+              <h1 class="mt-3" style="color: #272556">Edit Demo Banner</h1>
               <hr>
 
 
@@ -130,7 +139,7 @@
 
               <div class="col-md-12">
                 <div id="form-group-features" class="form-group  ">
-                     <label class="form-control-label" for="">Subheading</label>
+                     <label class="col-form-label text-md-end" for="">Subheading</label>
                      <input type="text"    value ="{{$demo->subheading}}"  name="subheading"  class="form-control form-control   "  >
                 </div>
                 @error('subheading')
@@ -145,7 +154,7 @@
 
                <div class="col-md-12">
                     <div id="form-group-features" class="form-group  ">
-                         <label class="form-control-label" for="">Heading</label>
+                         <label class="col-form-label text-md-end" for="">Heading</label>
                          <input type="text"    value ="{{$demo->heading}}"  name="heading"  class="form-control form-control   "  >
                     </div>
                     @error('heading')
@@ -161,7 +170,7 @@
 
               <div class="col-md-12">
                           <div id="form-group-features" class="form-group  ">
-                               <label class="form-control-label" for="">Text</label>
+                               <label class="col-form-label text-md-end" for="">Text</label>
                                <textarea   name="text"  value ="{{$demo->text}}" class="form-control form-control   " cols="30"  rows="10">{{$demo->text}}</textarea>
                           </div>
                           @error('text')
@@ -176,7 +185,7 @@
 
                 <div class="col-md-12">
                   <div id="form-group-features" class="form-group  ">
-                       <label class="form-control-label" for="">Button Text</label>
+                       <label class="col-form-label text-md-end" for="">Button Text</label>
                        <input type="text"    value ="{{$demo->button_text}}"  name="button_text"  class="form-control form-control   "  >
                   </div>
                   @error('button_text')
@@ -199,7 +208,7 @@
 
           <div class="center">
             
-                <button  class="btn btn-success" type="submit ">UPDATE</button>
+                <button  class="btn btn-success" style="background-color: #f25c05"  type="submit ">UPDATE</button>
                 
           </div>
           

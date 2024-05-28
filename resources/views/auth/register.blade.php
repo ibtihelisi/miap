@@ -127,7 +127,7 @@
                         <label for="desc" class="col-md-4 col-form-label text-md-end">Restaurant Description </label>
 
                         <div class="col-md-6">
-                            <input id="desc" type="text" class="form-control @error('desc') is-invalid @enderror" name="desc" value="{{ old('desc') }}"  autocomplete="desc" autofocus required>
+                            <textarea id="desc" class="form-control @error('desc') is-invalid @enderror" name="desc" autocomplete="desc" autofocus required>{{ old('desc') }}</textarea>
 
                             @error('desc')
                                 <span class="invalid-feedback" role="alert">
@@ -136,6 +136,9 @@
                             @enderror
                         </div>
                     </div>
+
+
+        
 
                     <div class="row mb-3">
                         <label for="location" class="col-md-4 col-form-label text-md-end">Restaurant Location </label>
@@ -150,6 +153,110 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="row mb-3">
+                        <label for="location2" class="col-md-4 col-form-label text-md-end">Second Restaurant Location </label>
+
+                        <div class="col-md-6">
+                            <input id="location2" type="text" class="form-control @error('location2') is-invalid @enderror" name="location2" value="{{ old('location2') }}"  autocomplete="location2" >
+
+                            @error('location2')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+
+
+                    <div class="row mb-3">
+                        <label for="governorate" class="col-md-4 col-form-label text-md-end">Governorate</label>
+                        <div class="col-md-6">
+                            <select id="governorate" class="form-control @error('governorate') is-invalid @enderror" name="governorate" required>
+                                <option value="">Select a governorate</option>
+                                <option value="Tunis" >Tunis</option>
+                                <option value="Ariana"  >Ariana</option>
+                                <option value="Ben Arous"  >Ben Arous</option>
+                                <option value="Manouba">Manouba</option>
+                                <option value="Nabeul">Nabeul</option>
+                                <option value="Zaghouan">Zaghouan</option>
+                                <option value="Bizerte">Bizerte</option>
+                                <option value="Beja">Beja</option>
+                                <option value="Jendouba">Jendouba</option>
+                                <option value="Kef">Kef</option>
+                                <option value="Siliana">Siliana</option>
+                                <option value="Sousse">Sousse</option>
+                                <option value="Monastir">Monastir</option>
+                                <option value="Mahdia">Mahdia</option>
+                                <option value="Sfax">Sfax</option>
+                                <option value="Kairouan">Kairouan</option>
+                                <option value="Kasserine">Kasserine</option>
+                                <option value="Sidi Bouzid">Sidi Bouzid</option>
+                                <option value="Gabes">Gabes</option>
+                                <option value="Medenine">Medenine</option>
+                                <option value="Tataouine">Tataouine</option>
+                                <option value="Gafsa">Gafsa</option>
+                                <option value="Tozeur">Tozeur</option>
+                                <option value="Kebili">Kebili</option>
+                            </select>
+                            @error('governorate')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    
+                    
+
+
+                    <div class="row mb-3">
+                        <label for="city" class="col-md-4 col-form-label text-md-end">City</label>
+
+                        <div class="col-md-6">
+                            <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}"  autocomplete="city" required>
+
+                            @error('city')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+
+
+                    <div class="row mb-3">
+                        <label for="patnumber" class="col-md-4 col-form-label text-md-end">Patent Number </label>
+
+                        <div class="col-md-6">
+                            <input id="patnumber" type="text" class="form-control @error('patnumber') is-invalid @enderror" name="patnumber" value="{{ old('desc') }}"  autocomplete="patnumber"  required>
+
+                            @error('patnumber')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="postal_code" class="col-md-4 col-form-label text-md-end">Postal Code</label>
+                    
+                        <div class="col-md-6">
+                            <input id="postal_code" type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ old('postal_code') }}" autocomplete="postal_code" autofocus required >
+                    
+                            @error('postal_code')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    
+
+
+
 
                     <div class="row mb-3">
                         <label for="logo" class="col-md-4 col-form-label text-md-end">Restaurant Logo </label>
@@ -236,7 +343,27 @@
                         </div>
                     </div>
 
-                   
+
+                    <div id="plan_section" style="display: none;">
+                        <!-- Contenu de votre section plan ici -->
+                        <div class="row mb-3">
+                            <label for="plan" class="col-md-4 col-form-label text-md-end">{{ __('Plan') }}</label>
+                    
+                            <div class="col-md-6">
+                                <select id="plan" class="form-control @error('plan') is-invalid @enderror" name="plan">
+                                    <option value="free">Free</option>
+                                 
+                                </select>
+                    
+                                @error('plan')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    
 
                     <div class="row mb-0">
                         <div class="col-md-6 offset-md-4">

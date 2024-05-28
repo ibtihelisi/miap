@@ -10,7 +10,9 @@
   margin-top: 10px; /* Ajoute un espacement au-dessus de chaque élément sauf le premier */
 }
 
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+  
+                    
 
 </style>
 
@@ -29,7 +31,16 @@
 
 
           <li class="nav-item"><a class="nav-link active" href="/admin/dashboard">
-              <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">Dashboard</span></div>
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon">
+                  <span class="nav-link-icon">
+                          
+                    <i class="bi bi-cast"></i>
+ 
+                       </span>
+                  
+                  <span class="nav-link-text">Dashboard</span>
+                  </div>
             </a>
           </li>
 
@@ -42,7 +53,7 @@
                   <div class="d-flex align-items-center">
                       <span class="nav-link-icon">
                           
-                        <i class="fas fa-utensils"></i>
+                         <i class="bi bi-shop"></i>
 
                       </span>
                       <span class="nav-link-text">Restaurants</span>
@@ -64,7 +75,7 @@
                   <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
                       
-                      <i class="fas fa-home"></i>
+                      <i class="bi bi-house-fill"></i>
 
                     </span>
                     <span class="nav-link-text">Home </span>
@@ -79,7 +90,7 @@
                   <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
                       
-                      <i class="fas fa-thumbs-up"></i>
+                      <i class="bi bi-hand-thumbs-up"></i>
 
                     </span>
                     <span class="nav-link-text">Features </span>
@@ -92,7 +103,7 @@
                   <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
                       
-                      <i class="fas fa-lightbulb"></i>
+                      <i class="bi bi-lightbulb"></i>
                     </span>
                     <span class="nav-link-text">Reasons </span>
                   </div>
@@ -105,7 +116,7 @@
                     <div class="d-flex align-items-center">
                         <span class="nav-link-icon">
                             
-                            <i class="fas fa-credit-card"></i>
+                          <i class="bi bi-credit-card"></i>
                         </span>
                         <span class="nav-link-text">Pricing Plans </span>
                     </div>
@@ -119,7 +130,7 @@
                   <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
                       
-                      <i class="fas fa-play"></i>
+                      <i class="bi bi-play"></i>
 
                     </span>
                     <span class="nav-link-text">Demo</span>
@@ -133,7 +144,7 @@
                   <div class="d-flex align-items-center">
                     <span class="nav-link-icon">
                       
-                      <i class="fas fa-question-circle"></i>
+                      <i class="bi bi-patch-question"></i>
 
                     </span>
                     <span class="nav-link-text">FAQ</span>

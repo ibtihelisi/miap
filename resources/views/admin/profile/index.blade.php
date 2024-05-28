@@ -17,10 +17,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
     <link href="{{asset('dashassets/css/phoenix.min.css')}} " rel="stylesheet" id="style-default">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+  
     <link href="{{asset('dashassets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
     <style>
       body {
-        opacity: 0;
+          opacity: 0;
+          font-family: 'Nunito Sans', sans-serif;
+          background-color: #fff2dc;
       }
     </style>
 
@@ -39,6 +43,25 @@
       padding: 5px 10px; /* Optional: adjust padding as needed */
       border-radius: 10px; /* Optional: to round the corners */
   }
+  .btn.btn-primary {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
+
+                      .btn.btn-outline-primary {
+                        background-color: #fff;
+                        border-color: #f25c05;
+                        color: #f25c05;
+                      }
+
+                      .btn.btn-outline-primary:hover,
+                      .btn.btn-outline-primary:focus,
+                      .btn.btn-outline-primary:active {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
 </style>
 
 
@@ -120,7 +143,7 @@
                                 
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-success mt-4">UPDATE</button>
+                                    <button type="submit" class="btn btn-primary mt-4">UPDATE</button>
                                 </div>
                             </div>
                         </form>
@@ -161,7 +184,7 @@
                               
 
                               <div class="text-center">
-                                  <button type="submit" class="btn btn-success mt-4">Change password</button>
+                                  <button type="submit" class="btn btn-primary mt-4">Change password</button>
                               </div>
                           </div>
                       </form>

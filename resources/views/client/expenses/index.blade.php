@@ -19,9 +19,36 @@
     <link href="{{asset('dashassets/css/phoenix.min.css')}} " rel="stylesheet" id="style-default">
     <link href="{{asset('dashassets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
     <style>
-      body {
-        opacity: 0;
-      }
+      
+ .btn.btn-primary {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
+
+                      .btn.btn-outline-primary {
+                        background-color: #fff;
+                        border-color: #f25c05;
+                        color: #f25c05;
+                      }
+
+                      .btn.btn-outline-primary:hover,
+                      .btn.btn-outline-primary:focus,
+                      .btn.btn-outline-primary:active {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
+
+
+  body {
+            opacity: 0;
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #fff2dc;
+        }
+
+
+
 
 
       .center {
@@ -149,31 +176,31 @@
                                                                     
                                                                     @foreach ($expenesescategory as $index=>$excat)
                                                                     
-                                                                    <tr>
-                                                                        <td class="INDEX">{{ $index}}</td>
-                                                                        
-                                                                        <td class="NAME">{{ $excat->name }}</td>
-                                                                        
-                                                                        <td class="ACTION">
-                                                                            <div class="d-inline-block">
-                                                                                <form action="/expense_category/update/{{$excat->id}}" method="post">
-                                                                                    @csrf
-                                                                                    <a type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCategory{{$excat->id}}" style="background-color: #fb8b4a">
-                                                                                        <i class="fas fa-edit"></i> Update
+                                                                        <tr>
+                                                                            <td class="INDEX">{{ $index}}</td>
+                                                                            
+                                                                            <td class="NAME">{{ $excat->name }}</td>
+                                                                            
+                                                                            <td class="ACTION">
+                                                                                <div class="d-inline-block">
+                                                                                    <form action="/expense_category/update/{{$excat->id}}" method="post">
+                                                                                        @csrf
+                                                                                        <a type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCategory{{$excat->id}}" style="background-color: #fb8b4a">
+                                                                                            <i class="fas fa-edit"></i> Update
+                                                                                        </a>
+                                                                                    </form>
+                                                                                </div>
+                                                                                
+                                                                                <div class="d-inline-block">
+                                                                                    <a type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to delete this Expense Category ? ')" href="/expense_category/delete/{{ $excat->id }}" style="background-color: #fb8b4a">
+                                                                                        <i class="fas fa-trash-alt"></i> Delete
                                                                                     </a>
-                                                                                </form>
-                                                                            </div>
-                                                                            
-                                                                            <div class="d-inline-block">
-                                                                                <a type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to delete this Expense Category ? ')" href="/expense_category/delete/{{ $excat->id }}" style="background-color: #fb8b4a">
-                                                                                    <i class="fas fa-trash-alt"></i> Delete
-                                                                                </a>
-                                                                            </div>
-                                                                            
-                                                                            
-                                                                            
-                                                                        </td>
-                                                                    </tr>
+                                                                                </div>
+                                                                                
+                                                                                
+                                                                                
+                                                                            </td>
+                                                                        </tr>
                                                                     
                                                                     @endforeach
                                                                     

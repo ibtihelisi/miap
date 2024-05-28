@@ -18,17 +18,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
     <link href="{{asset('dashassets/css/phoenix.min.css')}} " rel="stylesheet" id="style-default">
     <link href="{{asset('dashassets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+  
     
 
     
     <style>
-      body {
-        opacity: 0;
+       body {
+          opacity: 0;
+          font-family: 'Nunito Sans', sans-serif;
+          background-color: #fff2dc;
       }
 
 
 
+      
+    .custom {
+            border: 1px solid #ccc; /* Bordure */
+            border-radius: 10px; /* Coins arrondis */
+            padding: 20px; /* Espacement interne */
+            margin-bottom: 20px; /* Marge inférieure */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre */
+            width: 100%;
+            
+
+      }
 
       .center {
     text-align: center;
@@ -56,13 +70,13 @@
 
 
             <div class="container">
-              <h1 class="mt-3">Add Restaurant </h1>
+              <h1 class="mt-3" style="color: #272556">Add Restaurant </h1>
               <hr>
       
           </div>
           <div class="row py-2">
             <div class="col-md-14 text-end">
-                <a class="btn btn-primary" href="/admin/restaurants">Back to restaurants list </a>
+                <a class="btn btn-primary"  style="background-color: #f25c05"  href="/admin/restaurants">Back to restaurants list </a>
                 
                 
             
@@ -98,8 +112,8 @@
 
 
 
-                <div class="mb-0">
-                  <label class="form-label" for="exampleTextarea">Restaurant Logo</label>
+                <div class="mb-0" >
+                  <label class=" col-form-label text-md-end" for="exampleTextarea">Restaurant Logo</label>
                   <input name="logo" class="form-control"  id="exampleFormControlInput1"
                   type="file" placeholder=" "  required>
 
@@ -218,7 +232,7 @@
 
                 <div class="center">
               
-                  <button  class="btn btn-success" type="submit ">SAVE</button>
+                  <button  class="btn btn-success" type="submit " style="background-color: #f25c05" >SAVE</button>
                   
                 </div>
             

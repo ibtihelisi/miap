@@ -15,13 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->text('description');
-            $table->text('features_list');
+            
             $table->float('price');
-            $table->float('items_limit');
+           
             $table->enum('period',['monthly','anually']);
-            $table->enum('ordering',['enabled','disabled']);
-            $table->float('orders_limit');
-        
+            
+           
            
             $table->timestamps();
         });

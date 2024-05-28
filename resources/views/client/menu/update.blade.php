@@ -23,9 +23,36 @@
 
     
     <style>
-      body {
-        opacity: 0;
-      }
+     
+ .btn.btn-primary {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
+
+                      .btn.btn-outline-primary {
+                        background-color: #fff;
+                        border-color: #f25c05;
+                        color: #f25c05;
+                      }
+
+                      .btn.btn-outline-primary:hover,
+                      .btn.btn-outline-primary:focus,
+                      .btn.btn-outline-primary:active {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
+
+
+  body {
+            opacity: 0;
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #fff2dc;
+        }
+
+
+
 
    
 .custom-toggle input {
@@ -180,7 +207,7 @@
                         <div class="col-md-14">
                              <div class="custom">
                                 <div class="d-flex justify-content-between align-items-center">
-                                 <h1 class="mt-3">Item Management</h1>
+                                 <h1 class="mt-3" style="color: #272556">Item Management</h1>
                                  <a class="btn btn-primary " href="/restaurant/menu" style="margin-left: auto;">Back to items </a>
                                  
                                 </div>

@@ -17,12 +17,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
     <link href="{{asset('dashassets/css/phoenix.min.css')}} " rel="stylesheet" id="style-default">
-    <link href="{{asset('dashassets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="{{asset('dashassets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
     <style>
       body {
-        opacity: 0;
+          opacity: 0;
+          font-family: 'Nunito Sans', sans-serif;
+          background-color: #fff2dc;
       }
 
+      .btn.btn-primary {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
+
+                      .btn.btn-outline-primary {
+                        background-color: #fff;
+                        border-color: #f25c05;
+                        color: #f25c05;
+                      }
+
+                      .btn.btn-outline-primary:hover,
+                      .btn.btn-outline-primary:focus,
+                      .btn.btn-outline-primary:active {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
 
 
 
@@ -48,7 +71,7 @@
           <div class="pb-5">
 
             <div class="container">
-              <h1 class="mt-3">liste Plans</h1>
+              <h1 class="mt-3" style="color: #272556">liste Plans</h1>
               <hr>
       
           </div>
@@ -59,12 +82,7 @@
                 <div class="input-group">
                     
                    
-                    <select class="form-select" name="restaurant_id">
-                      <option value="">Search</option>
-                      @foreach ($subscriptions as  $s)
-                          <option value="{{ $s->id }}"></option>
-                      @endforeach
-                    </select>
+                   
                      </div>
             </form>
             
@@ -111,7 +129,7 @@
                           <th class="sort" data-sort="Description Subscription"> DESCRIPTION</th>
                           <th class="sort" data-sort="Ordering Subscription">PRICE</th>
                           <th class="sort" data-sort="Period Subscription">PERIOD </th>
-                          <th class="sort" data-sort="Ordering Subscription">ORDERING</th>
+                          
                           <th class="sort" data-sort="Action">Action</th>
                         
                         </tr>
@@ -124,11 +142,11 @@
                           <td class="Description Subscription">{{ $s->description }}</td>
                           <td class="Description Subscription">{{ $s->price }}</td>
                           <td class="Period Subscription">{{ $s->period }}</td>
-                          <td class="Ordering Subscription">{{ $s->ordering }}</td>
+                         
                           <td class="Action">
-                            <a   class="btn btn-success" href="/subscription/edit/{{ $s->id }}">Edit</a>
+                            <a   class="btn btn-success" style="background-color: #272556" href="/subscription/edit/{{ $s->id }}">Edit</a>
                             
-                            <a onclick="return confirm('voulez-vouz supprimer cette Subscription ? ') "
+                            <a onclick="return confirm('voulez-vouz supprimer cette Subscription ? ') " style="background-color: #272556" 
                                 href="/subscription/delete/{{ $s->id }}" class="btn btn-danger">
                                 Delete</a>
 

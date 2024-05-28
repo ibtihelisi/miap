@@ -18,9 +18,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
     <link href="{{asset('dashassets/css/phoenix.min.css')}} " rel="stylesheet" id="style-default">
     <link href="{{asset('dashassets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+  
     <style>
       body {
-        opacity: 0;
+          opacity: 0;
+          font-family: 'Nunito Sans', sans-serif;
+          background-color: #fff2dc;
       }
 
       .center {
@@ -35,6 +39,29 @@
       border-radius: 10px; /* Optionnel : pour arrondir les coins */
   }
     </style>
+
+    <style> .btn.btn-primary {
+      background-color: #f25c05;
+      border-color: #f25c05;
+      color: #fff;
+    }
+
+    .btn.btn-outline-primary {
+      background-color: #fff;
+      border-color: #f25c05;
+      color: #f25c05;
+    }
+
+    .btn.btn-outline-primary:hover,
+    .btn.btn-outline-primary:focus,
+    .btn.btn-outline-primary:active {
+      background-color: #f25c05;
+      border-color: #f25c05;
+      color: #fff;
+    }
+
+
+</style>
   </head>
 
   <body>
@@ -50,7 +77,7 @@
           <div class="pb-5">
 
             <div class="container">
-              <h1 class="mt-3">Features</h1>
+              <h1 class="mt-3" style="color: #272556">Features</h1>
               <hr>
       
           </div>
@@ -119,7 +146,7 @@
               <br>
               <div class="center">
             
-                <button  class="btn btn-success" type="submit ">UPDATE</button>
+                <button  class="btn btn-primary" type="submit ">UPDATE</button>
                 
               </div>
               <br>
@@ -135,7 +162,7 @@
             
             </div>
             <div class="col-md-6 text-end">
-              <a class="btn btn-primary" class="mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Features</a>
+              <a class="btn btn-outline-primary" class="mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Features</a>
               
 
             </div>

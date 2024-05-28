@@ -19,10 +19,12 @@ class RestaurantController extends Controller
      public function index(){
         $users=User::all();
         return view('admin.restaurants.index')->with('users',$users);
+
+        
     }
 
 
-     //interface pour ajouter une subbscription
+     //interface pour ajouter uun compte restaurant
      public function create() {
         return view('admin.restaurants.create');
     }
@@ -39,7 +41,7 @@ class RestaurantController extends Controller
             'owner_phone'=>'required',
             'password' => 'required|min:8|confirmed',
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust max file size as needed
-   
+            
             
            
             
@@ -68,6 +70,11 @@ class RestaurantController extends Controller
         $user->restaurant_name=$request->restaurant_name;
         $user->logo=$newname;
         $user->location=$request->location;
+        $user->location2=$request->location2;
+        $user->governorate=$request->governorate;
+        $user->city=$request->city;
+        $user->patnumber=$request->patnumber;
+        $user->postal_code=$request->postal_code;
         $user->desc=$request->desc;
         $user->owner_name=$request->owner_name;
         $user->email=$request->email;
@@ -209,8 +216,18 @@ class RestaurantController extends Controller
              
         public function update(Request $request, $id){
 
-            $request->validate([
-                
+            $validated = $request->validate([
+                'restaurant_name' => 'required|unique:users,restaurant_name,' . $id,
+                'desc' => 'required',
+                'location' => 'required',
+                'governorate' => 'required',
+                'city' => 'required',
+                'patnumber' => 'required',
+                'postal_code' => 'required',
+                'owner_phone' => 'required',
+                'logo' => 'nullable|mimes:jpeg,jpg,png,svg',
+            ], [
+                'restaurant_name.unique' => 'The restaurant name already exists.',
             ]);
         
             //$feature = Features::where('id', '!=', 1)->findOrFail($id);
@@ -232,6 +249,11 @@ class RestaurantController extends Controller
             $user->restaurant_name = $request->restaurant_name;
             $user->desc = $request->desc;
             $user->location = $request->location;
+            $user->location2 = $request->location2;
+            $user->governorate = $request->governorate;
+            $user->city = $request->city;
+            $user->postal_code = $request->postal_code;
+            $user->patnumber = $request->patnumber;
             $user->owner_phone = $request->owner_phone;
             
         

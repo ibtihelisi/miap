@@ -19,9 +19,36 @@
     <link href="{{asset('dashassets/css/phoenix.min.css')}} " rel="stylesheet" id="style-default">
     <link href="{{asset('dashassets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
     <style>
-        body {
-        opacity: 0;
+       
+ .btn.btn-primary {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
+
+                      .btn.btn-outline-primary {
+                        background-color: #fff;
+                        border-color: #f25c05;
+                        color: #f25c05;
+                      }
+
+                      .btn.btn-outline-primary:hover,
+                      .btn.btn-outline-primary:focus,
+                      .btn.btn-outline-primary:active {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
+
+
+  body {
+            opacity: 0;
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #fff2dc;
         }
+
+
+
         .badge {
             display: inline-block;
             padding: 0.25em 0.4em;
@@ -113,7 +140,7 @@
             <div class="pb-5">
 
                 <div class="container">
-                    <h1 class="mt-3">Restaurant Menu Management </h1>
+                    <h1 class="mt-3" style="color: #272556">Restaurant Menu Management </h1>
                     <hr>
                     <div class="d-flex justify-content-end">
                         <a data-bs-toggle="modal" data-bs-target="#modal-category" class="btn btn-icon btn-1 btn-sm btn-info" type="button" title="Add new category">
@@ -165,7 +192,7 @@
                                     <span class="h1 font-weight-bold mb-0 text-white"> {{$c->name}} </span>
                                 </div>
                                 <div class="col-auto ml-auto">
-                                    <a  data-bs-toggle="modal"  data-bs-target="#modal-item-{{$index}}" id="modal-item"  class="btn btn-icon btn-sm btn-primary " type="button" data-placement="top" type="button">
+                                    <a  data-bs-toggle="modal"  data-bs-target="#modal-item-{{$index}}" id="modal-item"  class="btn btn-icon btn-sm btn-primary " type="button" data-placement="top" type="button" style="background-color: #3874ff ; border-color:#3874ff" >
                                         <span class="btn-inner--icon"><i class="fa fa-plus"></i></span>
                                     </a>
                                     <a data-bs-toggle="modal" data-bs-target="#editCategory{{ $c->id }}" class="btn btn-icon btn-sm btn-warning"  id="edit"       data-placement="top" >

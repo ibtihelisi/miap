@@ -24,122 +24,375 @@
     <link href="{{asset('dashassets/css/phoenix.min.css')}} " rel="stylesheet" id="style-default">
     <link href="{{asset('dashassets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
     <style>
-      body {
-        opacity: 0;
-      }
+        body {
+            opacity: 0;
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #fff2dc;
+        }
+  
+        .card-stats {
+            border-radius: 0.5rem;
+            box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
+            transition: all 0.3s ease-in-out;
+            background-color: #ffffff;
+        }
+  
+        .card-stats:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 1rem 3rem rgba(18, 38, 63, 0.125);
+        }
+  
+        .card-stats .card-body {
+            padding: 1rem 1.5rem;
+        }
+  
+        .card-stats .icon {
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+  
+        .bg-primary-gradient {
+            background-color: #f25c05
+        }
+  
+        .text-primary-gradient {
+            color: #f25c05;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+  
+        .header {
+           background-color: #fff2dc
+            color: white;
+        }
+  
+        .header .container-fluid {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+  
+        .header .header-body {
+            padding-top: 1rem;
+        }
+  
+        .card-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+        }
+  
+        .card .h2,
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0;
+            color: #f25c05;
+        }
+  
+        .card {
+            border: none;
+        }
+  
+        .icon {
+            font-size: 2rem;
+        }
+  
+        .chart-container {
+            max-width: 100%;
+            height: 300px;
+        }
+  
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 200px;
+            }
+        }
     </style>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+      <!--<script src="https://js.pusher.com/7.0/pusher.min.js"></script>-->
+
+
+
+
+      <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+     
+
   </head>
 
   <body>
     <main class="main" id="top">
-      <div class="container-fluid px-0">
-        
-<!--include sidebar html pages-->
+        <div class="container-fluid px-0">
+            <!-- Include sidebar and navigation -->
+            @include('inc.client.sidebar')
+            @include('inc.client.nav')
 
-        @include('inc.client.sidebar')
-
-        @include('inc.client.nav')
-        
-
-
-
-
-
-        <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
-          <div class="container-fluid">
-              <div class="header-body">
-                  <!-- Card stats -->
-                  <div class="row">
-                    <div class="col-xl-3 col-lg-6 offset-md-2 mb-2 mb-xl-4000"> 
-                        <div class="card card-stats">
-                            <div class="card-body">
-                                <div class="row align-items-center"> 
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Orders ( 30 days )</h5>
-                                        <span class="h2 font-weight-bold mb-0">50 restaurants</span>
+            <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+                <div class="container-fluid">
+                    <div class="header-body">
+                        <!-- Card stats -->
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6  offset-md-2 mb-4">
+                                <div class="card card-stats">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
+                                                <div class="icon bg-primary-gradient text-white rounded-circle shadow">
+                                                    <i class="bi bi-basket"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col ml--2">
+                                                <h5 class="card-title text-uppercase text-muted mb-0">Orders</h5>
+                                                <span class="h2 font-weight-bold mb-0"> {{$orderCount}}</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow p-2">
-                                            <i class="fas fa-store-alt fa-2x"></i>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-xl-3 col-lg-6  mb-4">
+                              <div class="card card-stats">
+                                  <div class="card-body">
+                                      <div class="row align-items-center">
+                                          <div class="col-auto">
+                                              <div class="icon bg-primary-gradient text-white rounded-circle shadow">
+                                                <i class="bi bi-graph-up"></i>
+
+                                              </div>
+                                          </div>
+                                          <div class="col ml--2">
+                                              <h5 class="card-title text-uppercase text-muted mb-0">Sales Volume</h5>
+                                              <span class="h2 font-weight-bold mb-0"> 7ot hne mel base</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+
+
+
+                          <div class="col-xl-3 col-lg-6  mb-4">
+                            <div class="card card-stats">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="icon bg-primary-gradient text-white rounded-circle shadow">
+                                                <i class="bi bi-list"></i>
+
+                                            </div>
+                                        </div>
+                                        <div class="col ml--2">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Number of items</h5>
+                                            <span class="h2 font-weight-bold mb-0"> {{$itemCount}} </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6  offset-md-2 mb-4">
+                                <div class="card card-stats">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
+                                                <div class="icon bg-primary-gradient text-white rounded-circle shadow">
+                                                    <i class="fas fa-chair"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col ml--2">
+                                                <h5 class="card-title text-uppercase text-muted mb-0">Tables</h5>
+                                                <span class="h2 font-weight-bold mb-0"> {{ $tableCount}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-xl-3 col-lg-6  mb-4">
+                              <div class="card card-stats">
+                                  <div class="card-body">
+                                      <div class="row align-items-center">
+                                          <div class="col-auto">
+                                              <div class="icon bg-primary-gradient text-white rounded-circle shadow">
+                                                <i class="bi bi-wallet2"></i>
+
+                                              </div>
+                                          </div>
+                                          <div class="col ml--2">
+                                              <h5 class="card-title text-uppercase text-muted mb-0">Expenses Volume</h5>
+                                              <span class="h2 font-weight-bold mb-0"> {{$totalExpenses}} TND</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+
+
+
+                          <div class="col-xl-3 col-lg-6  mb-4">
+                            <div class="card card-stats">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="icon bg-primary-gradient text-white rounded-circle shadow">
+                                                <i class="fas fa-users"></i>
+
+                                            </div>
+                                        </div>
+                                        <div class="col ml--2">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Staffs</h5>
+                                            <span class="h2 font-weight-bold mb-0"> {{ $staffCount}} </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        
+                            <!-- Charts -->
+                           <!-- Charts -->
+                            <div class="row">
+                              <div class="col-lg-6 col-md-6 col-sm-8 mb-4 offset-md-2">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Restaurants by Region</h5>
+                                        <canvas id="usersByRegionChart" style="max-width: 100%; height: 300px;"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                         
+                            
+
+                             
+
+                               <!-- Active vs Inactive Users Chart -->
+                        
+                              <div class="col-lg-4 col-md-6 col-sm-8 mb-4 ">
+                                  <div class="card h-100">
+                                      <div class="card-body">
+                                          <h5 class="card-title text-uppercase text-muted mb-0">User Activity Status</h5>
+                                          <canvas id="userActivityStatusChart" style="max-width: 100%; height: 200px;"></canvas>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+
+
+
+                          </div>
+
+
+                          <div class="col-xl-3 col-lg-6  offset-md-2 mb-4">
+                            <div class="card card-stats">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="icon bg-primary-gradient text-white rounded-circle shadow">
+                                                <i class="bi bi-basket"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col ml--2">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Orders</h5>
+                                           
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
-                    <div class="col-xl-3 col-lg-6 offset-md-2 mb-2 mb-xl-4000"> 
-                      <div class="card card-stats">
-                          <div class="card-body">
-                              <div class="row align-items-center"> 
-                                  <div class="col">
-                                      <h5 class="card-title text-uppercase text-muted mb-0">Sales Volume ( 30 days )</h5>
-                                      <span class="h2 font-weight-bold mb-0">30000 DT</span>
-                                  </div>
-                                  <div class="col-auto">
-                                      <div class="icon icon-shape bg-warning text-white rounded-circle shadow p-2">
-                                          <i class="fas fa-store-alt fa-2x"></i>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-
-
-                    <div class="col-xl-3 col-lg-6 offset-md-2 mb-2 mb-xl-4000"> 
-                      <div class="card card-stats">
-                          <div class="card-body">
-                              <div class="row align-items-center"> 
-                                  <div class="col">
-                                      <h5 class="card-title text-uppercase text-muted mb-0">Number of categories</h5>
-                                      <span class="h2 font-weight-bold mb-0">5 categories</span>
-                                  </div>
-                                  <div class="col-auto">
-                                      <div class="icon icon-shape bg-warning text-white rounded-circle shadow p-2">
-                                          <i class="fas fa-store-alt fa-2x"></i>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-
-
-                    <div class="col-xl-3 col-lg-6 offset-md-2 mb-2 mb-xl-4000"> 
-                      <div class="card card-stats">
-                          <div class="card-body">
-                              <div class="row align-items-center"> 
-                                  <div class="col">
-                                      <h5 class="card-title text-uppercase text-muted mb-0">Number of items</h5>
-                                      <span class="h2 font-weight-bold mb-0">26 items</span>
-                                  </div>
-                                  <div class="col-auto">
-                                      <div class="icon icon-shape bg-warning text-white rounded-circle shadow p-2">
-                                          <i class="fas fa-store-alt fa-2x"></i>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-
-                  </div>
-                
-      
-                  <br>
                 </div>
-          </div>
-      </div>
-        
-          
-          
-         
+            </div>
         </div>
-      </div>
     </main>
+
+
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            window.Echo.channel('waiter-channel')
+                .listen('CallWaiterEvent', (e) => {
+                    const message = `Table ${e.table_id} calls the waiter.`;
+    
+                    // Créer et afficher la notification
+                    const notification = document.createElement('div');
+                    notification.className = 'alert alert-info';
+                    notification.innerText = message;
+                    document.getElementById('notifications').appendChild(notification);
+    
+                    // Jouer un son de notification
+                    const audio = new Audio('/path/to/notification-sound.mp3');
+                    audio.play();
+                });
+        });
+    </script>
+
+
+
+<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('35b539afe0a27da135ec', {
+            cluster: 'mt1'
+        });
+
+        var channel = pusher.subscribe('popup-channel');
+        channel.bind('user-call-waiter', function(data) {
+            let message = `The table ${data.table_name} customer calls you.`;
+            let notification = new Notification(message);
+            // Optionally play a sound
+            let audio = new Audio('/path-to-sound-file.mp3');
+            audio.play();
+            document.getElementById('notification').innerText = message;
+        });
+
+        if (Notification.permission !== "granted") {
+            Notification.requestPermission();
+        }
+
+        document.getElementById('callWaiterButton').addEventListener('click', function() {
+            let form = document.getElementById('callWaiterForm');
+            let formData = new FormData(form);
+
+            fetch('/call-waiter', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'Call sent') {
+                    $('#callWaiterModal').modal('hide');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+</script>
+
+    
+
+
     <script src="{{asset('dashassets/js/phoenix.js')}}"></script>
     <script src="{{asset('dashassets/js/ecommerce-dashboard.js')}}"></script>
   </body>

@@ -38,25 +38,21 @@ class SubscriptionController extends Controller
         $request->validate([
             'name'=>'required',
             'description'=>'required',
-            'features_list'=>'required',
+            
             'price'=>'required',
-            'items_limit'=>'required',
+           
             'period'=>'required',
-            'ordering'=>'required',
-            'orders_limit'=>'required'
+           
             
         ]);
 
         $subscription=new Subscription();
         $subscription->name=$request->name;
         $subscription->description=$request->description;
-        $subscription->features_list=$request->features_list;
-        $subscription->price=$request->price;
-        $subscription->items_limit=$request->items_limit;
-        $subscription->period=$request->period;
-        $subscription->ordering=$request->ordering;
-        $subscription->orders_limit=$request->orders_limit;
        
+        $subscription->price=$request->price;
+        $subscription->period=$request->period;
+      
 
         if ($subscription->save()) {
             return redirect('/admin/subscriptions')->with('success', 'Subscription successfully added');
@@ -88,13 +84,11 @@ class SubscriptionController extends Controller
         $request->validate([
             'name'=>'required',
             'description'=>'required',
-            'features_list'=>'required',
+
             'price'=>'required',
-            'items_limit'=>'required',
+           
             'period'=>'required',
-            'ordering'=>'required',
-            'orders_limit'=>'required'
-            
+          
         ]);
          
       
@@ -106,12 +100,11 @@ class SubscriptionController extends Controller
         }
         $subscription->name=$request->name;
         $subscription->description=$request->description;
-        $subscription->features_list=$request->features_list;
+       
         $subscription->price=$request->price;
-        $subscription->items_limit=$request->items_limit;
+      
         $subscription->period=$request->period;
-        $subscription->ordering=$request->ordering;
-        $subscription->orders_limit=$request->orders_limit;
+        
 
          if ($subscription->update()) {
             return redirect('/admin/subscriptions')->with('success', 'Subscription successfully updated');
@@ -144,11 +137,11 @@ class SubscriptionController extends Controller
              $file = fopen('php://output', 'w');
      
              // Write CSV headers
-             fputcsv($file, ['Name', 'Description', 'Price', 'Period', 'Ordering']);
+             fputcsv($file, ['Name', 'Description', 'Price', 'Period', ]);
      
              // Write CSV rows
              foreach ($subscriptions as $subscription) {
-                 fputcsv($file, [$subscription->name, $subscription->description, $subscription->price, $subscription->period, $subscription->ordering]);
+                 fputcsv($file, [$subscription->name, $subscription->description, $subscription->price, $subscription->period]);
              }
      
              fclose($file);

@@ -17,10 +17,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
     <link href="{{asset('dashassets/css/phoenix.min.css')}} " rel="stylesheet" id="style-default">
-    <link href="{{asset('dashassets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="{{asset('dashassets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
     <style>
       body {
-        opacity: 0;
+          opacity: 0;
+          font-family: 'Nunito Sans', sans-serif;
+          background-color: #fff2dc;
       }
 
       
@@ -33,6 +37,27 @@
       background-color: #c8e6c9; /* Couleur de fond plus claire */
       padding: 5px 10px; /* Optionnel : ajustez le rembourrage selon vos besoins */
       border-radius: 10px; /* Optionnel : pour arrondir les coins */}
+
+
+      .btn.btn-primary {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
+
+                      .btn.btn-outline-primary {
+                        background-color: #fff;
+                        border-color: #f25c05;
+                        color: #f25c05;
+                      }
+
+                      .btn.btn-outline-primary:hover,
+                      .btn.btn-outline-primary:focus,
+                      .btn.btn-outline-primary:active {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
     </style>
 
 
@@ -129,7 +154,7 @@
 
               <div class="col-md-12">
                 <div id="form-group-features" class="form-group  ">
-                     <label class="form-control-label" for="">Subheading</label>
+                     <label class="col-form-label text-md-end" for="">Subheading</label>
                      <input type="text"    value ="{{$setting->subheading}}"  name="subheading"  class="form-control form-control   "  >
                 </div>
                 @error('subheading')
@@ -144,7 +169,7 @@
 
                <div class="col-md-12">
                     <div id="form-group-features" class="form-group  ">
-                         <label class="form-control-label" for="">Heading</label>
+                         <label class="col-form-label text-md-end" for="">Heading</label>
                          <input type="text"    value ="{{$setting->heading}}"  name="heading"  class="form-control form-control   "  >
                     </div>
                     @error('heading')
@@ -160,7 +185,7 @@
 
               <div class="col-md-12">
                           <div id="form-group-features" class="form-group  ">
-                               <label class="form-control-label" for="">Text</label>
+                               <label class="form-control-label col-form-label text-md-end" for="">Text</label>
                                <textarea   name="text"  value ="{{$setting->text}}" class="form-control form-control   " cols="30"  rows="10">{{$setting->text}}</textarea>
                           </div>
                           @error('text')
@@ -175,7 +200,7 @@
 
                 <div class="col-md-12">
                   <div id="form-group-features" class="form-group  ">
-                       <label class="form-control-label" for="">Button Text</label>
+                       <label class="form-control-label col-form-label text-md-end" for="">Button Text</label>
                        <input type="text"    value ="{{$setting->button_text}}"  name="button_text"  class="form-control form-control   "  >
                   </div>
                   @error('button_text')
@@ -198,7 +223,7 @@
 
           <div class="center">
             
-                <button  class="btn btn-success" type="submit ">UPDATE</button>
+                <button  class="btn btn-primary" type="submit ">UPDATE</button>
                 
           </div>
           

@@ -66,15 +66,17 @@ class ExpensesController extends Controller
 
        public function destroy($id) {
 
-        $expenesescategory= ExpenseCategory::find($id);
+                $expenesescategory= ExpenseCategory::find($id);
 
-        if($expenesescategory->delete()){
-            return redirect()->back()->with('success', 'Expense Category successfully removed  ');
-        }else{echo"erreur"
-        ;}
-        
-        
-        }
+                    if($expenesescategory->delete()){
+                        return redirect()->back()->with('success', 'Expense Category successfully removed  ');
+                    }else{echo"erreur"
+                    ;}
+                    
+            
+    }
+
+
 
 
 
@@ -136,7 +138,7 @@ class ExpensesController extends Controller
 
             $expenese->expensecategory_id = $request->expensecategory_id; // Associe l'ID de la catégorie de dépenses
 
-           
+            $expenese->user_id=$user->id;
             
     
             
@@ -182,6 +184,7 @@ class ExpensesController extends Controller
          $expense->date = date('Y-m-d', strtotime($request->date));
          $expense->price = $request->price;
          $expense->expensecategory_id = $request->expensecategory_id;
+         $expense->user_id=$user->id;
      
          // Sauvegarder les modifications
          if ($expense->save()) {

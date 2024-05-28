@@ -19,9 +19,36 @@
     <link href="{{asset('dashassets/css/phoenix.min.css')}} " rel="stylesheet" id="style-default">
     <link href="{{asset('dashassets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
     <style>
-      body {
-        opacity: 0;
-      }
+     
+ .btn.btn-primary {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
+
+                      .btn.btn-outline-primary {
+                        background-color: #fff;
+                        border-color: #f25c05;
+                        color: #f25c05;
+                      }
+
+                      .btn.btn-outline-primary:hover,
+                      .btn.btn-outline-primary:focus,
+                      .btn.btn-outline-primary:active {
+                        background-color: #f25c05;
+                        border-color: #f25c05;
+                        color: #fff;
+                      }
+
+
+  body {
+            opacity: 0;
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #fff2dc;
+        }
+
+
+
     </style>
 
 <style>
@@ -66,7 +93,7 @@
                           <div class="row justify-content-center">
                               <div class="col-md-8">
                                   <div class="card">
-                                      <div class="card-header">QR Code</div>
+                                      <div class="card-header" style="color: #272556">QR Code</div>
                                       <div class="card-body text-center">
 
                                         {{ $qrCode }}

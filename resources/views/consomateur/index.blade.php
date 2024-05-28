@@ -28,6 +28,14 @@
         <link href="{{asset('mainassets/css/styles.css')}}" rel="stylesheet">
         
         
+         <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+
+      <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
         <!-- Favicon  -->
         <link rel="icon" href="images/favicon.png">
 
@@ -227,7 +235,7 @@
                                     
                                         
                                             <li class="nav-item">
-                                                <a class="btn-outline-sm" href=""> <i class="fas fa-bell me-2"></i>Call Waiter</a>
+                                                <button type="button" class="btn-outline-sm" data-toggle="modal" data-target="#callWaiterModal"> <i class="fas fa-bell me-2"></i>Call Waiter</button>
                                             </li>
                                     
 
@@ -410,7 +418,7 @@
                                             <BR></BR>
                                             <div class="text-center mobile-menu" >
                                                 
-                                                <a  type="button" href="/QRMenu/restaurant/checkout" class=" btn-outline-sm ">Checkout</a>
+                                                <a  type="button" href="/QRMenu/restaurant/checkout" class=" btn-outline-sm ">Confirm</a>
                                             </div> 
 
                                         </div>
@@ -694,6 +702,7 @@
                             
                                                                 <input type="hidden" value="{{ $c->id}}" name="idcategory"   class="form-control form-control-alternative">
                                                                 <input type="hidden" value="{{ $i->id}}" name="iditem"   class="form-control form-control-alternative" >
+                                                                <input type="hidden" value="1" name="idcommande"   class="form-control form-control-alternative" >
                                                         
                                                                 <input type="hidden" value="{{ $user->id}}" name="iduser"   class="form-control form-control-alternative">
                                                         
@@ -717,6 +726,78 @@
                     @endif
                 @endforeach
 
+
+
+
+                    <!-- Modal call waiteeer -->
+                    <div id="notification"></div>
+
+    <!-- Modal call waiter -->
+    <div class="modal fade" id="callWaiterModal" tabindex="-1" role="dialog" aria-labelledby="callWaiterModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="callWaiterModalLabel">Call Waiter</h5>
+                    <button type="button" class="close btn-outline-sm" data-dismiss="modal" aria-label="Close" style="background-color: #fff2dc;">
+                        <span aria-hidden="true" style="color: #f25c05;">X</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="callWaiterForm">
+                        @csrf
+                        <div class="form-group">
+                            <label for="tableSelect">Select Your Table</label>
+                            <select class="form-control" id="tableSelect" name="table_name">
+                                @foreach ($tables as $table)
+                                    @if ($user->id == $table->user_id)
+                                        <option value="{{$table->name}}">
+                                            @foreach ($areas as $area)
+                                                @if ($table->area_id == $area->id)
+                                                    {{$table->name}}-{{$area->name}}
+                                                    @break
+                                                @endif
+                                            @endforeach
+                                        </option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            <input type="hidden" value="{{ $user->id }}" name="iduser" class="form-control form-control-alternative">
+                        </div>
+                        <br>
+                        <div class="text-center mobile-menu">
+                            <button type="button" id="callWaiterButton" class="btn-outline-sm">Call Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            $('#callWaiterButton').click(function () {
+                                const tableId = $('#tableSelect').val();
+                                $.ajax({
+                                    url: '/call-waiter',
+                                    method: 'POST',
+                                    data: {
+                                        _token: $('input[name="_token"]').val(),
+                                        table_id: tableId
+                                    },
+                                    success: function (response) {
+                                        alert(response.message);
+                                        $('#callWaiterModal').modal('hide');
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+
+
+
+                
 
                 
 

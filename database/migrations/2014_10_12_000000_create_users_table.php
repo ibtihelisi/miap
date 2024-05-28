@@ -12,21 +12,21 @@ return new class extends Migration
     public function up(): void 
     {
         Schema::create('users', function (Blueprint $table) {
-            /*$table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->enum('role',['admin','user'])->default('user');
-            $table->rememberToken();
-            $table->timestamps();*/
+           
 
 
             $table->id();
+            
             $table->string('restaurant_name')->unique();
-            $table->string('desc');
+            $table->text('desc');
             $table->string('logo');
             $table->string('location');
+            $table->string('location2')->nullable(); // Ajout de la colonne location2
+            $table->string('governorate'); // Ajout de la colonne governorate
+            $table->string('city'); // Ajout de la colonne city
+            $table->string('patnumber'); // Ajout de la colonne patnumber
+            $table->string('postal_code'); // Ajout de la colonne postal_code
+          
             $table->string('owner_name');
             $table->string('email')->unique();
             $table->string('owner_phone')->unique();
@@ -34,8 +34,10 @@ return new class extends Migration
             $table->enum('active',['active','not active'])->default('active');
             $table->string('password');
             $table->enum('role',['admin','user'])->default('user');
+            $table->string('plan')->default('free');
             $table->rememberToken();
             $table->timestamps();
+            
         });
     }
 

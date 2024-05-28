@@ -53,6 +53,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(ExpenseCategory::class,'user_id','id');
     }
+
+    public function expenses()
+    {
+        return $this->hasMany(Expense::class,'user_id','id');
+    }
     
     
 
@@ -70,6 +75,13 @@ class User extends Authenticatable
         'role'*/
         'restaurant_name',
         'location',
+        'location2',
+        'governorate',
+
+
+        'city',
+        'patnumber',
+        'postal_code',
         'logo',
         'desc',
         'owner_name',
