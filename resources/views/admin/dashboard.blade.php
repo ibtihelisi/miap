@@ -201,7 +201,7 @@
                                 <div class="card h-100">
                                     <div class="card-body">
                                         <h5 class="card-title text-uppercase text-muted mb-0">Restaurants by Region</h5>
-                                        <canvas id="usersByRegionChart" style="max-width: 100%; height: 300px;"></canvas>
+                                        <canvas id="usersByRegionChart" width="300" height="300"></canvas>
                                     </div>
                                 </div>
                             </div>

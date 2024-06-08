@@ -157,7 +157,19 @@
                 
                 
                 <br>
-                 
+<!-- Affichage des messages d'erreur -->
+@if ($errors->any())
+    <div class="alert alert-danger alert-dismissible" role="alert" style="background-color: #f8d7da; border-color: #f5c6cb; color:#721c24;">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        <!-- Bouton de fermeture "x" -->
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
                  
                   <!-- Affichage des alertes de succès ou d'erreur -->
         @if(session('success'))

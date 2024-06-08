@@ -19,11 +19,16 @@ class Item extends Model
         return $this->belongsTo(User::class ,'user_id' ,'id');
     }
 
+    
 
-    public function lignecommande()
+    public function commandes()
     {
-        return $this->belongsTo(LigneCommande::class ,'item_id' ,'id');
+        return $this->belongsToMany(Commande::class, 'order_item', 'item_id', 'commande_id')
+                    ->withPivot('quantity');
     }
+
+ 
+
 
       // Méthode pour raccourcir la description si elle est trop longue
       public function shortDescription($length = 100)

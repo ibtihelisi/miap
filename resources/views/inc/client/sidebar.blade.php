@@ -37,18 +37,7 @@
 
 
 
-            <li class="nav-item">
-                <a class="nav-link " href="/restaurant/live">
-                    <div class="d-flex align-items-center">
-                        <span class="nav-link-icon">
-                            <!-- Utiliser la balise Font Awesome pour l'icône de magasin -->
-                            <i class="far fa-clock"></i>
-
-                        </span>
-                        <span class="nav-link-text"> Live orders</span>
-                    </div>
-                </a>
-            </li>
+           
 
 
 

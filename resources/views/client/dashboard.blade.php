@@ -172,7 +172,7 @@
                                           </div>
                                           <div class="col ml--2">
                                               <h5 class="card-title text-uppercase text-muted mb-0">Sales Volume</h5>
-                                              <span class="h2 font-weight-bold mb-0"> 7ot hne mel base</span>
+                                              <span class="h2 font-weight-bold mb-0"> XXXX</span>
                                           </div>
                                       </div>
                                   </div>
@@ -268,11 +268,14 @@
                             <!-- Charts -->
                            <!-- Charts -->
                             <div class="row">
+
+                                
                               <div class="col-lg-6 col-md-6 col-sm-8 mb-4 offset-md-2">
                                 <div class="card h-100">
                                     <div class="card-body">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Restaurants by Region</h5>
-                                        <canvas id="usersByRegionChart" style="max-width: 100%; height: 300px;"></canvas>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Monthy Expenses </h5>
+                                        <hr>
+                                        <canvas id="expensesChart" style="max-width: 100%; height: 350px;"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -286,8 +289,10 @@
                               <div class="col-lg-4 col-md-6 col-sm-8 mb-4 ">
                                   <div class="card h-100">
                                       <div class="card-body">
-                                          <h5 class="card-title text-uppercase text-muted mb-0">User Activity Status</h5>
-                                          <canvas id="userActivityStatusChart" style="max-width: 100%; height: 200px;"></canvas>
+                                          <h5 class="card-title text-uppercase text-muted mb-0">Expenses by Category</h5>
+                                          <hr>
+                                          <canvas id="expensesByCategoryChart" max-width="100%" height="250px"></canvas>
+    
                                       </div>
                                   </div>
                               </div>
@@ -298,17 +303,19 @@
                           </div>
 
 
-                          <div class="col-xl-3 col-lg-6  offset-md-2 mb-4">
+                          <div class="col   offset-md-2 mb-4">
                             <div class="card card-stats">
                                 <div class="card-body">
                                     <div class="row align-items-center">
                                         <div class="col-auto">
                                             <div class="icon bg-primary-gradient text-white rounded-circle shadow">
-                                                <i class="bi bi-basket"></i>
+                                                <i class="bi bi-calendar3"></i>
+
                                             </div>
                                         </div>
-                                        <div class="col ml--2">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Orders</h5>
+                                        <div class="col ">
+                                            <span class="h2 font-weight-bold mb-0">Your current plan</span>
+                                            <h1 class="card-title text-uppercase text-muted mb-0">You are currently using the <span class="h2 font-weight-bold mb-0"> {{$user->plan}} </span> plan</h1>
                                            
                                         </div>
                                     </div>
@@ -343,54 +350,131 @@
     </script>
 
 
-
-<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
-
-        var pusher = new Pusher('35b539afe0a27da135ec', {
-            cluster: 'mt1'
-        });
-
-        var channel = pusher.subscribe('popup-channel');
-        channel.bind('user-call-waiter', function(data) {
-            let message = `The table ${data.table_name} customer calls you.`;
-            let notification = new Notification(message);
-            // Optionally play a sound
-            let audio = new Audio('/path-to-sound-file.mp3');
-            audio.play();
-            document.getElementById('notification').innerText = message;
-        });
-
-        if (Notification.permission !== "granted") {
-            Notification.requestPermission();
-        }
-
-        document.getElementById('callWaiterButton').addEventListener('click', function() {
-            let form = document.getElementById('callWaiterForm');
-            let formData = new FormData(form);
-
-            fetch('/call-waiter', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'Call sent') {
-                    $('#callWaiterModal').modal('hide');
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        });
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+    var pusher = new Pusher('35b539afe0a27da135ec', {
+        cluster: 'mt1',
+        encrypted: true
     });
-</script>
 
-    
+    var channel = pusher.subscribe('call-waiter');
+
+    channel.bind('App\\Events\\CallWaiterEvent', function(data) {
+        alert('New call from table: ' + data.table_name);
+        const message = `Table ${data.table_name} calls the waiter.`;
+
+        // Créer et afficher la notification
+        const notification = document.createElement('div');
+        notification.className = 'alert alert-info';
+        notification.innerText = message;
+        document.getElementById('notifications').appendChild(notification);
+
+        // Jouer un son de notification
+        const audio = new Audio('/path/to/notification-sound.mp3');
+        audio.play();
+    });
+});
+
+    </script>
+
+        
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctx = document.getElementById('expensesChart').getContext('2d');
+            var data = {
+                labels: @json($months),
+                datasets: [{
+                    label: 'Monthly Expenses',
+                    data: @json($expensesData),
+                    borderColor: '#36A2EB',
+                    fill: false
+                }]
+            };
+
+            var expensesChart = new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                       
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Month'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Amount'
+                            },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+
+             // Chart for Expenses by Category
+             var ctxCategory = document.getElementById('expensesByCategoryChart').getContext('2d');
+            var categoryData = {
+                labels: @json($categories),
+                datasets: [{
+                    label: 'Expenses by Category',
+                    data: @json($categoryExpenses),
+                    backgroundColor: [
+                        '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
+                    ],
+                    hoverBackgroundColor: [
+                        '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
+                    ]
+                }]
+            };
+
+            var expensesByCategoryChart = new Chart(ctxCategory, {
+                type: 'bar',
+                data: categoryData,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                      
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Category'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Amount'
+                            },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+
+
+
 
 
     <script src="{{asset('dashassets/js/phoenix.js')}}"></script>

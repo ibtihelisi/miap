@@ -34,12 +34,19 @@ class CategoryController extends Controller
    
 
 
-    // ajouter une catégorie a la liste 
+    // ajouter une catégorie a la liste s
     public function store(Request $request){
+
+
+          // Définir les règles de validation et les messages personnalisés
+    $messages = [
+        'name.required' => 'Le nom de la catégorie est obligatoire.',
+        'name.unique' => 'This category already exists',
+    ];
         $request->validate([
-            'name'=>'required',
+            'name'=>'required|unique:categories,name',
            
-        ]);
+        ], $messages);
 
 
         $user = Auth::user();
@@ -52,7 +59,8 @@ class CategoryController extends Controller
         if ($category->save())
         {return redirect()->back()->with('success', 'Category successfully added');
         }else{
-            echo"error";
+            return redirect()->back()->with('error', 'Error adding category');
+  
         }
 
 

@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Events\CallWaiter;
+use App\Events\CallWaiterEvent;
 use Illuminate\Http\Request;
-use App\Events\WaiterCalled;
 
-class WaiterCallController extends Controller
+class WaiterController extends Controller
 {
-    public function callWaiter(Request $request)  {
+    public function callWaiter(Request $request)
+    {
+        //écupérer les données du formulaire
         $table_name = $request->input('table_name');
-        event(new WaiterCalled($table_name));
-        return response()->json(['status' => 'Call sent']);
+        $user_id = $request->input('iduser');
+
+        event(new CallWaiterEvent($table_name, $user_id));
+
+        return response()->json(['success' => 'Notification sent successfully!']);
     }
 }
+

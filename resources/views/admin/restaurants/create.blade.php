@@ -141,7 +141,103 @@
               </div> 
 
 
+              <div class="mb-3">
 
+                <label class="col-md-0 col-form-label text-md-end" for="restaurant_name"> Location 2</label>
+                <input name="location2" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Restaurant seconde restaurant location here..."    >
+                @error('location2')
+                <div class="alert alert-danger">
+                    {{ $message }}
+                </div>
+              @enderror
+            
+              </div> 
+
+              <div class="row mb-3">
+                <label for="governorate" class="col-md-4 col-form-label text-md-end">Governorate</label>
+                <div class="col-md-6">
+                    <select id="governorate" class="form-control @error('governorate') is-invalid @enderror" name="governorate" required>
+                        <option value="">Select a governorate</option>
+                        <option value="Tunis" >Tunis</option>
+                        <option value="Ariana"  >Ariana</option>
+                        <option value="Ben Arous"  >Ben Arous</option>
+                        <option value="Manouba">Manouba</option>
+                        <option value="Nabeul">Nabeul</option>
+                        <option value="Zaghouan">Zaghouan</option>
+                        <option value="Bizerte">Bizerte</option>
+                        <option value="Beja">Beja</option>
+                        <option value="Jendouba">Jendouba</option>
+                        <option value="Kef">Kef</option>
+                        <option value="Siliana">Siliana</option>
+                        <option value="Sousse">Sousse</option>
+                        <option value="Monastir">Monastir</option>
+                        <option value="Mahdia">Mahdia</option>
+                        <option value="Sfax">Sfax</option>
+                        <option value="Kairouan">Kairouan</option>
+                        <option value="Kasserine">Kasserine</option>
+                        <option value="Sidi Bouzid">Sidi Bouzid</option>
+                        <option value="Gabes">Gabes</option>
+                        <option value="Medenine">Medenine</option>
+                        <option value="Tataouine">Tataouine</option>
+                        <option value="Gafsa">Gafsa</option>
+                        <option value="Tozeur">Tozeur</option>
+                        <option value="Kebili">Kebili</option>
+                    </select>
+                    @error('governorate')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+
+
+
+
+
+              
+
+            <div class="mb-3">
+
+              <label class="col-md-0 col-form-label text-md-end" for="restaurant_name"> City</label>
+              <input name="city" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Restaurant Name here..."    required >
+              @error('city')
+              <div class="alert alert-danger">
+                  {{ $message }}
+              </div>
+            @enderror
+          
+          </div> 
+
+
+
+
+          <div class="mb-3">
+
+            <label class="col-md-0 col-form-label text-md-end" for="restaurant_name"> Patent number</label>
+            <input name="patnumber" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Restaurant Name here..."  value="{{ old('restaurant_name') }}"  required >
+            @error('patnumber')
+            <div class="alert alert-danger">
+                {{ $message }}
+            </div>
+          @enderror
+        
+        </div> 
+
+
+
+        <div class="mb-3">
+
+          <label class="col-md-0 col-form-label text-md-end" for="restaurant_name"> Postal code</label>
+          <input name="postal_code" class="form-control" id="exampleFormControlInput1" type="text" placeholder=" Restaurant Name here..."  value="{{ old('restaurant_name') }}"  required >
+          @error('postal_code')
+          <div class="alert alert-danger">
+              {{ $message }}
+          </div>
+        @enderror
+      
+      </div> 
 
 
 

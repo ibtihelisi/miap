@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('commandes', function (Blueprint $table) {
             $table->id();
-            $table->enum('etat', ['en cours', 'cheked'])->default('en cours');
+            $table->enum('etat', ['just created', 'In preparation','Delivered'])->default('just created');
             
-            $table->enum('pay', ['cash on hand', 'payment by electronic payment terminal']);
-          
+           
             $table->unsignedBigInteger('table_id');
             $table->foreign('table_id')->references('id')->on('tables')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');

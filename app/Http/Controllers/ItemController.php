@@ -25,13 +25,18 @@ class ItemController extends Controller
 
     // ajouter une items la liste 
     public function store(Request $request){
-       /* $request->validate([
-            'name'=>'required',
+
+        $messages = [
+            'name.required' => 'Le nom de la catégorie est obligatoire.',
+            'name.unique' => 'This item already exists',
+        ];
+        $request->validate([
+            'name'=>'required|unique:items,name',
             'description'=>'required',
-            'price'=>'price',
-            'photo'=>'photo'
-        ]);
-        */
+            //'price'=>'price',
+            //'photo'=>'photo'
+        ],$messages);
+        
         $newname =uniqid();//4fd7a
         $image=$request->file('photo');
 
@@ -102,20 +107,28 @@ class ItemController extends Controller
 
 
     public function update(Request $request, $id) {
+       
         $request->validate([
-          
+            'name'=>'required',
+            'description'=>'required',
+            //'price'=>'price',
+            //'photo'=>'photo'
         ]);
     
         $item = Item::find($id);
+        $messages = [
+            'name.required' => 'Le nom de la catégorie est obligatoire.',
+            'name.unique' => 'This item already exists',
+        ];
         // Vérifier si une nouvelle image a été téléchargée
         if($request->hasFile('photo')){
             $request->validate([
-                'name' => 'required',
+                'name' => 'required|unique:items,name',
                 'description' => 'required', // Ajoutez cette ligne pour valider le champ description
                 'price' => 'required',
                 //'category_id' => 'required',
                 'photo' => 'nullable|mimes:jpeg,jpg,png,svg', // Assurez-vous que le champ photo est nullable
-            ]);
+            ],$messages);
            // Supprimer l'ancienne image si elle existe
         if ($item->photo != '') {
             $imagePath = public_path('uploads/'.$item->photo);

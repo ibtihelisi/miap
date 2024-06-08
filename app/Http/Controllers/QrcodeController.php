@@ -40,11 +40,11 @@ class QrcodeController extends Controller
             // Générer une réponse avec l'image du code QR
             $response = Response::make($qrCode);
     
-            // Définir les en-têtes de la réponse pour indiquer qu'il s'agit d'une image PNG à télécharger
-            $response->header('Content-Type', 'image/png');
-            $response->header('Content-Disposition', 'attachment; filename="qrcode.png"');
-    
-            return $response;
+           // Retourner une réponse avec l'image du code QR en tant que fichier téléchargeable
+    return Response::make($qrCode, 200, [
+        'Content-Type' => 'image/png',
+        'Content-Disposition' => 'attachment; filename="qrcode.png"',
+    ]);
         }
     
     

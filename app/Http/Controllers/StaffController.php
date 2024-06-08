@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Staff;
 use App\Models\Area;
+use App\Models\Commande;
+use App\Models\Item;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -24,9 +27,11 @@ class StaffController extends Controller
         $staffs = $user->staff;
         $areas = Area::where('user_id', $user->id)->get(); // Récupère toutes les zones de l'utilisateur connecté
         //$staffs = Staff::where('user_id', $user->id)->get(); // Récupère tous les membres du personnel de l'utilisateur connecté
+        $items = Item::where('user_id', $user->id)->get(); // Récupère toutes les zones de l'utilisateur connecté
+        $commandes = Commande::where('user_id', $user->id)->get(); // Récupère tous les membres du personnel de l'utilisateur connecté
     
         //dd($all->toArray());
-        return view('client.staff.index')->with('user',$user)->with('staffs',$staffs)->with('all',$all)->with('areas',$areas);
+        return view('client.staff.index')->with('user',$user)->with('staffs',$staffs)->with('all',$all)->with('areas',$areas)->with('items',$items)->with('commandes',$commandes);
     }
 
 
@@ -38,30 +43,60 @@ class StaffController extends Controller
     }
 
 
-    public function store(Request $request){
+    public function store(Request $request) {
         $request->validate([
-            'staff_name'=>'required|unique:staff,name',
-            'email'=>'required|email|unique:staff,email',
+            'staff_name' => 'required|unique:staff,name',
+            'email' => 'required|email|unique:staff,email|unique:users,email',
             'password' => 'required|min:8|confirmed',
         ], [
             'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
         ]);
     
         $user = Auth::user();
-        $staff=new Staff();
-        $staff->name=$request->staff_name;
-        $staff->email=$request->email;
+        $staff = new Staff();
+        $staff->name = $request->staff_name;
+        $staff->email = $request->email;
         $staff->password = Hash::make($request->password);
-        $staff->user_id=$user->id;
+        $staff->user_id = $user->id;
     
-        if ($staff->save()) {
-            // Récupérer à nouveau les membres du personnel après l'ajout
-            $staffs = $user->staff;
-            return view('client.staff.index')->with('success', 'Staff successfully added')
-                                              ->with('staffs', $staffs);
+        $staff_saved = $staff->save();
+    
+        if ($staff_saved) {
+            // Save to users table as well
+            $user_staff = new User();
+            $user_staff->restaurant_name = '00';
+            $user_staff->desc = '00';
+            $user_staff->logo = '00';
+            $user_staff->location = '00';
+            $user_staff->location2 = '00';
+            $user_staff->plan = '00';
+            $user_staff->postal_code = '00';
+            $user_staff->patnumber= '00';
+            $user_staff->city = '00';
+            $user_staff->governorate = '00';
+            $user_staff->owner_phone = '00';
+            $user_staff->owner_name = $request->staff_name;
+            $user_staff->email = $request->email;
+            $user_staff->password = Hash::make($request->password);
+            $user_staff->role = 'staff'; // Set role to staff
+
+
+            $user_saved = $user_staff->save();
+    
+            if ($user_saved) {
+                // Retrieve staff members again after adding
+                $staffs = $user->staff;
+                return view('client.staff.index')
+                    ->with('success', 'Staff successfully added')
+                    ->with('staffs', $staffs);
+            } else {
+                // Rollback staff entry if user entry fails
+                $staff->delete();
+                return redirect()->back()->with('error', 'Failed to add staff to users table.');
+            }
         } else {
             return redirect()->back()->with('error', 'Failed to add staff.');
-        }  
+        }
     }
     
 
@@ -90,5 +125,20 @@ class StaffController extends Controller
     }
     
 
+
+
+         //affichage client dashboard
+  public function dashboard()
+  {
+   
+  // Récupérer l'utilisateur connecté
+  $user = auth()->user();
+  // Récupérer l'utilisateur connecté
+  $area = $user->area;
+    
+  
+          
+      return view('staff.dashboard')->with('area',$area);
+  }
 
 }

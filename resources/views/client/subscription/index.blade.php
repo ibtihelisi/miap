@@ -96,30 +96,17 @@
               <h1 class="mt-3" style="color: #272556">Current plan</h1>
               <hr>
 
-
+              <div class="card card-stats">
               <div class="card-body">
-                <h4>You are currently using the {{$user->id}} plan</h4><p>
+                <h4>You are currently using the <span style="color: #f25c05"> {{$user->plan}} </span>plan</h4><p>
 
-                <!-- ORDERS -->
-                </p><div class="alert alert-success" role="alert">
-                    You can receive unlimited number of orders
-                </div>
-
-                <!-- ITEMS -->
-                <div class="alert alert-success" role="alert">
-                    You can add unlimited number of items
-                </div>
-
-                 <!-- duration -->
-                 <div class="alert alert-success" role="alert">
-                  Your plan duration is 3 months
-              </div>
 
                 
                     
 
+                </div>
+              </div>
 
-                            </div>
 
 
 

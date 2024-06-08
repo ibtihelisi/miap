@@ -8,12 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Commande extends Model
 {
     use HasFactory;
-    public function lignecommandes(){
-        return $this->hasMany(LigneCommande::class ,'commande_id','id');
+    protected $fillable = [
+        'etat',
+        'user_id',
+        'table_id',
+        // Ajoutez d'autres champs fillable si nécessaire
+    ];
 
+    public function items()
+    {
+        return $this->belongsToMany(Item::class, 'order_item', 'commande_id', 'item_id')
+                    ->withPivot('quantity');
     }
 
 
+    
 
 
     public function table(){

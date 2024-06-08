@@ -7,6 +7,7 @@ use App\Http\Middleware\User;
 use App\Models\Area;
 use App\Models\Staff;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
 class AreaController extends Controller
@@ -93,14 +94,28 @@ class AreaController extends Controller
 
 
 
-    public function updateinter($id) {
-        $user = Auth::user();
+    
+public function update(Request $request) {
+    $request->validate([
+         'name' => 'required|unique:areas,name,' . $request->idarea,
+        
+    ]);
 
-        $staffs = Staff::where('user_id', $user->id)->get(); // Récupère tous les membres du personnel de l'utilisateur connecté
-        
-        
-        return view('client.area.update')->with('user',$user)->with('staffs' ,$staffs);
+    $id = $request->idarea;
+    $area = Area::find($id);
+
+    // Vérifier si le nom de la table a été modifié
+  
+
+    $area->name = $request->name;
+   
+    if($area->update()) {
+        return redirect()->back()->with('success', 'Table successfully updated.');
+    } else {
+        return redirect()->back()->with('error', 'Error updating table.');
     }
+}
+
 
     
     

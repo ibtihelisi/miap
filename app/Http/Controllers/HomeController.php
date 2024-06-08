@@ -28,12 +28,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users=User::all();
-       if (Auth::user()->role=="admin"){
-        return redirect('/admin/dashboard')->with('users', $users);
-       }else{
-        return redirect('/client/dashboard')->with('users', $users);
-       }
+        $users = User::all();
+        if (Auth::user()->role == "admin") {
+            return redirect('/admin/dashboard')->with('users', $users);
+        } elseif (Auth::user()->role == "user") {
+            return redirect('/client/dashboard')->with('users', $users);
+        } else {
+            return redirect('/staff/dashboard')->with('users', $users);
+        }
         //return view('home');
     }
 

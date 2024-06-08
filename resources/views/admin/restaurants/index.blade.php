@@ -152,6 +152,9 @@
                                 <th class="sort" data-sort="NAME">NAME</th>
                                 <th class="sort" data-sort="LOGO">LOGO</th>
                                 <th class="sort" data-sort="LOCATION">LOCATION</th>
+                                <th class="sort" data-sort="LOCATION">GOVERNORATE</th>
+                                <th class="sort" data-sort="LOCATION">CITY</th>
+                                <th class="sort" data-sort="LOCATION">PATENT NUMBER</th>
                                 <th class="sort" data-sort="DESC">DESCRIPTION</th>
                                 <th class="sort" data-sort="OWNER">OWNER</th>
                                 <th class="sort" data-sort="OWNER EMAIL">OWNER EMAIL</th>
@@ -169,7 +172,10 @@
                             <tr>
                                 <td class="NAME">{{ $u->restaurant_name }}</td>
                                 <td class="LOGO"> <img src="{{ asset('uploads/' . $u->logo) }}" alt="Logo"  class="logo-img"></td>
-                                <td class="LOCATION">{{ $u->location }}</td>
+                                <td class="LOCATION">{{ $u->location  }}</td>
+                                <td class="LOCATION">{{ $u->governorate }}</td>
+                                <td class="LOCATION">{{ $u->city }}</td>
+                                <td class="LOCATION">{{ $u->patnumber }}</td>
                                 <td class="DESC">{{ $u->desc }}</td>
                                 <td class="OWNER">{{ $u->owner_name }}</td>
                                 <td class="OWNER EMAIL">{{ $u->email }}</td>

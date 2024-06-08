@@ -120,7 +120,7 @@
                                                         
                   
      
-                           <form action="/restaurant/update/{{Auth::user()->id}}" method="post" enctype="multipart/form-data">
+                           <form action="/restaurant/management/update/{{Auth::user()->id}}" method="post" enctype="multipart/form-data">
 
 
                                @csrf
@@ -191,46 +191,50 @@
 
 
                                     
-                                      <div class="row mb-3">
-                                        <input name="governorate"    class="form-control" id="exampleFormControlInput1" type="hidden"    placeholder=" your governorate ......">
-                                                      
-                                        <label for="governorate" class="col-md-4 col-form-label text-md-end">Governorate</label>
-                                        <div class="col-md-6">
-                                            <select id="governorate"  class="form-control @error('governorate') is-invalid @enderror" name="governorate" required>
-                                                <option value="">{{Auth::user()->governorate}}</option>
-                                                <option value="Tunis" >Tunis</option>
-                                                <option value="Ariana"  >Ariana</option>
-                                                <option value="Ben Arous"  >Ben Arous</option>
-                                                <option value="Manouba">Manouba</option>
-                                                <option value="Nabeul">Nabeul</option>
-                                                <option value="Zaghouan">Zaghouan</option>
-                                                <option value="Bizerte">Bizerte</option>
-                                                <option value="Beja">Beja</option>
-                                                <option value="Jendouba">Jendouba</option>
-                                                <option value="Kef">Kef</option>
-                                                <option value="Siliana">Siliana</option>
-                                                <option value="Sousse">Sousse</option>
-                                                <option value="Monastir">Monastir</option>
-                                                <option value="Mahdia">Mahdia</option>
-                                                <option value="Sfax">Sfax</option>
-                                                <option value="Kairouan">Kairouan</option>
-                                                <option value="Kasserine">Kasserine</option>
-                                                <option value="Sidi Bouzid">Sidi Bouzid</option>
-                                                <option value="Gabes">Gabes</option>
-                                                <option value="Medenine">Medenine</option>
-                                                <option value="Tataouine">Tataouine</option>
-                                                <option value="Gafsa">Gafsa</option>
-                                                <option value="Tozeur">Tozeur</option>
-                                                <option value="Kebili">Kebili</option>
-                                            </select>
-                                            @error('governorate')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    
+                                    <div class="row mb-3">
+                                      <label for="governorate" class="col-md-1 col-form-label text-md-end">Governorate</label>
+                                      <br>
+                                      <div class="col-md-6">
+                                          <select id="governorate" class="form-control @error('governorate') is-invalid @enderror" name="governorate" required>
+                                              <option value="">{{ Auth::user()->governorate }}</option>
+                                              <option value="Tunis" {{ Auth::user()->governorate == 'Tunis' ? 'selected' : '' }}>Tunis</option>
+                                              <option value="Ariana" {{ Auth::user()->governorate == 'Ariana' ? 'selected' : '' }}>Ariana</option>
+                                              <option value="Ben Arous" {{ Auth::user()->governorate == 'Ben Arous' ? 'selected' : '' }}>Ben Arous</option>
+                                              <option value="Manouba" {{ Auth::user()->governorate == 'Manouba' ? 'selected' : '' }}>Manouba</option>
+                                              <option value="Nabeul" {{Auth::user()->governorate == 'Nabeul' ? 'selected' : '' }}>Nabeul</option>
+                                              <option value="Zaghouan" {{ Auth::user()->governorate == 'Zaghouan' ? 'selected' : '' }}>Zaghouan</option>
+                                              <option value="Bizerte" {{Auth::user()->governorate == 'Bizerte' ? 'selected' : '' }}>Bizerte</option>
+                                              <option value="Beja" {{ Auth::user()->governorate == 'Beja' ? 'selected' : '' }}>Beja</option>
+                                              <option value="Jendouba" {{ Auth::user()->governorate == 'Jendouba' ? 'selected' : '' }}>Jendouba</option>
+                                              <option value="Kef" {{ Auth::user()->governorate == 'Kef' ? 'selected' : '' }}>Kef</option>
+                                              <option value="Siliana" {{ Auth::user()->governorate == 'Siliana' ? 'selected' : '' }}>Siliana</option>
+                                              <option value="Sousse" {{ Auth::user()->governorate == 'Sousse' ? 'selected' : '' }}>Sousse</option>
+                                              <option value="Monastir" {{Auth::user()->governorate == 'Monastir' ? 'selected' : '' }}>Monastir</option>
+                                              <option value="Mahdia" {{ Auth::user()->governorate == 'Mahdia' ? 'selected' : '' }}>Mahdia</option>
+                                              <option value="Sfax" {{ Auth::user()->governorate == 'Sfax' ? 'selected' : '' }}>Sfax</option>
+                                              <option value="Kairouan" {{ Auth::user()->governorate == 'Kairouan' ? 'selected' : '' }}>Kairouan</option>
+                                              <option value="Kasserine" {{ Auth::user()->governorate == 'Kasserine' ? 'selected' : '' }}>Kasserine</option>
+                                              <option value="Sidi Bouzid" {{ Auth::user()->governorate == 'Sidi Bouzid' ? 'selected' : '' }}>Sidi Bouzid</option>
+                                              <option value="Gabes" {{ Auth::user()->governorate == 'Gabes' ? 'selected' : '' }}>Gabes</option>
+                                              <option value="Medenine" {{ Auth::user()->governorate == 'Medenine' ? 'selected' : '' }}>Medenine</option>
+                                              <option value="Tataouine" {{ Auth::user()->governorate == 'Tataouine' ? 'selected' : '' }}>Tataouine</option>
+                                              <option value="Gafsa" {{ Auth::user()->governorate == 'Gafsa' ? 'selected' : '' }}>Gafsa</option>
+                                              <option value="Tozeur" {{ Auth::user()->governorate == 'Tozeur' ? 'selected' : '' }}>Tozeur</option>
+                                              <option value="Kebili" {{ Auth::user()->governorate == 'Kebili' ? 'selected' : '' }}>Kebili</option>
+                                          </select>
+                                          @error('governorate')
+                                              <span class="invalid-feedback" role="alert">
+                                                  <strong>{{ $message }}</strong>
+                                              </span>
+                                          @enderror
+                                      </div>
+                                      
+                                  
+ 
+ 
+                                  
+                                  <div class="mb-3">
+ 
 
 
                                     
@@ -273,8 +277,8 @@
                                     <div class="mb-3">
 
                                       <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Postal</label>
-                                      <input name="Postal_code"   value ="{{Auth::user()->postal_code}}"  class="form-control" id="exampleFormControlInput1" type="text"    placeholder=" your postal code ......">
-                                      @error('Postal_code')
+                                      <input name="postal_code"   value ="{{Auth::user()->postal_code}}"  class="form-control" id="exampleFormControlInput1" type="text"    placeholder=" your postal code ......">
+                                      @error('postal_code')
                                         <div class="alert alert-danger">
                                             {{ $message }}
                                         </div>
@@ -287,7 +291,7 @@
                                       <label for="owner_phone" class="col-md-0 col-form-label text-md-end">{{ __('Owner Phone Number') }}</label>
               
                                       
-                                          <input id="owner_phone" type="number" value="{{Auth::user()->owner_phone}}" class="form-control @error('owner_phone') is-invalid @enderror" name="owner_phone"  placeholder=" Owner Phone number here..." required autocomplete="owner_phone" >
+                                          <input id="owner_phone" type="text" value="{{Auth::user()->owner_phone}}" class="form-control @error('owner_phone') is-invalid @enderror" name="owner_phone"  placeholder=" Owner Phone number here..." required autocomplete="owner_phone" >
               
                                           
                                       

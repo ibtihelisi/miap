@@ -26,27 +26,24 @@
 
 
 
-
-
+    
             <li class="nav-item">
-                <a class="nav-link active" href="/restaurant/live">
+                <a class="nav-link active" href="/staff/dashboard">
                     <div class="d-flex align-items-center">
-                        <span class="nav-link-icon">
-                            <!-- Utiliser la balise Font Awesome pour l'icône de magasin -->
-                            <i class="far fa-clock"></i>
-
-                        </span>
-                        <span class="nav-link-text"> Live orders</span>
+                        <span class="nav-link-icon"><i class="fas fa-tachometer-alt" style="font-size: 22px;"></i></span>
+                        <span class="nav-link-text">Dashboard</span>
                     </div>
                 </a>
             </li>
+            
 
+       
 
 
             
 
             <li class="nav-item">
-                <a class="nav-link active" href="/restaurant/orders">
+                <a class="nav-link active" href="/staff/orders">
                     <div class="d-flex align-items-center">
                         <span class="nav-link-icon">
                             <!-- Utiliser la balise Font Awesome pour l'icône de magasin -->

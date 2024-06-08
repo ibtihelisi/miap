@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('area_id');
             $table->bigInteger('staff_id');
+            
             $table->timestamps();
         });
     }

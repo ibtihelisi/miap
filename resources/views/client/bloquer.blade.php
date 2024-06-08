@@ -24,6 +24,8 @@
                     The admin has deactivated your access to your restaurant account.
                    <br>
                    Contact him for a reactivation.
+                   <br>
+                   27 303 404
                 </p>
                 <div class="mt-3">
                     <a href="{{ url('/') }}" class="btn btn-primary rounded-5 px-5" style="background-color: #f25c05 " style="border-color: #f25c05">Go to Home</a>

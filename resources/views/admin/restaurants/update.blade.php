@@ -340,8 +340,8 @@
                                         <div class="mb-3">
        
                                           <label class="col-md-0 col-form-label text-md-end" for="exampleFormControlInput1"> Postal</label>
-                                          <input name="Postal_code"   value ="{{$users->postal_code}}"  class="form-control" id="exampleFormControlInput1" type="text"    placeholder=" your postal code ......">
-                                          @error('Postal_code')
+                                          <input name="postal_code"   value ="{{$users->postal_code}}"  class="form-control" id="exampleFormControlInput1" type="text"    placeholder=" your postal code ......">
+                                          @error('postal_code')
                                             <div class="alert alert-danger">
                                                 {{ $message }}
                                             </div>
@@ -353,7 +353,7 @@
 
 
                                         <div class=" mb-3">
-                                          <label for="owner_phone" class="col-md-0 col-form-label text-md-end">{{ __('Owner Phone Number') }}</label>
+                                          <label for="owner_phone" class="col-md-0 col-form-label text-md-end">restaurant phone number</label>
                   
                                           
                                               <input id="owner_phone" type="number" value="{{$users->owner_phone}}" class="form-control @error('owner_phone') is-invalid @enderror" name="owner_phone"  placeholder=" Owner Phone number here..." required autocomplete="owner_phone" >

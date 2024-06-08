@@ -368,6 +368,19 @@
       padding: 5px 10px; /* Optionnel : ajustez le rembourrage selon vos besoins */
       border-radius: 10px; /* Optionnel : pour arrondir les coins */
   }
+  .text-bg-warning {
+    color: #f8f2e0; /* Couleur du texte marron foncé */
+    background-color: #f25c05; /* Couleur de fond jaune clair */
+    padding: 5px 10px; /* Ajustez le rembourrage selon vos besoins */
+    border-radius: 10px; /* Pour arrondir les coins */
+}
+
+.text-bg-info {
+    color: #0c5460; /* Couleur du texte bleu foncé */
+    background-color: #d1ecf1; /* Couleur de fond bleu clair */
+    padding: 5px 10px; /* Ajustez le rembourrage selon vos besoins */
+    border-radius: 10px; /* Pour arrondir les coins */
+}
 
 
   .custom-icon-size .bi {
@@ -425,127 +438,7 @@
 
                     <div class="tab-content orders-filters">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-daterange datepicker row align-items-center">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-control-label">Date From</label>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text custom-icon-size"><i class="bi bi-calendar2-week-fill "></i></span>
-                                                </div>
-                                                <input name="fromDate" class="form-control datepicker" placeholder="Date from" type="text"  >
-                                            </div>                                                                                                          
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-control-label">Date to</label>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text  custom-icon-size "><i class="bi bi-calendar2-week-fill"></i></span>
-                                                </div>
-                                                <input name="toDate" class="form-control datepicker" placeholder="Date to" type="text"  >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-    
-                            <!-- statuses -->
-                            <div class="col-md-3">
-                                <div id="form-group-status_id" class="form-group   ">
-    
-                                    
-                                    <label class="form-control-label">Last status</label><br />
-                                
-                                    <select   class="form-control form-control-alternative   "  name="status_id" id="status_id">
-                                        <option disabled selected value> Select Last status </option>
-                                        
-                                                                                <option value="2">Accepted by admin</option>
-                                                                        
-                                        
-                                                                                <option value="13">Accepted by driver</option>
-                                                                        
-                                        
-                                                                                <option value="3">Accepted by restaurant</option>
-                                                                        
-                                        
-                                                                                <option value="4">Assigned to driver</option>
-                                                                        
-                                        
-                                                                                <option value="11">Closed</option>
-                                                                        
-                                        
-                                                                                <option value="7">Delivered</option>
-                                                                        
-                                        
-                                                                                <option value="1">Just created</option>
-                                                                        
-                                        
-                                                                                <option value="6">Picked up</option>
-                                                                        
-                                        
-                                                                                <option value="5">Prepared</option>
-                                                                        
-                                        
-                                                                                <option value="8">Rejected by admin</option>
-                                                                        
-                                        
-                                                                                <option value="12">Rejected by driver</option>
-                                                                        
-                                        
-                                                                                <option value="9">Rejected by restaurant</option>
-                                                                        
-                                        
-                                                                                <option value="10">Updated</option>
-                                                                        
-                                            </select>
-                                
-                                
-                                        </div>
-                                                        </div>
-                                
-                                                        <!-- statuses -->
-                                                        <div class="col-md-3">
-                                                            <div id="form-group-payment_status" class="form-group   ">
-                                
-                                    
-                                    <label class="form-control-label">Payment status</label><br />
-                                
-                                    <select   class="form-control form-control-alternative   "  name="payment_status" id="payment_status">
-                                        <option disabled selected value> Select Payment status </option>
-                                        
-                                                                                <option value="paid">Paid</option>
-                                                                        
-                                        
-                                                                                <option value="unpaid">Unpaid</option>
-                                                                        
-                                            </select>
-                                
-                                
-                                        </div>
-                                                        </div>
-                                
-                                                        
-                                                                                                                                
-                                                    </div>
-                                
-                                                        <div class="col-md-6 offset-md-6">
-                                                            <div class="row">
-                                                                                                    <div class="col-md-8"></div>
-                                                                
-                                                                <div class="col-md-4">
-                                                                    <button type="submit" class="btn btn-primary btn-md btn-block">Filter</button>
-                                                                </div>
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                        </form>
-                                    
-                                </div>
-      
-                            </div>
+                           
 
 
 
@@ -558,26 +451,115 @@
                     <table class="table table-bordered table-striped fs--1 mb-0">
                       <thead class="bg-200 text-900">
                         <tr>
-                         
-                          <th class="sort" data-sort="Nom Subscription"> #</th>
-                          <th class="sort" data-sort="Description Subscription"> CREATED</th>
+                         <!-- 
+                          <th class="sort" data-sort="Nom Subscription"> #</th>-->
+                          <th class="sort" data-sort="Description Subscription"> ORDER NUM</th> 
+                          <th class="sort" data-sort="Description Subscription"> CREATED</th> 
                           <th class="sort" data-sort="Ordering Subscription">TABLE </th>
                           <th class="sort" data-sort="Period Subscription">ITEMS </th>
                           
                           <th class="sort" data-sort="Ordering Subscription">PRICE</th>
                           <th class="sort" data-sort="Ordering Subscription">STATUS</th>
                           <th class="sort" data-sort="Action">Action</th>
+                          
                         
                         </tr>
                       </thead>
                       <tbody class="list">
+                        @foreach ($commandes as $index=> $commande )
+                           <tr>
+
+                            <td class="index">#{{ $index }}</td>
+                            <td class="Dtae">{{ $commande->created_at }}</td>
+                            
+                            <td class="Table">{{ $commande->table->name }} - {{ $commande->table->area->name }} </td>
+                           
+                            <td class="Item">
+                              
+
+                                @php
+                                    $totalPrice = 0;
+                                @endphp
+                                            
+                              @foreach ($commande->items as $item)
+                              {{ $item->pivot->quantity }} * {{ $item->name }}
+                              <br> <!-- Afficher le nom du personnel -->
+
+                                @php
+                                     $totalPrice += $item->price * $item->pivot->quantity;
+                                @endphp
+                              @endforeach
+                            </td>
+                            <td class="Totalpice">{{ $totalPrice }} TND </td>
+                            <td class="Status">
+
+
+                                @if($commande->etat == 'just created')
+                                    <span class="text-bg-warning">Just Created</span>
+                                @elseif($commande->etat == 'In preparation')
+                                    <span class="text-bg-info">In Preparation</span>
+                                    
+                                    @else
+                                    <span class="text-bg-success">Delivred</span>
+                                @endif
+                            </td>
+                            
+                            <td class="ACTION">
+                                @if($commande->etat == 'just created')
+                                <a class="btn btn-secondary mr-2" title="In preparation">
+                                     In preparation
+                                </a>
+                            @elseif($commande->etat == 'In preparation')
+                                <a class="btn btn-secondary mr-2" title="Delivered">
+                                     Delivered
+                                </a>
+                            @elseif($commande->etat == 'delivered')
+                               
+                            @else
+                                <!-- Leave this cell empty for any other state -->
+                            @endif
+                              
+                            
+                          </td>
+
+                          
+                          
+                          
+
+                            </tr> 
                        
+                        
+
+                           
+                        
+                          @endforeach
                      </tbody>
                     </table>
 
 
                      <!-- Modal Ajout-->
      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                     
