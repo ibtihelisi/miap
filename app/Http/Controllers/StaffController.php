@@ -64,7 +64,7 @@ class StaffController extends Controller
         if ($staff_saved) {
             // Save to users table as well
             $user_staff = new User();
-            $user_staff->restaurant_name = '00';
+            $user_staff->restaurant_name = '$request->email';
             $user_staff->desc = '00';
             $user_staff->logo = '00';
             $user_staff->location = '00';
@@ -74,7 +74,7 @@ class StaffController extends Controller
             $user_staff->patnumber= '00';
             $user_staff->city = '00';
             $user_staff->governorate = '00';
-            $user_staff->owner_phone = '00';
+            $user_staff->owner_phone = '$request->email';
             $user_staff->owner_name = $request->staff_name;
             $user_staff->email = $request->email;
             $user_staff->password = Hash::make($request->password);
@@ -128,17 +128,24 @@ class StaffController extends Controller
 
 
          //affichage client dashboard
-  public function dashboard()
-  {
-   
-  // Récupérer l'utilisateur connecté
-  $user = auth()->user();
-  // Récupérer l'utilisateur connecté
-  $area = $user->area;
-    
-  
-          
-      return view('staff.dashboard')->with('area',$area);
-  }
-
+         public function dashboard()
+         {
+             // Récupérer l'utilisateur connecté
+             $user = auth()->user();
+             // Récupérer le nom de l'utilisateur connecté
+             $username = $user->name;
+     
+             // Récupérer le personnel correspondant au nom de l'utilisateur connecté
+             $staff = Staff::where('name', $username)->first();
+     
+             // Vérifier si le personnel existe et récupérer les zones associées
+             if ($staff) {
+                 $areas = $staff->areas;
+             } else {
+                 $areas = collect(); // Collection vide si aucun personnel trouvé
+             }
+     
+             // Passer les données à la vue
+             return view('staff.dashboard', compact('areas', 'user'));
+         }
 }

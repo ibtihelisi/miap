@@ -230,7 +230,8 @@ Route::get('/staff/create',[StaffController::class,'create']);
 Route::post('/staff/add',[StaffController::class,'store']);
 Route::get('/staff/delete/{id}',[StaffController::class,'destroy']);
 Route::post('/staff/update/{id}',[StaffController::class,'update']);
-Route::get('/staff/orders', function(){return view('staff.order.index');});
+Route::get('/staff/orders',[App\Http\Controllers\commandeController::class,'indexstaff']);
+//Route::get('/staff/orders', function(){return view('staff.order.index');});
 /**qr cooode */
 
 Route::get('/qrcode', [App\Http\Controllers\QrcodeController::class, 'generateQRCode'])->name('qrcode.index');
@@ -275,7 +276,10 @@ Route::get('/user/{userId}/categories', [App\Http\Controllers\QrcodeController::
 
 
 
-Route::get('/QRMenu/order', [App\Http\Controllers\ConsomateurController::class, 'showcheckout'])->name('consomateur.checkout');
+Route::get('/QRMenu/order', [App\Http\Controllers\CommandeController::class, 'showcheckout'])->name('consomateur.checkout');
+Route::post('/update-commande', [App\Http\Controllers\CommandeController::class, 'updateEtat'])->name('commande.updateEtat');
+
+
 
 
 

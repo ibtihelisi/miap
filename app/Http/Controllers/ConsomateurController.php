@@ -94,7 +94,8 @@ public function callWaiter(Request $request)
     $table = Table::firstOrCreate([]);
     $areas = Area::all();
     $commande=Commande::Where('table_id' , $table->id)->where('etat','en cours')->first();
-  
+   // $commandes = Commande::where('user_id', $user->id)->get(); // Récupère tous les membres du personnel de l'utilisateur connecté
+    
     
   
 

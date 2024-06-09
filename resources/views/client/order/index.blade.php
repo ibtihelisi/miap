@@ -505,22 +505,24 @@
                             </td>
                             
                             <td class="ACTION">
-                                @if($commande->etat == 'just created')
-                                <a class="btn btn-secondary mr-2" title="In preparation">
-                                     In preparation
-                                </a>
-                            @elseif($commande->etat == 'In preparation')
-                                <a class="btn btn-secondary mr-2" title="Delivered">
-                                     Delivered
-                                </a>
-                            @elseif($commande->etat == 'delivered')
-                               
-                            @else
-                                <!-- Leave this cell empty for any other state -->
-                            @endif
-                              
-                            
-                          </td>
+                                @if ($commande->etat === 'just created')
+                                    <form action="{{ route('commande.updateEtat') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="commande_id" value="{{ $commande->id }}">
+                                        <input type="hidden" name="new_state" value="In preparation">
+                                        <button type="submit" class="btn btn-secondary mr-2">In preparation</button>
+                                    </form>
+                                @elseif ($commande->etat === 'In preparation')
+                                    <form action="{{ route('commande.updateEtat') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="commande_id" value="{{ $commande->id }}">
+                                        <input type="hidden" name="new_state" value="Delivered">
+                                        <button type="submit" class="btn btn-secondary mr-2">Delivered</button>
+                                    </form>
+                                @else
+                                    <!-- Laissez cette cellule vide pour tout autre état -->
+                                @endif
+                            </td> 
 
                           
                           

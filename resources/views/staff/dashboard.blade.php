@@ -159,7 +159,17 @@
                         </div>
                         <div class="col ">
                             <span class="h2 font-weight-bold mb-0">Your Zones</span>
-                            <h1 class="card-title text-uppercase text-muted mb-0">You are currently belong to <span>
+                            <h1 class="card-title text-uppercase text-muted mb-0">You are currently belong to  <span>
+                                
+                                @if($areas->isEmpty())
+                                <p>Aucune zone associée.</p>
+                            @else
+                                <ul>
+                                    @foreach($areas as $area)
+                                        <li>{{ $area->name }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
                                 <br><br>
                               </span> 
                             

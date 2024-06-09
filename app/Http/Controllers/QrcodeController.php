@@ -27,25 +27,23 @@ class QrcodeController extends Controller
 
     
 
-
+    public function downloadQRCode()
+    {
+        // Lien vers la page que vous voulez que le QR code ouvre
+        $url = route('QRMenu.restaurant', ['id' => Auth::user()->id]);
     
-        public function downloadQRCode()
-        {
-            // Lien vers la page du restaurant spécifique
-            $url = route('QRMenu.restaurant', ['id' => Auth::user()->id]);
+        // Générer le code QR avec l'URL spécifique
+        $qrCode = QrCode::format('png')->size(300)->generate($url);
     
-            // Générer le code QR avec l'URL spécifique
-            $qrCode = QrCode::size(300)->generate($url);
+        // Créer une réponse avec l'image du code QR
+        $response = response($qrCode);
     
-            // Générer une réponse avec l'image du code QR
-            $response = Response::make($qrCode);
+        // Ajouter les en-têtes pour le téléchargement
+        $response->header('Content-Type', 'image/png');
+        $response->header('Content-Disposition', 'attachment; filename="qrcode.png"');
     
-           // Retourner une réponse avec l'image du code QR en tant que fichier téléchargeable
-    return Response::make($qrCode, 200, [
-        'Content-Type' => 'image/png',
-        'Content-Disposition' => 'attachment; filename="qrcode.png"',
-    ]);
-        }
+        return $response;
+    }
     
     
     

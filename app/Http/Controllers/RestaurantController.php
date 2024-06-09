@@ -171,7 +171,8 @@ class RestaurantController extends Controller
     public function export()
     {
         // Fetch restaurants data
-        $users=User::all();
+        $users = User::where('role', 'user')->get();
+
     
         // Define CSV headers
         $headers = [
@@ -184,11 +185,11 @@ class RestaurantController extends Controller
             $file = fopen('php://output', 'w');
     
             // Write CSV headers
-            fputcsv($file, ['id','Restaurant Name','Logo','Location','Description', 'Owner Name', 'Owner Email', 'CreationDtae']);
+            fputcsv($file, ['id','Restaurant Name','Logo','Location','location 2','governorate', 'city','patent_number','postal_code','Description', 'Owner Name', 'Owner Email', 'CreationDtae' ,'status']);
     
             // Write CSV rows
             foreach ($users as $user) {
-                fputcsv($file, [$user->id, $user->restaurant_name,$user->logo,$user->location,$user->desc, $user->owner_name, $user->email, $user->created_at]);
+                fputcsv($file, [$user->id, $user->restaurant_name,$user->logo,$user->location,$user->location2,$user->governorate,$user->city,$user->patnumber,$user->postal_code,$user->desc, $user->owner_name, $user->email, $user->created_at]);
             }
     
             fclose($file);

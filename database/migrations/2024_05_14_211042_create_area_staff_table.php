@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('area_id');
             $table->bigInteger('staff_id');
-            
+            $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
+            $table->foreign('staff_id')->references('id')->on('staff')->onDelete('cascade');
+           
             $table->timestamps();
         });
     }
